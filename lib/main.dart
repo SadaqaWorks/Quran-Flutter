@@ -98,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
+            Image.asset("assets/images/quran/1.png")
           ],
         ),
       ),

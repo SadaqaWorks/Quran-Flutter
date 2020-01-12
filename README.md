@@ -1,7 +1,7 @@
 # Quran Flutter
  Quran made with Flutter
 
-Refere to [this Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list. If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG)
+Refere to [this Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list. If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG). 
 
 ![](quran.png)
  
@@ -19,3 +19,17 @@ The reason that is important
 
 My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with Flutter it is possible to have a single codebase for all the platforms with similar experience while having single Codebase will make it easier to maintain and keep developing. I'm looking for more contributors.  
 
+## Contribution Guide lines
+
+* Go to Trello board and have a look on tasks list
+* Assign youself a task that you think are appropiate to do
+* Clone this repo and create branch from **dev** branch and branch name should be same as task name/ID
+* After completing task create pull request to merge with ***dev*** branch.
+
+
+## Coding guide lines
+
+* This project uses [Flutter Bloc](https://bloclibrary.dev) as state management, every single feature must follow this state managemnt.
+* [SOLID principals](https://medium.com/flutter-community/s-o-l-i-d-the-first-5-principles-of-object-oriented-design-with-dart-f31d62135b7e) must not be broken.
+* For project and coding structure, styles first go through this repo's codes first, your coding styles and structure has to be matched with this project's coding styles and structures.
+* Any kind of anti-patterns must not be implemented or design pattern must not be broken.

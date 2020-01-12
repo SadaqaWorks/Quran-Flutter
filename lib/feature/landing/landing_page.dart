@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quran/common/routes/Routes.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key key}) : super(key: key);

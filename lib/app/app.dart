@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quran/generated/i18n.dart';
 import 'package:quran/common/routes/routes.dart';
 import 'package:quran/common/routes/route_generator.dart';
-import 'package:bloc/bloc.dart';
 
 
 class App extends StatelessWidget {

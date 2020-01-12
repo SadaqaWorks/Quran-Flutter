@@ -11,5 +11,5 @@ The reason that is important
 4. After deprecating of Ayat there is no similar solution that works well on all the platforms with similar experience.
 
 
-My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with Flutter it is possible to have a single codebase for all the platforms with similar experience while having single Codebase will make it easier to maintain and keep developing. I have started a project that is [here](https://github.com/SadaqaWorks/quran), I'm looking for more contributors.  
+My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with Flutter it is possible to have a single codebase for all the platforms with similar experience while having single Codebase will make it easier to maintain and keep developing. I'm looking for more contributors.  
 

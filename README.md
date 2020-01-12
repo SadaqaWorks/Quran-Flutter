@@ -1,7 +1,7 @@
 # Quran Flutter
  Quran made with Flutter
 
-Refere to [this Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list.
+Refere to [this Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list. If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG)
 
 ![](quran.png)
  

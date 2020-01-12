@@ -21,6 +21,11 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  String get app_name => "Quran";
+  String get error => "Error";
+  String get no_results => "No results";
+  String get ok => "Ok";
+  String get please_wait => "Please Wait...";
 }
 
 class $en extends S {

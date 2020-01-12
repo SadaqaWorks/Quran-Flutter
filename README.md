@@ -5,6 +5,8 @@ Refere to [this Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning 
 
 ![](quran.png)
  
+## Why this project is important? 
+
 [Ayat](https://quran.ksu.edu.sa/ayat/?l=en) is a Quran project from King Saud University, it has the following platforms: iOS, Android, Mac, Windows, Web, Linux. so users have a similar experience on all the platforms, but unfortunately, this project is deprecated.
 
 The reason that is important 

@@ -1,7 +1,7 @@
 # Quran Flutter
  Quran made with Flutter
 
-Refere to [this Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list. If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG). 
+If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG) and then refer to [Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list. 
 
 ![](quran.png)
  
@@ -21,7 +21,7 @@ My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with 
 
 ## Contribution Guide lines
 
-* Go to Trello board and have a look on tasks list
+* Go to [Trello board](https://trello.com/b/JKZ9ZyGI/quran) and have a look on tasks list
 * Assign youself a task that you think are appropiate to do
 * Clone this repo and create branch from **dev** branch and branch name should be same as task name/ID
 * After completing task create pull request to merge with ***dev*** branch.

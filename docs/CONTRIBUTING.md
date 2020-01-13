@@ -7,6 +7,8 @@
 * Run on project folder ```flutter analyze``` and fix any issues if found.
 * After completing task create pull request to merge with ***dev*** branch.
 * Write down what was done, changed or fixed in pull request description with Trello Link.
+* Slide respective ticket to **In Review** list in Trello.
+* If you have anything in mind that might be developed add in **Would Love To Do** lists.
 
 
 ## Coding guide lines

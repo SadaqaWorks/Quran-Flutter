@@ -32,6 +32,8 @@ My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with 
 * Formate your code with any tools from [here](https://flutter.dev/docs/development/tools/formatting).
 * Run on project folder ```flutter analyze``` and fix any issues if found.
 * After completing task create pull request to merge with ***dev*** branch.
+* Slide respective ticket to **In Review** list in Trello.
+* If you have anything in mind that might be developed add in **Would Love To Do** lists.
 
 
 ## Coding guide lines

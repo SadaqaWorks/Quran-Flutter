@@ -28,7 +28,9 @@ My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with 
 
 * Go to [Trello board](https://trello.com/b/JKZ9ZyGI/quran) and have a look on tasks list
 * Assign youself a task that you think are appropiate to do
-* Clone this repo and create branch from **dev** branch and branch name should be same as task name/ID
+* Clone this repo and create branch from **dev** branch and branch name should be same as task name/ID.
+* Formate your code with any tools from [here](https://flutter.dev/docs/development/tools/formatting).
+* Run on project folder ```flutter analyze``` and fix any issues if found.
 * After completing task create pull request to merge with ***dev*** branch.
 
 

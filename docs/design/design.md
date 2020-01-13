@@ -1,5 +1,12 @@
+## Sample apps
+
+* [Ayat](https://quran.ksu.edu.sa/ayat/?l=en)
+* [Ayah](http://ayahapp.com/)
+* [Quran Apps](https://quran.com/apps)
+* [Quran Academy](https://quranacademy.io/apps)
+
 ## Quran page
-Upon app starting it will previously reading quran page or first page.
+Upon app starting it will previously reading Quran page or first page.
 
 ![](main.png)
 
@@ -9,7 +16,7 @@ If user taps on page it should show
 
 ![](tapped.png)
 
-On bottom slider user can slide through numbers of quran pages (1...604). Slider's current value will be current page.
+On bottom slider user can slide through numbers of Quran pages (1...604). Slider's current value will be current page.
 
 On top left menu button they can access side menu pop-over.
 
@@ -20,7 +27,7 @@ On top title Surah name, ayah number, Juzz.
 
 ![](sidemenu.png)
 
-On sidemenu surah, juzz and page can be selected.
+On sidemenu Surah, Juzz and page can be selected.
 
 
 ## Translition

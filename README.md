@@ -1,3 +1,5 @@
+[![codebeat badge](https://codebeat.co/badges/65010906-564f-48c9-aadd-bf9c9ee1d4b3)](https://codebeat.co/projects/github-com-sadaqaworks-quran-master)
+
 # Quran Flutter
  Quran made with Flutter
 

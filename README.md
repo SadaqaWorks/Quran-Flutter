@@ -3,7 +3,7 @@
 
 If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG), see [design](docs/design/design.md) then refer to [Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list and
 
-![](docs/plan/quran.png)
+![](docs/design/flow.png)
  
 ## Why this project is important? 
 

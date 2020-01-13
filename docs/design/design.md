@@ -5,6 +5,9 @@
 * [Quran Apps](https://quran.com/apps)
 * [Quran Academy](https://quranacademy.io/apps)
 
+## App Flow
+![](flow.png)
+
 ## Quran page
 Upon app starting it will previously reading Quran page or first page.
 

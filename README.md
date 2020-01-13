@@ -1,3 +1,5 @@
+[![Codemagic build status](https://api.codemagic.io/apps/5e1c37ea48f5bc38b74143ab/5e1c37ea48f5bc38b74143aa/status_badge.svg)](https://codemagic.io/apps/5e1c37ea48f5bc38b74143ab/5e1c37ea48f5bc38b74143aa/latest_build)
+
 # Quran Flutter
  Quran made with Flutter
 

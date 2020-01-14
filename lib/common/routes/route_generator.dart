@@ -15,11 +15,7 @@ class RouteGenerator {
 
       case Routes.home:
         return MaterialPageRoute<dynamic>(
-            builder: (_) => Scaffold(
-                appBar: AppBar(
-                  title: const Text('Books'),
-                ),
-                body: HomePage()));
+            builder: (_) => HomePage());
       default:
         return _errorRoute();
     }

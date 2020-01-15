@@ -26,7 +26,8 @@ dependencies:
   shared_preferences: ^0.5.3+4
   bloc: ^3.0.0
   flutter_bloc: ^3.1.0
-
+  hydrated_bloc: ^3.0.0
+  swipedetector: ^1.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

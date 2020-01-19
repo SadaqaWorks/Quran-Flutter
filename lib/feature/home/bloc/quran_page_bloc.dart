@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/model/quran_page.dart';
@@ -13,7 +12,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   QuranPageState fromJson(Map<String, dynamic> json) {
     try {
-      return QuranPageLoaded(quranPage: json['value'] as QuranPage);
+      return QuranPageLoaded(quranPage: QuranPage.fromJson(json['value']) );
     } catch (_) {
       return null;
     }
@@ -33,14 +32,14 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   }
 
   @override
-  Stream<QuranPageState> mapEventToState(QuranPageEvent event) {
+  Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
     final QuranPageState currentState = state;
 
     if (event is ShowBackward) {
       if (currentState is QuranPageLoaded) {
         if (currentState.quranPage.page != 1) {
-          QuranPageBackward();
-          QuranPageLoaded(
+          yield QuranPageBackward();
+          yield QuranPageLoaded(
               quranPage: _fetchQuranPage(currentState.quranPage.page - 1));
         }
       }
@@ -49,8 +48,8 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     if (event is ShowForward) {
       if (currentState is QuranPageLoaded) {
         if (currentState.quranPage.page != 605) {
-          QuranPageForward();
-          QuranPageLoaded(
+          yield QuranPageForward();
+          yield QuranPageLoaded(
               quranPage: _fetchQuranPage(currentState.quranPage.page + 1));
         }
       }

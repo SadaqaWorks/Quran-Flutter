@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:meta/meta.dart';
+part 'quran_page.g.dart';
 
 class QuranPage extends Equatable {
   final int page;
@@ -8,9 +9,13 @@ class QuranPage extends Equatable {
   @required
   QuranPage({this.page, this.imageUrl});
 
-  // String get imageUrl => 'assets/images/quran/image$page.png';
-
   // Equatable
   @override
   List<Object> get props => [page, imageUrl];
+
+  // json encoding decoding
+  factory QuranPage.fromJson(Map<String, dynamic> json) => _$QuranPageFromJson(json);
+
+  Map<String, dynamic> toJson() => _$QuranPageToJson(this);
 }
+

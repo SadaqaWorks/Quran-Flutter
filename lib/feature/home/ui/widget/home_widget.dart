@@ -8,10 +8,7 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
+
 
   @override
   void dispose() {

@@ -17,9 +17,10 @@ class HomePage extends StatelessWidget {
                 flex: 1,
                 child: ConstrainedBox(
                   constraints: BoxConstraints.expand(),
-                  child: const Card(
-                    child: const Text('Hello World!'),
-                    color: Colors.yellow,
+                  child: Row(
+                    children: <Widget>[
+                      
+                    ],
                   ),
                 ),
               ),

@@ -41,10 +41,14 @@ class PortraitImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context);
 
-    return Container(
-      child: Center(
-        child: Image.asset(quranPage.imageUrl, height: double.infinity, fit: BoxFit.fill,),
-      ),
+   return Container(
+        decoration:  new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage(quranPage.imageUrl),
+              centerSlice: Rect.fromLTRB(-50, 0, -50, 00),
+              fit: BoxFit.fitWidth,
+            )
+        )
     );
   }
 }

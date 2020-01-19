@@ -31,8 +31,6 @@ dependencies:
   hydrated_bloc: ^3.0.0
   equatable: ^1.0.1
 
-  swipedetector: ^1.2.0
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

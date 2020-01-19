@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quran/common/swipedetector.dart';
 import 'package:quran/feature/home/bloc/index.dart';
-import 'package:swipedetector/swipedetector.dart';
+import 'package:quran/feature/home/ui/widget/responsive_image_widget.dart';
 
 class QuranPageWidget extends StatefulWidget {
   @override
@@ -30,11 +31,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
             onSwipeRight: () {
               _pageBloc.add(ShowForward());
             },
-            child: Container(
-              child: Center(
-                child: Image.asset(state.quranPage.imageUrl),
-              ),
-            ),
+            child: ResponsiveImageWidget(quranPage: state.quranPage),
           );
         } else if (state is QuranPageBackward) {
           //TODO:- show page flip from left

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key key}) : super(key: key);
 
@@ -8,13 +7,10 @@ class HomeWidget extends StatefulWidget {
   _HomeWidgetState createState() => _HomeWidgetState();
 }
 
-
 class _HomeWidgetState extends State<HomeWidget> {
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
   }
 
   @override
@@ -24,14 +20,11 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: const Text('Books'),
-      ),
-      body: Container()
-    );
+        appBar: AppBar(
+          backgroundColor: Colors.blueGrey,
+          title: const Text('Books'),
+        ),
+        body: Container());
   }
-
 }

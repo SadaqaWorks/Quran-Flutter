@@ -41,14 +41,24 @@ class PortraitImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context);
 
-   return Container(
-        decoration:  new BoxDecoration(
-            image: new DecorationImage(
-              image: new AssetImage(quranPage.imageUrl),
-              centerSlice: Rect.fromLTRB(-50, 0, -50, 00),
-              fit: BoxFit.fitWidth,
-            )
-        )
+
+    //14 percent more width then original screen width
+    final double width = MediaQuery.of(context).size.width * (1 + 0.14);
+
+    return Container(
+      child: OverflowBox(
+        minWidth: width,
+        minHeight: 0.0,
+        maxWidth: width,
+        child: ClipPath(
+          child: Image.asset(
+              quranPage.imageUrl,
+              height: double.infinity,
+              fit: BoxFit.fill
+          ),
+          clipper: RectangleImageClipper(),
+        ),
+      ),
     );
   }
 }
@@ -59,6 +69,7 @@ class LandscapeImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context);
 
+
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Image.asset(
@@ -67,6 +78,27 @@ class LandscapeImageWidget extends StatelessWidget {
         width: double.infinity,),
     );
   }
+}
+
+class RectangleImageClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = new Path();
+
+    //Cut 6.5% left and right side of Image
+    double cutPercentage = 6.5;
+    double cutPixel = (cutPercentage * size.width) / 100;
+
+    path.moveTo(cutPixel, 0.0);
+    path.lineTo(size.width - cutPixel, 0.0);
+    path.lineTo(size.width - cutPixel, size.height);
+    path.lineTo(cutPixel, size.height);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false ;
 }
 
 

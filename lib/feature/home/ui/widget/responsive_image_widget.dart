@@ -40,6 +40,8 @@ class PortraitImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context);
+
+    //14 percent more width then original screen width
     final double width = MediaQuery.of(context).size.width * (1 + 0.14);
 
     return Container(
@@ -47,13 +49,10 @@ class PortraitImageWidget extends StatelessWidget {
         minWidth: 0.0,
         minHeight: 0.0,
         maxWidth: width,
-        child: ClipPath(
-          child: Image.asset(
-              quranPage.imageUrl,
-              height: double.infinity,
-              fit: BoxFit.fill
-          ),
-          clipper: ImageClipper(),
+        child: Image.asset(
+            quranPage.imageUrl,
+            height: double.infinity,
+            fit: BoxFit.fill
         ),
       ),
     );

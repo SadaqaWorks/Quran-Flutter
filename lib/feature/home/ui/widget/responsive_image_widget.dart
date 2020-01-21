@@ -46,13 +46,16 @@ class PortraitImageWidget extends StatelessWidget {
 
     return Container(
       child: OverflowBox(
-        minWidth: 0.0,
+        minWidth: width,
         minHeight: 0.0,
         maxWidth: width,
-        child: Image.asset(
-            quranPage.imageUrl,
-            height: double.infinity,
-            fit: BoxFit.fill
+        child: ClipPath(
+          child: Image.asset(
+              quranPage.imageUrl,
+              height: double.infinity,
+              fit: BoxFit.fill
+          ),
+          clipper: RectangleImageClipper(),
         ),
       ),
     );
@@ -76,11 +79,12 @@ class LandscapeImageWidget extends StatelessWidget {
   }
 }
 
-class ImageClipper extends CustomClipper<Path> {
+class RectangleImageClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = new Path();
 
+    //
     double cutPercentage = 6.5;
     double cutPixel = (cutPercentage * size.width) / 100;
 

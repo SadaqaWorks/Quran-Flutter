@@ -1,7 +1,7 @@
-import 'dart:ui' as ui;
 import 'dart:io';
+import 'dart:ui' as ui;
 
-class Device{
+class Device {
   static double devicePixelRatio = ui.window.devicePixelRatio;
   static ui.Size size = ui.window.physicalSize;
   static double width = size.width;
@@ -9,41 +9,46 @@ class Device{
   static double screenWidth = width / devicePixelRatio;
   static double screenHeight = height / devicePixelRatio;
   static ui.Size screenSize = new ui.Size(screenWidth, screenHeight);
-  final bool isTablet, isPhone,isComputer, isIos, isAndroid;
+  final bool isTablet, isPhone, isComputer, isIos, isAndroid;
   static Device _device;
 
-  Device({this.isTablet, this.isPhone,this.isComputer, this.isIos, this.isAndroid});
+  Device(
+      {this.isTablet,
+      this.isPhone,
+      this.isComputer,
+      this.isIos,
+      this.isAndroid});
 
-  factory Device.get(){
-    if( _device != null )
-      return _device;
+  factory Device.get() {
+    if (_device != null) return _device;
 
     bool isTablet;
     bool isPhone;
     bool isIos = Platform.isIOS;
     bool isAndroid = Platform.isAndroid;
-   // bool isWeb;
-    bool isComputer = Platform.isWindows || Platform.isLinux || Platform.isMacOS || Platform.isFuchsia;
+    // bool isWeb;
+    bool isComputer = Platform.isWindows ||
+        Platform.isLinux ||
+        Platform.isMacOS ||
+        Platform.isFuchsia;
 
-    if(devicePixelRatio < 2 && (width >= 1000 || height >= 1000)) {
+    if (devicePixelRatio < 2 && (width >= 1000 || height >= 1000)) {
       isTablet = true;
       isPhone = false;
-    }
-    else if(devicePixelRatio == 2 && (width >= 1920 || height >= 1920)) {
+    } else if (devicePixelRatio == 2 && (width >= 1920 || height >= 1920)) {
       isTablet = true;
       isPhone = false;
-    }
-    else {
+    } else {
       isTablet = false;
       isPhone = true;
     }
 
     return _device = new Device(
-        isTablet: isTablet,
-        isPhone: isPhone,
-        isComputer: isComputer,
-        isAndroid: isAndroid,
-        isIos: isIos,
+      isTablet: isTablet,
+      isPhone: isPhone,
+      isComputer: isComputer,
+      isAndroid: isAndroid,
+      isIos: isIos,
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+
 part 'quran_page.g.dart';
 
 class QuranPage extends Equatable {
@@ -14,8 +15,8 @@ class QuranPage extends Equatable {
   List<Object> get props => [page, imageUrl];
 
   // json encoding decoding
-  factory QuranPage.fromJson(Map<String, dynamic> json) => _$QuranPageFromJson(json);
+  factory QuranPage.fromJson(Map<String, dynamic> json) =>
+      _$QuranPageFromJson(json);
 
   Map<String, dynamic> toJson() => _$QuranPageToJson(this);
 }
-

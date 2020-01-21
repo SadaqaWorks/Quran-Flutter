@@ -11,8 +11,8 @@ TextTheme _buildTextTheme(TextTheme base) {
 }
 
 ThemeData _buildBasicTheme() {
-  const Color primaryColor = Colors.orange;
-  const Color secondaryColor = Colors.lightGreen;
+  const Color primaryColor = Colors.lightGreen;
+  const Color secondaryColor = Colors.orange;
   final ColorScheme colorScheme = const ColorScheme.light().copyWith(
     primary: primaryColor,
     secondary: secondaryColor,

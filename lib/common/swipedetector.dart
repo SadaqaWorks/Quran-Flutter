@@ -32,7 +32,8 @@ class SwipeConfiguration {
     }
 
     if (horizontalSwipeMaxHeightThreshold != null) {
-      this.horizontalSwipeMaxHeightThreshold = horizontalSwipeMaxHeightThreshold;
+      this.horizontalSwipeMaxHeightThreshold =
+          horizontalSwipeMaxHeightThreshold;
     }
 
     if (horizontalSwipeMinDisplacement != null) {
@@ -55,14 +56,14 @@ class SwipeDetector extends StatelessWidget {
 
   SwipeDetector(
       {@required this.child,
-        this.onSwipeUp,
-        this.onSwipeDown,
-        this.onSwipeLeft,
-        this.onSwipeRight,
-        SwipeConfiguration swipeConfiguration})
+      this.onSwipeUp,
+      this.onSwipeDown,
+      this.onSwipeLeft,
+      this.onSwipeRight,
+      SwipeConfiguration swipeConfiguration})
       : this.swipeConfiguration = swipeConfiguration == null
-      ? SwipeConfiguration()
-      : swipeConfiguration;
+            ? SwipeConfiguration()
+            : swipeConfiguration;
 
   @override
   Widget build(BuildContext context) {

@@ -1,12 +1,11 @@
 import 'dart:async';
+
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:meta/meta.dart';
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
-
   @override
   QuranPageState get initialState =>
       super.initialState ?? QuranPageLoaded(quranPage: _fetchQuranPage(1));
@@ -14,7 +13,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   QuranPageState fromJson(Map<String, dynamic> json) {
     try {
-      return QuranPageLoaded(quranPage: QuranPage.fromJson(json['value']) );
+      return QuranPageLoaded(quranPage: QuranPage.fromJson(json['value']));
     } catch (_) {
       return null;
     }
@@ -42,8 +41,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
         if (currentState.quranPage.page != 1) {
           yield QuranPageBackward();
           final quranPage = _fetchQuranPage(currentState.quranPage.page - 1);
-          yield QuranPageLoaded(
-              quranPage: quranPage);
+          yield QuranPageLoaded(quranPage: quranPage);
         }
       }
     }

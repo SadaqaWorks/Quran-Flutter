@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quran/generated/i18n.dart';
 import 'package:quran/common/routes/routes.dart';
 import 'package:quran/common/routes/route_generator.dart';
+import 'theme.dart';
 
 class App extends StatelessWidget {
   @override
@@ -18,9 +19,7 @@ class App extends StatelessWidget {
       localeListResolutionCallback:
           S.delegate.listResolution(fallback: const Locale('en', '')),
       title: 'Quran',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+      theme: basicTheme,
       onGenerateRoute: RouteGenerator.generateRoute,
       initialRoute: Routes.home,
     );

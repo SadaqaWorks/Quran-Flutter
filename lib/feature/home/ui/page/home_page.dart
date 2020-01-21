@@ -11,31 +11,59 @@ class HomePage extends StatelessWidget {
         create: (_) => QuranPageBloc(),
         child: SafeArea(
           child: Scaffold(
-              body: Column(
-            children: <Widget>[
-              Flexible(
-                flex: 1,
-                child: ConstrainedBox(
-                  constraints: BoxConstraints.expand(),
-                  child: Row(
+              body: BlocBuilder<HomePageBloc,HomePageState>(
+                builder: (context,state){
+
+                  if (state is HomePageShowView){
+
+                 return Column(
                     children: <Widget>[
-                      
+                      Flexible(
+                        flex: 1,
+                        child: ConstrainedBox(
+                            constraints: BoxConstraints.expand(),
+                            child:  Card(
+                              color: Theme.of(context).primaryColor,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  IconButton(
+                                    icon: Icon(Icons.menu),
+                                    onPressed: (){
+                                      BlocProvider.of<HomePageBloc>(context).add(HomePageMenuTapped());
+                                    },
+                                  ),
+                                  BlocBuilder<QuranPageBloc,QuranPageState>(
+                                    builder: (context,state){
+                                      if (state is QuranPageLoaded){
+                                        Text("Page: ${state.quranPage.page}");
+                                      }
+
+                                      return Container();
+                                    },
+                                  )
+                                ],
+                              ),
+                            )),
+                      ),
+                      Flexible(flex: 9, child: QuranPageWidget()),
+//              Flexible(
+//                  flex: 1,
+//                  child: ConstrainedBox(
+//                    constraints: BoxConstraints.expand(),
+//                    child:  Row(
+//                      children: <Widget>[
+//
+//                      ],
+//                    ),
+//                  )),
                     ],
-                  ),
-                ),
-              ),
-              Flexible(flex: 8, child: QuranPageWidget()),
-              Flexible(
-                  flex: 1,
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints.expand(),
-                    child: const Card(
-                      child: const Text('Hello World!'),
-                      color: Colors.yellow,
-                    ),
-                  )),
-            ],
-          )),
+                  );}else{
+                    return QuranPageWidget();
+                  }
+
+                }
+              )),
         ));
   }
 }

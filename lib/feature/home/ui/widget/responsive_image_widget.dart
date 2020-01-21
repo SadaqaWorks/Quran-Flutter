@@ -84,7 +84,7 @@ class RectangleImageClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     var path = new Path();
 
-    //
+    //Cut 6.5% left and right side of Image
     double cutPercentage = 6.5;
     double cutPixel = (cutPercentage * size.width) / 100;
 

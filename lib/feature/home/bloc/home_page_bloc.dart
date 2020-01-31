@@ -53,15 +53,12 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
     final HomePageState currentState = state;
 
     if (event is HomePageViewTapped) {
-
-
-
+      
       if (Device.get().isPhone || Device.get().isTablet) {
         if (currentState is HomePageHideView) {
           yield HomePageShowView();
           debugPrint(
               'HomePageEvent ${event} ${currentState} on HomePageShowView');
-          //this.add(HomePageViewNormal());
 //        Future.delayed(const Duration(milliseconds: 5000), () async* {
 //          yield HomePageHideView();
 //        });
@@ -69,10 +66,9 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
         }
 
         if (currentState is HomePageShowView) {
-          //yield HomePageHideView();
+          yield HomePageHideView();
           debugPrint(
               'HomePageEvent ${event} ${currentState} on HomePageHideView');
-          //this.add(HomePageViewNormal());
         }
       } else {
         yield HomePageShowView();

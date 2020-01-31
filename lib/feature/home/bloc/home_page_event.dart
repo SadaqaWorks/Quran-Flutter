@@ -5,6 +5,8 @@ abstract class HomePageEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class HomePageViewNormal extends HomePageEvent {}
+
 class HomePageViewTapped extends HomePageEvent {}
 
 class HomePageMenuTapped extends HomePageEvent {}

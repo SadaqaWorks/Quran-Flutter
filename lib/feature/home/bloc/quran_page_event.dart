@@ -5,6 +5,6 @@ abstract class QuranPageEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class ShowBackward extends QuranPageEvent {}
+class ShowBackwardPage extends QuranPageEvent {}
 
-class ShowForward extends QuranPageEvent {}
+class ShowForwardPage extends QuranPageEvent {}

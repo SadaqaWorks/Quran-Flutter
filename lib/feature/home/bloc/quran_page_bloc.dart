@@ -4,6 +4,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:quran/common/constant/constants.dart' as Constants;
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
@@ -36,9 +37,9 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
     final QuranPageState currentState = state;
 
-    if (event is ShowBackward) {
+    if (event is QuranPageBackward) {
       if (currentState is QuranPageLoaded) {
-        if (currentState.quranPage.page != 1) {
+        if (currentState.quranPage.page != Constants.startQuranPageNumber) {
           yield QuranPageBackward();
           final quranPage = _fetchQuranPage(currentState.quranPage.page - 1);
           yield QuranPageLoaded(quranPage: quranPage);
@@ -46,9 +47,9 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
       }
     }
 
-    if (event is ShowForward) {
+    if (event is QuranPageForward) {
       if (currentState is QuranPageLoaded) {
-        if (currentState.quranPage.page != 605) {
+        if (currentState.quranPage.page != Constants.endQuranPageNumber) {
           yield QuranPageForward();
           yield QuranPageLoaded(
               quranPage: _fetchQuranPage(currentState.quranPage.page + 1));

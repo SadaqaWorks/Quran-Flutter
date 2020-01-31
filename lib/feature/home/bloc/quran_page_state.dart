@@ -3,16 +3,22 @@ import 'package:quran/feature/home/model/quran_page.dart';
 
 abstract class QuranPageState extends Equatable {
   const QuranPageState();
-
-  @override
-  List<Object> get props => [];
 }
 
-class QuranPageInitial extends QuranPageState {}
+class QuranPageInitial extends QuranPageState {
+  @override
+  List<Object> get props => null;
+}
 
-class QuranPageForward extends QuranPageState {}
+class QuranPageForward extends QuranPageState {
+  @override
+  List<Object> get props => null;
+}
 
-class QuranPageBackward extends QuranPageState {}
+class QuranPageBackward extends QuranPageState {
+  @override
+  List<Object> get props => null;
+}
 
 class QuranPageLoaded extends QuranPageState {
   final QuranPage quranPage;

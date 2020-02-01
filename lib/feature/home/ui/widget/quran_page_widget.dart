@@ -25,22 +25,19 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
       builder: (context, state) {
         if (state is QuranPageLoaded) {
           return SwipeDetector(
-            onSwipeLeft: () {
-              _pageBloc.add(ShowBackwardPage());
-            },
-            onSwipeRight: () {
-              _pageBloc.add(ShowForwardPage());
-
-            },
-            child: GestureDetector(
-                onTap: () {
-                  debugPrint("TAPPED");
-                  BlocProvider.of<HomePageBloc>(context)..add(HomePageViewTapped());
-                }, child:
-                  ResponsiveImageWidget(quranPage: state.quranPage)
-            )
-
-          );
+              onSwipeLeft: () {
+                _pageBloc.add(ShowBackwardPage());
+              },
+              onSwipeRight: () {
+                _pageBloc.add(ShowForwardPage());
+              },
+              child: GestureDetector(
+                  onTap: () {
+                    debugPrint("TAPPED");
+                    BlocProvider.of<HomePageBloc>(context)
+                      ..add(HomePageViewTapped());
+                  },
+                  child: ResponsiveImageWidget(quranPage: state.quranPage)));
         } else if (state is QuranPageBackward) {
           //TODO:- show page flip from left
           return Container();

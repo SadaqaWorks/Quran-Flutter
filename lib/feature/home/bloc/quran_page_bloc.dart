@@ -48,19 +48,16 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     }
 
     if (event is ShowForwardPage && currentState is QuranPageLoaded) {
-
-        if (currentState.quranPage.page != Constants.endQuranPageNumber) {
-          yield QuranPageForward();
-          yield QuranPageLoaded(
-              quranPage: _fetchQuranPage(currentState.quranPage.page + 1));
-        }
-
+      if (currentState.quranPage.page != Constants.endQuranPageNumber) {
+        yield QuranPageForward();
+        yield QuranPageLoaded(
+            quranPage: _fetchQuranPage(currentState.quranPage.page + 1));
+      }
     }
 
-    if (event is JumpToPage && currentState is QuranPageLoaded){
-        yield QuranJumpToPage(pageNumber:  event.pageNumber);
-        yield QuranPageLoaded(
-            quranPage: _fetchQuranPage(event.pageNumber));
+    if (event is JumpToPage && currentState is QuranPageLoaded) {
+      yield QuranJumpToPage(pageNumber: event.pageNumber);
+      yield QuranPageLoaded(quranPage: _fetchQuranPage(event.pageNumber));
     }
   }
 

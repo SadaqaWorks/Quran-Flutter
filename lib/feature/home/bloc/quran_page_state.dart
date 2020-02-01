@@ -24,7 +24,7 @@ class QuranPageBackward extends QuranPageState {
 class QuranJumpToPage extends QuranPageState {
   final int pageNumber;
 
-  const QuranJumpToPage( {@required this.pageNumber});
+  const QuranJumpToPage({@required this.pageNumber});
 
   QuranJumpToPage copyWith({QuranPage pageNumber}) {
     return QuranJumpToPage(pageNumber: pageNumber ?? this.pageNumber);

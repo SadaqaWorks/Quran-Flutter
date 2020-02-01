@@ -1,9 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 abstract class HomePageState extends Equatable {
-   HomePageState();
+  HomePageState();
 }
-
 
 class HomePageShowView extends HomePageState {
   @override

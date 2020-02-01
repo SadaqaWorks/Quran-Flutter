@@ -10,17 +10,14 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
   @override
   HomePageState get initialState {
     if (super.initialState != null) {
-      debugPrint(
-          'HomePageEvent initialState ${super.initialState}');
+      debugPrint('HomePageEvent initialState ${super.initialState}');
       return super.initialState;
     } else {
       if (Device.get().isPhone || Device.get().isTablet) {
-        debugPrint(
-            'HomePageEvent initialState HomePageHideView');
+        debugPrint('HomePageEvent initialState HomePageHideView');
         return HomePageHideView();
       } else {
-        debugPrint(
-            'HomePageEvent initialState HomePageShowView');
+        debugPrint('HomePageEvent initialState HomePageShowView');
         return HomePageShowView();
       }
     }
@@ -53,7 +50,6 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
     final HomePageState currentState = state;
 
     if (event is HomePageViewTapped) {
-      
       if (Device.get().isPhone || Device.get().isTablet) {
         if (currentState is HomePageHideView) {
           yield HomePageShowView();
@@ -73,9 +69,8 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
       } else {
         yield HomePageShowView();
       }
-    }else{
-      debugPrint(
-          'HomePageEvent ${event} ${currentState} on else');
+    } else {
+      debugPrint('HomePageEvent ${event} ${currentState} on else');
     }
   }
 

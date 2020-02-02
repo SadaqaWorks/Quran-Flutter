@@ -7,10 +7,13 @@ import 'package:quran/feature/home/bloc/index.dart';
 import 'package:rxdart/rxdart.dart';
 
 class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
+
+
+
   @override
   HomePageState get initialState {
     if (super.initialState != null) {
-      debugPrint('HomePageEvent initialState ${super.initialState}');
+      debugPrint('HomePageEvent initialState previous ${super.initialState}');
       return super.initialState;
     } else {
       if (Device.get().isPhone || Device.get().isTablet) {
@@ -19,6 +22,7 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
       } else {
         debugPrint('HomePageEvent initialState HomePageShowView');
         return HomePageShowView();
+
       }
     }
   }
@@ -55,16 +59,19 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
           yield HomePageShowView();
           debugPrint(
               'HomePageEvent ${event} ${currentState} on HomePageShowView');
-//        Future.delayed(const Duration(milliseconds: 5000), () async* {
-//          yield HomePageHideView();
-//        });
+
+         await Future.delayed(const Duration(seconds: 3), () async* {
+           debugPrint(
+               'HomePageEvent ${event} ${currentState} on HomePageShowView seconds');
+          yield HomePageHideView();
+        });
 
         }
-
         if (currentState is HomePageShowView) {
-          yield HomePageHideView();
           debugPrint(
               'HomePageEvent ${event} ${currentState} on HomePageHideView');
+          yield HomePageHideView();
+
         }
       } else {
         yield HomePageShowView();

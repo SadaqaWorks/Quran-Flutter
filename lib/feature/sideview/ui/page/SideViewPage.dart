@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran/generated/i18n.dart';
 
 class SideViewPage extends StatelessWidget {
   @override
@@ -21,13 +22,13 @@ class SideViewPage extends StatelessWidget {
           bottomNavigationBar: new TabBar(
             tabs: [
               Tab(
-                icon: new Icon(Icons.home),
+                text: S.of(context).pages,
               ),
               Tab(
-                icon: new Icon(Icons.rss_feed),
+                text: S.of(context).surah,
               ),
               Tab(
-                icon: new Icon(Icons.perm_identity),
+                text: S.of(context).juzz,
               )
             ],
             labelColor: Colors.yellow,

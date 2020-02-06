@@ -23,9 +23,12 @@ class S implements WidgetsLocalizations {
 
   String get app_name => "Quran";
   String get error => "Error";
+  String get juzz => "Juzz";
   String get no_results => "No results";
   String get ok => "Ok";
+  String get pages => "Pages";
   String get please_wait => "Please Wait...";
+  String get surah => "Surah";
 }
 
 class $en extends S {

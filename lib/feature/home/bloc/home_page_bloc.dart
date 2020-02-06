@@ -71,14 +71,16 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
           debugPrint(
               'HomePageEvent ${event} ${currentState} on HomePageHideView');
           yield HomePageHideView();
-
         }
       } else {
         yield HomePageShowView();
       }
-    } else {
-      debugPrint('HomePageEvent ${event} ${currentState} on else');
     }
+
+    if(event is HomePageMenuTapped){
+      yield HomePageShowSideView();
+    }
+
   }
 
   @override

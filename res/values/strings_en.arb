@@ -3,5 +3,8 @@
   "no_results": "No results",
   "error": "Error",
   "please_wait": "Please Wait...",
-  "ok": "Ok"
+  "ok": "Ok",
+  "pages" : "Pages",
+  "surah" : "Surah",
+  "juzz": "Juzz"
 }

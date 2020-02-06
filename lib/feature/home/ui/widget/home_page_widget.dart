@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as Constants;
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/ui/widget/quran_page_widget.dart';
+import 'package:quran/common/routes/routes.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -26,8 +27,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         listener: (context, state) {
       // do stuff here based on BlocA's state
       debugPrint('HomePageWidget listner ${state} ');
-      final snackBar = SnackBar(content: Text("Tap"));
-      Scaffold.of(context).showSnackBar(snackBar);
+
+      if(state is HomePageShowSideView){
+        Navigator.pushNamed(context, Routes.sideView);
+      }
+
     }, builder: (context, state) {
       return SafeArea(
         child: Scaffold(body:

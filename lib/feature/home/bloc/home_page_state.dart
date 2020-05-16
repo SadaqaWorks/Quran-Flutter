@@ -1,6 +1,5 @@
-import 'package:equatable/equatable.dart';
 
-abstract class HomePageState extends Equatable {
+abstract class HomePageState  {
   HomePageState();
 }
 

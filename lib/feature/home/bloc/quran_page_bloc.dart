@@ -5,6 +5,7 @@ import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:quran/common/constant/constants.dart' as Constants;
+import 'package:bloc/bloc.dart';
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
@@ -20,16 +21,17 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     }
   }
 
+
   @override
-  Stream<QuranPageState> transformEvents(
-    Stream<QuranPageEvent> events,
-    Stream<QuranPageState> Function(QuranPageEvent event) next,
-  ) {
+  Stream<Transition<QuranPageEvent, QuranPageState>>
+  transformEvents(
+      Stream<QuranPageEvent> events,
+      TransitionFunction<QuranPageEvent, QuranPageState>
+      transitionFn,
+      ) {
     return super.transformEvents(
-      events.debounceTime(
-        const Duration(milliseconds: 500),
-      ),
-      next,
+      events.debounceTime(const Duration(milliseconds: 500)),
+      transitionFn,
     );
   }
 

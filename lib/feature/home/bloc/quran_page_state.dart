@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:meta/meta.dart';
 
-abstract class QuranPageState extends Equatable {
+abstract class QuranPageState  {
   const QuranPageState();
 }
 

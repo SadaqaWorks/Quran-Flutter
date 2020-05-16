@@ -5,10 +5,9 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:bloc/bloc.dart';
 
 class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
-
-
 
   @override
   HomePageState get initialState {
@@ -22,7 +21,6 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
       } else {
         debugPrint('HomePageEvent initialState HomePageShowView');
         return HomePageShowView();
-
       }
     }
   }
@@ -37,17 +35,19 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
   }
 
   @override
-  Stream<HomePageState> transformEvents(
-    Stream<HomePageEvent> events,
-    Stream<HomePageState> Function(HomePageEvent event) next,
-  ) {
+  Stream<Transition<HomePageEvent, HomePageState>>
+  transformEvents(
+      Stream<HomePageEvent> events,
+      TransitionFunction<HomePageEvent, HomePageState>
+      transitionFn,
+      ) {
     return super.transformEvents(
-      events.debounceTime(
-        const Duration(milliseconds: 500),
-      ),
-      next,
+      events.debounceTime(const Duration(milliseconds: 500)),
+      transitionFn,
     );
   }
+
+
 
   @override
   Stream<HomePageState> mapEventToState(HomePageEvent event) async* {

@@ -40,23 +40,28 @@ class ResponsiveImageWidget extends StatelessWidget {
 class PortraitImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final quranPage = InheritedOrientedImage.of(context);
+    final quranPage = InheritedOrientedImage.of(context).imageUrl;
 
     //14 percent more width then original screen width
-    final double width = MediaQuery.of(context).size.width * (1 + 0.14);
+    final double width = MediaQuery.of(context).size.width + 90;
+    final double height = MediaQuery.of(context).size.height - 60;
 
     return Container(
-      child: OverflowBox(
-        minWidth: width,
-        minHeight: 0.0,
-        maxWidth: width,
-        child: ClipPath(
-          child: Image.asset(quranPage.imageUrl,
-              height: double.infinity, fit: BoxFit.fill),
-          clipper: RectangleImageClipper(),
-        ),
-      ),
-    );
+        child: OverflowBox(
+            minWidth: width,
+            maxWidth: width,
+            maxHeight: height,
+            minHeight: height,
+            child: ClipPath(
+              child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Image(image: AssetImage(quranPage),
+                      height: double.infinity, fit: BoxFit.fill)
+              ),
+              clipper: RectangleImageClipper(),
+            )));
+
+
   }
 }
 

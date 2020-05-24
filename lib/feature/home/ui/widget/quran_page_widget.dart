@@ -10,7 +10,6 @@ class QuranPageWidget extends StatefulWidget {
 }
 
 class _QuranPageWidgetState extends State<QuranPageWidget> {
-
   PageController _controller = PageController(
     initialPage: constants.startQuranPageNumber,
   );
@@ -27,6 +26,8 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    //ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
+
     return BlocConsumer<QuranPageBloc, QuranPageState>(
       listener: (context, state) {
         if (state is QuranPageJumpedTo) {
@@ -37,39 +38,43 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
       builder: (context, state) {
         return PageView.builder(
             itemBuilder: (context, index) {
+              final quranPage = BlocProvider.of<QuranPageBloc>(context)
+                  .fetchQuranPage(index)
+                  .imageUrl;
+              final double width = MediaQuery.of(context).size.width;
+              final double height = MediaQuery.of(context).size.height - 75;
+
+              debugPrint("");
+//            return  OverflowBox(
+//                minWidth: width,
+//                maxWidth: width,
+//                maxHeight: height,
+//                minHeight: height,
+//
+//                child: ClipPath(
+//
+//                child:  AspectRatio(
+//                    aspectRatio: 16 / 9,
+//                    child: Image.asset(quranPage,
+//                        height: double.infinity, fit: BoxFit.fill)
+//                ),
+//                clipper: RectangleImageClipper(),
+//              ));
+
+//             return AspectRatio(
+//                  aspectRatio: 16 / 9,
+//                  child: Image.asset(quranPage,
+//                      height: double.infinity, fit: BoxFit.fill)
+//              );
+
               return ResponsiveImageWidget(
-                  quranPage: BlocProvider.of<QuranPageBloc>(context).fetchQuranPage(index));
+                  quranPage: BlocProvider.of<QuranPageBloc>(context)
+                      .fetchQuranPage(index));
             },
             reverse: true,
             onPageChanged: _onPageViewChange,
             itemCount: constants.endQuranPageNumber,
             controller: _controller);
-
-//        if (state is QuranPageLoaded) {
-//          return SwipeDetector(
-//              onSwipeLeft: () {
-//                _pageBloc.add(ShowBackwardPage());
-//              },
-//              onSwipeRight: () {
-//                _pageBloc.add(ShowForwardPage());
-//              },
-//              child: GestureDetector(
-//                  onTap: () {
-//                    BlocProvider.of<HomePageBloc>(context)
-//                      ..add(HomePageViewTapped());
-//                  },
-//                  child: ResponsiveImageWidget(quranPage: state.quranPage)));
-//        }
-//        else if (state is QuranPageBackward) {
-//          //TODO:- show page flip from left
-//          return Container();
-//        } else if (state is QuranPageForward) {
-//          //TODO:- show page flip from right
-//          return Container();
-//        }
-//        else {
-//          return Container();
-//        }
       },
     );
   }

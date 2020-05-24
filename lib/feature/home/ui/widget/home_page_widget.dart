@@ -40,15 +40,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           if (state is HomePageShowView) {
             return flexedView();
           } else {
-            return Scaffold(body: QuranPageWidget());
+            return QuranPageWidget();
           }
         })),
       );
     });
   }
 
-  Widget flexedView(){
-    return   Column(
+  Widget flexedView() {
+    return Column(
       children: <Widget>[
         Flexible(
           flex: 1,
@@ -85,8 +85,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               constraints: BoxConstraints.expand(),
               child: BlocConsumer<QuranPageBloc, QuranPageState>(
                   listener: (context, state) {
-                    if (state is QuranPageLoaded) {}
-                  }, builder: (context, state) {
+                if (state is QuranPageLoaded) {}
+              }, builder: (context, state) {
                 if (state is QuranPageLoaded) {
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -98,13 +98,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         Flexible(
                           child: Slider(
                             activeColor: Theme.of(context).accentColor,
-                            min:
-                            Constants.startQuranPageNumber.toDouble(),
+                            min: Constants.startQuranPageNumber.toDouble(),
                             max: Constants.endQuranPageNumber.toDouble(),
                             onChanged: (newValue) {
                               BlocProvider.of<QuranPageBloc>(context)
-                                ..add(JumpToPage(
-                                    pageNumber: newValue.toInt()));
+                                ..add(JumpToPage(pageNumber: newValue.toInt()));
                             },
                             value: state.quranPage.page.toDouble(),
                           ),
@@ -119,5 +117,4 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ],
     );
   }
-
 }

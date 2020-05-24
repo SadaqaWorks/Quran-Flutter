@@ -10,32 +10,6 @@ class QuranPageInitial extends QuranPageState {
   List<Object> get props => null;
 }
 
-//class QuranPageForward extends QuranPageState {
-//  @override
-//  List<Object> get props => null;
-//}
-//
-//class QuranPageBackward extends QuranPageState {
-//  @override
-//  List<Object> get props => null;
-//}
-//
-//class QuranJumpToPage extends QuranPageState {
-//  final int pageNumber;
-//
-//  const QuranJumpToPage({@required this.pageNumber});
-//
-//  QuranJumpToPage copyWith({QuranPage pageNumber}) {
-//    return QuranJumpToPage(pageNumber: pageNumber ?? this.pageNumber);
-//  }
-//
-//  @override
-//  List<Object> get props => [pageNumber];
-//
-//  @override
-//  String toString() => 'PostLoaded { posts: ${pageNumber} }';
-//}
-
 class QuranPageLoaded extends QuranPageState {
   final QuranPage quranPage;
 

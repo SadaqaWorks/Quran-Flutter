@@ -1,14 +1,13 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:bloc/bloc.dart';
 
 class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
-
   @override
   HomePageState get initialState {
     if (super.initialState != null) {
@@ -35,19 +34,15 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
   }
 
   @override
-  Stream<Transition<HomePageEvent, HomePageState>>
-  transformEvents(
-      Stream<HomePageEvent> events,
-      TransitionFunction<HomePageEvent, HomePageState>
-      transitionFn,
-      ) {
+  Stream<Transition<HomePageEvent, HomePageState>> transformEvents(
+    Stream<HomePageEvent> events,
+    TransitionFunction<HomePageEvent, HomePageState> transitionFn,
+  ) {
     return super.transformEvents(
       events.debounceTime(const Duration(milliseconds: 500)),
       transitionFn,
     );
   }
-
-
 
   @override
   Stream<HomePageState> mapEventToState(HomePageEvent event) async* {
@@ -60,12 +55,11 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
           debugPrint(
               'HomePageEvent ${event} ${currentState} on HomePageShowView');
 
-         await Future.delayed(const Duration(seconds: 3), () async* {
-           debugPrint(
-               'HomePageEvent ${event} ${currentState} on HomePageShowView seconds');
-          yield HomePageHideView();
-        });
-
+          await Future.delayed(const Duration(seconds: 3), () async* {
+            debugPrint(
+                'HomePageEvent ${event} ${currentState} on HomePageShowView seconds');
+            yield HomePageHideView();
+          });
         }
         if (currentState is HomePageShowView) {
           debugPrint(
@@ -77,10 +71,9 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
       }
     }
 
-    if(event is HomePageMenuTapped){
+    if (event is HomePageMenuTapped) {
       yield HomePageShowSideView();
     }
-
   }
 
   @override

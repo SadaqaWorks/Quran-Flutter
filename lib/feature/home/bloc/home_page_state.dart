@@ -1,5 +1,4 @@
-
-abstract class HomePageState  {
+abstract class HomePageState {
   HomePageState();
 }
 
@@ -17,7 +16,6 @@ class HomePageHideView extends HomePageState {
   @override
   List<Object> get props => null;
 }
-
 
 class HomePageShowSideView extends HomePageState {
   @override

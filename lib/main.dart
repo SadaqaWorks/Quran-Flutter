@@ -7,5 +7,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = await HydratedBlocDelegate.build();
 
-  runApp(App());
+  runApp(
+     App(),
+  );
 }

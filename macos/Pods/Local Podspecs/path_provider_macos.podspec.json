@@ -1,0 +1,25 @@
+{
+  "name": "path_provider_macos",
+  "version": "0.0.1",
+  "summary": "A macOS implementation of the path_provider plugin.",
+  "description": "A macOS implementation of the path_provider plugin.",
+  "homepage": "https://github.com/flutter/plugins/tree/master/packages/path_provider/path_provider_macos",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Flutter Team": "flutter-dev@googlegroups.com"
+  },
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*",
+  "dependencies": {
+    "FlutterMacOS": [
+
+    ]
+  },
+  "platforms": {
+    "osx": "10.11"
+  }
+}

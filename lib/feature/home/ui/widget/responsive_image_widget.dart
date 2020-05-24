@@ -55,13 +55,12 @@ class PortraitImageWidget extends StatelessWidget {
             child: ClipPath(
               child: AspectRatio(
                   aspectRatio: 16 / 9,
-                  child: Image(image: AssetImage(quranPage),
-                      height: double.infinity, fit: BoxFit.fill)
-              ),
+                  child: Image(
+                      image: AssetImage(quranPage),
+                      height: double.infinity,
+                      fit: BoxFit.fill)),
               clipper: RectangleImageClipper(),
             )));
-
-
   }
 }
 

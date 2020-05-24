@@ -26,8 +26,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    //ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
-
     return BlocConsumer<QuranPageBloc, QuranPageState>(
       listener: (context, state) {
         if (state is QuranPageJumpedTo) {
@@ -38,35 +36,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
       builder: (context, state) {
         return PageView.builder(
             itemBuilder: (context, index) {
-              final quranPage = BlocProvider.of<QuranPageBloc>(context)
-                  .fetchQuranPage(index)
-                  .imageUrl;
-              final double width = MediaQuery.of(context).size.width;
-              final double height = MediaQuery.of(context).size.height - 75;
-
-              debugPrint("");
-//            return  OverflowBox(
-//                minWidth: width,
-//                maxWidth: width,
-//                maxHeight: height,
-//                minHeight: height,
-//
-//                child: ClipPath(
-//
-//                child:  AspectRatio(
-//                    aspectRatio: 16 / 9,
-//                    child: Image.asset(quranPage,
-//                        height: double.infinity, fit: BoxFit.fill)
-//                ),
-//                clipper: RectangleImageClipper(),
-//              ));
-
-//             return AspectRatio(
-//                  aspectRatio: 16 / 9,
-//                  child: Image.asset(quranPage,
-//                      height: double.infinity, fit: BoxFit.fill)
-//              );
-
               return ResponsiveImageWidget(
                   quranPage: BlocProvider.of<QuranPageBloc>(context)
                       .fetchQuranPage(index));

@@ -8,6 +8,6 @@ void main() async {
   BlocSupervisor.delegate = await HydratedBlocDelegate.build();
 
   runApp(
-     App(),
+    App(),
   );
 }

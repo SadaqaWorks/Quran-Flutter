@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as constants;
 import 'package:quran/feature/home/bloc/index.dart';
@@ -11,20 +10,16 @@ import 'package:rxdart/rxdart.dart';
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   QuranPageState get initialState {
-
-    debugPrint("QuranPageBloc  initialState "+ super.initialState.toString());
-
     return super.initialState ??
         QuranPageJumpedTo(
-          quranPage: fetchQuranPage(constants.startQuranPageNumber));
-}
+            quranPage: fetchQuranPage(constants.startQuranPageNumber));
+  }
+
   @override
   QuranPageState fromJson(Map<String, dynamic> json) {
-
     try {
-      debugPrint("QuranPageBloc "+ json['value'].toString());
       return QuranPageJumpedTo(quranPage: QuranPage.fromJson(json['value']));
-    } catch ( exception) {
+    } catch (exception) {
       return null;
     }
   }
@@ -48,13 +43,13 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
       yield QuranPageLoaded(quranPage: fetchQuranPage(event.pageNumber));
     }
 
-    if(event is LoadPage){
+    if (event is LoadPage) {
       yield QuranPageLoaded(quranPage: fetchQuranPage(event.pageNumber));
     }
   }
 
   @override
-  Map<String, Map<String,dynamic>> toJson(QuranPageState state) {
+  Map<String, Map<String, dynamic>> toJson(QuranPageState state) {
     try {
       if (state is QuranPageLoaded) {
         return {'value': state.quranPage.toJson()};

@@ -12,6 +12,7 @@ class QuranPageWidget extends StatefulWidget {
 class _QuranPageWidgetState extends State<QuranPageWidget> {
   PageController _controller;
   QuranPageBloc _quranPageBloc;
+
   @override
   void dispose() {
     _controller.dispose();
@@ -19,7 +20,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   }
 
   _onPageViewChange(int page) {
-    debugPrint("_onPageViewChange $page");
     BlocProvider.of<QuranPageBloc>(context).add(LoadPage(pageNumber: page));
   }
 
@@ -27,7 +27,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   Widget build(BuildContext context) {
     _quranPageBloc = BlocProvider.of<QuranPageBloc>(context);
 
-    if(_quranPageBloc.initialState is QuranPageJumpedTo) {
+    if (_quranPageBloc.initialState is QuranPageJumpedTo) {
       final state = _quranPageBloc.initialState as QuranPageJumpedTo;
       _controller = PageController(
         initialPage: state.quranPage.page,
@@ -36,23 +36,18 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
     return BlocConsumer<QuranPageBloc, QuranPageState>(
       listener: (context, state) {
-
         if (state is QuranPageJumpedTo) {
           _controller.animateToPage(state.quranPage.page,
               duration: null, curve: null);
         }
       },
       builder: (context, state) {
-        debugPrint("QuranPageBloc  builder "+ state.toString());
-
-
-    return PageView.builder(
+        return PageView.builder(
             itemBuilder: (context, index) {
               return ResponsiveImageWidget(
                   quranPage: BlocProvider.of<QuranPageBloc>(context)
                       .fetchQuranPage(index));
             },
-
             reverse: true,
             onPageChanged: _onPageViewChange,
             itemCount: constants.endQuranPageNumber,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:quran/common/util/flutter_device_type.dart';
+import 'package:quran/feature/home/model/quran_page.dart';
 
 class InheritedOrientedImage extends InheritedWidget {
   final QuranPage quranPage;
@@ -43,8 +43,7 @@ class PortraitImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context).imageUrl;
 
-    if(Device.get().isPhone){
-
+    if (Device.get().isPhone) {
       final double width = MediaQuery.of(context).size.width + 90;
       final double height = MediaQuery.of(context).size.height - 20;
 
@@ -63,14 +62,14 @@ class PortraitImageWidget extends StatelessWidget {
                         fit: BoxFit.fill)),
                 clipper: RectangleImageClipper(),
               )));
-    }else{
-        return Container(
-            child: AspectRatio(
-            aspectRatio: 16 / 9,
-            child: Image(
-                image: AssetImage(quranPage),
-                height: double.infinity,
-                fit: BoxFit.fill)));
+    } else {
+      return Container(
+          child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Image(
+                  image: AssetImage(quranPage),
+                  height: double.infinity,
+                  fit: BoxFit.fill)));
     }
   }
 }

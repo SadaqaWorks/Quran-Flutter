@@ -23,7 +23,7 @@ class QuranPageLoaded extends QuranPageState {
   List<Object> get props => [quranPage];
 
   @override
-  String toString() => 'PostLoaded { posts: ${quranPage.page} }';
+  String toString() => 'QuranPageLoaded { page: ${quranPage.page} }';
 }
 
 class QuranPageJumpedTo extends QuranPageState {
@@ -39,5 +39,5 @@ class QuranPageJumpedTo extends QuranPageState {
   List<Object> get props => [quranPage];
 
   @override
-  String toString() => 'PostLoaded { posts: ${quranPage.page} }';
+  String toString() => 'QuranPageJumpedTo { page: ${quranPage.page} }';
 }

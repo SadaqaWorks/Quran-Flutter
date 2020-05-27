@@ -9,16 +9,17 @@ import 'package:rxdart/rxdart.dart';
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
-  QuranPageState get initialState =>
-      super.initialState ??
-      QuranPageLoaded(
-          quranPage: fetchQuranPage(constants.startQuranPageNumber));
+  QuranPageState get initialState {
+    return super.initialState ??
+        QuranPageJumpedTo(
+            quranPage: fetchQuranPage(constants.startQuranPageNumber));
+  }
 
   @override
   QuranPageState fromJson(Map<String, dynamic> json) {
     try {
-      return QuranPageLoaded(quranPage: QuranPage.fromJson(json['value']));
-    } catch (_) {
+      return QuranPageJumpedTo(quranPage: QuranPage.fromJson(json['value']));
+    } catch (exception) {
       return null;
     }
   }
@@ -41,16 +42,20 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     if (event is JumpToPage && currentState is QuranPageLoaded) {
       yield QuranPageLoaded(quranPage: fetchQuranPage(event.pageNumber));
     }
+
+    if (event is LoadPage) {
+      yield QuranPageLoaded(quranPage: fetchQuranPage(event.pageNumber));
+    }
   }
 
   @override
-  Map<String, QuranPage> toJson(QuranPageState state) {
+  Map<String, Map<String, dynamic>> toJson(QuranPageState state) {
     try {
       if (state is QuranPageLoaded) {
-        return {'value': state.quranPage};
+        return {'value': state.quranPage.toJson()};
       }
       if (state is QuranPageJumpedTo) {
-        return {'value': state.quranPage};
+        return {'value': state.quranPage.toJson()};
       } else {
         return null;
       }

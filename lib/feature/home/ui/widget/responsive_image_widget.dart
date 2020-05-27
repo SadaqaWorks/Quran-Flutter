@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/model/quran_page.dart';
 
 class InheritedOrientedImage extends InheritedWidget {
@@ -42,25 +43,32 @@ class PortraitImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context).imageUrl;
 
-    //14 percent more width then original screen width
-    final double width = MediaQuery.of(context).size.width + 90;
-    final double height = MediaQuery.of(context).size.height - 60;
+    if (Device.get().isPhone) {
+      final double width = MediaQuery.of(context).size.width + 90;
+      final double height = MediaQuery.of(context).size.height - 20;
 
-    return Container(
-        child: OverflowBox(
-            minWidth: width,
-            maxWidth: width,
-            maxHeight: height,
-            minHeight: height,
-            child: ClipPath(
-              child: AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: Image(
-                      image: AssetImage(quranPage),
-                      height: double.infinity,
-                      fit: BoxFit.fill)),
-              clipper: RectangleImageClipper(),
-            )));
+      return Container(
+          child: OverflowBox(
+              minWidth: width,
+              maxWidth: width,
+              maxHeight: height,
+              minHeight: height,
+              child: ClipPath(
+                child: AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Image(
+                        image: AssetImage(quranPage),
+                        height: double.infinity,
+                        fit: BoxFit.fill)),
+                clipper: RectangleImageClipper(),
+              )));
+    } else {
+      return Container(
+          child: Image(
+              image: AssetImage(quranPage),
+              height: double.infinity,
+              fit: BoxFit.fill));
+    }
   }
 }
 

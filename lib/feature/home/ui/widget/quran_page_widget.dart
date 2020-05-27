@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as constants;
+import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/ui/widget/responsive_image_widget.dart';
 
@@ -28,10 +29,9 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
     _quranPageBloc = BlocProvider.of<QuranPageBloc>(context);
 
     if (_quranPageBloc.initialState is QuranPageJumpedTo) {
-      final state = _quranPageBloc.initialState as QuranPageJumpedTo;
-      _controller = PageController(
-        initialPage: state.quranPage.page,
-      );
+      final initialPage =
+          (_quranPageBloc.initialState as QuranPageJumpedTo).quranPage.page;
+      _controller = PageController(initialPage: initialPage);
     }
 
     return BlocConsumer<QuranPageBloc, QuranPageState>(
@@ -44,9 +44,30 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
       builder: (context, state) {
         return PageView.builder(
             itemBuilder: (context, index) {
-              return ResponsiveImageWidget(
-                  quranPage: BlocProvider.of<QuranPageBloc>(context)
-                      .fetchQuranPage(index));
+              if (Device.get().isWeb || Device.get().isComputer) {
+                final firstIndex = index + 2;
+                final secondIndex = index + 1;
+
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Expanded(
+                        flex: 1,
+                        child: ResponsiveImageWidget(
+                            quranPage: BlocProvider.of<QuranPageBloc>(context)
+                                .fetchQuranPage(firstIndex))),
+                    Expanded(
+                        flex: 1,
+                        child: ResponsiveImageWidget(
+                            quranPage: BlocProvider.of<QuranPageBloc>(context)
+                                .fetchQuranPage(secondIndex)))
+                  ],
+                );
+              } else {
+                return ResponsiveImageWidget(
+                    quranPage: BlocProvider.of<QuranPageBloc>(context)
+                        .fetchQuranPage(index + 1));
+              }
             },
             reverse: true,
             onPageChanged: _onPageViewChange,

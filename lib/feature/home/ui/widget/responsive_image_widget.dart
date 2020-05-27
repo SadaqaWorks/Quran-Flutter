@@ -64,12 +64,10 @@ class PortraitImageWidget extends StatelessWidget {
               )));
     } else {
       return Container(
-          child: AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image(
-                  image: AssetImage(quranPage),
-                  height: double.infinity,
-                  fit: BoxFit.fill)));
+          child: Image(
+              image: AssetImage(quranPage),
+              height: double.infinity,
+              fit: BoxFit.fill));
     }
   }
 }

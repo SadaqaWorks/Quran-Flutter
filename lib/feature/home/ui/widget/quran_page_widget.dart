@@ -17,8 +17,15 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   void dispose() {
+    _quranPageBloc.close();
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _quranPageBloc = BlocProvider.of<QuranPageBloc>(context);
   }
 
   _onPageViewChange(int page) {
@@ -27,8 +34,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _quranPageBloc = BlocProvider.of<QuranPageBloc>(context);
-
     if (_quranPageBloc.initialState is QuranPageJumpedTo) {
       final initialPage =
           (_quranPageBloc.initialState as QuranPageJumpedTo).quranPage.page;
@@ -41,10 +46,10 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
               AllowMultipleGestureRecognizer>(
             () => AllowMultipleGestureRecognizer(),
             (AllowMultipleGestureRecognizer instance) {
-              instance.onTap =
-                  () => {
-                  BlocProvider.of<HomePageBloc>(context).add(HomePageViewTapped())
-            };
+              instance.onTap = () => {
+                    BlocProvider.of<HomePageBloc>(context)
+                        .add(HomePageViewTapped())
+                  };
             },
           )
         },

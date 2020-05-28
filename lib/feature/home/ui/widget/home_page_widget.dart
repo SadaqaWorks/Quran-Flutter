@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as Constants;
 import 'package:quran/common/routes/routes.dart';
 import 'package:quran/feature/home/bloc/index.dart';
-import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:quran/feature/home/ui/widget/quran_page_widget.dart';
+import 'package:wakelock/wakelock.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -13,18 +13,21 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  HomePageBloc _homePageBloc;
-
   @override
   void dispose() {
-    _homePageBloc.close();
+    Wakelock.disable();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) {
-    _homePageBloc = BlocProvider.of<HomePageBloc>(context);
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    Wakelock.enable();
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<HomePageBloc, HomePageState>(
         listener: (context, state) {
       debugPrint('HomePageWidget listner ${state} ');
@@ -59,18 +62,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   listener: (context, state) {
                 if (state is QuranPageLoaded) {}
               }, builder: (context, state) {
-                    debugPrint("flexedView $state");
+                debugPrint("flexedView $state");
                 if (state is QuranPageLoaded || state is QuranPageJumpedTo) {
+                  double _quranPage;
 
-                  double _quranPage ;
+                  if (state is QuranPageLoaded) {
+                    _quranPage =
+                        (state as QuranPageLoaded).quranPage.page.toDouble();
+                  }
 
-                 if(state is QuranPageLoaded){
-                   _quranPage = (state as QuranPageLoaded).quranPage.page.toDouble();
-                 }
-
-                 if(state is QuranPageJumpedTo){
-                   _quranPage = (state as QuranPageJumpedTo).quranPage.page.toDouble();
-                 }
+                  if (state is QuranPageJumpedTo) {
+                    _quranPage =
+                        (state as QuranPageJumpedTo).quranPage.page.toDouble();
+                  }
 
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.center,

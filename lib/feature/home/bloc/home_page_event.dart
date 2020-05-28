@@ -1,20 +1,20 @@
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
-abstract class HomePageEvent extends Equatable {
+
+@immutable
+abstract class HomePageEvent  {
   HomePageEvent();
 }
 
 class HomePageViewNormal extends HomePageEvent {
-  @override
-  List<Object> get props => null;
+
 }
 
 class HomePageViewTapped extends HomePageEvent {
-  @override
-  List<Object> get props => null;
+
 }
 
 class HomePageMenuTapped extends HomePageEvent {
-  @override
-  List<Object> get props => null;
+
 }

@@ -7,13 +7,10 @@ import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:rxdart/rxdart.dart';
 
-class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
+class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   @override
   HomePageState get initialState {
-    if (super.initialState != null) {
-      debugPrint('HomePageEvent initialState previous ${super.initialState}');
-      return super.initialState;
-    } else {
+
       if (Device.get().isPhone || Device.get().isTablet) {
         debugPrint('HomePageEvent initialState HomePageHideView');
         return HomePageHideView();
@@ -21,17 +18,9 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
         debugPrint('HomePageEvent initialState HomePageShowView');
         return HomePageShowView();
       }
-    }
+
   }
 
-  @override
-  HomePageState fromJson(Map<String, dynamic> json) {
-    try {
-      return HomePageShowView();
-    } catch (_) {
-      return null;
-    }
-  }
 
   @override
   Stream<Transition<HomePageEvent, HomePageState>> transformEvents(
@@ -66,8 +55,6 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
               'HomePageEvent ${event} ${currentState} on HomePageHideView');
           yield HomePageHideView();
         }
-      } else {
-        yield HomePageShowView();
       }
     }
 
@@ -76,16 +63,4 @@ class HomePageBloc extends HydratedBloc<HomePageEvent, HomePageState> {
     }
   }
 
-  @override
-  Map<String, dynamic> toJson(HomePageState state) {
-    try {
-      if (state is HomePageShowView) {
-        return {'value': state};
-      } else {
-        return null;
-      }
-    } catch (_) {
-      return null;
-    }
-  }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as Constants;
 import 'package:quran/common/routes/routes.dart';
 import 'package:quran/feature/home/bloc/index.dart';
+import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:quran/feature/home/ui/widget/quran_page_widget.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -26,7 +27,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     return BlocConsumer<HomePageBloc, HomePageState>(
         listener: (context, state) {
-      // do stuff here based on BlocA's state
       debugPrint('HomePageWidget listner ${state} ');
 
       if (state is HomePageShowSideView) {
@@ -50,34 +50,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget flexedView() {
     return Column(
       children: <Widget>[
-        Flexible(
-          flex: 1,
-          child: ConstrainedBox(
-              constraints: BoxConstraints.expand(),
-              child: Card(
-                color: Theme.of(context).primaryColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    BlocBuilder<QuranPageBloc, QuranPageState>(
-                      builder: (context, state) {
-                        if (state is QuranPageLoaded) {
-                          return Text("Page: ${state.quranPage.page}");
-                        }
-                        return Container();
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.menu),
-                      onPressed: () {
-                        BlocProvider.of<HomePageBloc>(context)
-                            .add(HomePageMenuTapped());
-                      },
-                    )
-                  ],
-                ),
-              )),
-        ),
         Flexible(flex: 9, child: QuranPageWidget()),
         Flexible(
           flex: 1,
@@ -87,24 +59,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   listener: (context, state) {
                 if (state is QuranPageLoaded) {}
               }, builder: (context, state) {
-                if (state is QuranPageLoaded) {
+                    debugPrint("flexedView $state");
+                if (state is QuranPageLoaded || state is QuranPageJumpedTo) {
+
+                  double _quranPage ;
+
+                 if(state is QuranPageLoaded){
+                   _quranPage = (state as QuranPageLoaded).quranPage.page.toDouble();
+                 }
+
+                 if(state is QuranPageJumpedTo){
+                   _quranPage = (state as QuranPageJumpedTo).quranPage.page.toDouble();
+                 }
+
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Flexible(
-                          child: Text("${state.quranPage.page}"),
+                          child: Text("${_quranPage}"),
                           flex: 1,
                         ),
                         Flexible(
                           child: Slider(
-                            activeColor: Theme.of(context).accentColor,
+                            divisions: 1,
+                            activeColor: Colors.red,
                             min: Constants.startQuranPageNumber.toDouble(),
                             max: Constants.endQuranPageNumber.toDouble(),
                             onChanged: (newValue) {
                               BlocProvider.of<QuranPageBloc>(context)
                                 ..add(JumpToPage(pageNumber: newValue.toInt()));
                             },
-                            value: state.quranPage.page.toDouble(),
+                            value: _quranPage.toDouble(),
+                            label: _quranPage.toString(),
                           ),
                           flex: 3,
                         )

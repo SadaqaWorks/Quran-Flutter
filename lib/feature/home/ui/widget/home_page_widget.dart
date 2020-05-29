@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as Constants;
 import 'package:quran/common/routes/routes.dart';
+import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/ui/widget/quran_page_widget.dart';
 import 'package:wakelock/wakelock.dart';
-import 'package:quran/common/util/flutter_device_type.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -60,12 +60,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           flex: 1,
           child: ConstrainedBox(
               constraints: BoxConstraints.expand(),
-              child:
-              BlocConsumer<QuranPageBloc, QuranPageState>(
+              child: BlocConsumer<QuranPageBloc, QuranPageState>(
                   listener: (context, state) {
                 if (state is QuranPageLoaded) {}
               }, builder: (context, state) {
-
                 if (state is QuranPageLoaded || state is QuranPageJumpedTo) {
                   double _quranPage;
 
@@ -101,8 +99,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 }
 
                 return Container();
-              })
-          ),
+              })),
         )
       ],
     );

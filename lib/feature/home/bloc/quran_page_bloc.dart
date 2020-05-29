@@ -38,9 +38,8 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
-
     if (event is JumpToPage) {
-      debugPrint("JumpToPage "+event.pageNumber.toString());
+      debugPrint("JumpToPage " + event.pageNumber.toString());
       yield QuranPageJumpedTo(quranPage: fetchQuranPage(event.pageNumber));
     }
 

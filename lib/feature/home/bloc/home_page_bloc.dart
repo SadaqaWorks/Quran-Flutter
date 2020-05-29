@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -28,13 +26,11 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     final HomePageState currentState = state;
 
     if (event is HomePageViewTapped) {
-      if (Device.get().isPhone || Device.get().isTablet) {
-        if (currentState is HomePageHideView) {
-          yield HomePageShowView();
-        }
-        if (currentState is HomePageShowView) {
-          yield HomePageHideView();
-        }
+      if (currentState is HomePageHideView) {
+        yield HomePageShowView();
+      }
+      if (currentState is HomePageShowView) {
+        yield HomePageHideView();
       }
     }
 

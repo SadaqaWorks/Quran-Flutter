@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as constants;
+import 'package:quran/common/geature/allow_multiple_gesture_recognizer.dart';
 import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/ui/widget/responsive_image_widget.dart';
@@ -12,12 +13,16 @@ class QuranPageWidget extends StatefulWidget {
 
 class _QuranPageWidgetState extends State<QuranPageWidget> {
   PageController _controller;
-  QuranPageBloc _quranPageBloc;
 
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
   }
 
   _onPageViewChange(int page) {
@@ -26,54 +31,72 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _quranPageBloc = BlocProvider.of<QuranPageBloc>(context);
-
-    if (_quranPageBloc.initialState is QuranPageJumpedTo) {
+    if (BlocProvider.of<QuranPageBloc>(context).initialState is QuranPageJumpedTo) {
       final initialPage =
-          (_quranPageBloc.initialState as QuranPageJumpedTo).quranPage.page;
+          (BlocProvider.of<QuranPageBloc>(context).initialState as QuranPageJumpedTo).quranPage.page;
       _controller = PageController(initialPage: initialPage);
     }
 
-    return BlocConsumer<QuranPageBloc, QuranPageState>(
-      listener: (context, state) {
-        if (state is QuranPageJumpedTo) {
-          _controller.animateToPage(state.quranPage.page,
-              duration: null, curve: null);
-        }
-      },
-      builder: (context, state) {
-        return PageView.builder(
-            itemBuilder: (context, index) {
-              if (Device.get().isWeb || Device.get().isComputer) {
-                final firstIndex = index + 2;
-                final secondIndex = index + 1;
-
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Expanded(
-                        flex: 1,
-                        child: ResponsiveImageWidget(
-                            quranPage: BlocProvider.of<QuranPageBloc>(context)
-                                .fetchQuranPage(firstIndex))),
-                    Expanded(
-                        flex: 1,
-                        child: ResponsiveImageWidget(
-                            quranPage: BlocProvider.of<QuranPageBloc>(context)
-                                .fetchQuranPage(secondIndex)))
-                  ],
-                );
-              } else {
-                return ResponsiveImageWidget(
-                    quranPage: BlocProvider.of<QuranPageBloc>(context)
-                        .fetchQuranPage(index + 1));
-              }
+    return RawGestureDetector(
+        gestures: {
+          AllowMultipleGestureRecognizer: GestureRecognizerFactoryWithHandlers<
+              AllowMultipleGestureRecognizer>(
+            () => AllowMultipleGestureRecognizer(),
+            (AllowMultipleGestureRecognizer instance) {
+              instance.onTap = () => {
+                    BlocProvider.of<HomePageBloc>(context)
+                        .add(HomePageViewTapped())
+                  };
             },
-            reverse: true,
-            onPageChanged: _onPageViewChange,
-            itemCount: constants.endQuranPageNumber,
-            controller: _controller);
-      },
-    );
+          )
+        },
+        behavior: HitTestBehavior.opaque,
+        //Parent Container
+        child: BlocListener<QuranPageBloc, QuranPageState>(
+          listener: (context, state) {
+            debugPrint("JumpToPage2 "+state.toString());
+
+            if (state is QuranPageJumpedTo) {
+              _controller.animateToPage(state.quranPage.page,
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.linear);
+            }
+          },
+          child:
+             PageView.builder(
+                itemBuilder: (context, index) {
+                  if (Device.get().isWeb || Device.get().isComputer) {
+                    final firstIndex = index + 2;
+                    final secondIndex = index + 1;
+
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Expanded(
+                            flex: 1,
+                            child: ResponsiveImageWidget(
+                                quranPage:
+                                    BlocProvider.of<QuranPageBloc>(context)
+                                        .fetchQuranPage(firstIndex))),
+                        Expanded(
+                            flex: 1,
+                            child: ResponsiveImageWidget(
+                                quranPage:
+                                    BlocProvider.of<QuranPageBloc>(context)
+                                        .fetchQuranPage(secondIndex)))
+                      ],
+                    );
+                  } else {
+                    return ResponsiveImageWidget(
+                        quranPage: BlocProvider.of<QuranPageBloc>(context)
+                            .fetchQuranPage(index + 1));
+                  }
+                },
+                reverse: true,
+                onPageChanged: _onPageViewChange,
+                itemCount: constants.endQuranPageNumber,
+                controller: _controller)
+
+        ));
   }
 }

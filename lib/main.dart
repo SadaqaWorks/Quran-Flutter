@@ -6,7 +6,6 @@ import 'package:quran/app/app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = await HydratedBlocDelegate.build();
-
   runApp(
     App(),
   );

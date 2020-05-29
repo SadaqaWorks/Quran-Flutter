@@ -33,6 +33,9 @@ dependencies:
   hydrated_bloc: ^4.0.0
   equatable: ^1.0.1
 
+  wakelock: 0.1.4+1
+
+
   #UI
   page_turn: 1.0.0
 

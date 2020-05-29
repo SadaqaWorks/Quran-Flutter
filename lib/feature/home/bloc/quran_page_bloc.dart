@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as constants;
 import 'package:quran/feature/home/bloc/index.dart';
@@ -37,10 +38,10 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
-    final QuranPageState currentState = state;
 
-    if (event is JumpToPage && currentState is QuranPageLoaded) {
-      yield QuranPageLoaded(quranPage: fetchQuranPage(event.pageNumber));
+    if (event is JumpToPage) {
+      debugPrint("JumpToPage "+event.pageNumber.toString());
+      yield QuranPageJumpedTo(quranPage: fetchQuranPage(event.pageNumber));
     }
 
     if (event is LoadPage) {

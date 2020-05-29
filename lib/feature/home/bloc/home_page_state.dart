@@ -1,23 +1,12 @@
-abstract class HomePageState {
-  HomePageState();
-}
+import 'package:meta/meta.dart';
 
-class HomePageInitialView extends HomePageState {
-  @override
-  List<Object> get props => null;
-}
+@immutable
+abstract class HomePageState {}
 
-class HomePageShowView extends HomePageState {
-  @override
-  List<Object> get props => null;
-}
+class HomePageInitialView extends HomePageState {}
 
-class HomePageHideView extends HomePageState {
-  @override
-  List<Object> get props => null;
-}
+class HomePageShowView extends HomePageState {}
 
-class HomePageShowSideView extends HomePageState {
-  @override
-  List<Object> get props => null;
-}
+class HomePageHideView extends HomePageState {}
+
+class HomePageShowSideView extends HomePageState {}

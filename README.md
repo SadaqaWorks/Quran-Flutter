@@ -4,7 +4,7 @@
 
 
 # Quran Flutter
- Quran made with Flutter
+ Quran made with Flutter. PRs are welcome, fill up [this form](https://sadmansamee.typeform.com/to/Df9lQG) to join the slack channel.
  
  
  ![](docs/screenshot/quran.gif)

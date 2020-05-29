@@ -202,8 +202,10 @@
 /Users/sadmansamee/.pub-cache/hosted/pub.dartlang.org/vector_math-2.0.8/lib/src/vector_math_64/vector3.dart
 /Users/sadmansamee/.pub-cache/hosted/pub.dartlang.org/vector_math-2.0.8/lib/src/vector_math_64/vector4.dart
 /Users/sadmansamee/.pub-cache/hosted/pub.dartlang.org/vector_math-2.0.8/lib/vector_math_64.dart
+/Users/sadmansamee/.pub-cache/hosted/pub.dartlang.org/wakelock-0.1.4+1/LICENSE
+/Users/sadmansamee/.pub-cache/hosted/pub.dartlang.org/wakelock-0.1.4+1/lib/wakelock.dart
 /Users/sadmansamee/Documents/Personal/Flutter/quran/.packages
-/Users/sadmansamee/Documents/Personal/Flutter/quran/DOES_NOT_EXIST_RERUN_FOR_WILDCARD1021740701
+/Users/sadmansamee/Documents/Personal/Flutter/quran/DOES_NOT_EXIST_RERUN_FOR_WILDCARD307914926
 /Users/sadmansamee/Documents/Personal/Flutter/quran/LICENSE
 /Users/sadmansamee/Documents/Personal/Flutter/quran/assets/images/quran/image1.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/assets/images/quran/image10.png
@@ -807,6 +809,7 @@
 /Users/sadmansamee/Documents/Personal/Flutter/quran/lib/app/app.dart
 /Users/sadmansamee/Documents/Personal/Flutter/quran/lib/app/theme.dart
 /Users/sadmansamee/Documents/Personal/Flutter/quran/lib/common/constant/constants.dart
+/Users/sadmansamee/Documents/Personal/Flutter/quran/lib/common/geature/allow_multiple_gesture_recognizer.dart
 /Users/sadmansamee/Documents/Personal/Flutter/quran/lib/common/routes/route_generator.dart
 /Users/sadmansamee/Documents/Personal/Flutter/quran/lib/common/routes/routes.dart
 /Users/sadmansamee/Documents/Personal/Flutter/quran/lib/common/util/flutter_device_type.dart

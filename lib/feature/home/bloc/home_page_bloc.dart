@@ -9,13 +9,7 @@ import 'package:rxdart/rxdart.dart';
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   @override
   HomePageState get initialState {
-    if (Device.get().isPhone || Device.get().isTablet) {
-      debugPrint('HomePageEvent initialState HomePageHideView');
-      return HomePageHideView();
-    } else {
-      debugPrint('HomePageEvent initialState HomePageShowView');
-      return HomePageShowView();
-    }
+    return HomePageHideView();
   }
 
   @override

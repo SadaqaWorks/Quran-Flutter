@@ -6,6 +6,7 @@ import 'package:quran/common/routes/routes.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/ui/widget/quran_page_widget.dart';
 import 'package:wakelock/wakelock.dart';
+import 'package:quran/common/util/flutter_device_type.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -15,7 +16,9 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void dispose() {
-    Wakelock.disable();
+    if (Device.get().isIos || Device.get().isAndroid) {
+      Wakelock.disable();
+    }
     super.dispose();
   }
 
@@ -23,7 +26,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    Wakelock.enable();
+    if (Device.get().isIos || Device.get().isAndroid) {
+      Wakelock.enable();
+    }
   }
 
   @override

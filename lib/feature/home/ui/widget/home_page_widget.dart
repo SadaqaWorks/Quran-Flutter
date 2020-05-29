@@ -30,8 +30,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomePageBloc, HomePageState>(
         listener: (context, state) {
-      debugPrint('HomePageWidget listner ${state} ');
-
       if (state is HomePageShowSideView) {
         Navigator.pushNamed(context, Routes.sideView);
       }
@@ -39,7 +37,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       return SafeArea(
         child: Scaffold(body:
             BlocBuilder<HomePageBloc, HomePageState>(builder: (context, state) {
-          debugPrint('HomePageWidget page ${state} ');
           if (state is HomePageShowView) {
             return flexedView();
           } else {
@@ -58,11 +55,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           flex: 1,
           child: ConstrainedBox(
               constraints: BoxConstraints.expand(),
-              child: BlocConsumer<QuranPageBloc, QuranPageState>(
+              child:
+              BlocConsumer<QuranPageBloc, QuranPageState>(
                   listener: (context, state) {
                 if (state is QuranPageLoaded) {}
               }, builder: (context, state) {
-                debugPrint("flexedView $state");
+
                 if (state is QuranPageLoaded || state is QuranPageJumpedTo) {
                   double _quranPage;
 
@@ -80,12 +78,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Flexible(
-                          child: Text("${_quranPage}"),
-                          flex: 1,
-                        ),
-                        Flexible(
                           child: Slider(
-                            divisions: 1,
+                            divisions: Constants.endQuranPageNumber,
                             activeColor: Colors.red,
                             min: Constants.startQuranPageNumber.toDouble(),
                             max: Constants.endQuranPageNumber.toDouble(),
@@ -102,7 +96,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 }
 
                 return Container();
-              })),
+              })
+          ),
         )
       ],
     );

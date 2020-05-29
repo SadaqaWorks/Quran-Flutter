@@ -13,11 +13,9 @@ class QuranPageWidget extends StatefulWidget {
 
 class _QuranPageWidgetState extends State<QuranPageWidget> {
   PageController _controller;
-  QuranPageBloc _quranPageBloc;
 
   @override
   void dispose() {
-    _quranPageBloc.close();
     _controller.dispose();
     super.dispose();
   }
@@ -25,7 +23,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _quranPageBloc = BlocProvider.of<QuranPageBloc>(context);
   }
 
   _onPageViewChange(int page) {
@@ -34,9 +31,9 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (_quranPageBloc.initialState is QuranPageJumpedTo) {
+    if (BlocProvider.of<QuranPageBloc>(context).initialState is QuranPageJumpedTo) {
       final initialPage =
-          (_quranPageBloc.initialState as QuranPageJumpedTo).quranPage.page;
+          (BlocProvider.of<QuranPageBloc>(context).initialState as QuranPageJumpedTo).quranPage.page;
       _controller = PageController(initialPage: initialPage);
     }
 
@@ -55,15 +52,18 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         },
         behavior: HitTestBehavior.opaque,
         //Parent Container
-        child: BlocConsumer<QuranPageBloc, QuranPageState>(
+        child: BlocListener<QuranPageBloc, QuranPageState>(
           listener: (context, state) {
+            debugPrint("JumpToPage2 "+state.toString());
+
             if (state is QuranPageJumpedTo) {
               _controller.animateToPage(state.quranPage.page,
-                  duration: null, curve: null);
+                  duration: Duration(milliseconds: 300),
+                  curve: Curves.linear);
             }
           },
-          builder: (context, state) {
-            return PageView.builder(
+          child:
+             PageView.builder(
                 itemBuilder: (context, index) {
                   if (Device.get().isWeb || Device.get().isComputer) {
                     final firstIndex = index + 2;
@@ -95,8 +95,8 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
                 reverse: true,
                 onPageChanged: _onPageViewChange,
                 itemCount: constants.endQuranPageNumber,
-                controller: _controller);
-          },
+                controller: _controller)
+
         ));
   }
 }

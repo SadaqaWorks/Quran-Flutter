@@ -27,7 +27,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   _onPageViewChange(int page) {
     debugPrint("onPageChanged2 $page ${page + 1}");
-    BlocProvider.of<QuranPageBloc>(context).add(LoadPage(pageNumber: page ));
+    BlocProvider.of<QuranPageBloc>(context).add(LoadPage(pageNumber: page));
   }
 
   @override
@@ -58,7 +58,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         //Parent Container
         child: BlocListener<QuranPageBloc, QuranPageState>(
             listener: (context, state) {
-
               if (state is QuranPageJumpedTo) {
                 _controller.animateToPage(state.quranPage.page,
                     duration: Duration(milliseconds: 300),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quran/common/constant/constants.dart' as constants;
+
 final ThemeData basicTheme = _buildBasicTheme();
 
 TextTheme _buildTextTheme(TextTheme base) {
@@ -11,7 +12,6 @@ TextTheme _buildTextTheme(TextTheme base) {
 }
 
 ThemeData _buildBasicTheme() {
-
   const Color primaryColor = constants.primaryColor;
   const Color secondaryColor = constants.secondaryColor;
   const Color colorPrimaryDark = constants.primaryColorDark;

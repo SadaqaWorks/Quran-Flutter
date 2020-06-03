@@ -3,7 +3,7 @@ import 'package:quran/common/routes/route_generator.dart';
 import 'package:quran/common/routes/routes.dart';
 import 'package:quran/generated/i18n.dart';
 
-import 'theme.dart';
+import '../common/theme/theme.dart';
 
 class App extends StatelessWidget {
   @override

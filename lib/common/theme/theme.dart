@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:quran/common/constant/constants.dart' as constants;
 final ThemeData basicTheme = _buildBasicTheme();
 
 TextTheme _buildTextTheme(TextTheme base) {
@@ -11,8 +11,11 @@ TextTheme _buildTextTheme(TextTheme base) {
 }
 
 ThemeData _buildBasicTheme() {
-  const Color primaryColor = Colors.lightGreen;
-  const Color secondaryColor = Colors.orange;
+
+  const Color primaryColor = constants.primaryColor;
+  const Color secondaryColor = constants.secondaryColor;
+  const Color colorPrimaryDark = constants.primaryColorDark;
+
   final ColorScheme colorScheme = const ColorScheme.light().copyWith(
     primary: primaryColor,
     secondary: secondaryColor,
@@ -31,6 +34,7 @@ ThemeData _buildBasicTheme() {
     //scaffoldBackgroundColor: const Color(0xFF202124),
     //backgroundColor: const Color(0xFF202124),
     errorColor: Colors.red,
+    primaryColorDark: colorPrimaryDark,
     buttonTheme: ButtonThemeData(
       colorScheme: colorScheme,
       textTheme: ButtonTextTheme.primary,

@@ -55,7 +55,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget flexedView() {
     return Column(
       children: <Widget>[
-        Flexible(flex: 9, child: QuranPageWidget()),
+        Flexible(flex: 12, child: QuranPageWidget()),
         Flexible(
           flex: 1,
           child: ConstrainedBox(
@@ -83,12 +83,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                   Flexible(
-                  child: Text("${_quranPage.truncate()}")
+                  child: Text(
+                      "${_quranPage.truncate()}"
+                  )
                   ),
                         Flexible(
                           child: Slider(
                             divisions: Constants.endQuranPageNumber,
-                            activeColor: Colors.red,
+                            activeColor: Theme.of(context).primaryColor,
+                            inactiveColor: Colors.grey,
                             min: Constants.startQuranPageNumber.toDouble(),
                             max: Constants.endQuranPageNumber.toDouble(),
                             onChanged: (newValue) {
@@ -98,7 +101,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             value: _quranPage.toDouble(),
                             label: _quranPage.truncate().toString(),
                           ),
-                          flex: 3,
+                          flex: 1,
                         )
                       ]);
                 }

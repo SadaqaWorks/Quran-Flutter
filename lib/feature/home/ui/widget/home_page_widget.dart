@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quran/common/constant/constants.dart' as Constants;
+import 'package:quran/common/constant/constants.dart' as constants;
 import 'package:quran/common/routes/routes.dart';
 import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
@@ -24,7 +24,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     if (Device.get().isIos || Device.get().isAndroid) {
       Wakelock.enable();
@@ -53,13 +52,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget flexedView() {
-    return Column(
+    return Stack(
       children: <Widget>[
-        Flexible(flex: 12, child: QuranPageWidget()),
-        Flexible(
-          flex: 1,
-          child: ConstrainedBox(
-              constraints: BoxConstraints.expand(),
+        QuranPageWidget(),
+        Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
               child: BlocConsumer<QuranPageBloc, QuranPageState>(
                   listener: (context, state) {
                 if (state is QuranPageLoaded) {}
@@ -68,43 +68,55 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   double _quranPage;
 
                   if (state is QuranPageLoaded) {
-                    _quranPage =
-                        (state as QuranPageLoaded).quranPage.page.toDouble() +
-                            1;
+                    _quranPage = state.quranPage.page.toDouble() + 1;
                   }
 
                   if (state is QuranPageJumpedTo) {
-                    _quranPage =
-                        (state as QuranPageJumpedTo).quranPage.page.toDouble() +
-                            1;
+                    _quranPage = state.quranPage.page.toDouble() + 1;
                   }
 
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Flexible(child: Text("${_quranPage.truncate()}")),
-                        Flexible(
-                          child: Slider(
-                            divisions: Constants.endQuranPageNumber,
-                            activeColor: Theme.of(context).primaryColor,
-                            inactiveColor: Colors.grey,
-                            min: Constants.startQuranPageNumber.toDouble(),
-                            max: Constants.endQuranPageNumber.toDouble(),
-                            onChanged: (newValue) {
-                              BlocProvider.of<QuranPageBloc>(context)
-                                ..add(JumpToPage(pageNumber: newValue.toInt()));
-                            },
-                            value: _quranPage.toDouble(),
-                            label: _quranPage.truncate().toString(),
-                          ),
-                          flex: 1,
-                        )
+                        Container(
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).accentColor),
+                            child: Padding(
+                                padding: EdgeInsets.only(
+                                    left: 16, top: 4, right: 16, bottom: 4),
+                                child: Container(
+                                    child: Text(
+                                  "${_quranPage.truncate()}",
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )))),
+                        SizedBox(height: 10),
+                        Container(
+                            decoration: BoxDecoration(
+                                color: Colors.black.withOpacity(0.3)),
+                            child: Slider(
+                              divisions: constants.endQuranPageNumber,
+                              activeColor: Theme.of(context).primaryColor,
+                              inactiveColor: Theme.of(context).accentColor,
+                              min: constants.startQuranPageNumber.toDouble(),
+                              max: constants.endQuranPageNumber.toDouble(),
+                              onChanged: (newValue) {
+                                BlocProvider.of<QuranPageBloc>(context)
+                                  ..add(
+                                      JumpToPage(pageNumber: newValue.toInt()));
+                              },
+                              value: _quranPage.toDouble(),
+                              label: _quranPage.truncate().toString(),
+                            ))
                       ]);
                 }
 
                 return Container();
-              })),
-        )
+              }),
+            ))
       ],
     );
   }

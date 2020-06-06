@@ -1,14 +1,22 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:meta/meta.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran/common/constant/constants.dart' as constants;
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:quran/common/database/database.dart';
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
+
+  final AyahInfoService ayahInfoService;
+
+  QuranPageBloc({@required this.ayahInfoService}) : assert(ayahInfoService != null){
+
+  }
+
   @override
   QuranPageState get initialState {
     return super.initialState ??
@@ -38,13 +46,13 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
+
     if (event is JumpToPage) {
-      debugPrint("JumpToPage " + event.pageNumber.toString());
-      yield QuranPageJumpedTo(quranPage: fetchQuranPage(event.pageNumber));
+      yield* _mapJumpToPage(event);
     }
 
     if (event is LoadPage) {
-      yield QuranPageLoaded(quranPage: fetchQuranPage(event.pageNumber));
+      yield* _mapLoadPage(event);
     }
   }
 
@@ -62,6 +70,18 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     } catch (_) {
       return null;
     }
+  }
+
+  Stream<QuranPageState> _mapJumpToPage(JumpToPage event) async* {
+    final _quranPage = fetchQuranPage(event.pageNumber);
+    _quranPage.quranPageInfoList = await ayahInfoService.getQuranPageInfo(pageNumber: _quranPage.page);
+    yield QuranPageJumpedTo(quranPage: _quranPage);
+  }
+
+  Stream<QuranPageState> _mapLoadPage(LoadPage event) async* {
+    final _quranPage = fetchQuranPage(event.pageNumber);
+    _quranPage.quranPageInfoList = await ayahInfoService.getQuranPageInfo(pageNumber: _quranPage.page);
+    yield QuranPageLoaded(quranPage: _quranPage);
   }
 
   QuranPage fetchQuranPage(int page) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran/feature/home/bloc/index.dart';
 import 'package:quran/feature/home/ui/widget/home_page_widget.dart';
+import 'package:quran/common/database/database.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
       ),
       BlocProvider<QuranPageBloc>(
         create: (context) {
-          return QuranPageBloc();
+          return QuranPageBloc(ayahInfoService: RepositoryProvider.of<AyahInfoService>(context));
         },
       ),
     ], child: HomePageWidget());

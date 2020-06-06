@@ -1,18 +1,20 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:quran/feature/home/model/quran_page_info.dart';
 
 part 'quran_page.g.dart';
 
 class QuranPage extends Equatable {
-  final int page;
+   int page;
   final String imageUrl;
+  List<QuranPageInfo> quranPageInfoList;
 
   @required
-  QuranPage({this.page, this.imageUrl});
+  QuranPage({@required this.page,@required this.imageUrl,this.quranPageInfoList});
 
   // Equatable
   @override
-  List<Object> get props => [page, imageUrl];
+  List<Object> get props => [page, imageUrl,quranPageInfoList];
 
   // json encoding decoding
   factory QuranPage.fromJson(Map<String, dynamic> json) =>

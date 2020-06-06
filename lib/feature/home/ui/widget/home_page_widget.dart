@@ -5,6 +5,7 @@ import 'package:quran/common/constant/constants.dart' as constants;
 import 'package:quran/common/routes/routes.dart';
 import 'package:quran/common/util/flutter_device_type.dart';
 import 'package:quran/feature/home/bloc/index.dart';
+import 'package:quran/feature/home/model/quran_page.dart';
 import 'package:quran/feature/home/ui/widget/quran_page_widget.dart';
 import 'package:wakelock/wakelock.dart';
 
@@ -42,7 +43,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         child: Scaffold(body:
             BlocBuilder<HomePageBloc, HomePageState>(builder: (context, state) {
           if (state is HomePageShowView) {
-            return flexedView();
+            return fullWidget();
           } else {
             return QuranPageWidget();
           }
@@ -51,7 +52,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     });
   }
 
-  Widget flexedView() {
+  Widget fullWidget() {
     return Stack(
       children: <Widget>[
         QuranPageWidget(),
@@ -65,14 +66,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 if (state is QuranPageLoaded) {}
               }, builder: (context, state) {
                 if (state is QuranPageLoaded || state is QuranPageJumpedTo) {
-                  double _quranPage;
+                  QuranPage  _quranPage;
 
                   if (state is QuranPageLoaded) {
-                    _quranPage = state.quranPage.page.toDouble() + 1;
+                    _quranPage = state.quranPage; //.page.toDouble() + 1;
+                    _quranPage.page = _quranPage.page + 1;
                   }
 
                   if (state is QuranPageJumpedTo) {
-                    _quranPage = state.quranPage.page.toDouble() + 1;
+                    _quranPage = state.quranPage; //.page.toDouble() + 1;
+                    _quranPage.page = _quranPage.page + 1;
                   }
 
                   return Column(
@@ -86,7 +89,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     left: 16, top: 4, right: 16, bottom: 4),
                                 child: Container(
                                     child: Text(
-                                  "${_quranPage.truncate()}",
+                                  "${_quranPage.quranPageInfoList.first.nameEnglish} (${_quranPage.quranPageInfoList.first.suraNumber}) ${_quranPage.page}",
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     color: Colors.black,
@@ -99,7 +102,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 color: Colors.black.withOpacity(0.3)),
                             child: Slider(
                               divisions: constants.endQuranPageNumber,
-                              activeColor: Theme.of(context).primaryColor,
+                              activeColor: Theme.of(context).primaryColorLight,
                               inactiveColor: Theme.of(context).accentColor,
                               min: constants.startQuranPageNumber.toDouble(),
                               max: constants.endQuranPageNumber.toDouble(),
@@ -108,8 +111,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ..add(
                                       JumpToPage(pageNumber: newValue.toInt()));
                               },
-                              value: _quranPage.toDouble(),
-                              label: _quranPage.truncate().toString(),
+                              value: _quranPage.page.toDouble(),
+                              label: _quranPage.page.toString(),
                             ))
                       ]);
                 }

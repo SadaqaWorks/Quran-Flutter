@@ -61,11 +61,14 @@ class AyahInfoService extends DatabaseService
   }) async {
 
     if (ayahInfoDatabase == null) {
+      await initDatabase();
+    }
+
+    if (ayahInfoDatabase == null) {
       return [];
     }
 
     List<Map> maps = await ayahInfoDatabase.rawQuery("select * from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where page_number =  $pageNumber");
-    debugPrint('getQuranPageInfo ${maps}');
     return maps.map((e) => QuranPageInfo.fromJson(e)).toList();
   }
 

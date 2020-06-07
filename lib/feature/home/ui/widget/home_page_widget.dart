@@ -55,6 +55,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget fullWidget() {
     return Stack(
       children: <Widget>[
+        Container(color: Theme.of(context).accentColor.withOpacity(.3)),
         QuranPageWidget(),
         Positioned(
             bottom: 0,

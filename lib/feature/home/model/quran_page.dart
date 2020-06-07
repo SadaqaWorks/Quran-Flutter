@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:quran/feature/home/model/quran_page_info.dart';
+import 'dart:convert';
 
 part 'quran_page.g.dart';
 

@@ -16,7 +16,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   void dispose() {
-    // _controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 

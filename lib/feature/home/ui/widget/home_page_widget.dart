@@ -45,8 +45,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           if (state is HomePageShowView) {
             return fullWidget();
           } else {
-            debugPrint(
-                "QuranPageBloc: ${BlocProvider.of<QuranPageBloc>(context)}");
             return QuranPageWidget();
           }
         })),

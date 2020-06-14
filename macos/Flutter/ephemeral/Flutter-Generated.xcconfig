@@ -1,10 +1,12 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=/usr/local/Caskroom/flutter/1.2.1/flutter
 FLUTTER_APPLICATION_PATH=/Users/sadmansamee/Documents/Personal/Flutter/quran
+FLUTTER_TARGET=/Users/sadmansamee/Documents/Personal/Flutter/quran/lib/main.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_FRAMEWORK_DIR=/usr/local/Caskroom/flutter/1.2.1/flutter/bin/cache/artifacts/engine/darwin-x64
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
+DART_DEFINES=flutter.inspector.structuredErrors%3Dtrue
 DART_OBFUSCATION=false
-TRACK_WIDGET_CREATION=false
+TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false

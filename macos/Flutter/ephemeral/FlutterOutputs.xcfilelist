@@ -2,7 +2,7 @@
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/Info.plist
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/AssetManifest.json
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/FontManifest.json
-/Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/LICENSE
+/Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/NOTICES
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image1.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image10.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image100.png
@@ -94,8 +94,10 @@
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image18.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image180.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image182.png
+/Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image184.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image185.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image186.png
+/Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image187.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image188.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image189.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image19.png
@@ -602,6 +604,8 @@
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image97.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image98.png
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/images/quran/image99.png
+/Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/quran-data/db/.DS_Store
+/Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/assets/quran-data/db/ayahinfo_1280.db
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/fonts/MaterialIcons-Regular.ttf
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/isolate_snapshot_data
 /Users/sadmansamee/Documents/Personal/Flutter/quran/macos/Flutter/ephemeral/App.framework/Versions/A/Resources/flutter_assets/kernel_blob.bin

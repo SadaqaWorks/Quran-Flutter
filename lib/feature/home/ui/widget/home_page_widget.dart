@@ -120,7 +120,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ]);
                 }
 
-                return Container();
+                return Container(color: Theme.of(context).accentColor);
               }),
             ))
       ],

@@ -94,7 +94,7 @@ flutter_intl:
 
 
 flutter_native_splash:
-  color: "96B85E"
+  color: "FCF4E5"
   android_disable_fullscreen: true
   fill: false
 #flutter pub run flutter_native_splash:create

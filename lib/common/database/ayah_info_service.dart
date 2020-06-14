@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:quran_reader/common/database/database_service.dart';
 import 'package:quran_reader/feature/home/model/quran_page_info.dart';
 import 'package:sqflite/sqflite.dart';
@@ -14,17 +12,13 @@ abstract class IAyahInfoService {
   void dispose();
 }
 
-class AyahInfoService extends DatabaseService
-    implements IAyahInfoService {
+class AyahInfoService extends DatabaseService implements IAyahInfoService {
   Database ayahInfoDatabase;
 
-  AyahInfoService._create() {
-
-  }
+  AyahInfoService._create() {}
 
   /// Public factory
   static Future<AyahInfoService> create() async {
-
     // Make sure /database directory created
     var databasePath = await getDatabasesPath();
     var f = Directory(databasePath);
@@ -38,7 +32,6 @@ class AyahInfoService extends DatabaseService
 
     return component;
   }
-
 
   Future initDatabase() async {
     if (ayahInfoDatabase == null) {
@@ -55,11 +48,9 @@ class AyahInfoService extends DatabaseService
     }
   }
 
-
   Future<List<QuranPageInfo>> getQuranPageInfo({
     int pageNumber,
   }) async {
-
     if (ayahInfoDatabase == null) {
       await initDatabase();
     }
@@ -68,11 +59,10 @@ class AyahInfoService extends DatabaseService
       return [];
     }
 
-    List<Map> maps = await ayahInfoDatabase.rawQuery("select * from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where page_number =  $pageNumber");
+    List<Map> maps = await ayahInfoDatabase.rawQuery(
+        "select * from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where page_number =  $pageNumber");
     return maps.map((e) => QuranPageInfo.fromJson(e)).toList();
   }
-
-
 
   void dispose() {
     ayahInfoDatabase?.close();

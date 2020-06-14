@@ -45,7 +45,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           if (state is HomePageShowView) {
             return fullWidget();
           } else {
-            debugPrint("QuranPageBloc: ${BlocProvider.of<QuranPageBloc>(context)}");
+            debugPrint(
+                "QuranPageBloc: ${BlocProvider.of<QuranPageBloc>(context)}");
             return QuranPageWidget();
           }
         })),
@@ -68,7 +69,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 if (state is QuranPageLoaded) {}
               }, builder: (context, state) {
                 if (state is QuranPageLoaded || state is QuranPageJumpedTo) {
-                  QuranPage  _quranPage;
+                  QuranPage _quranPage;
 
                   if (state is QuranPageLoaded) {
                     _quranPage = state.quranPage; //.page.toDouble() + 1;

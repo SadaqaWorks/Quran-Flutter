@@ -6,8 +6,7 @@ import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/feature/home/bloc/index.dart';
 import 'package:quran_reader/feature/home/ui/widget/responsive_image_widget.dart';
 
-class
-QuranPageWidget extends StatefulWidget {
+class QuranPageWidget extends StatefulWidget {
   @override
   _QuranPageWidgetState createState() => _QuranPageWidgetState();
 }
@@ -17,7 +16,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   void dispose() {
-   // _controller.dispose();
+    // _controller.dispose();
     super.dispose();
   }
 

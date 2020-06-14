@@ -10,7 +10,6 @@ class IDatabaseFileService {
 }
 
 class DatabaseFileService implements IDatabaseFileService {
-
   @override
   Future deleteDatabase(String filename) async {
     var databasePath = await getDatabasesPath();

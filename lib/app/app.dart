@@ -42,23 +42,22 @@ class _MyAppState extends State<App> {
           lazy: true,
         ),
       ],
-
-          child: MaterialApp(
-            debugShowCheckedModeBanner: true,
-            localizationsDelegates: const <
-                LocalizationsDelegate<WidgetsLocalizations>>[
-              S.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            localeResolutionCallback:
-                S.delegate.resolution(fallback: const Locale('en', '')),
-            localeListResolutionCallback:
-                S.delegate.listResolution(fallback: const Locale('en', '')),
-            title: 'Quran',
-            theme: basicTheme,
-            onGenerateRoute: RouteGenerator.generateRoute,
-            initialRoute: Routes.home,
-          ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: true,
+        localizationsDelegates: const <
+            LocalizationsDelegate<WidgetsLocalizations>>[
+          S.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        localeResolutionCallback:
+            S.delegate.resolution(fallback: const Locale('en', '')),
+        localeListResolutionCallback:
+            S.delegate.listResolution(fallback: const Locale('en', '')),
+        title: 'Quran',
+        theme: basicTheme,
+        onGenerateRoute: RouteGenerator.generateRoute,
+        initialRoute: Routes.home,
+      ),
     );
   }
 }

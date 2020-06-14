@@ -6,11 +6,11 @@ import 'package:sqflite/sqflite.dart';
 
 abstract class DatabaseService {
   Future<Database> openDatabaseConnection(
-      String databaseName,
-      String databasePathBundle, {
-        bool isReadOnly = true,
-        bool deleteFirst = false,
-      }) async {
+    String databaseName,
+    String databasePathBundle, {
+    bool isReadOnly = true,
+    bool deleteFirst = false,
+  }) async {
     // Copy from project assets to device
     var databasePath = await getDatabasesPath();
     var path = join(databasePath, databaseName);

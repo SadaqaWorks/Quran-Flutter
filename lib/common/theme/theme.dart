@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran/common/constant/constants.dart' as constants;
+import 'package:quran_reader/common/constant/constants.dart' as constants;
 
 final ThemeData basicTheme = _buildBasicTheme();
 

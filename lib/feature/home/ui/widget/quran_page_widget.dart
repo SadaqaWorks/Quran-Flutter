@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quran/common/constant/constants.dart' as constants;
-import 'package:quran/common/geature/allow_multiple_gesture_recognizer.dart';
-import 'package:quran/common/util/flutter_device_type.dart';
-import 'package:quran/feature/home/bloc/index.dart';
-import 'package:quran/feature/home/ui/widget/responsive_image_widget.dart';
+import 'package:quran_reader/common/constant/constants.dart' as constants;
+import 'package:quran_reader/common/geature/allow_multiple_gesture_recognizer.dart';
+import 'package:quran_reader/common/util/flutter_device_type.dart';
+import 'package:quran_reader/feature/home/bloc/index.dart';
+import 'package:quran_reader/feature/home/ui/widget/responsive_image_widget.dart';
 
-class QuranPageWidget extends StatefulWidget {
+class
+QuranPageWidget extends StatefulWidget {
   @override
   _QuranPageWidgetState createState() => _QuranPageWidgetState();
 }
@@ -16,7 +17,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   void dispose() {
-    _controller.dispose();
+   // _controller.dispose();
     super.dispose();
   }
 
@@ -26,7 +27,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   }
 
   _onPageViewChange(int page) {
-    debugPrint("onPageChanged2 $page ${page + 1}");
     BlocProvider.of<QuranPageBloc>(context).add(LoadPage(pageNumber: page));
   }
 
@@ -66,7 +66,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
             },
             child: PageView.builder(
                 itemBuilder: (context, index) {
-                  debugPrint("onPageChanged1 $index");
                   if (Device.get().isWeb || Device.get().isComputer) {
                     final firstIndex = index + 2;
                     final secondIndex = index + 1;

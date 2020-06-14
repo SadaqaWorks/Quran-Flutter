@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quran/feature/home/ui/page/home_page.dart';
-import 'package:quran/feature/sideview/ui/page/SideViewPage.dart';
+import 'package:quran_reader/feature/home/ui/page/home_page.dart';
+import 'package:quran_reader/feature/sideview/ui/page/SideViewPage.dart';
 
 import 'routes.dart';
 

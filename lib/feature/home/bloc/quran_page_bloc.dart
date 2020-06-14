@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:quran/common/constant/constants.dart' as constants;
-import 'package:quran/feature/home/bloc/index.dart';
-import 'package:quran/feature/home/model/quran_page.dart';
+import 'package:quran_reader/common/constant/constants.dart' as constants;
+import 'package:quran_reader/feature/home/bloc/index.dart';
+import 'package:quran_reader/feature/home/model/quran_page.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:quran/common/database/database.dart';
+import 'package:quran_reader/common/database/database.dart';
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
@@ -27,8 +28,11 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   QuranPageState fromJson(Map<String, dynamic> json) {
     try {
-      return QuranPageJumpedTo(quranPage: QuranPage.fromJson(json['value']));
+      //debugPrint("QuranPageBloc1 ${json['value']}");
+      final quranPage =  QuranPage.fromJson(Map<String, dynamic>.from(json['value']));
+      return QuranPageJumpedTo(quranPage: quranPage);
     } catch (exception) {
+      debugPrint("QuranPageBloc2 ${exception}");
       return null;
     }
   }
@@ -67,7 +71,9 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
       } else {
         return null;
       }
-    } catch (_) {
+    } catch (exception) {
+      debugPrint("QuranPageBloc2 toJson ${exception}");
+
       return null;
     }
   }

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
-import 'package:quran/feature/home/model/quran_page_info.dart';
+import 'package:quran_reader/feature/home/model/quran_page_info.dart';
 import 'dart:convert';
 
 part 'quran_page.g.dart';
@@ -23,3 +24,5 @@ class QuranPage extends Equatable {
 
   Map<String, dynamic> toJson() => _$QuranPageToJson(this);
 }
+
+

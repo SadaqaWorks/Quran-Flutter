@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:quran/common/database/database_service.dart';
-import 'package:quran/feature/home/model/quran_page_info.dart';
+import 'package:quran_reader/common/database/database_service.dart';
+import 'package:quran_reader/feature/home/model/quran_page_info.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class IAyahInfoService {

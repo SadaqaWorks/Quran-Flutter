@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:quran/feature/home/bloc/index.dart';
+import 'package:quran_reader/feature/home/bloc/index.dart';
 import 'package:rxdart/rxdart.dart';
 
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {

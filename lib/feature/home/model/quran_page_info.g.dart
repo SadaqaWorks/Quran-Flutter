@@ -24,5 +24,7 @@ Map<String, dynamic> _$QuranPageInfoToJson(QuranPageInfo instance) =>
       'min_x': instance.minX,
       'min_y': instance.minY,
       'max_x': instance.maxX,
-      'max_y': instance.maxY
+      'max_y': instance.maxY,
+          'name_english': instance.nameEnglish
+
     };

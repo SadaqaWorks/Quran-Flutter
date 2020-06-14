@@ -31,7 +31,7 @@ dependencies:
 #core
   rxdart: 0.24.1
   bloc: ^4.0.0
-  flutter_bloc: ^4.0.0
+  flutter_bloc: ^4.0.1
   hydrated_bloc: ^4.1.1
   equatable: ^1.2.0
 

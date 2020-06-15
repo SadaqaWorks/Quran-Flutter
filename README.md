@@ -24,6 +24,7 @@ The reason that is important
 2. A person might want to switch platforms and revise their Quran reading on another platform.
 3. All the current projects are different in their own ways and have different codebase thus keep maintaining and adding new features is difficult.
 4. After deprecating of Ayat there is no similar solution that works well on all the platforms with similar experience.
+5. It will always be free and open source and never intented for monetization or anything.
 
 
 My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with Flutter it is possible to have a single codebase for all the platforms with similar experience while having single Codebase will make it easier to maintain and keep developing. I'm looking for more contributors.  

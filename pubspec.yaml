@@ -96,6 +96,7 @@ flutter_intl:
 
 flutter_native_splash:
   color: "FCF4E5"
+  image: assets/images/app/icon.png
   android_disable_fullscreen: true
   fill: false
 #flutter pub run flutter_native_splash:create

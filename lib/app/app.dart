@@ -9,7 +9,6 @@ import 'package:quran_reader/common/routes/route_generator.dart';
 import 'package:quran_reader/common/routes/routes.dart';
 import 'package:quran_reader/generated/l10n.dart';
 
-
 class App extends StatefulWidget {
   App({Key key, @required this.ayahInfoService}) : super(key: key);
 

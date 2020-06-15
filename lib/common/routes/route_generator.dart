@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quran_reader/feature/home/ui/page/home_page.dart';
-import 'package:quran_reader/feature/sideview/ui/page/SideViewPage.dart';
 
 import 'routes.dart';
 
@@ -12,11 +11,6 @@ class RouteGenerator {
       case Routes.home:
         return MaterialPageRoute<dynamic>(
           builder: (_) => HomePage(),
-        );
-
-      case Routes.sideView:
-        return MaterialPageRoute<dynamic>(
-          builder: (_) => SideViewPage(),
         );
 
       default:

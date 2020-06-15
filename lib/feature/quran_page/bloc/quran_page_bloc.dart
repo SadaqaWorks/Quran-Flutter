@@ -6,8 +6,8 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:quran_reader/common/constant/constants.dart' as constants;
 import 'package:quran_reader/common/database/database.dart';
-import 'package:quran_reader/feature/home/bloc/index.dart';
-import 'package:quran_reader/feature/home/model/quran_page.dart';
+import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
+import 'package:quran_reader/feature/quran_page/model/quran_page.dart';
 import 'package:rxdart/rxdart.dart';
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {

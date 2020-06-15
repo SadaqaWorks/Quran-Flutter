@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:quran_reader/common/database/database_service.dart';
-import 'package:quran_reader/feature/home/model/quran_page_info.dart';
+import 'package:quran_reader/feature/quran_page/model/quran_page_info.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class IAyahInfoService {

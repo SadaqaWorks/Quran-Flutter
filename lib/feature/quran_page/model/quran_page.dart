@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:meta/meta.dart';
-import 'package:quran_reader/feature/home/model/quran_page_info.dart';
+import 'quran_page_info.dart';
 
 part 'quran_page.g.dart';
 

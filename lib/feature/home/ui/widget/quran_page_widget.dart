@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_reader/common/constant/constants.dart' as constants;
 import 'package:quran_reader/common/geature/allow_multiple_gesture_recognizer.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
-import 'package:quran_reader/feature/home/bloc/index.dart';
+import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/home/ui/widget/responsive_image_widget.dart';
+import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 
 class QuranPageWidget extends StatefulWidget {
   @override

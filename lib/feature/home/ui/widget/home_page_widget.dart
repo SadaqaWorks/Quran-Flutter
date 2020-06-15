@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_reader/common/constant/constants.dart' as constants;
 import 'package:quran_reader/common/routes/routes.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
-import 'package:quran_reader/feature/home/bloc/index.dart';
-import 'package:quran_reader/feature/home/model/quran_page.dart';
+import 'package:quran_reader/feature/home/bloc/blocs.dart';
+import 'package:quran_reader/feature/quran_page/model/quran_page.dart';
 import 'package:quran_reader/feature/home/ui/widget/quran_page_widget.dart';
-import 'package:wakelock/wakelock.dart';
 import 'package:quran_reader/generated/l10n.dart';
+import 'package:wakelock/wakelock.dart';
+import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -91,12 +92,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     left: 16, top: 4, right: 16, bottom: 4),
                                 child: Container(
                                     child: Text(
-                                  "${_quranPage.quranPageInfoList.first.suraNumber}. ${_quranPage.quranPageInfoList.first.nameEnglish} ${S.of(context).page} ${_quranPage.page}",
+                                  "${_quranPage.quranPageInfoList.first.suraNumber}. ${_quranPage.quranPageInfoList.first.nameEnglish} \n${S.of(context).page}: ${_quranPage.page}",
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
                                   ),
+                                  textAlign: TextAlign.center,
                                 )))),
                         SizedBox(height: 10),
                         Container(

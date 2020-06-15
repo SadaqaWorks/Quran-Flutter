@@ -59,6 +59,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/quran/
+    - assets/images/app/
     - assets/quran-data/db/
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -100,7 +101,7 @@ flutter_native_splash:
 #flutter pub run flutter_native_splash:create
 
 flutter_icons:
-  image_path: 'assets/images/app/app_icon.png'
+  image_path: 'assets/images/app/icon.png'
   android: true
   ios: true
 #flutter pub run flutter_launcher_icons:main

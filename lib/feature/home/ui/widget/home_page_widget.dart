@@ -8,6 +8,7 @@ import 'package:quran_reader/feature/home/bloc/index.dart';
 import 'package:quran_reader/feature/home/model/quran_page.dart';
 import 'package:quran_reader/feature/home/ui/widget/quran_page_widget.dart';
 import 'package:wakelock/wakelock.dart';
+import 'package:quran_reader/generated/l10n.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -70,12 +71,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   QuranPage _quranPage;
 
                   if (state is QuranPageLoaded) {
-                    _quranPage = state.quranPage; //.page.toDouble() + 1;
+                    _quranPage = state.quranPage;
                     _quranPage.page = _quranPage.page + 1;
                   }
 
                   if (state is QuranPageJumpedTo) {
-                    _quranPage = state.quranPage; //.page.toDouble() + 1;
+                    _quranPage = state.quranPage;
                     _quranPage.page = _quranPage.page + 1;
                   }
 
@@ -90,7 +91,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     left: 16, top: 4, right: 16, bottom: 4),
                                 child: Container(
                                     child: Text(
-                                  "${_quranPage.quranPageInfoList.first.nameEnglish} (${_quranPage.quranPageInfoList.first.suraNumber}) ${_quranPage.page}",
+                                  "${_quranPage.quranPageInfoList.first.suraNumber}. ${_quranPage.quranPageInfoList.first.nameEnglish} ${S.of(context).page} ${_quranPage.page}",
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     color: Colors.black,

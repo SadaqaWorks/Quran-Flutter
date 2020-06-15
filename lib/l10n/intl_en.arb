@@ -1,1 +1,7 @@
-{}
+{
+  "@@locale": "en",
+  "page": "Page",
+  "pages" : "Pages",
+  "surah": "Surah",
+  "juzz" : "Juzz"
+}

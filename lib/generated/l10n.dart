@@ -33,7 +33,45 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Page`
+  String get page {
+    return Intl.message(
+      'Page',
+      name: 'page',
+      desc: '',
+      args: [],
+    );
+  }
 
+  /// `Pages`
+  String get pages {
+    return Intl.message(
+      'Pages',
+      name: 'pages',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Surah`
+  String get surah {
+    return Intl.message(
+      'Surah',
+      name: 'surah',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Juzz`
+  String get juzz {
+    return Intl.message(
+      'Juzz',
+      name: 'juzz',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

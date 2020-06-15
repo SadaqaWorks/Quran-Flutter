@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:quran_reader/common/bloc/appconfig/appconfig_bloc.dart';
+import 'package:quran_reader/common/bloc/appconfig/appconfig_state.dart';
 import 'package:quran_reader/common/database/ayah_info_service.dart';
 import 'package:quran_reader/common/routes/route_generator.dart';
 import 'package:quran_reader/common/routes/routes.dart';
-import 'package:quran_reader/generated/i18n.dart';
+import 'package:quran_reader/generated/l10n.dart';
 
-import '../common/theme/theme.dart';
 
 class App extends StatefulWidget {
   App({Key key, @required this.ayahInfoService}) : super(key: key);
@@ -36,28 +39,35 @@ class _MyAppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
-      providers: [
-        RepositoryProvider<AyahInfoService>(
-          create: (context) => ayahInfoService,
-          lazy: true,
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: true,
-        localizationsDelegates: const <
-            LocalizationsDelegate<WidgetsLocalizations>>[
-          S.delegate,
+        providers: [
+          RepositoryProvider<AyahInfoService>(
+            create: (context) => ayahInfoService,
+            lazy: true,
+          ),
         ],
-        supportedLocales: S.delegate.supportedLocales,
-        localeResolutionCallback:
-            S.delegate.resolution(fallback: const Locale('en', '')),
-        localeListResolutionCallback:
-            S.delegate.listResolution(fallback: const Locale('en', '')),
-        title: 'Quran',
-        theme: basicTheme,
-        onGenerateRoute: RouteGenerator.generateRoute,
-        initialRoute: Routes.home,
-      ),
-    );
+        child: MultiBlocProvider(
+            providers: [
+              BlocProvider<AppConfigBloc>(
+                create: (BuildContext context) => AppConfigBloc(),
+              )
+            ],
+            child: BlocBuilder<AppConfigBloc, AppConfigState>(
+                builder: (BuildContext context, AppConfigState appConfigState) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                localizationsDelegates: [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  DefaultCupertinoLocalizations.delegate,
+                  S.delegate
+                ],
+                locale: appConfigState.locale,
+                title: 'Quran',
+                theme: appConfigState.theme,
+                onGenerateRoute: RouteGenerator.generateRoute,
+                initialRoute: Routes.home,
+              );
+            })));
   }
 }

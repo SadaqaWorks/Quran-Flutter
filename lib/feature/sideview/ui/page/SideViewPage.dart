@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran_reader/generated/i18n.dart';
+import 'package:quran_reader/generated/l10n.dart';
 
 class SideViewPage extends StatelessWidget {
   @override

@@ -9,3 +9,9 @@ const Color accentColor = const Color(0xFFFCF4E5);
 
 const int startQuranPageNumber = 1;
 const int endQuranPageNumber = 604;
+
+class Locale {
+  static const String locale = 'locale';
+  static const String en = 'en';
+  static const String bn = 'bn';
+}

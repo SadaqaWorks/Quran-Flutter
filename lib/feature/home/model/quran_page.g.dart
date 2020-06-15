@@ -13,7 +13,6 @@ Map<String, dynamic> _$QuranPageToJson(QuranPage instance) {
   String quranPageInfoListJson =
       jsonEncode(instance.quranPageInfoList.map((i) => i.toJson()).toList())
           .toString();
-  debugPrint("_QuranPageToJson ${quranPageInfoListJson}");
   return <String, dynamic>{
     'page': instance.page,
     'imageUrl': instance.imageUrl,

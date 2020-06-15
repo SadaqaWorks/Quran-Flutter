@@ -26,12 +26,10 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   QuranPageState fromJson(Map<String, dynamic> json) {
     try {
-      //debugPrint("QuranPageBloc1 ${json['value']}");
       final quranPage =
           QuranPage.fromJson(Map<String, dynamic>.from(json['value']));
       return QuranPageJumpedTo(quranPage: quranPage);
     } catch (exception) {
-      debugPrint("QuranPageBloc2 ${exception}");
       return null;
     }
   }
@@ -70,8 +68,6 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
         return null;
       }
     } catch (exception) {
-      debugPrint("QuranPageBloc2 toJson ${exception}");
-
       return null;
     }
   }

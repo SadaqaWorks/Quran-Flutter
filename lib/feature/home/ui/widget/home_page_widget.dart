@@ -92,7 +92,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     left: 16, top: 4, right: 16, bottom: 4),
                                 child: Container(
                                     child: Text(
-                                  "${_quranPage.quranPageInfoList.first.suraNumber}. ${_quranPage.quranPageInfoList.first.nameEnglish} \n${S.of(context).page}: ${_quranPage.page}",
+                                  "${_quranPage.quranPageInfoList.first.suraNumber}. ${_quranPage.quranPageInfoList.first.name} \n${S.of(context).page}: ${_quranPage.page}",
                                   style: TextStyle(
                                     fontSize: 18.0,
                                     color: Colors.black,

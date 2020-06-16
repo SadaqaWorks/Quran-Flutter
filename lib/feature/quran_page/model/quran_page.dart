@@ -16,11 +16,11 @@ class QuranPage extends Equatable {
   QuranPage(
       {@required this.page, @required this.imageUrl, this.quranPageInfoList});
 
-  // Equatable
+  //Equatable
   @override
   List<Object> get props => [page, imageUrl, quranPageInfoList];
 
-  // json encoding decoding
+  //json encoding decoding
   factory QuranPage.fromJson(Map<String, dynamic> json) =>
       _$QuranPageFromJson(json);
 

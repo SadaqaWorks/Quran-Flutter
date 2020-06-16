@@ -4,15 +4,23 @@
 
 
 # Quran Flutter
- Quran made with Flutter. PRs are welcome, fill up [this form](https://sadmansamee.typeform.com/to/Df9lQG) to join the slack channel.
+
+Quran made with Flutter.
  
+All kinds of PR, suggestion and contributions are welcome, let's do this for sake of Allah as Sadaqah Jaria. If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG), have a look on [mock up](https://whimsical.com/XJEbU6ATxdqgVCbmKyByNG) then refer to [Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list.
+
+## TODO
+* [ ] [Surah, Juzz, Pages list view to navigate](https://trello.com/c/pLUkCjKQ/18-surahjuzzpage-scrollable-slide-up-list-view)
+* [ ] [Audio play system](https://trello.com/c/HIEQa7Eb/17-audio-play-from-various-reciter)
+* [ ] [Translation system](https://trello.com/c/8RRezmUP/19-show-translation)
+* [x] Show every page on Quran
+* [x] Responsive for Phone, tablet, desktop.
+* [x] A slider to navigate through pages
+
  
+## Current implementation 
  ![](docs/screenshot/quran.gif)
 
-
-If you want to contribute, fill [it up](https://sadmansamee.typeform.com/to/Df9lQG), see [mock up design](https://whimsical.com/XJEbU6ATxdqgVCbmKyByNG) then refer to [Trello board](https://trello.com/b/JKZ9ZyGI/quran) for planning and task list and
-
-![](docs/design/flw.png)
  
 ## Why this project is important? 
 

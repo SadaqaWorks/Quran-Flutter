@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
-import 'package:quran_reader/feature/quran_page/model/quran_page.dart';
+import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 class InheritedOrientedImage extends InheritedWidget {
   final QuranPage quranPage;

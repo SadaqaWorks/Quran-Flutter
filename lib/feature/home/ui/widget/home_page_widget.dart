@@ -7,7 +7,7 @@ import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/home/ui/widget/quran_page_widget.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
-import 'package:quran_reader/feature/quran_page/model/quran_page.dart';
+import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/generated/l10n.dart';
 import 'package:wakelock/wakelock.dart';
 

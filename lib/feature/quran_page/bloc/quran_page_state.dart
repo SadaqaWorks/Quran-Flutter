@@ -1,5 +1,5 @@
 import 'package:meta/meta.dart';
-import 'package:quran_reader/feature/quran_page/model/quran_page.dart';
+import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 abstract class QuranPageState {
   const QuranPageState();

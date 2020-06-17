@@ -42,7 +42,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       return SafeArea(
         child: Scaffold(body:
             BlocBuilder<HomePageBloc, HomePageState>(builder: (context, state) {
-          if (state is HomePageShowView) {
+          if (state is HomePageShowNavigatorInitialView) {
             return fullWidget();
           } else {
             return QuranPageWidget();
@@ -139,7 +139,4 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 
-  void _onShowNavigatorPressed(){
-
-  }
 }

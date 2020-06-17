@@ -27,9 +27,9 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
 
     if (event is HomePageViewTapped) {
       if (currentState is HomePageHideView) {
-        yield HomePageShowView();
+        yield HomePageShowNavigatorInitialView();
       }
-      if (currentState is HomePageShowView) {
+      if (currentState is HomePageShowNavigatorInitialView) {
         yield HomePageHideView();
       }
     }

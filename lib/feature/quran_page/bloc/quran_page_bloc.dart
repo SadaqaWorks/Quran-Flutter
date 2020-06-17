@@ -14,13 +14,13 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final AyahInfoService ayahInfoService;
 
   QuranPageBloc({@required this.ayahInfoService})
-      : assert(ayahInfoService != null) {}
+      : assert(ayahInfoService != null);
 
   @override
   QuranPageState get initialState {
     return super.initialState ??
         QuranPageJumpedTo(
-            quranPage: fetchQuranPage(constants.startQuranPageNumber));
+            quranPage: fetchQuranPage(constants.start_quran_page_number));
   }
 
   @override

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:quran_reader/common/database/database_service.dart';
 import 'package:quran_reader/feature/quran_page/model/quran_page_info.dart';
 import 'package:sqflite/sqflite.dart';
@@ -16,7 +15,7 @@ abstract class IAyahInfoService {
 class AyahInfoService extends DatabaseService implements IAyahInfoService {
   Database ayahInfoDatabase;
 
-  AyahInfoService._create() {}
+  AyahInfoService._create() ;
 
   /// Public factory
   static Future<AyahInfoService> create() async {

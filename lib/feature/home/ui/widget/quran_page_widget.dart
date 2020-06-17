@@ -95,7 +95,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
                 },
                 reverse: true,
                 onPageChanged: _onPageViewChange,
-                itemCount: constants.endQuranPageNumber,
+                itemCount: constants.end_quran_page_number,
                 controller: _controller)));
   }
 }

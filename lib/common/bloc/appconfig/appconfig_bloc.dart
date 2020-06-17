@@ -88,10 +88,10 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
   }
 
   ThemeData _buildDefaultTheme() {
-    const Color primaryColor = constants.primaryColor;
-    const Color secondaryColor = constants.secondaryColor;
-    const Color colorPrimaryDark = constants.primaryColorDark;
-    const Color accentColor = constants.accentColor;
+    const Color primaryColor = constants.primary_color;
+    const Color secondaryColor = constants.secondary_color;
+    const Color colorPrimaryDark = constants.primary_color_dark;
+    const Color accentColor = constants.accent_color;
 
     final ColorScheme colorScheme = const ColorScheme.light().copyWith(
       primary: primaryColor,

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_reader/common/constant/constants.dart' as constants;
-import 'package:quran_reader/common/routes/routes.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/home/ui/widget/quran_page_widget.dart';
@@ -70,11 +69,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Container(
         decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),
         child: Slider(
-          divisions: constants.endQuranPageNumber,
+          divisions: constants.end_quran_page_number,
           activeColor: Theme.of(context).primaryColorLight,
           inactiveColor: Theme.of(context).accentColor,
-          min: constants.startQuranPageNumber.toDouble(),
-          max: constants.endQuranPageNumber.toDouble(),
+          min: constants.start_quran_page_number.toDouble(),
+          max: constants.end_quran_page_number.toDouble(),
           onChanged: (newValue) {
             BlocProvider.of<QuranPageBloc>(context)
               ..add(JumpToPage(pageNumber: newValue.toInt()));

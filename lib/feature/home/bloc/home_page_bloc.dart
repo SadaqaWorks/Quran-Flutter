@@ -33,7 +33,5 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
         yield HomePageHideView();
       }
     }
-
-
   }
 }

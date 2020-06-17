@@ -15,7 +15,7 @@ abstract class IAyahInfoService {
 class AyahInfoService extends DatabaseService implements IAyahInfoService {
   Database ayahInfoDatabase;
 
-  AyahInfoService._create() ;
+  AyahInfoService._create();
 
   /// Public factory
   static Future<AyahInfoService> create() async {

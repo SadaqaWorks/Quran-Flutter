@@ -13,7 +13,6 @@ QuranPageInfo _$QuranPageInfoFromJson(Map<String, dynamic> json) {
       maxY: json['max_y'] as int,
       name: json['name'] as String,
       nameArabic: json['name_arabic'] as String);
-
 }
 
 Map<String, dynamic> _$QuranPageInfoToJson(QuranPageInfo instance) =>

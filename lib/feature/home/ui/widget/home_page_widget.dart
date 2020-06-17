@@ -35,23 +35,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomePageBloc, HomePageState>(
-        listener: (context, state) {
-
-    }, builder: (context, state) {
-      return SafeArea(
-        child: Scaffold(body:
-            BlocBuilder<HomePageBloc, HomePageState>(builder: (context, state) {
-          if (state is HomePageShowNavigatorInitialView) {
-            return fullWidget();
-          } else {
-            return QuranPageWidget();
-          }
-        })),
-      );
-    });
+        listener: (context, state) {},
+        builder: (context, state) {
+          return SafeArea(
+            child: Scaffold(body: BlocBuilder<HomePageBloc, HomePageState>(
+                builder: (context, state) {
+              if (state is HomePageShowNavigatorInitialView) {
+                return fullWidget();
+              } else {
+                return QuranPageWidget();
+              }
+            })),
+          );
+        });
   }
-
-
 
   Widget ayatInfo(QuranPage _quranPage) {
     return Text(
@@ -137,5 +134,4 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       ],
     );
   }
-
 }

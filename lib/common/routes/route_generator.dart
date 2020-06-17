@@ -5,7 +5,6 @@ import 'routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-
     switch (settings.name) {
       case Routes.home:
         return MaterialPageRoute<dynamic>(

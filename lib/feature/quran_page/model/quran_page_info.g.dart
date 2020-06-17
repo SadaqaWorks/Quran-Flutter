@@ -11,7 +11,9 @@ QuranPageInfo _$QuranPageInfoFromJson(Map<String, dynamic> json) {
       minY: json['min_y'] as int,
       maxX: json['max_x'] as int,
       maxY: json['max_y'] as int,
-      name: json['name'] as String);
+      name: json['name'] as String,
+      nameArabic: json['name_arabic'] as String);
+
 }
 
 Map<String, dynamic> _$QuranPageInfoToJson(QuranPageInfo instance) =>
@@ -25,5 +27,6 @@ Map<String, dynamic> _$QuranPageInfoToJson(QuranPageInfo instance) =>
       'min_y': instance.minY,
       'max_x': instance.maxX,
       'max_y': instance.maxY,
-      'name': instance.name
+      'name': instance.name,
+      'name_arabic': instance.nameArabic
     };

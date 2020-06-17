@@ -37,9 +37,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   Widget build(BuildContext context) {
     return BlocConsumer<HomePageBloc, HomePageState>(
         listener: (context, state) {
-      if (state is HomePageShowSideView) {
-        Navigator.pushNamed(context, Routes.sideView);
-      }
+
     }, builder: (context, state) {
       return SafeArea(
         child: Scaffold(body:
@@ -54,9 +52,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     });
   }
 
+
+
   Widget ayatInfo(QuranPage _quranPage) {
     return Text(
-      "${_quranPage.quranPageInfoList.first.suraNumber}. ${_quranPage.quranPageInfoList.first.name} \n${S.of(context).page}: ${_quranPage.page}",
+      "${_quranPage.quranPageInfoList.first.suraNumber}. (${_quranPage.quranPageInfoList.first.nameArabic}) ${_quranPage.quranPageInfoList.first.name} \n${S.of(context).page}: ${_quranPage.page}",
       style: TextStyle(
         fontSize: 18.0,
         color: Colors.black,
@@ -137,5 +137,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ))
       ],
     );
+  }
+
+  void _onShowNavigatorPressed(){
+
   }
 }

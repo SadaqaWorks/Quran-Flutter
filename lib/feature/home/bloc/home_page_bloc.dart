@@ -34,8 +34,6 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
       }
     }
 
-    if (event is HomePageMenuTapped) {
-      yield HomePageShowSideView();
-    }
+
   }
 }

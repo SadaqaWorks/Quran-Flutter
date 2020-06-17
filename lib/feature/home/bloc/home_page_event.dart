@@ -9,4 +9,6 @@ class HomePageViewNormal extends HomePageEvent {}
 
 class HomePageViewTapped extends HomePageEvent {}
 
-class HomePageMenuTapped extends HomePageEvent {}
+class HomePageShowNavigatorTapped extends HomePageEvent {}
+
+class HomePageHideNavigatorTapped extends HomePageEvent {}

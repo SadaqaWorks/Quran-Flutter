@@ -14,6 +14,7 @@ class QuranPageInfo extends Equatable {
   final int maxX;
   final int maxY;
   final String name;
+  final String nameArabic;
 
   @required
   QuranPageInfo(
@@ -26,7 +27,8 @@ class QuranPageInfo extends Equatable {
       this.minY,
       this.maxX,
       this.maxY,
-      this.name});
+      this.name,
+      this.nameArabic});
 
   // Equatable
   @override
@@ -40,7 +42,8 @@ class QuranPageInfo extends Equatable {
         minY,
         maxX,
         maxY,
-        name
+        name,
+        nameArabic
       ];
 
   // json encoding decoding

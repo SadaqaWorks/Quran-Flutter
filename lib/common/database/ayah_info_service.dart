@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:quran_reader/common/database/database_service.dart';
 import 'package:quran_reader/feature/quran_page/model/quran_page_info.dart';
 import 'package:sqflite/sqflite.dart';
@@ -60,7 +61,7 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
     }
 
     List<Map> maps = await ayahInfoDatabase.rawQuery(
-        "select * from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where page_number =  $pageNumber");
+        "select glyphs.ayah_number,glyphs.page_number, glyphs.sura_number,sura.sura_number,sura.name_arabic,sura.name_english as name,sura.type  from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where page_number =  $pageNumber");
     return maps.map((e) => QuranPageInfo.fromJson(e)).toList();
   }
 

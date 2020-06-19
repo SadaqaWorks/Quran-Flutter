@@ -16,6 +16,10 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+
+  int _sliderValue = 1;
+
+
   @override
   void dispose() {
     if (Device.get().isIos || Device.get().isAndroid) {
@@ -72,11 +76,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           min: constants.start_quran_page_number.toDouble(),
           max: constants.end_quran_page_number.toDouble(),
           onChanged: (newValue) {
+            setState(() {
+              _sliderValue = newValue.round();
+            });
             BlocProvider.of<QuranPageBloc>(context)
-              ..add(JumpToPage(pageNumber: newValue.toInt()));
+              ..add(JumpToPage(pageNumber: newValue.round()));
           },
-          value: _quranPage.page.toDouble(),
-          label: _quranPage.page.toString(),
+          value: _sliderValue.toDouble(),
+          label: _sliderValue.toString(),
         ));
   }
 
@@ -106,6 +113,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     _quranPage = state.quranPage;
                     _quranPage.page = _quranPage.page + 1;
                   }
+
+                  _sliderValue = _quranPage.page;
 
                   return Column(
                       mainAxisAlignment: MainAxisAlignment.center,

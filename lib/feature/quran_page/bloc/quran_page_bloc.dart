@@ -40,7 +40,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     TransitionFunction<QuranPageEvent, QuranPageState> transitionFn,
   ) {
     return super.transformEvents(
-      events.debounceTime(const Duration(milliseconds: 500)),
+      events.debounceTime(const Duration(milliseconds: 2)),
       transitionFn,
     );
   }

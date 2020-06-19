@@ -63,29 +63,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   //Widget
   Widget _showNavigatorButton(QuranPage _quranPage){
-    return FlatButton(
+    return SizedBox(
+        height: 18.0,
+        width: 18.0,
+        child: IconButton(
+      icon: Icon(Icons.arrow_drop_up,color: Colors.black87),
       onPressed: () => {
         _showNavigatorAction(_quranPage)
-      },
-      child: Column(
-        children: <Widget>[
-          Icon(Icons.arrow_drop_up),
-        ],
-      ),
-    );
+      }, padding: new EdgeInsets.all(0.0),
+
+    ));
   }
 
   Widget _hideNavigatorButton(QuranPage _quranPage){
-    return FlatButton(
+    return Padding(
+        padding: const EdgeInsets.all(12.0),
+
+    child:  SizedBox(
+        height: 18.0,
+        width: 18.0,
+        child:IconButton(
+      icon: Icon(Icons.arrow_drop_down,color: Colors.black87),
       onPressed: () => {
         _hideNavigatorAction(_quranPage)
-      },
-      child: Column(
-        children: <Widget>[
-          Icon(Icons.arrow_drop_down),
-        ],
-      ),
-    );
+      },padding: new EdgeInsets.all(0.0)
+    )));
   }
 
   Widget _ayatInfo(QuranPage _quranPage) {
@@ -166,10 +168,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         children: <Widget>[
           Container(
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
                   color: Theme.of(context).accentColor),
               child: Padding(
                   padding: EdgeInsets.only(
-                      left: 16, top: 4, right: 16, bottom: 4),
+                      left: 16, top: 0, right: 16, bottom: 4),
                   child: Container(
                       child: Column(
                           mainAxisAlignment:
@@ -184,14 +187,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _fullNavigatorWidget(QuranPage _quranPage){
-    return FractionallySizedBox(
-      widthFactor: 0.72,
-      heightFactor: 0.5,
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
             Container(
                 decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
                     color: Theme.of(context).accentColor),
                 child: Padding(
                     padding: EdgeInsets.only(
@@ -202,11 +203,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             MainAxisAlignment.center,
                             children: <Widget>[
                               _hideNavigatorButton(_quranPage),
-                              _ayatInfo(_quranPage)
-                            ]))))
+                            ])))),
+          SizedBox(height: 50),
+        ]);
 
-          ])
-    );
   }
-
 }

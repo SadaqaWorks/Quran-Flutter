@@ -88,6 +88,6 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   QuranPage fetchQuranPage(int page) {
     return QuranPage(
-        page: page, imageUrl: 'assets/images/quran/image$page.png');
+        page: page, imageUrl: 'assets/images/quran/$page.png');
   }
 }

@@ -62,5 +62,13 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
         yield HomePageHideView(quranPage: currentState.quranPage);
       }
     }
+
+    if(event is HomePageShowNavigatorTapped){
+      yield HomePageShowNavigatorView(quranPage: event.quranPage);
+    }
+
+    if(event is HomePageHideNavigatorTapped){
+      yield HomePageHideView(quranPage: event.quranPage);
+    }
   }
 }

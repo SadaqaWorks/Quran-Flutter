@@ -10,6 +10,7 @@ abstract class NavigatorViewEvent {
 }
 
 class NavigatorViewCancelEvent extends NavigatorViewEvent {}
+
 class NavigatorViewSelectSuraEvent extends NavigatorViewEvent {
   final Sura sura;
 
@@ -18,6 +19,7 @@ class NavigatorViewSelectSuraEvent extends NavigatorViewEvent {
   @override
   List<Object> get props => [sura];
 }
+
 class NavigatorViewSelectPageEvent extends NavigatorViewEvent {
   final int pageNumber;
 
@@ -26,6 +28,7 @@ class NavigatorViewSelectPageEvent extends NavigatorViewEvent {
   @override
   List<Object> get props => [pageNumber];
 }
+
 class NavigatorViewSelectJuzzEvent extends NavigatorViewEvent {
   final int juzzNumber;
 
@@ -35,6 +38,4 @@ class NavigatorViewSelectJuzzEvent extends NavigatorViewEvent {
   List<Object> get props => [juzzNumber];
 }
 
-class NavigatorViewConfirmEvent extends NavigatorViewEvent {
-
-}
+class NavigatorViewConfirmEvent extends NavigatorViewEvent {}

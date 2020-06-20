@@ -9,9 +9,7 @@ abstract class NavigatorViewState {
   List<Object> get props => [];
 }
 
-class InitialNavigatorViewState extends NavigatorViewState {
-
-}
+class InitialNavigatorViewState extends NavigatorViewState {}
 
 class ShowSuraListNavigatorViewState extends NavigatorViewState {
   final List<Sura> suraList;
@@ -21,7 +19,6 @@ class ShowSuraListNavigatorViewState extends NavigatorViewState {
   @override
   List<Object> get props => [suraList];
 }
-
 
 class SuraSelectNavigatorViewState extends NavigatorViewState {
   final Sura sura;

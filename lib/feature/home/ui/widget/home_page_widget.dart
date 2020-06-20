@@ -183,32 +183,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _fullNavigatorWidget(QuranPage _quranPage) {
-
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
-                  color: Theme.of(context).accentColor),
-              child: Padding(
-                  padding:
-                      EdgeInsets.only(left: 16, top: 4, right: 16, bottom: 4),
-                  child: Container(
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            BlocProvider<NavigatorViewBloc>(
-                              create: (context) {
-                                return NavigatorViewBloc(ayahInfoService: RepositoryProvider.of<AyahInfoService>(context),
-                                    quranPageBloc: RepositoryProvider.of<QuranPageBloc>(context),homePageBloc: RepositoryProvider.of<HomePageBloc>(context));
-                              },
-                              //TODO:- add full widget here
-                              child: Container(),
-                            ),
-                        _hideNavigatorButton(_quranPage),
-                      ])))),
-          SizedBox(height: 50),
-        ]);
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+        Widget>[
+      Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+              color: Theme.of(context).accentColor),
+          child: Padding(
+              padding: EdgeInsets.only(left: 16, top: 4, right: 16, bottom: 4),
+              child: Container(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                    BlocProvider<NavigatorViewBloc>(
+                      create: (context) {
+                        return NavigatorViewBloc(
+                            ayahInfoService:
+                                RepositoryProvider.of<AyahInfoService>(context),
+                            quranPageBloc:
+                                RepositoryProvider.of<QuranPageBloc>(context),
+                            homePageBloc:
+                                RepositoryProvider.of<HomePageBloc>(context));
+                      },
+                      //TODO:- add full widget here
+                      child: Container(),
+                    ),
+                    _hideNavigatorButton(_quranPage),
+                  ])))),
+      SizedBox(height: 50),
+    ]);
   }
 }

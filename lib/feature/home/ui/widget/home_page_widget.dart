@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_reader/common/constant/constants.dart' as constants;
+import 'package:quran_reader/common/database/ayah_info_service.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/home/ui/widget/quran_page_widget.dart';
@@ -87,7 +88,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   Widget _ayatInfo(QuranPage _quranPage) {
     return Text(
-      "${_quranPage.quranPageInfoList.first.suraNumber}. (${_quranPage.quranPageInfoList.first.nameArabic}) ${_quranPage.quranPageInfoList.first.name} \n${S.of(context).page}: ${_quranPage.page}",
+      "${_quranPage.quranPageInfoList.first.suraNumber}. (${_quranPage.quranPageInfoList.first.nameArabic}) ${_quranPage.quranPageInfoList.first.name} \n${S.of(context).page}: ${_quranPage.pageNumber}",
       style: TextStyle(
         fontSize: 18.0,
         color: Colors.black,
@@ -110,8 +111,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             BlocProvider.of<QuranPageBloc>(context)
               ..add(JumpToPageEvent(pageNumber: newValue.toInt()));
           },
-          value: _quranPage.page.toDouble(),
-          label: _quranPage.page.toString(),
+          value: _quranPage.pageNumber.toDouble(),
+          label: _quranPage.pageNumber.toString(),
         ));
   }
 
@@ -133,17 +134,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                   if (state is QuranPageLoadedState) {
                     _quranPage = state.quranPage;
-                    _quranPage.page = _quranPage.page + 1;
+                    _quranPage.pageNumber = _quranPage.pageNumber + 1;
                   }
 
                   if (state is QuranPageJumpedToState) {
                     _quranPage = state.quranPage;
-                    _quranPage.page = _quranPage.page + 1;
+                    _quranPage.pageNumber = _quranPage.pageNumber + 1;
                   }
 
                   return BlocBuilder<HomePageBloc, HomePageState>(
                       builder: (context, state) {
-                    if (state is InitialNavigatorViewState) {
+                    if (state is InitialHomeViewState) {
                       return _initialNavigatorWidget(_quranPage);
                     } else {
                       return _fullNavigatorWidget(_quranPage);
@@ -182,6 +183,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _fullNavigatorWidget(QuranPage _quranPage) {
+
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -196,6 +198,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            BlocProvider<NavigatorViewBloc>(
+                              create: (context) {
+                                return NavigatorViewBloc(ayahInfoService: RepositoryProvider.of<AyahInfoService>(context),
+                                    quranPageBloc: RepositoryProvider.of<QuranPageBloc>(context),homePageBloc: RepositoryProvider.of<HomePageBloc>(context));
+                              },
+                              //TODO:- add full widget here
+                              child: Container(),
+                            ),
                         _hideNavigatorButton(_quranPage),
                       ])))),
           SizedBox(height: 50),

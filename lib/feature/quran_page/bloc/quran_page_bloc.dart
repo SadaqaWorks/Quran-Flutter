@@ -75,18 +75,18 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   Stream<QuranPageState> _mapJumpToPage(JumpToPageEvent event) async* {
     final _quranPage = fetchQuranPage(event.pageNumber);
     _quranPage.quranPageInfoList =
-        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.page);
+        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.pageNumber);
     yield QuranPageJumpedToState(quranPage: _quranPage);
   }
 
   Stream<QuranPageState> _mapLoadPage(LoadPageEvent event) async* {
     final _quranPage = fetchQuranPage(event.pageNumber);
     _quranPage.quranPageInfoList =
-        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.page);
+        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.pageNumber);
     yield QuranPageLoadedState(quranPage: _quranPage);
   }
 
   QuranPage fetchQuranPage(int page) {
-    return QuranPage(page: page, imageUrl: 'assets/images/quran/$page.png');
+    return QuranPage(pageNumber: page, imageUrl: 'assets/images/quran/$page.png');
   }
 }

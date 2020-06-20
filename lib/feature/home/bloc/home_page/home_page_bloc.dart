@@ -18,12 +18,12 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     _quranPageBlocSubscription = quranPageBloc.listen((state) {
       if (state is QuranPageLoadedState) {
         _quranPage = state.quranPage;
-        _quranPage.page = _quranPage.page + 1;
+        _quranPage.pageNumber = _quranPage.pageNumber + 1;
       }
 
       if (state is QuranPageJumpedToState) {
         _quranPage = state.quranPage;
-        _quranPage.page = _quranPage.page + 1;
+        _quranPage.pageNumber = _quranPage.pageNumber + 1;
       }
     });
   }
@@ -56,9 +56,9 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
 
     if (event is HomePageViewTappedEvent) {
       if (currentState is HideNavigatorViewState) {
-        yield InitialNavigatorViewState(quranPage: currentState.quranPage);
+        yield InitialHomeViewState(quranPage: currentState.quranPage);
       }
-      if (currentState is InitialNavigatorViewState) {
+      if (currentState is InitialHomeViewState) {
         yield HideNavigatorViewState(quranPage: currentState.quranPage);
       }
     }

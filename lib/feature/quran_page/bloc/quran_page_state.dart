@@ -1,8 +1,5 @@
-import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
-import 'package:quran_reader/feature/quran_page/model/models.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:meta/meta.dart';
-import 'package:equatable/equatable.dart';
+import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 abstract class QuranPageState {
   const QuranPageState();

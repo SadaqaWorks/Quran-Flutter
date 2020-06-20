@@ -10,18 +10,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
-    BlocProvider<QuranPageBloc>(
-    create: (context) {
-      return QuranPageBloc(
-          ayahInfoService: RepositoryProvider.of<AyahInfoService>(context));
-    },
-    ),
-      BlocProvider<HomePageBloc>(
+      BlocProvider<QuranPageBloc>(
         create: (context) {
-          return HomePageBloc(quranPageBloc: RepositoryProvider.of<QuranPageBloc>(context));
+          return QuranPageBloc(
+              ayahInfoService: RepositoryProvider.of<AyahInfoService>(context));
         },
       ),
-
+      BlocProvider<HomePageBloc>(
+        create: (context) {
+          return HomePageBloc(
+              quranPageBloc: RepositoryProvider.of<QuranPageBloc>(context));
+        },
+      ),
     ], child: HomePageWidget());
   }
 }

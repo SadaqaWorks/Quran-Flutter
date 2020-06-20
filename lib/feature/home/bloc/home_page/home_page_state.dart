@@ -1,17 +1,16 @@
-import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
-import 'package:quran_reader/feature/quran_page/model/models.dart';
-import 'package:rxdart/rxdart.dart';
-import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
+import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 @immutable
-abstract class HomePageState extends Equatable{
+abstract class HomePageState extends Equatable {
   const HomePageState();
+
   @override
   List<Object> get props => [];
 }
 
-class InitialNavigatorViewState  extends HomePageState {
+class InitialNavigatorViewState extends HomePageState {
   final QuranPage quranPage;
 
   InitialNavigatorViewState({@required this.quranPage});

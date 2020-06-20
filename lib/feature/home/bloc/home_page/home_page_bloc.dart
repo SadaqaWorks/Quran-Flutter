@@ -1,23 +1,21 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:meta/meta.dart';
-import 'package:equatable/equatable.dart';
-import 'home_page_state.dart';
+
 import 'home_page_event.dart';
+import 'home_page_state.dart';
 
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
-
   StreamSubscription _quranPageBlocSubscription;
   final QuranPageBloc quranPageBloc;
   QuranPage _quranPage;
 
   HomePageBloc({@required this.quranPageBloc}) : assert(quranPageBloc != null) {
     _quranPageBlocSubscription = quranPageBloc.listen((state) {
-
       if (state is QuranPageLoadedState) {
         _quranPage = state.quranPage;
         _quranPage.page = _quranPage.page + 1;
@@ -65,11 +63,11 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
       }
     }
 
-    if(event is HomePageShowNavigatorTappedEvent){
+    if (event is HomePageShowNavigatorTappedEvent) {
       yield ShowNavigatorViewState(quranPage: event.quranPage);
     }
 
-    if(event is HomePageHideNavigatorTappedEvent){
+    if (event is HomePageHideNavigatorTappedEvent) {
       yield HideNavigatorViewState(quranPage: event.quranPage);
     }
   }

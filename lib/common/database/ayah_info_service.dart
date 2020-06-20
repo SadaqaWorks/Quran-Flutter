@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:quran_reader/common/database/database_service.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/sura/model/models.dart';
-
 import 'package:sqflite/sqflite.dart';
 
 abstract class IAyahInfoService {

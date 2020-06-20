@@ -10,7 +10,6 @@ import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
 
-
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final AyahInfoService ayahInfoService;
 
@@ -88,7 +87,6 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   }
 
   QuranPage fetchQuranPage(int page) {
-    return QuranPage(
-        page: page, imageUrl: 'assets/images/quran/$page.png');
+    return QuranPage(page: page, imageUrl: 'assets/images/quran/$page.png');
   }
 }

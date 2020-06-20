@@ -51,43 +51,38 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   //Action
-  void _showNavigatorAction(QuranPage _quranPage){
+  void _showNavigatorAction(QuranPage _quranPage) {
     BlocProvider.of<HomePageBloc>(context)
         .add(HomePageShowNavigatorTappedEvent(quranPage: _quranPage));
   }
 
-  void _hideNavigatorAction(QuranPage _quranPage){
+  void _hideNavigatorAction(QuranPage _quranPage) {
     BlocProvider.of<HomePageBloc>(context)
         .add(HomePageHideNavigatorTappedEvent(quranPage: _quranPage));
   }
 
   //Widget
-  Widget _showNavigatorButton(QuranPage _quranPage){
+  Widget _showNavigatorButton(QuranPage _quranPage) {
     return SizedBox(
         height: 18.0,
         width: 18.0,
         child: IconButton(
-      icon: Icon(Icons.arrow_drop_up,color: Colors.black87),
-      onPressed: () => {
-        _showNavigatorAction(_quranPage)
-      }, padding: new EdgeInsets.all(0.0),
-
-    ));
+          icon: Icon(Icons.arrow_drop_up, color: Colors.black87),
+          onPressed: () => {_showNavigatorAction(_quranPage)},
+          padding: new EdgeInsets.all(0.0),
+        ));
   }
 
-  Widget _hideNavigatorButton(QuranPage _quranPage){
+  Widget _hideNavigatorButton(QuranPage _quranPage) {
     return Padding(
         padding: const EdgeInsets.all(12.0),
-
-    child:  SizedBox(
-        height: 18.0,
-        width: 18.0,
-        child:IconButton(
-      icon: Icon(Icons.arrow_drop_down,color: Colors.black87),
-      onPressed: () => {
-        _hideNavigatorAction(_quranPage)
-      },padding: new EdgeInsets.all(0.0)
-    )));
+        child: SizedBox(
+            height: 18.0,
+            width: 18.0,
+            child: IconButton(
+                icon: Icon(Icons.arrow_drop_down, color: Colors.black87),
+                onPressed: () => {_hideNavigatorAction(_quranPage)},
+                padding: new EdgeInsets.all(0.0))));
   }
 
   Widget _ayatInfo(QuranPage _quranPage) {
@@ -131,8 +126,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             right: 0,
             child: Container(
               child: BlocBuilder<QuranPageBloc, QuranPageState>(
-                builder: (context, state) {
-                if (state is QuranPageLoadedState || state is QuranPageJumpedToState) {
+                  builder: (context, state) {
+                if (state is QuranPageLoadedState ||
+                    state is QuranPageJumpedToState) {
                   QuranPage _quranPage;
 
                   if (state is QuranPageLoadedState) {
@@ -145,14 +141,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     _quranPage.page = _quranPage.page + 1;
                   }
 
-                return BlocBuilder<HomePageBloc, HomePageState>(
+                  return BlocBuilder<HomePageBloc, HomePageState>(
                       builder: (context, state) {
-                        if (state is InitialNavigatorViewState) {
-                          return _initialNavigatorWidget(_quranPage);
-                        } else {
-                          return _fullNavigatorWidget(_quranPage);
-                        }
-                      });
+                    if (state is InitialNavigatorViewState) {
+                      return _initialNavigatorWidget(_quranPage);
+                    } else {
+                      return _fullNavigatorWidget(_quranPage);
+                    }
+                  });
                 }
 
                 return Container(color: Theme.of(context).accentColor);
@@ -162,50 +158,47 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 
-  Widget _initialNavigatorWidget(QuranPage _quranPage){
+  Widget _initialNavigatorWidget(QuranPage _quranPage) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(8)),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
                   color: Theme.of(context).accentColor),
               child: Padding(
-                  padding: EdgeInsets.only(
-                      left: 16, top: 0, right: 16, bottom: 4),
+                  padding:
+                      EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
                   child: Container(
                       child: Column(
-                          mainAxisAlignment:
-                          MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            _showNavigatorButton(_quranPage),
-                            _ayatInfo(_quranPage)
-                          ])))),
+                        _showNavigatorButton(_quranPage),
+                        _ayatInfo(_quranPage)
+                      ])))),
           SizedBox(height: 10),
           _bottomSlider(_quranPage)
         ]);
   }
 
-  Widget _fullNavigatorWidget(QuranPage _quranPage){
+  Widget _fullNavigatorWidget(QuranPage _quranPage) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-            Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
-                    color: Theme.of(context).accentColor),
-                child: Padding(
-                    padding: EdgeInsets.only(
-                        left: 16, top: 4, right: 16, bottom: 4),
-                    child: Container(
-                        child: Column(
-                            mainAxisAlignment:
-                            MainAxisAlignment.center,
-                            children: <Widget>[
-                              _hideNavigatorButton(_quranPage),
-                            ])))),
+          Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  color: Theme.of(context).accentColor),
+              child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, top: 4, right: 16, bottom: 4),
+                  child: Container(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                        _hideNavigatorButton(_quranPage),
+                      ])))),
           SizedBox(height: 50),
         ]);
-
   }
 }

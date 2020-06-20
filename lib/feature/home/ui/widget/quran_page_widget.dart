@@ -27,7 +27,8 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   }
 
   _onPageViewChange(int page) {
-    BlocProvider.of<QuranPageBloc>(context).add(LoadPageEvent(pageNumber: page));
+    BlocProvider.of<QuranPageBloc>(context)
+        .add(LoadPageEvent(pageNumber: page));
   }
 
   @override

@@ -10,6 +10,7 @@ import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
 
+
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final AyahInfoService ayahInfoService;
 
@@ -19,7 +20,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   QuranPageState get initialState {
     return super.initialState ??
-        QuranPageJumpedTo(
+        QuranPageJumpedToState(
             quranPage: fetchQuranPage(constants.start_quran_page_number));
   }
 
@@ -28,7 +29,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     try {
       final quranPage =
           QuranPage.fromJson(Map<String, dynamic>.from(json['value']));
-      return QuranPageJumpedTo(quranPage: quranPage);
+      return QuranPageJumpedToState(quranPage: quranPage);
     } catch (exception) {
       return null;
     }
@@ -47,11 +48,11 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
-    if (event is JumpToPage) {
+    if (event is JumpToPageEvent) {
       yield* _mapJumpToPage(event);
     }
 
-    if (event is LoadPage) {
+    if (event is LoadPageEvent) {
       yield* _mapLoadPage(event);
     }
   }
@@ -59,10 +60,10 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   Map<String, Map<String, dynamic>> toJson(QuranPageState state) {
     try {
-      if (state is QuranPageLoaded) {
+      if (state is QuranPageLoadedState) {
         return {'value': state.quranPage.toJson()};
       }
-      if (state is QuranPageJumpedTo) {
+      if (state is QuranPageJumpedToState) {
         return {'value': state.quranPage.toJson()};
       } else {
         return null;
@@ -72,18 +73,18 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     }
   }
 
-  Stream<QuranPageState> _mapJumpToPage(JumpToPage event) async* {
+  Stream<QuranPageState> _mapJumpToPage(JumpToPageEvent event) async* {
     final _quranPage = fetchQuranPage(event.pageNumber);
     _quranPage.quranPageInfoList =
-        await ayahInfoService.getQuranPageInfo(pageNumber: _quranPage.page);
-    yield QuranPageJumpedTo(quranPage: _quranPage);
+        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.page);
+    yield QuranPageJumpedToState(quranPage: _quranPage);
   }
 
-  Stream<QuranPageState> _mapLoadPage(LoadPage event) async* {
+  Stream<QuranPageState> _mapLoadPage(LoadPageEvent event) async* {
     final _quranPage = fetchQuranPage(event.pageNumber);
     _quranPage.quranPageInfoList =
-        await ayahInfoService.getQuranPageInfo(pageNumber: _quranPage.page);
-    yield QuranPageLoaded(quranPage: _quranPage);
+        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.page);
+    yield QuranPageLoadedState(quranPage: _quranPage);
   }
 
   QuranPage fetchQuranPage(int page) {

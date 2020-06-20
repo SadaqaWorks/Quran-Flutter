@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:meta/meta.dart';
+import 'package:equatable/equatable.dart';
+import 'home_page_state.dart';
+import 'home_page_event.dart';
 
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
 
@@ -16,12 +18,12 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   HomePageBloc({@required this.quranPageBloc}) : assert(quranPageBloc != null) {
     _quranPageBlocSubscription = quranPageBloc.listen((state) {
 
-      if (state is QuranPageLoaded) {
+      if (state is QuranPageLoadedState) {
         _quranPage = state.quranPage;
         _quranPage.page = _quranPage.page + 1;
       }
 
-      if (state is QuranPageJumpedTo) {
+      if (state is QuranPageJumpedToState) {
         _quranPage = state.quranPage;
         _quranPage.page = _quranPage.page + 1;
       }
@@ -30,7 +32,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
 
   @override
   HomePageState get initialState {
-    return HomePageHideView(quranPage: _quranPage);
+    return HideNavigatorViewState(quranPage: _quranPage);
   }
 
   @override
@@ -54,21 +56,21 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   Stream<HomePageState> mapEventToState(HomePageEvent event) async* {
     final HomePageState currentState = state;
 
-    if (event is HomePageViewTapped) {
-      if (currentState is HomePageHideView) {
-        yield HomePageShowNavigatorInitialView(quranPage: currentState.quranPage);
+    if (event is HomePageViewTappedEvent) {
+      if (currentState is HideNavigatorViewState) {
+        yield InitialNavigatorViewState(quranPage: currentState.quranPage);
       }
-      if (currentState is HomePageShowNavigatorInitialView) {
-        yield HomePageHideView(quranPage: currentState.quranPage);
+      if (currentState is InitialNavigatorViewState) {
+        yield HideNavigatorViewState(quranPage: currentState.quranPage);
       }
     }
 
-    if(event is HomePageShowNavigatorTapped){
-      yield HomePageShowNavigatorView(quranPage: event.quranPage);
+    if(event is HomePageShowNavigatorTappedEvent){
+      yield ShowNavigatorViewState(quranPage: event.quranPage);
     }
 
-    if(event is HomePageHideNavigatorTapped){
-      yield HomePageHideView(quranPage: event.quranPage);
+    if(event is HomePageHideNavigatorTappedEvent){
+      yield HideNavigatorViewState(quranPage: event.quranPage);
     }
   }
 }

@@ -40,7 +40,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           return SafeArea(
             child: Scaffold(body: BlocBuilder<HomePageBloc, HomePageState>(
                 builder: (context, state) {
-              if (state is HomePageHideView) {
+              if (state is HideNavigatorViewState) {
                 return QuranPageWidget();
               } else {
                 return _overlayView();
@@ -53,12 +53,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   //Action
   void _showNavigatorAction(QuranPage _quranPage){
     BlocProvider.of<HomePageBloc>(context)
-        .add(HomePageShowNavigatorTapped(quranPage: _quranPage));
+        .add(HomePageShowNavigatorTappedEvent(quranPage: _quranPage));
   }
 
   void _hideNavigatorAction(QuranPage _quranPage){
     BlocProvider.of<HomePageBloc>(context)
-        .add(HomePageHideNavigatorTapped(quranPage: _quranPage));
+        .add(HomePageHideNavigatorTappedEvent(quranPage: _quranPage));
   }
 
   //Widget
@@ -113,7 +113,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           max: constants.end_quran_page_number.toDouble(),
           onChanged: (newValue) {
             BlocProvider.of<QuranPageBloc>(context)
-              ..add(JumpToPage(pageNumber: newValue.toInt()));
+              ..add(JumpToPageEvent(pageNumber: newValue.toInt()));
           },
           value: _quranPage.page.toDouble(),
           label: _quranPage.page.toString(),
@@ -132,22 +132,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             child: Container(
               child: BlocBuilder<QuranPageBloc, QuranPageState>(
                 builder: (context, state) {
-                if (state is QuranPageLoaded || state is QuranPageJumpedTo) {
+                if (state is QuranPageLoadedState || state is QuranPageJumpedToState) {
                   QuranPage _quranPage;
 
-                  if (state is QuranPageLoaded) {
+                  if (state is QuranPageLoadedState) {
                     _quranPage = state.quranPage;
                     _quranPage.page = _quranPage.page + 1;
                   }
 
-                  if (state is QuranPageJumpedTo) {
+                  if (state is QuranPageJumpedToState) {
                     _quranPage = state.quranPage;
                     _quranPage.page = _quranPage.page + 1;
                   }
 
                 return BlocBuilder<HomePageBloc, HomePageState>(
                       builder: (context, state) {
-                        if (state is HomePageShowNavigatorInitialView) {
+                        if (state is InitialNavigatorViewState) {
                           return _initialNavigatorWidget(_quranPage);
                         } else {
                           return _fullNavigatorWidget(_quranPage);

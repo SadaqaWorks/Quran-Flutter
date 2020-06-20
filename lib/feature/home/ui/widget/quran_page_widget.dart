@@ -27,15 +27,15 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   }
 
   _onPageViewChange(int page) {
-    BlocProvider.of<QuranPageBloc>(context).add(LoadPage(pageNumber: page));
+    BlocProvider.of<QuranPageBloc>(context).add(LoadPageEvent(pageNumber: page));
   }
 
   @override
   Widget build(BuildContext context) {
     if (BlocProvider.of<QuranPageBloc>(context).initialState
-        is QuranPageJumpedTo) {
+        is QuranPageJumpedToState) {
       final initialPage = (BlocProvider.of<QuranPageBloc>(context).initialState
-              as QuranPageJumpedTo)
+              as QuranPageJumpedToState)
           .quranPage
           .page;
       _controller = PageController(initialPage: initialPage);
@@ -49,7 +49,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
             (AllowMultipleGestureRecognizer instance) {
               instance.onTap = () => {
                     BlocProvider.of<HomePageBloc>(context)
-                        .add(HomePageViewTapped())
+                        .add(HomePageViewTappedEvent())
                   };
             },
           )
@@ -58,7 +58,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         //Parent Container
         child: BlocListener<QuranPageBloc, QuranPageState>(
             listener: (context, state) {
-              if (state is QuranPageJumpedTo) {
+              if (state is QuranPageJumpedToState) {
                 _controller.animateToPage(state.quranPage.page,
                     duration: Duration(milliseconds: 300),
                     curve: Curves.linear);

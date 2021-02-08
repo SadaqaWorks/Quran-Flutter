@@ -2,7 +2,15 @@ import 'package:meta/meta.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 abstract class QuranPageState {
-  const QuranPageState();
+  final QuranPage quranPage;
+
+  const QuranPageState({@required this.quranPage});
+
+  @override
+  List<Object> get props => [quranPage];
+
+  @override
+  String toString() => 'QuranPageLoaded { page: ${quranPage.pageNumber} }';
 }
 
 class InitialQuranPageState extends QuranPageState {

@@ -19,10 +19,8 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       {@required this.ayahInfoService,
       @required this.quranPageBloc,
       @required this.homePageBloc})
-      : assert(ayahInfoService != null);
+      : assert(ayahInfoService != null) , super(InitialNavigatorViewState());
 
-  @override
-  NavigatorViewState get initialState => InitialNavigatorViewState();
 
   @override
   Stream<NavigatorViewState> mapEventToState(NavigatorViewEvent event) async* {

@@ -33,9 +33,9 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (BlocProvider.of<QuranPageBloc>(context).initialState
+    if (BlocProvider.of<QuranPageBloc>(context).state
         is QuranPageJumpedToState) {
-      final initialPage = (BlocProvider.of<QuranPageBloc>(context).initialState
+      final initialPage = (BlocProvider.of<QuranPageBloc>(context).state
               as QuranPageJumpedToState)
           .quranPage
           .pageNumber;

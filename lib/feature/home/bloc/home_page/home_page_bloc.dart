@@ -14,7 +14,9 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   final QuranPageBloc quranPageBloc;
   QuranPage _quranPage;
 
-  HomePageBloc({@required this.quranPageBloc}) : assert(quranPageBloc != null) {
+  HomePageBloc({@required this.quranPageBloc}) : assert(quranPageBloc != null) ,
+        super(HideNavigatorViewState(quranPage: quranPageBloc.state.quranPage)) {
+
     _quranPageBlocSubscription = quranPageBloc.listen((state) {
       if (state is QuranPageLoadedState) {
         _quranPage = state.quranPage;
@@ -28,10 +30,6 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     });
   }
 
-  @override
-  HomePageState get initialState {
-    return HideNavigatorViewState(quranPage: _quranPage);
-  }
 
   @override
   Future<void> close() {

@@ -9,7 +9,7 @@ void main() => start();
 
 void start() async {
   WidgetsFlutterBinding.ensureInitialized();
-  BlocSupervisor.delegate = await HydratedBlocDelegate.build();
+  HydratedBloc.storage = await HydratedStorage.build();
 
   final ayahInfoService = await AyahInfoService.create();
 

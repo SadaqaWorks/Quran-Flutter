@@ -5,6 +5,7 @@ import 'package:quran_reader/common/constant/constants.dart' as constants;
 import 'package:quran_reader/common/database/ayah_info_service.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
+import 'package:quran_reader/feature/home/bloc/navigator/navigator_widget.dart';
 import 'package:quran_reader/feature/home/ui/widget/quran_page_widget.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
@@ -205,10 +206,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             homePageBloc:
                                 RepositoryProvider.of<HomePageBloc>(context));
                       },
-                      //TODO:- add full widget here
-                      child: Container(),
+                      child: NavigatorWidget(),
                     ),
-                    _hideNavigatorButton(_quranPage),
+                        SizedBox(height: 20),
+                        _hideNavigatorButton(_quranPage),
                   ])))),
       SizedBox(height: 50),
     ]);

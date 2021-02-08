@@ -52,21 +52,37 @@ class _MyAppState extends State<App> {
             ],
             child: BlocBuilder<AppConfigBloc, AppConfigState>(
                 builder: (BuildContext context, AppConfigState appConfigState) {
-              return MaterialApp(
-                debugShowCheckedModeBanner: false,
-                localizationsDelegates: [
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                  DefaultCupertinoLocalizations.delegate,
-                  S.delegate
-                ],
-                locale: appConfigState.locale,
-                title: 'Quran',
-                theme: appConfigState.theme,
-                onGenerateRoute: RouteGenerator.generateRoute,
-                initialRoute: Routes.home,
-              );
+                  if(appConfigState is AppConfigStateStarted) {
+                    return MaterialApp(
+                      debugShowCheckedModeBanner: false,
+                      localizationsDelegates: [
+                        GlobalMaterialLocalizations.delegate,
+                        GlobalWidgetsLocalizations.delegate,
+                        GlobalCupertinoLocalizations.delegate,
+                        DefaultCupertinoLocalizations.delegate,
+                        S.delegate
+                      ],
+                      locale: appConfigState.locale,
+                      title: 'Quran',
+                      theme: appConfigState.theme,
+                      onGenerateRoute: RouteGenerator.generateRoute,
+                      initialRoute: Routes.home,
+                    );
+                  }
+
+                  return  MaterialApp(
+                    debugShowCheckedModeBanner: false,
+                    localizationsDelegates: [
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                      DefaultCupertinoLocalizations.delegate,
+                      S.delegate
+                    ],
+                    title: 'Quran',
+                    onGenerateRoute: RouteGenerator.generateRoute,
+                    initialRoute: Routes.home,
+                  );
             })));
   }
 }

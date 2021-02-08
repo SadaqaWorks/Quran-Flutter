@@ -6,6 +6,11 @@ abstract class QuranPageEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class QuranPageStartEvent extends QuranPageEvent {
+
+
+}
+
 class LoadPageEvent extends QuranPageEvent {
   final int pageNumber;
 

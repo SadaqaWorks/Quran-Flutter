@@ -14,14 +14,16 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final AyahInfoService ayahInfoService;
 
   QuranPageBloc({@required this.ayahInfoService})
-      : assert(ayahInfoService != null);
-
-  @override
-  QuranPageState get initialState {
-    return super.initialState ??
-        QuranPageJumpedToState(
-            quranPage: fetchQuranPage(constants.start_quran_page_number));
+      : assert(ayahInfoService != null) , super(InitialQuranPageState()){
+      add(QuranPageStartEvent());
   }
+
+  // @override
+  // QuranPageState get initialState {
+  //   return super.initialState ??
+  //       QuranPageJumpedToState(
+  //           quranPage: fetchQuranPage(constants.start_quran_page_number));
+  // }
 
   @override
   QuranPageState fromJson(Map<String, dynamic> json) {
@@ -47,6 +49,12 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
+
+
+    if (event is QuranPageStartEvent) {
+      yield* _mapStartPage(event);
+    }
+
     if (event is JumpToPageEvent) {
       yield* _mapJumpToPage(event);
     }
@@ -70,6 +78,10 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
     } catch (exception) {
       return null;
     }
+  }
+
+  Stream<QuranPageState> _mapStartPage(QuranPageStartEvent event) async* {
+    yield QuranPageJumpedToState(quranPage: fetchQuranPage(constants.start_quran_page_number));
   }
 
   Stream<QuranPageState> _mapJumpToPage(JumpToPageEvent event) async* {

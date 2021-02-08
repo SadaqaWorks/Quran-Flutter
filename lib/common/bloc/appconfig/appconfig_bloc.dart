@@ -8,15 +8,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import './bloc.dart';
 
 class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
-  AppConfigBloc() {
+  AppConfigBloc() : super(AppConfigStateInitial()) {
     add(AppStarted());
   }
 
-  @override
-  AppConfigState get initialState {
-    return AppConfigState(
-        theme: _buildDefaultTheme(), locale: const Locale('en'));
-  }
+  // @override
+  // AppConfigState get initialState {
+  //   return AppConfigState(
+  //       theme: _buildDefaultTheme(), locale: const Locale('en'));
+  // }
 
   @override
   Stream<AppConfigState> mapEventToState(
@@ -37,11 +37,11 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
   Stream<AppConfigState> _mapAppStarted() async* {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (!prefs.containsKey(constants.Locale.locale)) {
-      yield AppConfigState(
+      yield AppConfigStateStarted(
           theme: _buildDefaultTheme(),
           locale: const Locale(constants.Locale.en));
     } else {
-      yield AppConfigState(
+      yield AppConfigStateStarted(
           theme: _buildDefaultTheme(),
           locale: Locale(prefs.getString(constants.Locale.locale)));
     }
@@ -53,14 +53,14 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
       case LanguageType.bangla:
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString(constants.Locale.locale, constants.Locale.bn);
-        appConfigState = AppConfigState(
-            theme: state.theme, locale: const Locale(constants.Locale.bn));
+        appConfigState = AppConfigStateStarted(
+            theme: (state as AppConfigStateStarted).theme, locale: const Locale(constants.Locale.bn));
         break;
       case LanguageType.english:
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString(constants.Locale.locale, constants.Locale.en);
-        appConfigState = AppConfigState(
-            theme: state.theme, locale: const Locale(constants.Locale.en));
+        appConfigState = AppConfigStateStarted(
+            theme: (state as AppConfigStateStarted).theme, locale: const Locale(constants.Locale.en));
         break;
     }
 
@@ -73,7 +73,7 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
     switch (changedTheme) {
       case ThemeType.normal:
         appConfigState =
-            AppConfigState(theme: _buildDefaultTheme(), locale: state.locale);
+            AppConfigStateStarted(theme: _buildDefaultTheme(), locale: (state as AppConfigStateStarted).locale);
         break;
     }
     yield appConfigState;

@@ -18,6 +18,10 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
+
+  int _sliderValue = 1;
+
+
   @override
   void dispose() {
     if (Device.get().isIos || Device.get().isAndroid) {
@@ -109,11 +113,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           min: constants.start_quran_page_number.toDouble(),
           max: constants.end_quran_page_number.toDouble(),
           onChanged: (newValue) {
+            setState(() {
+              _sliderValue = newValue.round();
+            });
             BlocProvider.of<QuranPageBloc>(context)
               ..add(JumpToPageEvent(pageNumber: newValue.toInt()));
           },
           value: _quranPage.pageNumber.toDouble(),
           label: _quranPage.pageNumber.toString(),
+
         ));
   }
 
@@ -143,6 +151,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     _quranPage.pageNumber = _quranPage.pageNumber + 1;
                   }
 
+
                   return BlocBuilder<HomePageBloc, HomePageState>(
                       builder: (context, state) {
                     if (state is InitialHomeViewState) {
@@ -151,6 +160,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       return _fullNavigatorWidget(_quranPage);
                     }
                   });
+
                 }
 
                 return Container(color: Theme.of(context).accentColor);

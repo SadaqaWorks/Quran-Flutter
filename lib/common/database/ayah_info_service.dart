@@ -7,11 +7,11 @@ import 'package:sqflite/sqflite.dart';
 
 abstract class IAyahInfoService {
   Future<List<QuranPageInfo>> getQuranPageInfoList({
-    int pageNumber,
+    int? pageNumber,
   });
 
   Future<QuranPageInfo> getQuranPageInfo({
-    int suraNumber,
+    int? suraNumber,
   });
 
   Future<List<Sura>> getSuraList();
@@ -20,7 +20,7 @@ abstract class IAyahInfoService {
 }
 
 class AyahInfoService extends DatabaseService implements IAyahInfoService {
-  Database ayahInfoDatabase;
+  Database? ayahInfoDatabase;
 
   AyahInfoService._create();
 
@@ -43,7 +43,7 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
   Future initDatabase() async {
     if (ayahInfoDatabase == null) {
       if (ayahInfoDatabase?.isOpen == true) {
-        ayahInfoDatabase.close();
+        ayahInfoDatabase!.close();
         ayahInfoDatabase = null;
         await Future.delayed(Duration(microseconds: 50));
       }
@@ -56,7 +56,7 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
   }
 
   Future<List<QuranPageInfo>> getQuranPageInfoList({
-    int pageNumber,
+    int? pageNumber,
   }) async {
     if (ayahInfoDatabase == null) {
       await initDatabase();
@@ -66,21 +66,25 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
       return [];
     }
 
-    List<Map> maps = await ayahInfoDatabase.rawQuery(
+    List<Map> maps = await ayahInfoDatabase!.rawQuery(
         "select glyphs.ayah_number,glyphs.page_number, glyphs.sura_number,sura.sura_number,sura.name_arabic,sura.name_english as name,sura.type  from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where page_number =  $pageNumber");
-    return maps.map((e) => QuranPageInfo.fromJson(e)).toList();
+    return maps
+        .map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   Future<QuranPageInfo> getQuranPageInfo({
-    int suraNumber,
+    int? suraNumber,
   }) async {
     if (ayahInfoDatabase == null) {
       await initDatabase();
     }
 
-    List<Map> maps = await ayahInfoDatabase.rawQuery(
+    List<Map> maps = await ayahInfoDatabase!.rawQuery(
         "select glyphs.ayah_number,glyphs.page_number, glyphs.sura_number,sura.sura_number,sura.name_arabic,sura.name_english as name,sura.type  from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where glyphs.sura_number =  $suraNumber limit 1");
-    return maps.map((e) => QuranPageInfo.fromJson(e)).first;
+    return maps
+        .map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>))
+        .first;
   }
 
   Future<List<Sura>> getSuraList() async {
@@ -92,9 +96,9 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
       return [];
     }
 
-    List<Map> maps = await ayahInfoDatabase.rawQuery(
+    List<Map> maps = await ayahInfoDatabase!.rawQuery(
         "select sura.sura_number,sura.name_arabic, sura.name_english as name from sura");
-    return maps.map((e) => Sura.fromJson(e)).toList();
+    return maps.map((e) => Sura.fromJson(e as Map<String, dynamic>)).toList();
   }
 
   void dispose() {

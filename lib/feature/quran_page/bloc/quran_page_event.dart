@@ -1,30 +1,26 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 abstract class QuranPageEvent extends Equatable {
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
-class QuranPageStartEvent extends QuranPageEvent {
-
-
-}
+class QuranPageStartEvent extends QuranPageEvent {}
 
 class LoadPageEvent extends QuranPageEvent {
   final int pageNumber;
 
-  LoadPageEvent({@required this.pageNumber});
+  LoadPageEvent({required this.pageNumber});
 
   @override
   List<Object> get props => [pageNumber];
 }
 
 class JumpToPageEvent extends QuranPageEvent {
-  final int pageNumber;
+  final int? pageNumber;
 
-  JumpToPageEvent({@required this.pageNumber});
+  JumpToPageEvent({required this.pageNumber});
 
   @override
-  List<Object> get props => [pageNumber];
+  List<Object?> get props => [pageNumber];
 }

@@ -10,7 +10,7 @@ import 'package:quran_reader/common/routes/routes.dart';
 import 'package:quran_reader/generated/l10n.dart';
 
 class App extends StatefulWidget {
-  App({Key key, @required this.ayahInfoService}) : super(key: key);
+  App({Key? key, required this.ayahInfoService}) : super(key: key);
 
   final AyahInfoService ayahInfoService;
 
@@ -21,7 +21,7 @@ class App extends StatefulWidget {
 }
 
 class _MyAppState extends State<App> {
-  _MyAppState({@required this.ayahInfoService});
+  _MyAppState({required this.ayahInfoService});
 
   final AyahInfoService ayahInfoService;
 
@@ -52,37 +52,37 @@ class _MyAppState extends State<App> {
             ],
             child: BlocBuilder<AppConfigBloc, AppConfigState>(
                 builder: (BuildContext context, AppConfigState appConfigState) {
-                  if(appConfigState is AppConfigStateStarted) {
-                    return MaterialApp(
-                      debugShowCheckedModeBanner: false,
-                      localizationsDelegates: [
-                        GlobalMaterialLocalizations.delegate,
-                        GlobalWidgetsLocalizations.delegate,
-                        GlobalCupertinoLocalizations.delegate,
-                        DefaultCupertinoLocalizations.delegate,
-                        S.delegate
-                      ],
-                      locale: appConfigState.locale,
-                      title: 'Quran',
-                      theme: appConfigState.theme,
-                      onGenerateRoute: RouteGenerator.generateRoute,
-                      initialRoute: Routes.home,
-                    );
-                  }
+              if (appConfigState is AppConfigStateStarted) {
+                return MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  localizationsDelegates: [
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                    DefaultCupertinoLocalizations.delegate,
+                    S.delegate
+                  ],
+                  locale: appConfigState.locale,
+                  title: 'Quran',
+                  theme: appConfigState.theme,
+                  onGenerateRoute: RouteGenerator.generateRoute,
+                  initialRoute: Routes.home,
+                );
+              }
 
-                  return  MaterialApp(
-                    debugShowCheckedModeBanner: false,
-                    localizationsDelegates: [
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                      DefaultCupertinoLocalizations.delegate,
-                      S.delegate
-                    ],
-                    title: 'Quran',
-                    onGenerateRoute: RouteGenerator.generateRoute,
-                    initialRoute: Routes.home,
-                  );
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                localizationsDelegates: [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  DefaultCupertinoLocalizations.delegate,
+                  S.delegate
+                ],
+                title: 'Quran',
+                onGenerateRoute: RouteGenerator.generateRoute,
+                initialRoute: Routes.home,
+              );
             })));
   }
 }

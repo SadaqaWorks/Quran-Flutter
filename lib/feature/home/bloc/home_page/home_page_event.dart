@@ -7,7 +7,7 @@ abstract class HomePageEvent extends Equatable {
   const HomePageEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class HomePageViewTappedEvent extends HomePageEvent {}
@@ -15,17 +15,17 @@ class HomePageViewTappedEvent extends HomePageEvent {}
 class HomePageShowNavigatorTappedEvent extends HomePageEvent {
   final QuranPage quranPage;
 
-  HomePageShowNavigatorTappedEvent({@required this.quranPage});
+  HomePageShowNavigatorTappedEvent({required this.quranPage});
 
   @override
   List<Object> get props => [quranPage];
 }
 
 class HomePageHideNavigatorTappedEvent extends HomePageEvent {
-  final QuranPage quranPage;
+  final QuranPage? quranPage;
 
-  HomePageHideNavigatorTappedEvent({@required this.quranPage});
+  HomePageHideNavigatorTappedEvent({required this.quranPage});
 
   @override
-  List<Object> get props => [quranPage];
+  List<Object?> get props => [quranPage];
 }

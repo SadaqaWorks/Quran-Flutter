@@ -5,19 +5,17 @@ import 'package:meta/meta.dart';
 part 'sura.g.dart';
 
 class Sura extends Equatable {
-  int suraNumber;
-  final String nameArabic;
-  final String name;
+  int? suraNumber;
+  final String? nameArabic;
+  final String? name;
 
   @required
   Sura(
-      {@required this.suraNumber,
-      @required this.nameArabic,
-      @required this.name});
+      {required this.suraNumber, required this.nameArabic, required this.name});
 
   //Equatable
   @override
-  List<Object> get props => [suraNumber, nameArabic, name];
+  List<Object?> get props => [suraNumber, nameArabic, name];
 
   //json encoding decoding
   factory Sura.fromJson(Map<String, dynamic> json) => _$SuraFromJson(json);

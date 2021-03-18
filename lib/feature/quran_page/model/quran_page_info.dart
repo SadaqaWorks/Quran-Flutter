@@ -4,17 +4,17 @@ import 'package:meta/meta.dart';
 part 'quran_page_info.g.dart';
 
 class QuranPageInfo extends Equatable {
-  final int pageNumber;
-  final int lineNumber;
-  final int suraNumber;
-  final int ayahNumber;
-  final int position;
-  final int minX;
-  final int minY;
-  final int maxX;
-  final int maxY;
-  final String name;
-  final String nameArabic;
+  final int? pageNumber;
+  final int? lineNumber;
+  final int? suraNumber;
+  final int? ayahNumber;
+  final int? position;
+  final int? minX;
+  final int? minY;
+  final int? maxX;
+  final int? maxY;
+  final String? name;
+  final String? nameArabic;
 
   @required
   QuranPageInfo(
@@ -32,7 +32,7 @@ class QuranPageInfo extends Equatable {
 
   // Equatable
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         pageNumber,
         lineNumber,
         suraNumber,

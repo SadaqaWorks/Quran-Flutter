@@ -43,12 +43,12 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
     } else {
       yield AppConfigStateStarted(
           theme: _buildDefaultTheme(),
-          locale: Locale(prefs.getString(constants.Locale.locale)));
+          locale: Locale(prefs.getString(constants.Locale.locale)!));
     }
   }
 
   Stream<AppConfigState> _mapLanguageChanged(LanguageType languageType) async* {
-    AppConfigState appConfigState;
+    AppConfigState? appConfigState;
     switch (languageType) {
       case LanguageType.bangla:
         final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -68,7 +68,7 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
   }
 
   Stream<AppConfigState> _mapThemeChanged(ThemeType changedTheme) async* {
-    AppConfigState appConfigState;
+    AppConfigState? appConfigState;
 
     switch (changedTheme) {
       case ThemeType.normal:
@@ -81,7 +81,7 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
 
   TextTheme _buildTextTheme(TextTheme base) {
     return base.copyWith(
-      subtitle1: base.subtitle1.copyWith(
+      subtitle1: base.subtitle1!.copyWith(
         fontFamily: 'GoogleSans',
       ),
     );

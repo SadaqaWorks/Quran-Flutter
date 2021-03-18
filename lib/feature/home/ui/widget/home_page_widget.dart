@@ -18,13 +18,11 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-
   int _sliderValue = 1;
-
 
   @override
   void dispose() {
-    if (Device.get().isIos || Device.get().isAndroid) {
+    if (Device.get().isIos! || Device.get().isAndroid!) {
       Wakelock.disable();
     }
     super.dispose();
@@ -33,7 +31,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (Device.get().isIos || Device.get().isAndroid) {
+    if (Device.get().isIos! || Device.get().isAndroid!) {
       Wakelock.enable();
     }
   }
@@ -62,7 +60,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         .add(HomePageShowNavigatorTappedEvent(quranPage: _quranPage));
   }
 
-  void _hideNavigatorAction(QuranPage _quranPage) {
+  void _hideNavigatorAction(QuranPage? _quranPage) {
     BlocProvider.of<HomePageBloc>(context)
         .add(HomePageHideNavigatorTappedEvent(quranPage: _quranPage));
   }
@@ -79,7 +77,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ));
   }
 
-  Widget _hideNavigatorButton(QuranPage _quranPage) {
+  Widget _hideNavigatorButton(QuranPage? _quranPage) {
     return Padding(
         padding: const EdgeInsets.all(12.0),
         child: SizedBox(
@@ -93,7 +91,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   Widget _ayatInfo(QuranPage _quranPage) {
     return Text(
-      "${_quranPage.quranPageInfoList.first.suraNumber}. (${_quranPage.quranPageInfoList.first.nameArabic}) ${_quranPage.quranPageInfoList.first.name} \n${S.of(context).page}: ${_quranPage.pageNumber}",
+      "${_quranPage.quranPageInfoList!.first.suraNumber}. (${_quranPage.quranPageInfoList!.first.nameArabic}) ${_quranPage.quranPageInfoList!.first.name} \n${S.of(context).page}: ${_quranPage.pageNumber}",
       style: TextStyle(
         fontSize: 18.0,
         color: Colors.black,
@@ -119,9 +117,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             BlocProvider.of<QuranPageBloc>(context)
               ..add(JumpToPageEvent(pageNumber: newValue.toInt()));
           },
-          value: _quranPage.pageNumber.toDouble(),
+          value: _quranPage.pageNumber!.toDouble(),
           label: _quranPage.pageNumber.toString(),
-
         ));
   }
 
@@ -139,28 +136,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   builder: (context, state) {
                 if (state is QuranPageLoadedState ||
                     state is QuranPageJumpedToState) {
-                  QuranPage _quranPage;
+                  QuranPage? _quranPage;
 
                   if (state is QuranPageLoadedState) {
                     _quranPage = state.quranPage;
-                    _quranPage.pageNumber = _quranPage.pageNumber + 1;
+                    _quranPage.pageNumber = _quranPage.pageNumber! + 1;
                   }
 
                   if (state is QuranPageJumpedToState) {
                     _quranPage = state.quranPage;
-                    _quranPage.pageNumber = _quranPage.pageNumber + 1;
+                    _quranPage.pageNumber = _quranPage.pageNumber! + 1;
                   }
-
 
                   return BlocBuilder<HomePageBloc, HomePageState>(
                       builder: (context, state) {
                     if (state is InitialHomeViewState) {
-                      return _initialNavigatorWidget(_quranPage);
+                      return _initialNavigatorWidget(_quranPage!);
                     } else {
                       return _fullNavigatorWidget(_quranPage);
                     }
                   });
-
                 }
 
                 return Container(color: Theme.of(context).accentColor);
@@ -193,7 +188,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ]);
   }
 
-  Widget _fullNavigatorWidget(QuranPage _quranPage) {
+  Widget _fullNavigatorWidget(QuranPage? _quranPage) {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: <
         Widget>[
       Container(
@@ -218,8 +213,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       },
                       child: NavigatorWidget(),
                     ),
-                        SizedBox(height: 20),
-                        _hideNavigatorButton(_quranPage),
+                    SizedBox(height: 20),
+                    _hideNavigatorButton(_quranPage),
                   ])))),
       SizedBox(height: 50),
     ]);

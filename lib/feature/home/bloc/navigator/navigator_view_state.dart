@@ -6,7 +6,7 @@ abstract class NavigatorViewState {
   const NavigatorViewState();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 class InitialNavigatorViewState extends NavigatorViewState {}
@@ -14,7 +14,7 @@ class InitialNavigatorViewState extends NavigatorViewState {}
 class ShowSuraListNavigatorViewState extends NavigatorViewState {
   final List<Sura> suraList;
 
-  ShowSuraListNavigatorViewState({@required this.suraList});
+  ShowSuraListNavigatorViewState({required this.suraList});
 
   @override
   List<Object> get props => [suraList];
@@ -23,7 +23,7 @@ class ShowSuraListNavigatorViewState extends NavigatorViewState {
 class SuraSelectNavigatorViewState extends NavigatorViewState {
   final Sura sura;
 
-  SuraSelectNavigatorViewState({@required this.sura});
+  SuraSelectNavigatorViewState({required this.sura});
 
   @override
   List<Object> get props => [sura];
@@ -32,7 +32,7 @@ class SuraSelectNavigatorViewState extends NavigatorViewState {
 class PageSelectNavigatorViewState extends NavigatorViewState {
   final int pageNumber;
 
-  PageSelectNavigatorViewState({@required this.pageNumber});
+  PageSelectNavigatorViewState({required this.pageNumber});
 
   @override
   List<Object> get props => [pageNumber];
@@ -41,17 +41,17 @@ class PageSelectNavigatorViewState extends NavigatorViewState {
 class JuzzSelectNavigatorViewState extends NavigatorViewState {
   final int juzzNumber;
 
-  JuzzSelectNavigatorViewState({@required this.juzzNumber});
+  JuzzSelectNavigatorViewState({required this.juzzNumber});
 
   @override
   List<Object> get props => [juzzNumber];
 }
 
 class NavigatorViewConfirmState extends NavigatorViewState {
-  final int pageNumber;
+  final int? pageNumber;
 
-  NavigatorViewConfirmState({@required this.pageNumber});
+  NavigatorViewConfirmState({required this.pageNumber});
 
   @override
-  List<Object> get props => [pageNumber];
+  List<Object?> get props => [pageNumber];
 }

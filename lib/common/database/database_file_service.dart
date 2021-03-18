@@ -4,7 +4,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class IDatabaseFileService {
-  Future deleteDatabase(String filename) {
+  Future? deleteDatabase(String filename) {
     return null;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 enum ThemeType { normal }
 
@@ -9,13 +8,13 @@ abstract class AppConfigEvent extends Equatable {
   const AppConfigEvent();
 
   @override
-  List<Object> get props => <dynamic>[];
+  List<Object> get props => [];
 }
 
 class AppStarted extends AppConfigEvent {}
 
 class ThemeChanged extends AppConfigEvent {
-  const ThemeChanged({@required this.themeType});
+  const ThemeChanged({required this.themeType});
 
   final ThemeType themeType;
 
@@ -24,7 +23,7 @@ class ThemeChanged extends AppConfigEvent {
 }
 
 class LanguageChanged extends AppConfigEvent {
-  const LanguageChanged({@required this.languageType});
+  const LanguageChanged({required this.languageType});
 
   final LanguageType languageType;
 

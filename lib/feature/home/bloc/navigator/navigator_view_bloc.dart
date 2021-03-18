@@ -16,15 +16,15 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
   final HomePageBloc homePageBloc;
 
   NavigatorViewBloc(
-      {@required this.ayahInfoService,
-      @required this.quranPageBloc,
-      @required this.homePageBloc})
+      {required this.ayahInfoService,
+      required this.quranPageBloc,
+      required this.homePageBloc})
       : assert(ayahInfoService != null) , super(InitialNavigatorViewState());
 
 
   @override
   Stream<NavigatorViewState> mapEventToState(NavigatorViewEvent event) async* {
-    final currentState = state;
+    final NavigatorViewState currentState = state;
 
     if (event is NavigatorViewSelectSuraEvent) {
       yield SuraSelectNavigatorViewState(sura: event.sura);
@@ -39,7 +39,7 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
     }
 
     if (event is NavigatorViewConfirmEvent) {
-      QuranPage _quranPage;
+      QuranPage? _quranPage;
 
       if (currentState is PageSelectNavigatorViewState) {
         _quranPage = QuranPage(pageNumber: currentState.pageNumber);

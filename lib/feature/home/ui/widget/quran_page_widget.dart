@@ -13,11 +13,11 @@ class QuranPageWidget extends StatefulWidget {
 }
 
 class _QuranPageWidgetState extends State<QuranPageWidget> {
-  PageController _controller;
+  PageController? _controller;
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 
@@ -38,7 +38,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
       final initialPage = (BlocProvider.of<QuranPageBloc>(context).state
               as QuranPageJumpedToState)
           .quranPage
-          .pageNumber;
+          .pageNumber!;
       _controller = PageController(initialPage: initialPage);
     }
 
@@ -60,14 +60,14 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         child: BlocListener<QuranPageBloc, QuranPageState>(
             listener: (context, state) {
               if (state is QuranPageJumpedToState) {
-                _controller.animateToPage(state.quranPage.pageNumber,
+                _controller!.animateToPage(state.quranPage.pageNumber!,
                     duration: Duration(milliseconds: 300),
                     curve: Curves.linear);
               }
             },
             child: PageView.builder(
                 itemBuilder: (context, index) {
-                  if (Device.get().isWeb || Device.get().isComputer) {
+                  if (Device.get().isWeb! || Device.get().isComputer!) {
                     final firstIndex = index + 2;
                     final secondIndex = index + 1;
 

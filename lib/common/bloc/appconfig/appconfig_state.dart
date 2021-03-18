@@ -12,7 +12,7 @@ abstract class AppConfigState extends Equatable {
 }
 
 class AppConfigStateStarted extends AppConfigState {
-  const AppConfigStateStarted({@required this.theme, @required this.locale});
+  const AppConfigStateStarted({required this.theme, required this.locale});
 
   final ThemeData theme;
   final Locale locale;

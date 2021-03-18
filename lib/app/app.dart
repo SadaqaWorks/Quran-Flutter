@@ -10,7 +10,7 @@ import 'package:quran_reader/common/routes/routes.dart';
 import 'package:quran_reader/generated/l10n.dart';
 
 class App extends StatefulWidget {
-  App({Key key, @required this.ayahInfoService}) : super(key: key);
+  App({Key? key, required this.ayahInfoService}) : super(key: key);
 
   final AyahInfoService ayahInfoService;
 
@@ -21,7 +21,7 @@ class App extends StatefulWidget {
 }
 
 class _MyAppState extends State<App> {
-  _MyAppState({@required this.ayahInfoService});
+  _MyAppState({required this.ayahInfoService});
 
   final AyahInfoService ayahInfoService;
 

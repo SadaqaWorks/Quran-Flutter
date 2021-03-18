@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:quran_reader/common/constant/constants.dart' as constants;
 import 'package:quran_reader/common/database/database.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
@@ -13,20 +11,22 @@ import 'package:rxdart/rxdart.dart';
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final AyahInfoService ayahInfoService;
 
-  QuranPageBloc({@required this.ayahInfoService})
-      : assert(ayahInfoService != null) , super(InitialQuranPageState()){
-      add(QuranPageStartEvent());
+  QuranPage fetchQuranPage(int? page) {
+    return QuranPage(
+        pageNumber: page, imageUrl: 'assets/images/quran/$page.png');
   }
 
-  // @override
-  // QuranPageState get initialState {
-  //   return super.initialState ??
-  //       QuranPageJumpedToState(
-  //           quranPage: fetchQuranPage(constants.start_quran_page_number));
-  // }
+  QuranPageBloc({required this.ayahInfoService})
+      : super(InitialQuranPageState(
+            quranPage: QuranPage(
+                pageNumber: constants.start_quran_page_number,
+                imageUrl:
+                    'assets/images/quran/${constants.start_quran_page_number}.png'))) {
+    add(QuranPageStartEvent());
+  }
 
   @override
-  QuranPageState fromJson(Map<String, dynamic> json) {
+  QuranPageState? fromJson(Map<String, dynamic> json) {
     try {
       final quranPage =
           QuranPage.fromJson(Map<String, dynamic>.from(json['value']));
@@ -49,8 +49,6 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
-
-
     if (event is QuranPageStartEvent) {
       yield* _mapStartPage(event);
     }
@@ -65,7 +63,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   }
 
   @override
-  Map<String, Map<String, dynamic>> toJson(QuranPageState state) {
+  Map<String, Map<String, dynamic>>? toJson(QuranPageState state) {
     try {
       if (state is QuranPageLoadedState) {
         return {'value': state.quranPage.toJson()};
@@ -81,24 +79,21 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   }
 
   Stream<QuranPageState> _mapStartPage(QuranPageStartEvent event) async* {
-    yield QuranPageJumpedToState(quranPage: fetchQuranPage(constants.start_quran_page_number));
+    yield QuranPageJumpedToState(
+        quranPage: fetchQuranPage(constants.start_quran_page_number));
   }
 
   Stream<QuranPageState> _mapJumpToPage(JumpToPageEvent event) async* {
     final _quranPage = fetchQuranPage(event.pageNumber);
-    _quranPage.quranPageInfoList =
-        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.pageNumber);
+    _quranPage.quranPageInfoList = await ayahInfoService.getQuranPageInfoList(
+        pageNumber: _quranPage.pageNumber);
     yield QuranPageJumpedToState(quranPage: _quranPage);
   }
 
   Stream<QuranPageState> _mapLoadPage(LoadPageEvent event) async* {
     final _quranPage = fetchQuranPage(event.pageNumber);
-    _quranPage.quranPageInfoList =
-        await ayahInfoService.getQuranPageInfoList(pageNumber: _quranPage.pageNumber);
+    _quranPage.quranPageInfoList = await ayahInfoService.getQuranPageInfoList(
+        pageNumber: _quranPage.pageNumber);
     yield QuranPageLoadedState(quranPage: _quranPage);
-  }
-
-  QuranPage fetchQuranPage(int page) {
-    return QuranPage(pageNumber: page, imageUrl: 'assets/images/quran/$page.png');
   }
 }

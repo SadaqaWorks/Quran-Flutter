@@ -8,9 +8,9 @@ class NavigatorWidget extends StatefulWidget {
 }
 
 class _NavigatorWidgetState extends State<NavigatorWidget> {
-  int _selectedIndex = 0;
+  int? _selectedIndex = 0;
 
-  Map<int, Widget> indexTitles;
+  late Map<int, Widget> indexTitles;
 
   @override
   void initState() {
@@ -25,19 +25,19 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      const Expanded( child: Padding(
+      const Expanded(
+          child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 32.0,
           horizontal: 16.0,
         ),
-
       )),
       SizedBox(
         width: double.infinity,
         child: CupertinoSlidingSegmentedControl(
             children: indexTitles,
             groupValue: _selectedIndex,
-            onValueChanged: (int val) {
+            onValueChanged: (int? val) {
               setState(() {
                 _selectedIndex = val;
               });

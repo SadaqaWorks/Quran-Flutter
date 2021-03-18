@@ -10,22 +10,22 @@ import 'home_page_event.dart';
 import 'home_page_state.dart';
 
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
-  StreamSubscription _quranPageBlocSubscription;
+  late StreamSubscription _quranPageBlocSubscription;
   final QuranPageBloc quranPageBloc;
-  QuranPage _quranPage;
+  late QuranPage _quranPage;
 
-  HomePageBloc({@required this.quranPageBloc}) : assert(quranPageBloc != null) ,
+  HomePageBloc({required this.quranPageBloc}) : assert(quranPageBloc != null) ,
         super(HideNavigatorViewState(quranPage: quranPageBloc.state.quranPage)) {
 
     _quranPageBlocSubscription = quranPageBloc.listen((state) {
       if (state is QuranPageLoadedState) {
         _quranPage = state.quranPage;
-        _quranPage.pageNumber = _quranPage.pageNumber + 1;
+        _quranPage.pageNumber = _quranPage.pageNumber! + 1;
       }
 
       if (state is QuranPageJumpedToState) {
         _quranPage = state.quranPage;
-        _quranPage.pageNumber = _quranPage.pageNumber + 1;
+        _quranPage.pageNumber = _quranPage.pageNumber! + 1;
       }
     });
   }

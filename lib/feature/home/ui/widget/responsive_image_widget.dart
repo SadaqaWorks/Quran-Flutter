@@ -5,7 +5,7 @@ import 'package:quran_reader/feature/quran_page/model/models.dart';
 class InheritedOrientedImage extends InheritedWidget {
   final QuranPage quranPage;
 
-  InheritedOrientedImage({@required this.quranPage, Widget child})
+  InheritedOrientedImage({required this.quranPage, required Widget child})
       : super(child: child);
 
   @override
@@ -15,7 +15,7 @@ class InheritedOrientedImage extends InheritedWidget {
 
   static QuranPage of(BuildContext context) {
     return context
-        .dependOnInheritedWidgetOfExactType<InheritedOrientedImage>()
+        .dependOnInheritedWidgetOfExactType<InheritedOrientedImage>()!
         .quranPage;
   }
 }
@@ -23,7 +23,7 @@ class InheritedOrientedImage extends InheritedWidget {
 class ResponsiveImageWidget extends StatelessWidget {
   final QuranPage quranPage;
 
-  ResponsiveImageWidget({@required this.quranPage});
+  ResponsiveImageWidget({required this.quranPage});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class PortraitImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context).imageUrl;
 
-    if (Device.get().isPhone) {
+    if (Device.get().isPhone!) {
       final double width = MediaQuery.of(context).size.width + 80;
       final double height = MediaQuery.of(context).size.height - 20;
 
@@ -57,7 +57,7 @@ class PortraitImageWidget extends StatelessWidget {
                 child: AspectRatio(
                     aspectRatio: 16 / 9,
                     child: Image(
-                        image: AssetImage(quranPage),
+                        image: AssetImage(quranPage!),
                         height: double.infinity,
                         fit: BoxFit.fill)),
                 clipper: RectangleImageClipper(),
@@ -65,7 +65,7 @@ class PortraitImageWidget extends StatelessWidget {
     } else {
       return Container(
           child: Image(
-              image: AssetImage(quranPage),
+              image: AssetImage(quranPage!),
               height: double.infinity,
               fit: BoxFit.fill));
     }
@@ -80,7 +80,7 @@ class LandscapeImageWidget extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Image.asset(
-        quranPage.imageUrl,
+        quranPage.imageUrl!,
         fit: BoxFit.fill,
         width: double.infinity,
       ),

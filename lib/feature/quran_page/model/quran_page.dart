@@ -14,8 +14,7 @@ class QuranPage extends Equatable {
   List<QuranPageInfo>? quranPageInfoList;
 
   @required
-  QuranPage(
-      {required this.pageNumber,this.imageUrl, this.quranPageInfoList});
+  QuranPage({required this.pageNumber, this.imageUrl, this.quranPageInfoList});
 
   //Equatable
   @override

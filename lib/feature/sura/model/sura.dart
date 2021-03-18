@@ -11,9 +11,7 @@ class Sura extends Equatable {
 
   @required
   Sura(
-      {required this.suraNumber,
-      required this.nameArabic,
-      required this.name});
+      {required this.suraNumber, required this.nameArabic, required this.name});
 
   //Equatable
   @override

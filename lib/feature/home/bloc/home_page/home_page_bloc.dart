@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
@@ -14,9 +13,10 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   final QuranPageBloc quranPageBloc;
   late QuranPage _quranPage;
 
-  HomePageBloc({required this.quranPageBloc}) : assert(quranPageBloc != null) ,
-        super(HideNavigatorViewState(quranPage: quranPageBloc.state.quranPage)) {
-
+  HomePageBloc({required this.quranPageBloc})
+      : assert(quranPageBloc != null),
+        super(
+            HideNavigatorViewState(quranPage: quranPageBloc.state.quranPage)) {
     _quranPageBlocSubscription = quranPageBloc.listen((state) {
       if (state is QuranPageLoadedState) {
         _quranPage = state.quranPage;
@@ -29,7 +29,6 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
       }
     });
   }
-
 
   @override
   Future<void> close() {

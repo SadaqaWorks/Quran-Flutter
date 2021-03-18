@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:quran_reader/common/database/database.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
@@ -19,8 +18,8 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       {required this.ayahInfoService,
       required this.quranPageBloc,
       required this.homePageBloc})
-      : assert(ayahInfoService != null) , super(InitialNavigatorViewState());
-
+      : assert(ayahInfoService != null),
+        super(InitialNavigatorViewState());
 
   @override
   Stream<NavigatorViewState> mapEventToState(NavigatorViewEvent event) async* {

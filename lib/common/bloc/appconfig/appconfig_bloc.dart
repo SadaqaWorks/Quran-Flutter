@@ -54,13 +54,15 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString(constants.Locale.locale, constants.Locale.bn);
         appConfigState = AppConfigStateStarted(
-            theme: (state as AppConfigStateStarted).theme, locale: const Locale(constants.Locale.bn));
+            theme: (state as AppConfigStateStarted).theme,
+            locale: const Locale(constants.Locale.bn));
         break;
       case LanguageType.english:
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString(constants.Locale.locale, constants.Locale.en);
         appConfigState = AppConfigStateStarted(
-            theme: (state as AppConfigStateStarted).theme, locale: const Locale(constants.Locale.en));
+            theme: (state as AppConfigStateStarted).theme,
+            locale: const Locale(constants.Locale.en));
         break;
     }
 
@@ -72,8 +74,9 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
 
     switch (changedTheme) {
       case ThemeType.normal:
-        appConfigState =
-            AppConfigStateStarted(theme: _buildDefaultTheme(), locale: (state as AppConfigStateStarted).locale);
+        appConfigState = AppConfigStateStarted(
+            theme: _buildDefaultTheme(),
+            locale: (state as AppConfigStateStarted).locale);
         break;
     }
     yield appConfigState;

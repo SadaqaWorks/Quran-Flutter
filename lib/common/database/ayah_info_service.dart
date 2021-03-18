@@ -68,7 +68,9 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
 
     List<Map> maps = await ayahInfoDatabase!.rawQuery(
         "select glyphs.ayah_number,glyphs.page_number, glyphs.sura_number,sura.sura_number,sura.name_arabic,sura.name_english as name,sura.type  from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where page_number =  $pageNumber");
-    return maps.map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>)).toList();
+    return maps
+        .map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   Future<QuranPageInfo> getQuranPageInfo({
@@ -80,7 +82,9 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
 
     List<Map> maps = await ayahInfoDatabase!.rawQuery(
         "select glyphs.ayah_number,glyphs.page_number, glyphs.sura_number,sura.sura_number,sura.name_arabic,sura.name_english as name,sura.type  from glyphs  INNER join sura on glyphs.sura_number=sura.sura_number where glyphs.sura_number =  $suraNumber limit 1");
-    return maps.map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>)).first;
+    return maps
+        .map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>))
+        .first;
   }
 
   Future<List<Sura>> getSuraList() async {

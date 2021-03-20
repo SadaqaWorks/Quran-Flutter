@@ -18,8 +18,7 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       {required this.ayahInfoService,
       required this.quranPageBloc,
       required this.homePageBloc})
-      : assert(ayahInfoService != null),
-        super(InitialNavigatorViewState());
+      : super(InitialNavigatorViewState());
 
   @override
   Stream<NavigatorViewState> mapEventToState(NavigatorViewEvent event) async* {
@@ -47,12 +46,12 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       if (currentState is SuraSelectNavigatorViewState) {
         final _quranPageInfo = await ayahInfoService.getQuranPageInfo(
             suraNumber: currentState.sura.suraNumber);
+
         _quranPage = QuranPage(pageNumber: _quranPageInfo.pageNumber);
       }
 
       if (_quranPage != null) {
-        homePageBloc
-            .add(HomePageHideNavigatorTappedEvent(quranPage: _quranPage));
+        homePageBloc.add(HomePageHideNavigatorTappedEvent());
         quranPageBloc.add(JumpToPageEvent(pageNumber: _quranPage.pageNumber));
         yield NavigatorViewConfirmState(pageNumber: _quranPage.pageNumber);
       }

@@ -31,21 +31,23 @@ dependencies:
 
 #core
   rxdart: ^0.26.0
-  bloc: ^7.0.0-nullsafety.4
-  flutter_bloc: ^7.0.0-nullsafety.6
-  hydrated_bloc: ^7.0.0-nullsafety.4
+  bloc: ^7.0.0
+  flutter_bloc: ^7.0.0
+  hydrated_bloc: ^7.0.0
   equatable: ^2.0.0
 
   wakelock: ^0.5.0+2
   sqflite: ^2.0.0+3
-
+  flutter_dotenv: 4.0.0-nullsafety.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.0
-  flutter_native_splash: ^1.1.2
-  #flutter_rename_app: 1.0.0
+  flutter_native_splash: 1.1.4+1
+  lint: ^1.5.2
+  pedantic: 1.11.0
+  logger:
 
 
 # For information on the generic Dart part of this file, see the
@@ -59,6 +61,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/.env
     - assets/images/quran/
     - assets/images/app/
     - assets/quran-data/db/
@@ -107,11 +110,3 @@ flutter_icons:
   android: true
   ios: true
 #flutter pub run flutter_launcher_icons:main
-
-#flutter_rename_app:
-#  application_name: Quran Reader
-#  dart_package_name: quran_reader_reader
-#  application_id: com.quran.universal
-#  bundle_id: com.quran.universal
-#  android_package_name: com.quran.universal
-#flutter pub run flutter_rename_app

@@ -2,7 +2,7 @@ part of 'quran_page_info.dart';
 
 QuranPageInfo _$QuranPageInfoFromJson(Map<String, dynamic> json) {
   return QuranPageInfo(
-      pageNumber: json['page_number'] as int?,
+      pageNumber: json['page_number'] as int,
       lineNumber: json['line_number'] as int?,
       suraNumber: json['sura_number'] as int?,
       ayahNumber: json['ayah_number'] as int?,

@@ -9,7 +9,7 @@ import 'quran_page_info.dart';
 part 'quran_page.g.dart';
 
 class QuranPage extends Equatable {
-  int? pageNumber;
+  int pageNumber;
   final String? imageUrl;
   List<QuranPageInfo>? quranPageInfoList;
 

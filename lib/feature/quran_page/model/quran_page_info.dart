@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 part 'quran_page_info.g.dart';
 
 class QuranPageInfo extends Equatable {
-  final int? pageNumber;
+  final int pageNumber;
   final int? lineNumber;
   final int? suraNumber;
   final int? ayahNumber;
@@ -18,7 +18,7 @@ class QuranPageInfo extends Equatable {
 
   @required
   QuranPageInfo(
-      {this.pageNumber,
+      {required this.pageNumber,
       this.lineNumber,
       this.suraNumber,
       this.ayahNumber,

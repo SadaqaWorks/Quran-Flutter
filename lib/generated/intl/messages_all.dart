@@ -18,6 +18,7 @@ import 'package:intl/src/intl_helpers.dart';
 import 'messages_en.dart' as messages_en;
 
 typedef Future<dynamic> LibraryLoader();
+
 Map<String, LibraryLoader> _deferredLibraries = {
   'en': () => new Future.value(null),
 };

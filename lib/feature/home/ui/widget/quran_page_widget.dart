@@ -17,7 +17,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   @override
   void dispose() {
-    _controller!.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
@@ -38,7 +38,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
       final initialPage = (BlocProvider.of<QuranPageBloc>(context).state
               as QuranPageJumpedToState)
           .quranPage
-          .pageNumber!;
+          .pageNumber;
       _controller = PageController(initialPage: initialPage);
     }
 
@@ -60,7 +60,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         child: BlocListener<QuranPageBloc, QuranPageState>(
             listener: (context, state) {
               if (state is QuranPageJumpedToState) {
-                _controller!.animateToPage(state.quranPage.pageNumber!,
+                _controller!.animateToPage(state.quranPage.pageNumber,
                     duration: Duration(milliseconds: 300),
                     curve: Curves.linear);
               }
@@ -96,7 +96,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
                 },
                 reverse: true,
                 onPageChanged: _onPageViewChange,
-                itemCount: constants.end_quran_page_number,
+                itemCount: constants.endQuranPageNumber,
                 controller: _controller)));
   }
 }

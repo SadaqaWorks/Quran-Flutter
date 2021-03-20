@@ -11,7 +11,7 @@ import 'package:rxdart/rxdart.dart';
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final AyahInfoService ayahInfoService;
 
-  QuranPage fetchQuranPage(int? page) {
+  QuranPage fetchQuranPage(int page) {
     return QuranPage(
         pageNumber: page, imageUrl: 'assets/images/quran/$page.png');
   }
@@ -19,9 +19,9 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   QuranPageBloc({required this.ayahInfoService})
       : super(InitialQuranPageState(
             quranPage: QuranPage(
-                pageNumber: constants.start_quran_page_number,
+                pageNumber: constants.startQuranPageNumber,
                 imageUrl:
-                    'assets/images/quran/${constants.start_quran_page_number}.png'))) {
+                    'assets/images/quran/${constants.startQuranPageNumber}.png'))) {
     add(QuranPageStartEvent());
   }
 
@@ -80,7 +80,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   Stream<QuranPageState> _mapStartPage(QuranPageStartEvent event) async* {
     yield QuranPageJumpedToState(
-        quranPage: fetchQuranPage(constants.start_quran_page_number));
+        quranPage: fetchQuranPage(constants.startQuranPageNumber));
   }
 
   Stream<QuranPageState> _mapJumpToPage(JumpToPageEvent event) async* {

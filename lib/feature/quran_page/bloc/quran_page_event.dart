@@ -17,7 +17,7 @@ class LoadPageEvent extends QuranPageEvent {
 }
 
 class JumpToPageEvent extends QuranPageEvent {
-  final int? pageNumber;
+  final int pageNumber;
 
   JumpToPageEvent({required this.pageNumber});
 

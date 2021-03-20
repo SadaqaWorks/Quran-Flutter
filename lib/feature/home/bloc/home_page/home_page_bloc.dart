@@ -14,18 +14,17 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   late QuranPage _quranPage;
 
   HomePageBloc({required this.quranPageBloc})
-      : assert(quranPageBloc != null),
-        super(
+      : super(
             HideNavigatorViewState(quranPage: quranPageBloc.state.quranPage)) {
-    _quranPageBlocSubscription = quranPageBloc.listen((state) {
+    _quranPageBlocSubscription = quranPageBloc.stream.listen((state) {
       if (state is QuranPageLoadedState) {
         _quranPage = state.quranPage;
-        _quranPage.pageNumber = _quranPage.pageNumber! + 1;
+        _quranPage.pageNumber = _quranPage.pageNumber + 1;
       }
 
       if (state is QuranPageJumpedToState) {
         _quranPage = state.quranPage;
-        _quranPage.pageNumber = _quranPage.pageNumber! + 1;
+        _quranPage.pageNumber = _quranPage.pageNumber + 1;
       }
     });
   }

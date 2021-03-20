@@ -4,7 +4,7 @@ QuranPage _$QuranPageFromJson(Map<String, dynamic> json) {
   final maps = jsonDecode(json['quranPageInfoList']) as List;
   final quranPageInfoList = maps.map((e) => QuranPageInfo.fromJson(e)).toList();
   return QuranPage(
-      pageNumber: json['page'] as int?,
+      pageNumber: json['page'] as int,
       imageUrl: json['imageUrl'] as String?,
       quranPageInfoList: quranPageInfoList);
 }

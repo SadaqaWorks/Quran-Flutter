@@ -105,11 +105,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Container(
         decoration: BoxDecoration(color: Colors.black.withOpacity(0.3)),
         child: Slider(
-          divisions: constants.end_quran_page_number,
+          divisions: constants.endQuranPageNumber,
           activeColor: Theme.of(context).primaryColorLight,
           inactiveColor: Theme.of(context).accentColor,
-          min: constants.start_quran_page_number.toDouble(),
-          max: constants.end_quran_page_number.toDouble(),
+          min: constants.startQuranPageNumber.toDouble(),
+          max: constants.endQuranPageNumber.toDouble(),
           onChanged: (newValue) {
             setState(() {
               _sliderValue = newValue.round();
@@ -117,7 +117,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             BlocProvider.of<QuranPageBloc>(context)
               ..add(JumpToPageEvent(pageNumber: newValue.toInt()));
           },
-          value: _quranPage.pageNumber!.toDouble(),
+          value: _quranPage.pageNumber.toDouble(),
           label: _quranPage.pageNumber.toString(),
         ));
   }
@@ -140,12 +140,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
                   if (state is QuranPageLoadedState) {
                     _quranPage = state.quranPage;
-                    _quranPage.pageNumber = _quranPage.pageNumber! + 1;
+                    _quranPage.pageNumber = _quranPage.pageNumber + 1;
                   }
 
                   if (state is QuranPageJumpedToState) {
                     _quranPage = state.quranPage;
-                    _quranPage.pageNumber = _quranPage.pageNumber! + 1;
+                    _quranPage.pageNumber = _quranPage.pageNumber + 1;
                   }
 
                   return BlocBuilder<HomePageBloc, HomePageState>(

@@ -118,3 +118,4 @@ app.*.symbols
 **/lib/generated/l10n.dart
 android/fastlane/report.xml
 ios/fastlane/report.xml
+assets/.env

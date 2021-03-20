@@ -5,11 +5,11 @@ import 'package:quran_reader/common/database/ayah_info_service.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/home/bloc/navigator/navigator_widget.dart';
-import 'package:quran_reader/feature/home/ui/widget/quran_page_widget.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
+import 'package:quran_reader/feature/quran_page/widget/quran_page_widget.dart';
 import 'package:quran_reader/generated/l10n.dart';
-import 'package:wakelock/wakelock.dart';
+//import 'package:wakelock/wakelock.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void dispose() {
     if (Device.get().isIos! || Device.get().isAndroid!) {
-      Wakelock.disable();
+      //Wakelock.disable();
     }
     super.dispose();
   }
@@ -31,7 +31,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (Device.get().isIos! || Device.get().isAndroid!) {
-      Wakelock.enable();
+      //Wakelock.enable();
     }
   }
 

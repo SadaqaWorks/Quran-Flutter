@@ -47,9 +47,7 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
         final _quranPageInfo = await ayahInfoService.getQuranPageInfo(
             suraNumber: currentState.sura.suraNumber);
 
-        if (_quranPageInfo.pageNumber != null) {
-          _quranPage = QuranPage(pageNumber: _quranPageInfo.pageNumber!);
-        }
+        _quranPage = QuranPage(pageNumber: _quranPageInfo.pageNumber);
       }
 
       if (_quranPage != null) {

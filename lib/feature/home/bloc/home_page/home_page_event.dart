@@ -22,7 +22,7 @@ class HomePageShowNavigatorTappedEvent extends HomePageEvent {
 }
 
 class HomePageHideNavigatorTappedEvent extends HomePageEvent {
-  final QuranPage? quranPage;
+  final QuranPage quranPage;
 
   HomePageHideNavigatorTappedEvent({required this.quranPage});
 

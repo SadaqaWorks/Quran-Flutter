@@ -14,8 +14,10 @@ abstract class QuranPageState {
 
 class InitialQuranPageState extends QuranPageState {
   final QuranPage quranPage;
+
   const InitialQuranPageState({required this.quranPage})
       : super(quranPage: quranPage);
+
   @override
   List<Object> get props => [quranPage];
 }

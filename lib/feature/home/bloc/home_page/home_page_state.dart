@@ -11,7 +11,7 @@ abstract class HomePageState extends Equatable {
 }
 
 class InitialHomeViewState extends HomePageState {
-  final QuranPage? quranPage;
+  final QuranPage quranPage;
 
   InitialHomeViewState({required this.quranPage});
 
@@ -29,7 +29,7 @@ class ShowNavigatorViewState extends HomePageState {
 }
 
 class HideNavigatorViewState extends HomePageState {
-  final QuranPage? quranPage;
+  final QuranPage quranPage;
 
   HideNavigatorViewState({required this.quranPage});
 

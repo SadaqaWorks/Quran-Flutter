@@ -1,32 +1,26 @@
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 abstract class QuranPageState {
-  final QuranPage quranPage;
-
-  const QuranPageState({required this.quranPage});
+  const QuranPageState();
 
   @override
-  List<Object>? get props => [quranPage];
+  List<Object>? get props => [];
 
   @override
-  String toString() => 'QuranPageLoaded { page: ${quranPage.pageNumber} }';
+  String toString() => 'QuranPageLoaded }';
 }
 
 class InitialQuranPageState extends QuranPageState {
-  final QuranPage quranPage;
-
-  const InitialQuranPageState({required this.quranPage})
-      : super(quranPage: quranPage);
+  const InitialQuranPageState() : super();
 
   @override
-  List<Object> get props => [quranPage];
+  List<Object> get props => [];
 }
 
 class QuranPageLoadedState extends QuranPageState {
   final QuranPage quranPage;
 
-  const QuranPageLoadedState({required this.quranPage})
-      : super(quranPage: quranPage);
+  const QuranPageLoadedState({required this.quranPage}) : super();
 
   QuranPageLoadedState copyWith({QuranPage? quranPage}) {
     return QuranPageLoadedState(quranPage: quranPage ?? this.quranPage);
@@ -42,8 +36,7 @@ class QuranPageLoadedState extends QuranPageState {
 class QuranPageJumpedToState extends QuranPageState {
   final QuranPage quranPage;
 
-  const QuranPageJumpedToState({required this.quranPage})
-      : super(quranPage: quranPage);
+  const QuranPageJumpedToState({required this.quranPage}) : super();
 
   QuranPageJumpedToState copyWith({QuranPage? quranPage}) {
     return QuranPageJumpedToState(quranPage: quranPage ?? this.quranPage);

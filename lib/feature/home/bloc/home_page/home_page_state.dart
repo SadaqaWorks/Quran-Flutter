@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 @immutable
 abstract class HomePageState extends Equatable {
@@ -11,28 +10,24 @@ abstract class HomePageState extends Equatable {
 }
 
 class InitialHomeViewState extends HomePageState {
-  final QuranPage quranPage;
-
-  InitialHomeViewState({required this.quranPage});
+  InitialHomeViewState();
 
   @override
-  List<Object?> get props => [quranPage];
+  List<Object?> get props => [];
 }
 
 class ShowNavigatorViewState extends HomePageState {
-  final QuranPage quranPage;
-
-  ShowNavigatorViewState({required this.quranPage});
+  ShowNavigatorViewState();
 
   @override
-  List<Object> get props => [quranPage];
+  List<Object> get props => [];
 }
 
 class HideNavigatorViewState extends HomePageState {
-  final QuranPage quranPage;
+  //final QuranPage quranPage;
 
-  HideNavigatorViewState({required this.quranPage});
+  HideNavigatorViewState();
 
   @override
-  List<Object?> get props => [quranPage];
+  List<Object?> get props => [];
 }

@@ -51,8 +51,7 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       }
 
       if (_quranPage != null) {
-        homePageBloc
-            .add(HomePageHideNavigatorTappedEvent(quranPage: _quranPage));
+        homePageBloc.add(HomePageHideNavigatorTappedEvent());
         quranPageBloc.add(JumpToPageEvent(pageNumber: _quranPage.pageNumber));
         yield NavigatorViewConfirmState(pageNumber: _quranPage.pageNumber);
       }

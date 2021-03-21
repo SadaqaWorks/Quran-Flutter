@@ -18,33 +18,39 @@ class InitialQuranPageState extends QuranPageState {
 }
 
 class QuranPageLoadedState extends QuranPageState {
-  final QuranPage quranPage;
+  final QuranPage firstQuranPage;
+  final QuranPage? secondQuranPage;
 
-  const QuranPageLoadedState({required this.quranPage}) : super();
+  const QuranPageLoadedState(
+      {required this.firstQuranPage, this.secondQuranPage})
+      : super();
 
-  QuranPageLoadedState copyWith({QuranPage? quranPage}) {
-    return QuranPageLoadedState(quranPage: quranPage ?? this.quranPage);
+  QuranPageLoadedState copyWith(
+      {QuranPage? firstQuranPage, QuranPage? secondQuranPage}) {
+    return QuranPageLoadedState(
+        firstQuranPage: firstQuranPage ?? this.firstQuranPage,
+        secondQuranPage: secondQuranPage ?? this.secondQuranPage);
   }
 
   @override
-  List<Object> get props => [quranPage];
+  List<Object> get props => [firstQuranPage];
 
   @override
-  String toString() => 'QuranPageLoaded { page: ${quranPage.pageNumber} }';
+  String toString() => 'QuranPageLoaded { page: ${firstQuranPage.pageNumber} }';
 }
 
-class QuranPageJumpedToState extends QuranPageState {
-  final QuranPage quranPage;
-
-  const QuranPageJumpedToState({required this.quranPage}) : super();
-
-  QuranPageJumpedToState copyWith({QuranPage? quranPage}) {
-    return QuranPageJumpedToState(quranPage: quranPage ?? this.quranPage);
-  }
-
-  @override
-  List<Object> get props => [quranPage];
-
-  @override
-  String toString() => 'QuranPageJumpedTo { page: ${quranPage.pageNumber} }';
-}
+// class QuranPageJumpedToState extends QuranPageState {
+//   final QuranPage quranPage;
+//
+//   const QuranPageJumpedToState({required this.quranPage}) : super();
+//
+//   QuranPageJumpedToState copyWith({QuranPage? quranPage}) {
+//     return QuranPageJumpedToState(quranPage: quranPage ?? this.quranPage);
+//   }
+//
+//   @override
+//   List<Object> get props => [quranPage];
+//
+//   @override
+//   String toString() => 'QuranPageJumpedTo { page: ${quranPage.pageNumber} }';
+// }

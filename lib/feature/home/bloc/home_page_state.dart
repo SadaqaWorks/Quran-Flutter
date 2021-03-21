@@ -24,8 +24,6 @@ class ShowNavigatorViewState extends HomePageState {
 }
 
 class HideNavigatorViewState extends HomePageState {
-  //final QuranPage quranPage;
-
   HideNavigatorViewState();
 
   @override

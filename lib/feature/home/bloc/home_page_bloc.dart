@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:quran_reader/common/constant/constants.dart' as constants;
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -9,13 +8,9 @@ import 'home_page_event.dart';
 import 'home_page_state.dart';
 
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
-  late QuranPage quranPage;
+  QuranPage? quranPage;
 
-  HomePageBloc() : super(HideNavigatorViewState()) {
-    quranPage = QuranPage(
-        pageNumber: constants.startQuranPageNumber,
-        imageUrl: 'assets/images/quran/${constants.startQuranPageNumber}.png');
-  }
+  HomePageBloc() : super(HideNavigatorViewState()) {}
 
   @override
   Future<void> close() {

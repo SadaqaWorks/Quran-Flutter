@@ -15,9 +15,6 @@ void start() async {
         MethodChannel('plugins.flutter.io/path_provider');
     final String path =
         (await _channel.invokeMethod<String>('getTemporaryDirectory'))!;
-    // if (path == null) {
-    //   return null;
-    // }
     return Directory(path);
   }
 

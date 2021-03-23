@@ -27,20 +27,11 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
 
   _onPageViewChange(int page) {
     BlocProvider.of<QuranPageBloc>(context)
-        .add(LoadQuranPageEvent(pageNumber: page));
+        .add(QuranPageEventLoad(pageNumber: page));
   }
 
   @override
   Widget build(BuildContext context) {
-    // if (BlocProvider.of<QuranPageBloc>(context).state
-    //     is QuranPageJumpedToState) {
-    //   final initialPage = (BlocProvider.of<QuranPageBloc>(context).state
-    //           as QuranPageJumpedToState)
-    //       .quranPage
-    //       .pageNumber;
-    //   _controller = PageController(initialPage: initialPage);
-    // }
-
     return BlocConsumer<QuranPageBloc, QuranPageState>(
       listener: (context, state) {
         //if (state is QuranPageJumpedToState) {
@@ -51,11 +42,11 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         // if (state is QuranPageJumpedToState) {
         //   return ResponsiveImageWidget(quranPage: state.quranPage);
         // }
-        if (state is QuranPageLoadedState) {
+        if (state is QuranPageStateLoaded) {
           return EasyGestureDetector(
               onTap: () {
                 BlocProvider.of<HomePageBloc>(context)
-                    .add(HomePageViewTappedEvent());
+                    .add(HomePageEventViewTap());
               },
               // gestures: {
               //   AllowMultipleGestureRecognizer: GestureRecognizerFactoryWithHandlers<
@@ -116,7 +107,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
     );
   }
 
-  Widget _widgetQuranPage(QuranPageLoadedState state) {
+  Widget _widgetQuranPage(QuranPageStateLoaded state) {
     if (Device.get().isWeb || Device.get().isComputer) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

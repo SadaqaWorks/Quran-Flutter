@@ -14,10 +14,10 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final HomePageBloc homePageBloc;
 
   QuranPageBloc({required this.ayahInfoService, required this.homePageBloc})
-      : super(InitialQuranPageState()) {
+      : super(QuranPageStateInitial()) {
     hydrate();
-    if (state is InitialQuranPageState) {
-      add(LoadQuranPageEvent(pageNumber: startQuranPageNumber));
+    if (state is QuranPageStateInitial) {
+      add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
     }
   }
 
@@ -34,11 +34,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
-    // if (event is JumpToPageEvent) {
-    //   yield* _mapJumpToPage(event);
-    // }
-
-    if (event is LoadQuranPageEvent) {
+    if (event is QuranPageEventLoad) {
       yield* _mapLoadPage(event);
     }
   }
@@ -46,7 +42,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   Map<String, Map<String, dynamic>>? toJson(QuranPageState state) {
     try {
-      if (state is QuranPageLoadedState) {
+      if (state is QuranPageStateLoaded) {
         Map<String, dynamic> data = {};
 
         data['first_page'] = state.firstQuranPage.toJson();
@@ -55,11 +51,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
           data['second_page'] = state.secondQuranPage!.toJson();
         }
         return {'quran_pages': data};
-      }
-      // if (state is QuranPageJumpedToState) {
-      //   return {'value': state.quranPage.toJson()};
-      // }
-      else {
+      } else {
         return null;
       }
     } catch (exception) {
@@ -80,10 +72,10 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
           final secondQuranPage = QuranPage.fromJson(
               Map<String, dynamic>.from(quranPages['second_page']));
 
-          return QuranPageLoadedState(
+          return QuranPageStateLoaded(
               firstQuranPage: firstQuranPage, secondQuranPage: secondQuranPage);
         } else {
-          return QuranPageLoadedState(firstQuranPage: firstQuranPage);
+          return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
         }
       } else {
         QuranPage firstQuranPage = QuranPage(
@@ -91,7 +83,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
             imageUrl: 'assets/images/quran/${startQuranPageNumber}.png');
         homePageBloc.quranPage = firstQuranPage;
 
-        return QuranPageLoadedState(firstQuranPage: firstQuranPage);
+        return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
       }
     } catch (exception) {
       QuranPage firstQuranPage = QuranPage(
@@ -99,24 +91,19 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
           imageUrl: 'assets/images/quran/${startQuranPageNumber}.png');
       homePageBloc.quranPage = firstQuranPage;
 
-      return QuranPageLoadedState(firstQuranPage: firstQuranPage);
+      return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
     }
   }
 
-  // Stream<QuranPageState> _mapJumpToPage(JumpToPageEvent event) async* {
-  //   final _quranPage = await _fetchQuranPage(event.pageNumber);
-  //   homePageBloc.quranPage = _quranPage;
-  //   yield QuranPageJumpedToState(quranPage: _quranPage);
-  // }
-
-  Stream<QuranPageState> _mapLoadPage(LoadQuranPageEvent event) async* {
+  Stream<QuranPageState> _mapLoadPage(QuranPageEventLoad event) async* {
     if (event.pageNumber >= startQuranPageNumber &&
         event.pageNumber <= endQuranPageNumber) {
       final _firstQuranPage = await _fetchQuranPage(event.pageNumber);
       final _secondQuranPage = await _fetchQuranPage(event.pageNumber + 1);
 
       homePageBloc.quranPage = _firstQuranPage;
-      yield QuranPageLoadedState(
+      homePageBloc.add(HomePageEventViewTap());
+      yield QuranPageStateLoaded(
           firstQuranPage: _firstQuranPage, secondQuranPage: _secondQuranPage);
     }
   }

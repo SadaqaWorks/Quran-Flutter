@@ -18,32 +18,32 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       {required this.ayahInfoService,
       required this.quranPageBloc,
       required this.homePageBloc})
-      : super(InitialNavigatorViewState());
+      : super(NavigatorViewStateInitial());
 
   @override
   Stream<NavigatorViewState> mapEventToState(NavigatorViewEvent event) async* {
     final NavigatorViewState currentState = state;
 
-    if (event is NavigatorViewSelectSuraEvent) {
-      yield SuraSelectNavigatorViewState(sura: event.sura);
+    if (event is NavigatorViewEventSelectSura) {
+      yield NavigatorViewStateSuraSelected(sura: event.sura);
     }
 
-    if (event is NavigatorViewSelectPageEvent) {
-      yield PageSelectNavigatorViewState(pageNumber: event.pageNumber);
+    if (event is NavigatorViewEventSelectPage) {
+      yield NavigatorViewStatePageSelected(pageNumber: event.pageNumber);
     }
 
-    if (event is NavigatorViewSelectJuzzEvent) {
-      yield JuzzSelectNavigatorViewState(juzzNumber: event.juzzNumber);
+    if (event is NavigatorViewEventSelectJuzz) {
+      yield NavigatorViewStateJuzzSelected(juzzNumber: event.juzzNumber);
     }
 
-    if (event is NavigatorViewConfirmEvent) {
+    if (event is NavigatorViewEventConfirm) {
       QuranPage? _quranPage;
 
-      if (currentState is PageSelectNavigatorViewState) {
+      if (currentState is NavigatorViewStatePageSelected) {
         _quranPage = QuranPage(pageNumber: currentState.pageNumber);
       }
 
-      if (currentState is SuraSelectNavigatorViewState) {
+      if (currentState is NavigatorViewStateSuraSelected) {
         final _quranPageInfo = await ayahInfoService.getQuranPageInfo(
             suraNumber: currentState.sura.suraNumber);
 
@@ -51,10 +51,10 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       }
 
       if (_quranPage != null) {
-        homePageBloc.add(HomePageHideNavigatorTappedEvent());
+        homePageBloc.add(HomePageEventHideNavigatorTap());
         quranPageBloc
-            .add(LoadQuranPageEvent(pageNumber: _quranPage.pageNumber));
-        yield NavigatorViewConfirmState(pageNumber: _quranPage.pageNumber);
+            .add(QuranPageEventLoad(pageNumber: _quranPage.pageNumber));
+        yield NavigatorViewStateConfirmed(pageNumber: _quranPage.pageNumber);
       }
     }
   }

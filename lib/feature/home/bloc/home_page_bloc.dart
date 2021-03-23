@@ -10,7 +10,7 @@ import 'home_page_state.dart';
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   QuranPage? quranPage;
 
-  HomePageBloc() : super(HideNavigatorViewState()) {}
+  HomePageBloc() : super(HomePageStateInitial()) {}
 
   @override
   Future<void> close() {
@@ -32,21 +32,22 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   Stream<HomePageState> mapEventToState(HomePageEvent event) async* {
     final HomePageState currentState = state;
 
-    if (event is HomePageViewTappedEvent) {
-      if (currentState is HideNavigatorViewState) {
-        yield InitialHomeViewState();
+    if (event is HomePageEventViewTap) {
+      if (currentState is HomePageStateShowInfo ||
+          currentState is HomePageStateShowFullNavigator) {
+        yield HomePageStateInitial();
       }
-      if (currentState is InitialHomeViewState) {
-        yield HideNavigatorViewState();
+      if (currentState is HomePageStateInitial) {
+        yield HomePageStateShowInfo();
       }
     }
 
     if (event is HomePageShowNavigatorTappedEvent) {
-      yield ShowNavigatorViewState();
+      yield HomePageStateShowFullNavigator();
     }
 
-    if (event is HomePageHideNavigatorTappedEvent) {
-      yield HideNavigatorViewState();
+    if (event is HomePageEventHideNavigatorTap) {
+      yield HomePageStateInitial();
     }
   }
 }

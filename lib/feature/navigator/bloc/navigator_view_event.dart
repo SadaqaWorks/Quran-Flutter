@@ -9,33 +9,33 @@ abstract class NavigatorViewEvent {
   List<Object> get props => [];
 }
 
-class NavigatorViewCancelEvent extends NavigatorViewEvent {}
+class NavigatorViewEventCancel extends NavigatorViewEvent {}
 
-class NavigatorViewSelectSuraEvent extends NavigatorViewEvent {
+class NavigatorViewEventSelectSura extends NavigatorViewEvent {
   final Sura sura;
 
-  NavigatorViewSelectSuraEvent({required this.sura});
+  NavigatorViewEventSelectSura({required this.sura});
 
   @override
   List<Object> get props => [sura];
 }
 
-class NavigatorViewSelectPageEvent extends NavigatorViewEvent {
+class NavigatorViewEventSelectPage extends NavigatorViewEvent {
   final int pageNumber;
 
-  NavigatorViewSelectPageEvent({required this.pageNumber});
+  NavigatorViewEventSelectPage({required this.pageNumber});
 
   @override
   List<Object> get props => [pageNumber];
 }
 
-class NavigatorViewSelectJuzzEvent extends NavigatorViewEvent {
+class NavigatorViewEventSelectJuzz extends NavigatorViewEvent {
   final int juzzNumber;
 
-  NavigatorViewSelectJuzzEvent({required this.juzzNumber});
+  NavigatorViewEventSelectJuzz({required this.juzzNumber});
 
   @override
   List<Object> get props => [juzzNumber];
 }
 
-class NavigatorViewConfirmEvent extends NavigatorViewEvent {}
+class NavigatorViewEventConfirm extends NavigatorViewEvent {}

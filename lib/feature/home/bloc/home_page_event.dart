@@ -9,7 +9,7 @@ abstract class HomePageEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class HomePageViewTappedEvent extends HomePageEvent {}
+class HomePageEventViewTap extends HomePageEvent {}
 
 class HomePageShowNavigatorTappedEvent extends HomePageEvent {
   HomePageShowNavigatorTappedEvent();
@@ -18,8 +18,8 @@ class HomePageShowNavigatorTappedEvent extends HomePageEvent {
   List<Object> get props => [];
 }
 
-class HomePageHideNavigatorTappedEvent extends HomePageEvent {
-  HomePageHideNavigatorTappedEvent();
+class HomePageEventHideNavigatorTap extends HomePageEvent {
+  HomePageEventHideNavigatorTap();
 
   @override
   List<Object?> get props => [];

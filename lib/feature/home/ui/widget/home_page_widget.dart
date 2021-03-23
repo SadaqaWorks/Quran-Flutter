@@ -45,48 +45,43 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           return SafeArea(
             child: Scaffold(body: BlocBuilder<HomePageBloc, HomePageState>(
                 builder: (context, state) {
-              if (state is HideNavigatorViewState) {
-                return BlocProvider<QuranPageBloc>(
-                  create: (context) {
-                    return QuranPageBloc(
-                        ayahInfoService:
-                            RepositoryProvider.of<AyahInfoService>(context),
-                        homePageBloc: BlocProvider.of<HomePageBloc>(context));
-                  },
-                  child: QuranPageWidget(),
-                );
-              } else {
-                return _overlayView();
+              if (state is HomePageStateInitial) {
+                return _widgetQuranPage();
+              } else if (state is HomePageStateShowInfo) {
+                return _widgetHalfNavigator();
+              } else if (state is HomePageStateShowFullNavigator) {
+                return _widgetFullNavigator();
               }
+
+              return Container();
             })),
           );
         });
   }
 
   //Action
-  void _showNavigatorAction() {
+  void _actionShowFullNavigator() {
     BlocProvider.of<HomePageBloc>(context)
         .add(HomePageShowNavigatorTappedEvent());
   }
 
-  void _hideNavigatorAction() {
-    BlocProvider.of<HomePageBloc>(context)
-        .add(HomePageHideNavigatorTappedEvent());
+  void _actionHideNavigator() {
+    BlocProvider.of<HomePageBloc>(context).add(HomePageEventHideNavigatorTap());
   }
 
   //Widget
-  Widget _showNavigatorButton() {
+  Widget _widgetShowNavigator() {
     return SizedBox(
         height: 18.0,
         width: 18.0,
         child: IconButton(
           icon: Icon(Icons.arrow_drop_up, color: Colors.black87),
-          onPressed: () => {_showNavigatorAction()},
+          onPressed: () => {_actionShowFullNavigator()},
           padding: new EdgeInsets.all(0.0),
         ));
   }
 
-  Widget _hideNavigatorButton() {
+  Widget _widgetHideNavigator() {
     return Padding(
         padding: const EdgeInsets.all(12.0),
         child: SizedBox(
@@ -94,11 +89,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             width: 18.0,
             child: IconButton(
                 icon: Icon(Icons.arrow_drop_down, color: Colors.black87),
-                onPressed: () => {_hideNavigatorAction()},
+                onPressed: () => {_actionHideNavigator()},
                 padding: new EdgeInsets.all(0.0))));
   }
 
-  Widget _ayatInfo(QuranPage? _quranPage) {
+  Widget _widgetAyahInfo(QuranPage? _quranPage) {
     return Text(
       "${_quranPage?.quranPageInfoList?.first.suraNumber}. (${_quranPage?.quranPageInfoList?.first.nameArabic}) ${_quranPage?.quranPageInfoList?.first.name} \n${S.of(context).page}: ${_quranPage?.pageNumber}",
       style: TextStyle(
@@ -130,8 +125,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   //         label: _quranPage.pageNumber.toString(),
   //       ));
   // }
+  Widget _widgetQuranPage() {
+    return BlocProvider<QuranPageBloc>(
+      create: (context) {
+        return QuranPageBloc(
+            ayahInfoService: RepositoryProvider.of<AyahInfoService>(context),
+            homePageBloc: BlocProvider.of<HomePageBloc>(context));
+      },
+      child: QuranPageWidget(),
+    );
+  }
 
-  Widget _overlayView() {
+  Widget _widgetHalfNavigator() {
     return Stack(
       children: <Widget>[
         Container(color: Theme.of(context).accentColor.withOpacity(.3)),
@@ -145,17 +150,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: QuranPageWidget(),
         ),
         Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(child: BlocBuilder<HomePageBloc, HomePageState>(
-                builder: (context, state) {
-              if (state is InitialHomeViewState) {
-                return _initialNavigatorWidget();
-              } else {
-                return _fullNavigatorWidget();
-              }
-            })))
+            bottom: 0, left: 0, right: 0, child: _initialNavigatorWidget())
+      ],
+    );
+  }
+
+  Widget _widgetFullNavigator() {
+    return Stack(
+      children: <Widget>[
+        Container(color: Theme.of(context).accentColor.withOpacity(.3)),
+        BlocProvider<QuranPageBloc>(
+          create: (context) {
+            return QuranPageBloc(
+                ayahInfoService:
+                    RepositoryProvider.of<AyahInfoService>(context),
+                homePageBloc: BlocProvider.of<HomePageBloc>(context));
+          },
+          child: QuranPageWidget(),
+        ),
+        Positioned(bottom: 0, left: 0, right: 0, child: _fullNavigatorWidget())
       ],
     );
   }
@@ -174,8 +187,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                    _showNavigatorButton(),
-                    _ayatInfo(
+                    _widgetShowNavigator(),
+                    _widgetAyahInfo(
                         RepositoryProvider.of<HomePageBloc>(context).quranPage)
                   ])))),
       SizedBox(height: 10),
@@ -199,7 +212,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     children: <Widget>[
                       NavigatorWidget(),
                       SizedBox(height: 8),
-                      _hideNavigatorButton(),
+                      _widgetHideNavigator(),
                     ])),
           ]),
     );

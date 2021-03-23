@@ -10,24 +10,24 @@ abstract class QuranPageState {
   String toString() => 'QuranPageLoaded }';
 }
 
-class InitialQuranPageState extends QuranPageState {
-  const InitialQuranPageState() : super();
+class QuranPageStateInitial extends QuranPageState {
+  const QuranPageStateInitial() : super();
 
   @override
   List<Object> get props => [];
 }
 
-class QuranPageLoadedState extends QuranPageState {
+class QuranPageStateLoaded extends QuranPageState {
   final QuranPage firstQuranPage;
   final QuranPage? secondQuranPage;
 
-  const QuranPageLoadedState(
+  const QuranPageStateLoaded(
       {required this.firstQuranPage, this.secondQuranPage})
       : super();
 
-  QuranPageLoadedState copyWith(
+  QuranPageStateLoaded copyWith(
       {QuranPage? firstQuranPage, QuranPage? secondQuranPage}) {
-    return QuranPageLoadedState(
+    return QuranPageStateLoaded(
         firstQuranPage: firstQuranPage ?? this.firstQuranPage,
         secondQuranPage: secondQuranPage ?? this.secondQuranPage);
   }
@@ -38,19 +38,3 @@ class QuranPageLoadedState extends QuranPageState {
   @override
   String toString() => 'QuranPageLoaded { page: ${firstQuranPage.pageNumber} }';
 }
-
-// class QuranPageJumpedToState extends QuranPageState {
-//   final QuranPage quranPage;
-//
-//   const QuranPageJumpedToState({required this.quranPage}) : super();
-//
-//   QuranPageJumpedToState copyWith({QuranPage? quranPage}) {
-//     return QuranPageJumpedToState(quranPage: quranPage ?? this.quranPage);
-//   }
-//
-//   @override
-//   List<Object> get props => [quranPage];
-//
-//   @override
-//   String toString() => 'QuranPageJumpedTo { page: ${quranPage.pageNumber} }';
-// }

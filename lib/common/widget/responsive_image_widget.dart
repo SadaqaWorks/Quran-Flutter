@@ -43,7 +43,7 @@ class PortraitImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final quranPage = InheritedOrientedImage.of(context).imageUrl;
 
-    if (Device.get().isPhone!) {
+    if (Device.get().isPhone) {
       final double width = MediaQuery.of(context).size.width + 80;
       final double height = MediaQuery.of(context).size.height - 20;
 

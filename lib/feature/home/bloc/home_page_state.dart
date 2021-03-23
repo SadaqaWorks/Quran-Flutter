@@ -9,25 +9,23 @@ abstract class HomePageState extends Equatable {
   List<Object?> get props => [];
 }
 
-class InitialHomeViewState extends HomePageState {
-  InitialHomeViewState();
+class HomePageStateInitial extends HomePageState {
+  HomePageStateInitial();
 
   @override
   List<Object?> get props => [];
 }
 
-class ShowNavigatorViewState extends HomePageState {
-  ShowNavigatorViewState();
+class HomePageStateShowInfo extends HomePageState {
+  HomePageStateShowInfo();
 
   @override
   List<Object> get props => [];
 }
 
-class HideNavigatorViewState extends HomePageState {
-  //final QuranPage quranPage;
-
-  HideNavigatorViewState();
+class HomePageStateShowFullNavigator extends HomePageState {
+  HomePageStateShowFullNavigator();
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }

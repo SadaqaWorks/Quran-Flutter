@@ -119,3 +119,6 @@ app.*.symbols
 android/fastlane/report.xml
 ios/fastlane/report.xml
 assets/.env
+
+# Monarch related
+.monarch/

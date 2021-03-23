@@ -46,6 +46,8 @@ dev_dependencies:
   lint: ^1.5.2
   pedantic: 1.11.0
   logger:
+  monarch: ^0.1.2
+  build_runner: ^1.10.3
 
 
 # For information on the generic Dart part of this file, see the

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quran_reader/common/geature/easy_gesture_detector.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/common/widget/responsive_image_widget.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
@@ -51,23 +52,10 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         //   return ResponsiveImageWidget(quranPage: state.quranPage);
         // }
         if (state is QuranPageLoadedState) {
-          return GestureDetector(
+          return EasyGestureDetector(
               onTap: () {
                 BlocProvider.of<HomePageBloc>(context)
                     .add(HomePageViewTappedEvent());
-              },
-              onLongPress: () {},
-              onLongPressEnd: (LongPressEndDetails longPressEndDetails) {},
-              onHorizontalDragUpdate: (details) {
-                // Note: Sensitivity is integer used when you don't want to mess up vertical drag
-                int sensitivity = 8;
-                if (details.delta.dx > sensitivity) {
-                  // Right Swipe
-                  _onPageViewChange(state.firstQuranPage.pageNumber + 1);
-                } else if (details.delta.dx < -sensitivity) {
-                  //Left Swipe
-                  _onPageViewChange(state.firstQuranPage.pageNumber - 1);
-                }
               },
               // gestures: {
               //   AllowMultipleGestureRecognizer: GestureRecognizerFactoryWithHandlers<
@@ -81,8 +69,12 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
               //     },
               //   )
               // },
-
-              behavior: HitTestBehavior.opaque,
+              onSwipeLeft: () {
+                _onPageViewChange(state.firstQuranPage.pageNumber - 1);
+              },
+              onSwipeRight: () {
+                _onPageViewChange(state.firstQuranPage.pageNumber + 1);
+              },
               //Parent Container
               child: _widgetQuranPage(state));
         }
@@ -125,7 +117,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   }
 
   Widget _widgetQuranPage(QuranPageLoadedState state) {
-    if (Device.get().isWeb! || Device.get().isComputer!) {
+    if (Device.get().isWeb || Device.get().isComputer) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[

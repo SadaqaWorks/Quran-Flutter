@@ -11,7 +11,7 @@ import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/quran_page/widget/quran_page_widget.dart';
 import 'package:quran_reader/generated/l10n.dart';
-//import 'package:wakelock/wakelock.dart';
+import 'package:wakelock/wakelock.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
@@ -23,8 +23,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   void dispose() {
-    if (Device.get().isIos! || Device.get().isAndroid!) {
-      //Wakelock.disable();
+    if (Device.get().isIos || Device.get().isAndroid) {
+      Wakelock.disable();
     }
     super.dispose();
   }
@@ -32,8 +32,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (Device.get().isIos! || Device.get().isAndroid!) {
-      //Wakelock.enable();
+    if (Device.get().isIos || Device.get().isAndroid) {
+      Wakelock.enable();
     }
   }
 

@@ -7,7 +7,7 @@ class Button extends StatelessWidget {
   final String text;
   final ButtonStyles style;
 
-  Button(this.text, {this.style});
+  Button(this.text, this.style);
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -42,7 +42,7 @@ class Button extends StatelessWidget {
       case ButtonStyles.secondary:
         return Colors.white;
       case ButtonStyles.disabled:
-        return Colors.grey[300];
+        return Colors.grey[300]!;
       default:
         return Colors.green;
     }

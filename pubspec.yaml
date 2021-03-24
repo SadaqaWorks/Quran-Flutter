@@ -37,6 +37,7 @@ dependencies:
   wakelock: ^0.5.0+2
   sqflite: ^2.0.0+3
   flutter_dotenv: 4.0.0-nullsafety.0
+  intl_utils: ^2.1.0
 
 dev_dependencies:
   flutter_test:

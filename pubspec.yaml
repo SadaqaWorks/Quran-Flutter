@@ -24,8 +24,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.0.5
-  meta: ^1.3.0
-  path_provider: ^2.0.1
+  #meta: ^1.3.0
 
 #core
   rxdart: ^0.26.0
@@ -35,8 +34,15 @@ dependencies:
   equatable: ^2.0.0
 
   wakelock: ^0.5.0+2
-  sqflite: ^2.0.0+3
   flutter_dotenv: 4.0.0-nullsafety.0
+
+# Database
+  sqflite: ^2.0.0+3
+  moor: ^4.2.0
+  sqlite3_flutter_libs: ^0.4.1
+  path_provider: ^2.0.1
+  path: ^1.8.0
+  undo: ^1.3.1
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +54,9 @@ dev_dependencies:
   logger:
   monarch: ^0.1.2
   build_runner: ^1.10.3
+  moor_generator: ^4.2.0
+  build_web_compilers: ^2.16.5
+
 
 
 # For information on the generic Dart part of this file, see the

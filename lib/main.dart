@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran_reader/app/app.dart';
 import 'package:quran_reader/common/database/ayah_info_service.dart';
+import 'package:quran_reader/plugins/desktop/desktop.dart';
 
 void main() => start();
 
@@ -27,6 +28,7 @@ void start() async {
   );
 
   //await dotenv.load(fileName: ".env");
+  setTargetPlatformForDesktop();
 
   final ayahInfoService = await AyahInfoService.create();
 

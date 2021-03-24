@@ -102,7 +102,6 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
       final _secondQuranPage = await _fetchQuranPage(event.pageNumber + 1);
 
       homePageBloc.quranPage = _firstQuranPage;
-      homePageBloc.add(HomePageEventViewTap());
       yield QuranPageStateLoaded(
           firstQuranPage: _firstQuranPage, secondQuranPage: _secondQuranPage);
     }

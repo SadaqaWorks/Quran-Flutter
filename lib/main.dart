@@ -26,8 +26,6 @@ void start() async {
         : await (_getTemporaryDirectory()),
   );
 
-  //await dotenv.load(fileName: ".env");
-
   final ayahInfoService = await AyahInfoService.create();
 
   SystemChrome.setPreferredOrientations(

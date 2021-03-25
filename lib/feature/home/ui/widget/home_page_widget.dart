@@ -129,7 +129,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return BlocProvider<QuranPageBloc>(
       create: (context) {
         return QuranPageBloc(
-            ayahInfoService: RepositoryProvider.of<AyahInfoService>(context),
+            ayahInfoRepository:
+                RepositoryProvider.of<AyahInfoRepository>(context),
             homePageBloc: BlocProvider.of<HomePageBloc>(context));
       },
       child: QuranPageWidget(),
@@ -143,8 +144,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         BlocProvider<QuranPageBloc>(
           create: (context) {
             return QuranPageBloc(
-                ayahInfoService:
-                    RepositoryProvider.of<AyahInfoService>(context),
+                ayahInfoRepository:
+                    RepositoryProvider.of<AyahInfoRepository>(context),
                 homePageBloc: BlocProvider.of<HomePageBloc>(context));
           },
           child: QuranPageWidget(),
@@ -162,8 +163,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         BlocProvider<QuranPageBloc>(
           create: (context) {
             return QuranPageBloc(
-                ayahInfoService:
-                    RepositoryProvider.of<AyahInfoService>(context),
+                ayahInfoRepository:
+                    RepositoryProvider.of<AyahInfoRepository>(context),
                 homePageBloc: BlocProvider.of<HomePageBloc>(context));
           },
           child: QuranPageWidget(),

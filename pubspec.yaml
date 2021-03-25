@@ -27,12 +27,13 @@ dependencies:
   meta: ^1.3.0
   path_provider: ^2.0.1
 
-#core
+  #core
   rxdart: ^0.26.0
   bloc: ^7.0.0
   flutter_bloc: ^7.0.0
   hydrated_bloc: ^7.0.0
   equatable: ^2.0.0
+  dartz: ^0.10.0-nullsafety.1
 
   wakelock: ^0.5.0+2
   sqflite: ^2.0.0+3
@@ -42,11 +43,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.0
-  flutter_native_splash: 1.1.4+1
+  flutter_native_splash: 1.1.5+1
   lint: ^1.5.2
   pedantic: 1.11.0
   logger:
-  monarch: ^0.1.2
+  monarch: ^0.2.0
   build_runner: ^1.10.3
 
 

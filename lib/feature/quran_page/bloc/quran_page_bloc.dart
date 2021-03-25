@@ -3,21 +3,23 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran_reader/common/constant/constants.dart';
-import 'package:quran_reader/common/database/database.dart';
+import 'package:quran_reader/common/database/ayah_info_service.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
 
 class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
-  final AyahInfoService ayahInfoService;
+  final AyahInfoRepository ayahInfoRepository;
   final HomePageBloc homePageBloc;
 
-  QuranPageBloc({required this.ayahInfoService, required this.homePageBloc})
+  QuranPageBloc({required this.ayahInfoRepository, required this.homePageBloc})
       : super(QuranPageStateInitial()) {
     hydrate();
+    //ayahInfoService = AyahInfoRepository();
     if (state is QuranPageStateInitial) {
-      add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
+      add(QuranPageEventLoadDatabase());
+      //add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
     }
   }
 
@@ -34,6 +36,13 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
   @override
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
+    if (event is QuranPageEventLoadDatabase) {
+      await ayahInfoRepository.initDatabase();
+      if (state is QuranPageStateInitial) {
+        add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
+      }
+    }
+
     if (event is QuranPageEventLoad) {
       yield* _mapLoadPage(event);
     }
@@ -110,7 +119,7 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   Future<QuranPage> _fetchQuranPage(int page) async {
     QuranPage quranPage =
         QuranPage(pageNumber: page, imageUrl: 'assets/images/quran/$page.png');
-    quranPage.quranPageInfoList = await ayahInfoService.getQuranPageInfoList(
+    quranPage.quranPageInfoList = await ayahInfoRepository.getQuranPageInfoList(
         pageNumber: quranPage.pageNumber);
     return quranPage;
   }

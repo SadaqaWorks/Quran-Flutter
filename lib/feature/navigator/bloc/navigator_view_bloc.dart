@@ -10,7 +10,7 @@ import 'navigator_view_event.dart';
 import 'navigator_view_state.dart';
 
 class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
-  final AyahInfoService ayahInfoService;
+  final AyahInfoRepository ayahInfoService;
   final QuranPageBloc quranPageBloc;
   final HomePageBloc homePageBloc;
 

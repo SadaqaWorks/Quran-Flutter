@@ -1,58 +1,60 @@
-import 'dart:io';
-
-import 'package:quran_reader/common/database/database_service.dart';
+import 'package:quran_reader/common/database/file_service.dart';
+import 'package:quran_reader/common/database/model/database_file.dart';
+import 'package:quran_reader/common/result/database_avaiablity_result.dart';
+import 'package:quran_reader/common/result/repository_result.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/sura/model/models.dart';
 import 'package:sqflite/sqflite.dart';
 
-abstract class IAyahInfoService {
-  Future<List<QuranPageInfo>> getQuranPageInfoList({
-    int? pageNumber,
-  });
+class AyahInfoRepository extends FileService implements IFileService {
+  static Database? ayahInfoDatabase;
 
-  Future<QuranPageInfo> getQuranPageInfo({
-    int? suraNumber,
-  });
-
-  Future<List<Sura>> getSuraList();
-
-  void dispose();
-}
-
-class AyahInfoService extends DatabaseService implements IAyahInfoService {
-  Database? ayahInfoDatabase;
-
-  AyahInfoService._create();
-
-  /// Public factory
-  static Future<AyahInfoService> create() async {
-    // Make sure /database directory created
-    var databasePath = await getDatabasesPath();
-    var f = Directory(databasePath);
-    if (!f.existsSync()) {
-      f.createSync();
-    }
-
-    var component = AyahInfoService._create();
-
-    await component.initDatabase();
-
-    return component;
-  }
+  // AyahInfoRepository._create();
+  //
+  // static Future<AyahInfoRepository> create() async {
+  //   var component = AyahInfoRepository._create();
+  //
+  //   await component.initDatabase(QuranFile.quranFiles.firstWhere(
+  //       (element) => element.quranFileType == QuranFileType.ayahInfo));
+  //
+  //   return component;
+  // }
 
   Future initDatabase() async {
     if (ayahInfoDatabase == null) {
       if (ayahInfoDatabase?.isOpen == true) {
-        ayahInfoDatabase!.close();
+        ayahInfoDatabase?.close();
         ayahInfoDatabase = null;
         await Future.delayed(Duration(microseconds: 50));
       }
-      ayahInfoDatabase = await openDatabaseConnection(
-        'ayahinfo_1280.db',
-        'assets/quran-data/db/ayahinfo_1280.db',
+
+      final quranFile = QuranFile.quranFiles.firstWhere(
+          (element) => element.quranFileType == QuranFileType.ayahInfo);
+
+      final response = await openDatabaseConnection(
+        QuranFile.quranFiles.firstWhere(
+            (element) => element.quranFileType == QuranFileType.ayahInfo),
+        // 'ayahinfo_1280.db',
+        // 'assets/quran-data/db/ayahinfo_1280.db',
         isReadOnly: false,
       );
+
+      response.fold((RepositoryResult l) {
+        if (l is DatabaseNotAvailableResult) {
+          if (quranFile.required) {
+            //TODO:- Download file
+          }
+        }
+        return l;
+      }, (r) {
+        ayahInfoDatabase = r;
+      });
     }
+  }
+
+  void dispose() {
+    ayahInfoDatabase?.close();
+    ayahInfoDatabase = null;
   }
 
   Future<List<QuranPageInfo>> getQuranPageInfoList({
@@ -99,10 +101,5 @@ class AyahInfoService extends DatabaseService implements IAyahInfoService {
     List<Map> maps = await ayahInfoDatabase!.rawQuery(
         "select sura.sura_number,sura.name_arabic, sura.name_english as name from sura");
     return maps.map((e) => Sura.fromJson(e as Map<String, dynamic>)).toList();
-  }
-
-  void dispose() {
-    ayahInfoDatabase?.close();
-    ayahInfoDatabase = null;
   }
 }

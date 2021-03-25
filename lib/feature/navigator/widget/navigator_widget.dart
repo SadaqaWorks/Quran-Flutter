@@ -37,7 +37,8 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
     return BlocProvider<NavigatorViewBloc>(
         create: (context) {
           return NavigatorViewBloc(
-              ayahInfoService: RepositoryProvider.of<AyahInfoService>(context),
+              ayahInfoService:
+                  RepositoryProvider.of<AyahInfoRepository>(context),
               quranPageBloc: RepositoryProvider.of<QuranPageBloc>(context),
               homePageBloc: RepositoryProvider.of<HomePageBloc>(context));
         },

@@ -13,3 +13,10 @@ class QuranPageEventLoad extends QuranPageEvent {
   @override
   List<Object> get props => [pageNumber];
 }
+
+class QuranPageEventLoadDatabase extends QuranPageEvent {
+  QuranPageEventLoadDatabase();
+
+  @override
+  List<Object> get props => [];
+}

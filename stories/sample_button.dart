@@ -8,6 +8,7 @@ class Button extends StatelessWidget {
   final ButtonStyles style;
 
   Button(this.text, this.style);
+
   @override
   Widget build(BuildContext context) {
     return Center(

@@ -12,11 +12,8 @@ class QuranPageWidget extends StatefulWidget {
 }
 
 class _QuranPageWidgetState extends State<QuranPageWidget> {
-  PageController? _controller;
-
   @override
   void dispose() {
-    _controller?.dispose();
     super.dispose();
   }
 
@@ -62,7 +59,9 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
               //Parent Container
               child: _widgetQuranPage(state));
         }
-        return Container();
+        return Container(
+          color: Colors.black26,
+        );
       },
     );
   }

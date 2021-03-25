@@ -5,25 +5,22 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:quran_reader/common/bloc/appconfig/appconfig_bloc.dart';
 import 'package:quran_reader/common/bloc/appconfig/appconfig_state.dart';
 import 'package:quran_reader/common/database/ayah_info_service.dart';
+import 'package:quran_reader/common/database/database.dart';
 import 'package:quran_reader/common/routes/route_generator.dart';
 import 'package:quran_reader/common/routes/routes.dart';
 import 'package:quran_reader/generated/l10n.dart';
 
 class App extends StatefulWidget {
-  App({Key? key, required this.ayahInfoService}) : super(key: key);
-
-  final AyahInfoService ayahInfoService;
+  App({Key? key}) : super(key: key);
 
   @override
   _MyAppState createState() {
-    return _MyAppState(ayahInfoService: ayahInfoService);
+    return _MyAppState();
   }
 }
 
 class _MyAppState extends State<App> {
-  _MyAppState({required this.ayahInfoService});
-
-  final AyahInfoService ayahInfoService;
+  _MyAppState();
 
   @override
   void didChangeDependencies() {
@@ -39,8 +36,8 @@ class _MyAppState extends State<App> {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
         providers: [
-          RepositoryProvider<AyahInfoService>(
-            create: (context) => ayahInfoService,
+          RepositoryProvider<AyahInfoRepository>(
+            create: (context) => AyahInfoRepository(),
             lazy: true,
           ),
         ],

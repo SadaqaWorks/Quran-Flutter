@@ -6,19 +6,21 @@ import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/sura/model/models.dart';
 import 'package:sqflite/sqflite.dart';
 
-class AyahInfoRepository extends FileService implements IFileService {
+class AyahInfoRepository extends IFileService {
   static Database? ayahInfoDatabase;
 
-  // AyahInfoRepository._create();
-  //
-  // static Future<AyahInfoRepository> create() async {
-  //   var component = AyahInfoRepository._create();
-  //
-  //   await component.initDatabase(QuranFile.quranFiles.firstWhere(
-  //       (element) => element.quranFileType == QuranFileType.ayahInfo));
-  //
-  //   return component;
-  // }
+  AyahInfoRepository();
+
+  AyahInfoRepository._create();
+  static Future<AyahInfoRepository> create() async {
+    var component = AyahInfoRepository._create();
+
+    await component.initDatabase();
+
+    return component;
+  }
+
+  FileService _fileService = FileService();
 
   Future initDatabase() async {
     if (ayahInfoDatabase == null) {
@@ -31,11 +33,9 @@ class AyahInfoRepository extends FileService implements IFileService {
       final quranFile = QuranFile.quranFiles.firstWhere(
           (element) => element.quranFileType == QuranFileType.ayahInfo);
 
-      final response = await openDatabaseConnection(
+      final response = await _fileService.openDatabaseConnection(
         QuranFile.quranFiles.firstWhere(
             (element) => element.quranFileType == QuranFileType.ayahInfo),
-        // 'ayahinfo_1280.db',
-        // 'assets/quran-data/db/ayahinfo_1280.db',
         isReadOnly: false,
       );
 

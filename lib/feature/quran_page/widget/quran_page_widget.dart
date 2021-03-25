@@ -15,6 +15,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   @override
   void dispose() {
     super.dispose();
+    //BlocProvider.of<QuranPageBloc>(context).dispose();
   }
 
   @override
@@ -59,9 +60,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
               //Parent Container
               child: _widgetQuranPage(state));
         }
-        return Container(
-          color: Colors.black26,
-        );
+        return Container();
       },
     );
   }

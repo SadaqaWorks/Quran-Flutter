@@ -16,11 +16,15 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   QuranPageBloc({required this.ayahInfoRepository, required this.homePageBloc})
       : super(QuranPageStateInitial()) {
     hydrate();
-    //ayahInfoService = AyahInfoRepository();
+
     if (state is QuranPageStateInitial) {
       add(QuranPageEventLoadDatabase());
       //add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
     }
+  }
+
+  void dispose() {
+    ayahInfoRepository.dispose();
   }
 
   @override

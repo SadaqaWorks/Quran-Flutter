@@ -28,6 +28,7 @@ dependencies:
   path_provider: ^2.0.1
 
   #core
+  http: ^0.13.1
   rxdart: ^0.26.0
   bloc: ^7.0.0
   flutter_bloc: ^7.0.0

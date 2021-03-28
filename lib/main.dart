@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:quran_reader/common/database/hive/hive_manager.dart';
 
 import 'app/app.dart';
 
@@ -26,7 +27,7 @@ void start() async {
         : await (_getTemporaryDirectory()),
   );
 
-  //final ayahInfoService = await AyahInfoRepository.create();
+  await HiveManager.initialize();
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {

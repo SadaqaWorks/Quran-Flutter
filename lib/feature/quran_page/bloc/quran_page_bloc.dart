@@ -1,11 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:hive/hive.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran_reader/common/constant/constants.dart';
 import 'package:quran_reader/common/database/ayah_info_service.dart';
-import 'package:quran_reader/common/database/hive/hive_manager.dart';
 import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
@@ -125,15 +123,6 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   Future<QuranPage> _fetchQuranPage(int page) async {
     QuranPage quranPage =
         QuranPage(pageNumber: page, imageUrl: 'assets/images/quran/$page.png');
-
-    Box<Contact> contacts1Box = Hive.box<Contact>(HiveBoxes.contacts1);
-    Box<Contact> contacts2Box = Hive.box<Contact>(HiveBoxes.contacts2);
-
-    contacts1Box.add(Contact("sadman", 21, "01701227003"));
-    contacts2Box.add(Contact("sadman", 21, "01701227003"));
-
-    print("BOXES 1 ${contacts1Box.getAt(0)}");
-    print("BOXES 2 ${contacts2Box.getAt(0)}");
 
     quranPage.quranPageInfoList = await ayahInfoRepository.getQuranPageInfoList(
         pageNumber: quranPage.pageNumber);

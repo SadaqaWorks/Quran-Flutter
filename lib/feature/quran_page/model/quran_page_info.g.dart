@@ -1,18 +1,25 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 part of 'quran_page_info.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
 
 QuranPageInfo _$QuranPageInfoFromJson(Map<String, dynamic> json) {
   return QuranPageInfo(
-      pageNumber: json['page_number'] as int,
-      lineNumber: json['line_number'] as int?,
-      suraNumber: json['sura_number'] as int?,
-      ayahNumber: json['ayah_number'] as int?,
-      position: json['position'] as int?,
-      minX: json['min_x'] as int?,
-      minY: json['min_y'] as int?,
-      maxX: json['max_x'] as int?,
-      maxY: json['max_y'] as int?,
-      name: json['name'] as String?,
-      nameArabic: json['name_arabic'] as String?);
+    pageNumber: json['page_number'] as int,
+    lineNumber: json['line_number'] as int?,
+    suraNumber: json['sura_number'] as int?,
+    ayahNumber: json['ayah_number'] as int?,
+    position: json['position'] as int?,
+    minX: json['min_x'] as int?,
+    minY: json['min_y'] as int?,
+    maxX: json['max_x'] as int?,
+    maxY: json['max_y'] as int?,
+    name: json['name'] as String?,
+    nameArabic: json['name_arabic'] as String?,
+  );
 }
 
 Map<String, dynamic> _$QuranPageInfoToJson(QuranPageInfo instance) =>
@@ -27,5 +34,5 @@ Map<String, dynamic> _$QuranPageInfoToJson(QuranPageInfo instance) =>
       'max_x': instance.maxX,
       'max_y': instance.maxY,
       'name': instance.name,
-      'name_arabic': instance.nameArabic
+      'name_arabic': instance.nameArabic,
     };

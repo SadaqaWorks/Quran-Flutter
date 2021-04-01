@@ -1,13 +1,13 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
 import 'quran_page_info.dart';
 
 part 'quran_page.g.dart';
 
+@JsonSerializable()
 class QuranPage extends Equatable {
   int pageNumber;
   final String? imageUrl;

@@ -1,21 +1,23 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 part of 'quran_page.dart';
 
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
 QuranPage _$QuranPageFromJson(Map<String, dynamic> json) {
-  final maps = jsonDecode(json['quranPageInfoList']) as List;
-  final quranPageInfoList = maps.map((e) => QuranPageInfo.fromJson(e)).toList();
   return QuranPage(
-      pageNumber: json['page'] as int,
-      imageUrl: json['imageUrl'] as String?,
-      quranPageInfoList: quranPageInfoList);
+    pageNumber: json['pageNumber'] as int,
+    imageUrl: json['imageUrl'] as String?,
+    quranPageInfoList: (json['quranPageInfoList'] as List<dynamic>?)
+        ?.map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
 }
 
-Map<String, dynamic> _$QuranPageToJson(QuranPage instance) {
-  String quranPageInfoListJson =
-      jsonEncode(instance.quranPageInfoList!.map((i) => i.toJson()).toList())
-          .toString();
-  return <String, dynamic>{
-    'page': instance.pageNumber,
-    'imageUrl': instance.imageUrl,
-    'quranPageInfoList': quranPageInfoListJson
-  };
-}
+Map<String, dynamic> _$QuranPageToJson(QuranPage instance) => <String, dynamic>{
+      'pageNumber': instance.pageNumber,
+      'imageUrl': instance.imageUrl,
+      'quranPageInfoList': instance.quranPageInfoList,
+    };

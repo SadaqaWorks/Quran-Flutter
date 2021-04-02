@@ -35,7 +35,7 @@ dependencies:
   hydrated_bloc: ^7.0.0
   equatable: ^2.0.0
   dartz: ^0.10.0-nullsafety.1
-  hive: ^2.0.0
+  hive: ^2.0.2
   flutter_screenutil: ^4.0.4+1
   hive_flutter: ^1.0.0
   quiver: ^3.0.0
@@ -44,6 +44,10 @@ dependencies:
   sqflite: ^2.0.0+3
   intl_utils: ^2.1.0
   json_annotation:
+
+  flutter_riverpod: ^0.13.1
+  state_notifier: ^0.7.0
+  freezed_annotation:
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +60,7 @@ dev_dependencies:
   json_serializable:
   hive_generator:
   build_runner:
+  freezed:
 
 
 # For information on the generic Dart part of this file, see the

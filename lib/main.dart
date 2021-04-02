@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:quran_reader/common/database/hive/hive_manager.dart';
 
@@ -32,5 +33,10 @@ void start() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
     runApp(App());
+
+    runApp(ProviderScope(
+      overrides: [],
+      child: App(),
+    ));
   });
 }

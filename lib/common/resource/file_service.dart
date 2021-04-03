@@ -32,21 +32,21 @@ class FileService {
   }
 
   Future<Either<RepositoryResult, Database>> openDatabaseConnection(
-    Resource quranFile, {
+    Resource resource, {
     bool isReadOnly = true,
     bool deleteFirst = false,
   }) async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String dbPath = path.join(documentDirectory.path, quranFile.name);
+    String dbPath = path.join(documentDirectory.path, resource.name);
     bool dbExists = await File(dbPath).exists();
 
     if (dbExists) {
-      if (!quranFile.downloaded) {
+      if (!resource.downloaded) {
         await deleteDatabase(dbPath);
         await deleteFile(dbPath);
 
-        if (quranFile.required) {
-          final fileResult = await fileDownload(quranFile.url, dbPath,
+        if (resource.required) {
+          final fileResult = await fileDownload(resource.url, dbPath,
               onDownloadProgress: (int receivedBytes, int totalBytes) {});
 
           if (fileResult) {
@@ -65,8 +65,8 @@ class FileService {
           : await openDatabase(dbPath);
       return Right(database);
     } else {
-      if (quranFile.required) {
-        final fileResult = await fileDownload(quranFile.url, dbPath);
+      if (resource.required) {
+        final fileResult = await fileDownload(resource.url, dbPath);
 
         if (fileResult) {
           Database database = isReadOnly

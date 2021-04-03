@@ -30,12 +30,12 @@ class AyahInfoRepository extends IFileService {
         await Future.delayed(Duration(microseconds: 50));
       }
 
-      final quranFile = Resource.quranFiles.firstWhere((element) =>
-          element.resourceType == ResourceType.ayahInfo.toString());
+      final quranFile = Resource.quranFiles.firstWhere(
+          (element) => element.resourceType == ResourceType.ayahInfo);
 
       final response = await _fileService.openDatabaseConnection(
-        Resource.quranFiles.firstWhere((element) =>
-            element.resourceType == ResourceType.ayahInfo.toString()),
+        Resource.quranFiles.firstWhere(
+            (element) => element.resourceType == ResourceType.ayahInfo),
         isReadOnly: false,
       );
 

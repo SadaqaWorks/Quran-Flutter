@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quran_reader/common/resource/model/resource.dart';
-import 'package:quran_reader/common/resource/model/resources.dart';
 
 class HiveManager {
   //current highest type ID 4
@@ -16,12 +15,14 @@ class HiveManager {
 
   static void _registerHiveAdapters() {
     Hive.registerAdapter(ResourceAdapter());
-    Hive.registerAdapter(ResourcesAdapter());
     Hive.registerAdapter(ResourceTypeAdapter());
     Hive.registerAdapter(FileTypeAdapter());
   }
 
-  static Future<void> clearBoxes() async {}
+  static Future<void> clearBoxes() async {
+    Hive.box(HiveBoxes.resources).clear();
+    Hive.box(HiveBoxes.settings).clear();
+  }
 }
 
 abstract class HiveBoxes {

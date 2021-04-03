@@ -1,49 +1,43 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
 import 'package:quran_reader/common/http/api_provider.dart';
 import 'package:quran_reader/common/resource/hive/hive_manager.dart';
-import 'package:quran_reader/common/resource/manager/resources_state.dart';
 import 'package:quran_reader/common/resource/model/resource.dart';
-import 'package:quran_reader/common/resource/model/resources.dart';
+import 'package:quran_reader/feature/app_start_up/model/resources_sync_state.dart';
 
-final resourcesProvider = FutureProvider<ResourcesState>((ref) async {
-  return ResourceManager(ref.watch(apiProvider)).check();
-});
-
-class ResourceManager {
-  static const RESOURCES = 'resources';
-  static const RESOURCES_NEED_REFRESH = 'resources_need_refresh';
-
+class ResourcesSyncRepository {
   //final SharedPreferences sharedPreferences;
   final APIProvider apiProvider;
-  ResourceManager(this.apiProvider);
+  ResourcesSyncRepository(this.apiProvider);
 
-  Future<ResourcesState> check() async {
+  Future<ResourcesSyncState> sync() async {
     var box = Hive.box(HiveBoxes.resources);
-    Resources? resources = box.get(RESOURCES);
+    List<Resource>? resources =
+        box.get(ResourcesConstants.resources.toString());
 
-    print('ResourceManager ${resources?.list.length}');
+    print('ResourceManager ${resources?.length}');
     // Previous data isn't available so fetch list from API
     if (resources == null) {
       //CALL API if internet is available
       final response = await apiProvider
           .get('https://api.jsonbin.io/b/606836c69fc4de52061cd548');
       if (response != null) {
-        List<Resource> list = List<Resource>.from(
+        List<Resource> resources = List<Resource>.from(
             response['data'].map((x) => Resource.fromJson(x)));
-        Resources resources = Resources(storedTime: DateTime.now(), list: list);
-        box.put(RESOURCES, resources);
+        box.put(ResourcesConstants.resources.toString(), resources);
 
-        return Future.value(ResourcesState.needsToDownload());
+        return ResourcesSyncState.needsToDownload();
       }
       // Couldn't fetch from API
-      return Future.value(ResourcesState.unAvailable());
+      return ResourcesSyncState.unAvailable();
     } else {
       // need to fresh, update this via silent notification or something
-      final resourcesNeedRefresh =
-          box.get(RESOURCES_NEED_REFRESH, defaultValue: false);
+      final resourcesNeedRefresh = box
+          .get(ResourcesConstants.needRefresh.toString(), defaultValue: false);
+      final DateTime syncedTime = box.get(
+          ResourcesConstants.syncedTime.toString(),
+          defaultValue: DateTime.now());
 
-      final difference = DateTime.now().difference(resources.storedTime).inDays;
+      final difference = DateTime.now().difference(syncedTime).inDays;
 
       //if previously fetched is more than 3 days then call an API and update
       if (difference >= 3 || resourcesNeedRefresh) {
@@ -54,7 +48,7 @@ class ResourceManager {
 
           List<Resource> iteratedList = List.empty();
           for (var newItem in list) {
-            Resource oldItem = resources.list.firstWhere(
+            Resource oldItem = resources.firstWhere(
                 (element) => element.id == newItem.id,
                 orElse: () => newItem);
 
@@ -75,11 +69,9 @@ class ResourceManager {
             iteratedList.add(item);
           }
 
-          Resources newResources =
-              Resources(storedTime: DateTime.now(), list: iteratedList);
-
-          box.put(RESOURCES_NEED_REFRESH, false);
-          box.put(RESOURCES, newResources);
+          box.put(ResourcesConstants.syncedTime.toString(), DateTime.now());
+          box.put(ResourcesConstants.needRefresh.toString(), false);
+          box.put(ResourcesConstants.resources.toString(), iteratedList);
 
           final loaded = iteratedList
               .where((i) => i.required && !i.downloaded)
@@ -89,20 +81,20 @@ class ResourceManager {
           print("RESOURCE loaded ${loaded}");
           //if required and not downloaded send to download page
           if (loaded) {
-            return Future.value(ResourcesState.available(newResources.list));
+            return ResourcesSyncState.available(iteratedList);
           } else {
-            return Future.value(ResourcesState.needsToDownload());
+            return ResourcesSyncState.needsToDownload();
           }
         }
       }
       //if required and not downloaded send to download page
-      if (resources.list
+      if (resources
           .where((i) => i.required && !i.downloaded)
           .toList()
           .isEmpty) {
-        return Future.value(ResourcesState.available(resources.list));
+        return ResourcesSyncState.available(resources);
       } else {
-        return Future.value(ResourcesState.needsToDownload());
+        return ResourcesSyncState.needsToDownload();
       }
     }
   }

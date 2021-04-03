@@ -21,4 +21,21 @@ class APIProvider {
       print(e);
     }
   }
+
+  Future<bool> downloadFile(String url, String path) async {
+    final response = await _dio.download(url, path);
+
+    // var httpClient = new HttpClient();
+    // var request = await httpClient.getUrl(Uri.parse(url));
+    // var response = await request.close();
+
+    if (response.statusCode != 200) {
+      return false;
+    }
+
+    //var bytes = await consolidateHttpClientResponseBytes(response);
+    //File file = new File(path);
+    //await file.writeAsBytes(bytes);
+    return true;
+  }
 }

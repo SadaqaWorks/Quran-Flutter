@@ -28,8 +28,8 @@ class _$AppStartupStateTearOff {
     return const _NeedsToDownload();
   }
 
-  _NeedsInternet needsInternet() {
-    return const _NeedsInternet();
+  _InternetUnAvailable internetUnAvailable() {
+    return const _InternetUnAvailable();
   }
 
   _LoadHome loadHome() {
@@ -47,7 +47,7 @@ mixin _$AppStartupState {
     required TResult Function() initializing,
     required TResult Function() needsAuth,
     required TResult Function() needsToDownload,
-    required TResult Function() needsInternet,
+    required TResult Function() internetUnAvailable,
     required TResult Function() loadHome,
   }) =>
       throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ mixin _$AppStartupState {
     TResult Function()? initializing,
     TResult Function()? needsAuth,
     TResult Function()? needsToDownload,
-    TResult Function()? needsInternet,
+    TResult Function()? internetUnAvailable,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) =>
@@ -66,7 +66,7 @@ mixin _$AppStartupState {
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
     required TResult Function(_NeedsToDownload value) needsToDownload,
-    required TResult Function(_NeedsInternet value) needsInternet,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_LoadHome value) loadHome,
   }) =>
       throw _privateConstructorUsedError;
@@ -75,7 +75,7 @@ mixin _$AppStartupState {
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
     TResult Function(_NeedsToDownload value)? needsToDownload,
-    TResult Function(_NeedsInternet value)? needsInternet,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) =>
@@ -141,7 +141,7 @@ class _$_Initializing implements _Initializing {
     required TResult Function() initializing,
     required TResult Function() needsAuth,
     required TResult Function() needsToDownload,
-    required TResult Function() needsInternet,
+    required TResult Function() internetUnAvailable,
     required TResult Function() loadHome,
   }) {
     return initializing();
@@ -153,7 +153,7 @@ class _$_Initializing implements _Initializing {
     TResult Function()? initializing,
     TResult Function()? needsAuth,
     TResult Function()? needsToDownload,
-    TResult Function()? needsInternet,
+    TResult Function()? internetUnAvailable,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
@@ -169,7 +169,7 @@ class _$_Initializing implements _Initializing {
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
     required TResult Function(_NeedsToDownload value) needsToDownload,
-    required TResult Function(_NeedsInternet value) needsInternet,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return initializing(this);
@@ -181,7 +181,7 @@ class _$_Initializing implements _Initializing {
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
     TResult Function(_NeedsToDownload value)? needsToDownload,
-    TResult Function(_NeedsInternet value)? needsInternet,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {
@@ -236,7 +236,7 @@ class _$_NeedsAuth implements _NeedsAuth {
     required TResult Function() initializing,
     required TResult Function() needsAuth,
     required TResult Function() needsToDownload,
-    required TResult Function() needsInternet,
+    required TResult Function() internetUnAvailable,
     required TResult Function() loadHome,
   }) {
     return needsAuth();
@@ -248,7 +248,7 @@ class _$_NeedsAuth implements _NeedsAuth {
     TResult Function()? initializing,
     TResult Function()? needsAuth,
     TResult Function()? needsToDownload,
-    TResult Function()? needsInternet,
+    TResult Function()? internetUnAvailable,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
@@ -264,7 +264,7 @@ class _$_NeedsAuth implements _NeedsAuth {
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
     required TResult Function(_NeedsToDownload value) needsToDownload,
-    required TResult Function(_NeedsInternet value) needsInternet,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return needsAuth(this);
@@ -276,7 +276,7 @@ class _$_NeedsAuth implements _NeedsAuth {
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
     TResult Function(_NeedsToDownload value)? needsToDownload,
-    TResult Function(_NeedsInternet value)? needsInternet,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {
@@ -333,7 +333,7 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     required TResult Function() initializing,
     required TResult Function() needsAuth,
     required TResult Function() needsToDownload,
-    required TResult Function() needsInternet,
+    required TResult Function() internetUnAvailable,
     required TResult Function() loadHome,
   }) {
     return needsToDownload();
@@ -345,7 +345,7 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     TResult Function()? initializing,
     TResult Function()? needsAuth,
     TResult Function()? needsToDownload,
-    TResult Function()? needsInternet,
+    TResult Function()? internetUnAvailable,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
@@ -361,7 +361,7 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
     required TResult Function(_NeedsToDownload value) needsToDownload,
-    required TResult Function(_NeedsInternet value) needsInternet,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return needsToDownload(this);
@@ -373,7 +373,7 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
     TResult Function(_NeedsToDownload value)? needsToDownload,
-    TResult Function(_NeedsInternet value)? needsInternet,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {
@@ -389,36 +389,36 @@ abstract class _NeedsToDownload implements AppStartupState {
 }
 
 /// @nodoc
-abstract class _$NeedsInternetCopyWith<$Res> {
-  factory _$NeedsInternetCopyWith(
-          _NeedsInternet value, $Res Function(_NeedsInternet) then) =
-      __$NeedsInternetCopyWithImpl<$Res>;
+abstract class _$InternetUnAvailableCopyWith<$Res> {
+  factory _$InternetUnAvailableCopyWith(_InternetUnAvailable value,
+          $Res Function(_InternetUnAvailable) then) =
+      __$InternetUnAvailableCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NeedsInternetCopyWithImpl<$Res>
+class __$InternetUnAvailableCopyWithImpl<$Res>
     extends _$AppStartupStateCopyWithImpl<$Res>
-    implements _$NeedsInternetCopyWith<$Res> {
-  __$NeedsInternetCopyWithImpl(
-      _NeedsInternet _value, $Res Function(_NeedsInternet) _then)
-      : super(_value, (v) => _then(v as _NeedsInternet));
+    implements _$InternetUnAvailableCopyWith<$Res> {
+  __$InternetUnAvailableCopyWithImpl(
+      _InternetUnAvailable _value, $Res Function(_InternetUnAvailable) _then)
+      : super(_value, (v) => _then(v as _InternetUnAvailable));
 
   @override
-  _NeedsInternet get _value => super._value as _NeedsInternet;
+  _InternetUnAvailable get _value => super._value as _InternetUnAvailable;
 }
 
 /// @nodoc
-class _$_NeedsInternet implements _NeedsInternet {
-  const _$_NeedsInternet();
+class _$_InternetUnAvailable implements _InternetUnAvailable {
+  const _$_InternetUnAvailable();
 
   @override
   String toString() {
-    return 'AppStartupState.needsInternet()';
+    return 'AppStartupState.internetUnAvailable()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NeedsInternet);
+    return identical(this, other) || (other is _InternetUnAvailable);
   }
 
   @override
@@ -430,10 +430,10 @@ class _$_NeedsInternet implements _NeedsInternet {
     required TResult Function() initializing,
     required TResult Function() needsAuth,
     required TResult Function() needsToDownload,
-    required TResult Function() needsInternet,
+    required TResult Function() internetUnAvailable,
     required TResult Function() loadHome,
   }) {
-    return needsInternet();
+    return internetUnAvailable();
   }
 
   @override
@@ -442,12 +442,12 @@ class _$_NeedsInternet implements _NeedsInternet {
     TResult Function()? initializing,
     TResult Function()? needsAuth,
     TResult Function()? needsToDownload,
-    TResult Function()? needsInternet,
+    TResult Function()? internetUnAvailable,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
-    if (needsInternet != null) {
-      return needsInternet();
+    if (internetUnAvailable != null) {
+      return internetUnAvailable();
     }
     return orElse();
   }
@@ -458,10 +458,10 @@ class _$_NeedsInternet implements _NeedsInternet {
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
     required TResult Function(_NeedsToDownload value) needsToDownload,
-    required TResult Function(_NeedsInternet value) needsInternet,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_LoadHome value) loadHome,
   }) {
-    return needsInternet(this);
+    return internetUnAvailable(this);
   }
 
   @override
@@ -470,19 +470,19 @@ class _$_NeedsInternet implements _NeedsInternet {
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
     TResult Function(_NeedsToDownload value)? needsToDownload,
-    TResult Function(_NeedsInternet value)? needsInternet,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {
-    if (needsInternet != null) {
-      return needsInternet(this);
+    if (internetUnAvailable != null) {
+      return internetUnAvailable(this);
     }
     return orElse();
   }
 }
 
-abstract class _NeedsInternet implements AppStartupState {
-  const factory _NeedsInternet() = _$_NeedsInternet;
+abstract class _InternetUnAvailable implements AppStartupState {
+  const factory _InternetUnAvailable() = _$_InternetUnAvailable;
 }
 
 /// @nodoc
@@ -524,7 +524,7 @@ class _$_LoadHome implements _LoadHome {
     required TResult Function() initializing,
     required TResult Function() needsAuth,
     required TResult Function() needsToDownload,
-    required TResult Function() needsInternet,
+    required TResult Function() internetUnAvailable,
     required TResult Function() loadHome,
   }) {
     return loadHome();
@@ -536,7 +536,7 @@ class _$_LoadHome implements _LoadHome {
     TResult Function()? initializing,
     TResult Function()? needsAuth,
     TResult Function()? needsToDownload,
-    TResult Function()? needsInternet,
+    TResult Function()? internetUnAvailable,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
@@ -552,7 +552,7 @@ class _$_LoadHome implements _LoadHome {
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
     required TResult Function(_NeedsToDownload value) needsToDownload,
-    required TResult Function(_NeedsInternet value) needsInternet,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return loadHome(this);
@@ -564,7 +564,7 @@ class _$_LoadHome implements _LoadHome {
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
     TResult Function(_NeedsToDownload value)? needsToDownload,
-    TResult Function(_NeedsInternet value)? needsInternet,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {

@@ -72,7 +72,7 @@ class FileTypeAdapter extends TypeAdapter<FileType> {
       case 1:
         return FileType.db;
       case 2:
-        return FileType.zip;
+        return FileType.imageZip;
       default:
         return FileType.json;
     }
@@ -87,7 +87,7 @@ class FileTypeAdapter extends TypeAdapter<FileType> {
       case FileType.db:
         writer.writeByte(1);
         break;
-      case FileType.zip:
+      case FileType.imageZip:
         writer.writeByte(2);
         break;
     }
@@ -240,5 +240,5 @@ const _$ResourceTypeEnumMap = {
 const _$FileTypeEnumMap = {
   FileType.json: 'json',
   FileType.db: 'db',
-  FileType.zip: 'zip',
+  FileType.imageZip: 'imageZip',
 };

@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'resources_state.dart';
+part of 'resources_sync_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,8 +13,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$ResourcesStateTearOff {
-  const _$ResourcesStateTearOff();
+class _$ResourcesSyncStateTearOff {
+  const _$ResourcesSyncStateTearOff();
 
   _Available available(List<Resource> resources) {
     return _Available(
@@ -32,10 +32,10 @@ class _$ResourcesStateTearOff {
 }
 
 /// @nodoc
-const $ResourcesState = _$ResourcesStateTearOff();
+const $ResourcesSyncState = _$ResourcesSyncStateTearOff();
 
 /// @nodoc
-mixin _$ResourcesState {
+mixin _$ResourcesSyncState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(List<Resource> resources) available,
@@ -69,20 +69,20 @@ mixin _$ResourcesState {
 }
 
 /// @nodoc
-abstract class $ResourcesStateCopyWith<$Res> {
-  factory $ResourcesStateCopyWith(
-          ResourcesState value, $Res Function(ResourcesState) then) =
-      _$ResourcesStateCopyWithImpl<$Res>;
+abstract class $ResourcesSyncStateCopyWith<$Res> {
+  factory $ResourcesSyncStateCopyWith(
+          ResourcesSyncState value, $Res Function(ResourcesSyncState) then) =
+      _$ResourcesSyncStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$ResourcesStateCopyWithImpl<$Res>
-    implements $ResourcesStateCopyWith<$Res> {
-  _$ResourcesStateCopyWithImpl(this._value, this._then);
+class _$ResourcesSyncStateCopyWithImpl<$Res>
+    implements $ResourcesSyncStateCopyWith<$Res> {
+  _$ResourcesSyncStateCopyWithImpl(this._value, this._then);
 
-  final ResourcesState _value;
+  final ResourcesSyncState _value;
   // ignore: unused_field
-  final $Res Function(ResourcesState) _then;
+  final $Res Function(ResourcesSyncState) _then;
 }
 
 /// @nodoc
@@ -94,7 +94,8 @@ abstract class _$AvailableCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$AvailableCopyWithImpl<$Res> extends _$ResourcesStateCopyWithImpl<$Res>
+class __$AvailableCopyWithImpl<$Res>
+    extends _$ResourcesSyncStateCopyWithImpl<$Res>
     implements _$AvailableCopyWith<$Res> {
   __$AvailableCopyWithImpl(_Available _value, $Res Function(_Available) _then)
       : super(_value, (v) => _then(v as _Available));
@@ -124,7 +125,7 @@ class _$_Available implements _Available {
 
   @override
   String toString() {
-    return 'ResourcesState.available(resources: $resources)';
+    return 'ResourcesSyncState.available(resources: $resources)';
   }
 
   @override
@@ -194,7 +195,7 @@ class _$_Available implements _Available {
   }
 }
 
-abstract class _Available implements ResourcesState {
+abstract class _Available implements ResourcesSyncState {
   const factory _Available(List<Resource> resources) = _$_Available;
 
   List<Resource> get resources => throw _privateConstructorUsedError;
@@ -212,7 +213,7 @@ abstract class _$NeedsToDownloadCopyWith<$Res> {
 
 /// @nodoc
 class __$NeedsToDownloadCopyWithImpl<$Res>
-    extends _$ResourcesStateCopyWithImpl<$Res>
+    extends _$ResourcesSyncStateCopyWithImpl<$Res>
     implements _$NeedsToDownloadCopyWith<$Res> {
   __$NeedsToDownloadCopyWithImpl(
       _NeedsToDownload _value, $Res Function(_NeedsToDownload) _then)
@@ -228,7 +229,7 @@ class _$_NeedsToDownload implements _NeedsToDownload {
 
   @override
   String toString() {
-    return 'ResourcesState.needsToDownload()';
+    return 'ResourcesSyncState.needsToDownload()';
   }
 
   @override
@@ -288,7 +289,7 @@ class _$_NeedsToDownload implements _NeedsToDownload {
   }
 }
 
-abstract class _NeedsToDownload implements ResourcesState {
+abstract class _NeedsToDownload implements ResourcesSyncState {
   const factory _NeedsToDownload() = _$_NeedsToDownload;
 }
 
@@ -301,7 +302,7 @@ abstract class _$UnAvailableCopyWith<$Res> {
 
 /// @nodoc
 class __$UnAvailableCopyWithImpl<$Res>
-    extends _$ResourcesStateCopyWithImpl<$Res>
+    extends _$ResourcesSyncStateCopyWithImpl<$Res>
     implements _$UnAvailableCopyWith<$Res> {
   __$UnAvailableCopyWithImpl(
       _UnAvailable _value, $Res Function(_UnAvailable) _then)
@@ -317,7 +318,7 @@ class _$_UnAvailable implements _UnAvailable {
 
   @override
   String toString() {
-    return 'ResourcesState.unAvailable()';
+    return 'ResourcesSyncState.unAvailable()';
   }
 
   @override
@@ -377,6 +378,6 @@ class _$_UnAvailable implements _UnAvailable {
   }
 }
 
-abstract class _UnAvailable implements ResourcesState {
+abstract class _UnAvailable implements ResourcesSyncState {
   const factory _UnAvailable() = _$_UnAvailable;
 }

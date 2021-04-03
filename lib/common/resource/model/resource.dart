@@ -68,5 +68,7 @@ enum FileType {
   @HiveField(1)
   db,
   @HiveField(2)
-  zip
+  imageZip
 }
+
+enum ResourcesConstants { resources, needRefresh, syncedTime }

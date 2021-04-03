@@ -24,8 +24,12 @@ class _$AppStartupStateTearOff {
     return const _NeedsAuth();
   }
 
-  _NeedsToDownloadFile needsToDownloadFile() {
-    return const _NeedsToDownloadFile();
+  _NeedsToDownload needsToDownload() {
+    return const _NeedsToDownload();
+  }
+
+  _NeedsInternet needsInternet() {
+    return const _NeedsInternet();
   }
 
   _LoadHome loadHome() {
@@ -42,7 +46,8 @@ mixin _$AppStartupState {
   TResult when<TResult extends Object?>({
     required TResult Function() initializing,
     required TResult Function() needsAuth,
-    required TResult Function() needsToDownloadFile,
+    required TResult Function() needsToDownload,
+    required TResult Function() needsInternet,
     required TResult Function() loadHome,
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +55,8 @@ mixin _$AppStartupState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializing,
     TResult Function()? needsAuth,
-    TResult Function()? needsToDownloadFile,
+    TResult Function()? needsToDownload,
+    TResult Function()? needsInternet,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) =>
@@ -59,7 +65,8 @@ mixin _$AppStartupState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
-    required TResult Function(_NeedsToDownloadFile value) needsToDownloadFile,
+    required TResult Function(_NeedsToDownload value) needsToDownload,
+    required TResult Function(_NeedsInternet value) needsInternet,
     required TResult Function(_LoadHome value) loadHome,
   }) =>
       throw _privateConstructorUsedError;
@@ -67,7 +74,8 @@ mixin _$AppStartupState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
-    TResult Function(_NeedsToDownloadFile value)? needsToDownloadFile,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_NeedsInternet value)? needsInternet,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) =>
@@ -132,7 +140,8 @@ class _$_Initializing implements _Initializing {
   TResult when<TResult extends Object?>({
     required TResult Function() initializing,
     required TResult Function() needsAuth,
-    required TResult Function() needsToDownloadFile,
+    required TResult Function() needsToDownload,
+    required TResult Function() needsInternet,
     required TResult Function() loadHome,
   }) {
     return initializing();
@@ -143,7 +152,8 @@ class _$_Initializing implements _Initializing {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializing,
     TResult Function()? needsAuth,
-    TResult Function()? needsToDownloadFile,
+    TResult Function()? needsToDownload,
+    TResult Function()? needsInternet,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
@@ -158,7 +168,8 @@ class _$_Initializing implements _Initializing {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
-    required TResult Function(_NeedsToDownloadFile value) needsToDownloadFile,
+    required TResult Function(_NeedsToDownload value) needsToDownload,
+    required TResult Function(_NeedsInternet value) needsInternet,
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return initializing(this);
@@ -169,7 +180,8 @@ class _$_Initializing implements _Initializing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
-    TResult Function(_NeedsToDownloadFile value)? needsToDownloadFile,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_NeedsInternet value)? needsInternet,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {
@@ -223,7 +235,8 @@ class _$_NeedsAuth implements _NeedsAuth {
   TResult when<TResult extends Object?>({
     required TResult Function() initializing,
     required TResult Function() needsAuth,
-    required TResult Function() needsToDownloadFile,
+    required TResult Function() needsToDownload,
+    required TResult Function() needsInternet,
     required TResult Function() loadHome,
   }) {
     return needsAuth();
@@ -234,7 +247,8 @@ class _$_NeedsAuth implements _NeedsAuth {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializing,
     TResult Function()? needsAuth,
-    TResult Function()? needsToDownloadFile,
+    TResult Function()? needsToDownload,
+    TResult Function()? needsInternet,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
@@ -249,7 +263,8 @@ class _$_NeedsAuth implements _NeedsAuth {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
-    required TResult Function(_NeedsToDownloadFile value) needsToDownloadFile,
+    required TResult Function(_NeedsToDownload value) needsToDownload,
+    required TResult Function(_NeedsInternet value) needsInternet,
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return needsAuth(this);
@@ -260,7 +275,8 @@ class _$_NeedsAuth implements _NeedsAuth {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
-    TResult Function(_NeedsToDownloadFile value)? needsToDownloadFile,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_NeedsInternet value)? needsInternet,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {
@@ -276,36 +292,36 @@ abstract class _NeedsAuth implements AppStartupState {
 }
 
 /// @nodoc
-abstract class _$NeedsToDownloadFileCopyWith<$Res> {
-  factory _$NeedsToDownloadFileCopyWith(_NeedsToDownloadFile value,
-          $Res Function(_NeedsToDownloadFile) then) =
-      __$NeedsToDownloadFileCopyWithImpl<$Res>;
+abstract class _$NeedsToDownloadCopyWith<$Res> {
+  factory _$NeedsToDownloadCopyWith(
+          _NeedsToDownload value, $Res Function(_NeedsToDownload) then) =
+      __$NeedsToDownloadCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$NeedsToDownloadFileCopyWithImpl<$Res>
+class __$NeedsToDownloadCopyWithImpl<$Res>
     extends _$AppStartupStateCopyWithImpl<$Res>
-    implements _$NeedsToDownloadFileCopyWith<$Res> {
-  __$NeedsToDownloadFileCopyWithImpl(
-      _NeedsToDownloadFile _value, $Res Function(_NeedsToDownloadFile) _then)
-      : super(_value, (v) => _then(v as _NeedsToDownloadFile));
+    implements _$NeedsToDownloadCopyWith<$Res> {
+  __$NeedsToDownloadCopyWithImpl(
+      _NeedsToDownload _value, $Res Function(_NeedsToDownload) _then)
+      : super(_value, (v) => _then(v as _NeedsToDownload));
 
   @override
-  _NeedsToDownloadFile get _value => super._value as _NeedsToDownloadFile;
+  _NeedsToDownload get _value => super._value as _NeedsToDownload;
 }
 
 /// @nodoc
-class _$_NeedsToDownloadFile implements _NeedsToDownloadFile {
-  const _$_NeedsToDownloadFile();
+class _$_NeedsToDownload implements _NeedsToDownload {
+  const _$_NeedsToDownload();
 
   @override
   String toString() {
-    return 'AppStartupState.needsToDownloadFile()';
+    return 'AppStartupState.needsToDownload()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NeedsToDownloadFile);
+    return identical(this, other) || (other is _NeedsToDownload);
   }
 
   @override
@@ -316,10 +332,11 @@ class _$_NeedsToDownloadFile implements _NeedsToDownloadFile {
   TResult when<TResult extends Object?>({
     required TResult Function() initializing,
     required TResult Function() needsAuth,
-    required TResult Function() needsToDownloadFile,
+    required TResult Function() needsToDownload,
+    required TResult Function() needsInternet,
     required TResult Function() loadHome,
   }) {
-    return needsToDownloadFile();
+    return needsToDownload();
   }
 
   @override
@@ -327,12 +344,13 @@ class _$_NeedsToDownloadFile implements _NeedsToDownloadFile {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializing,
     TResult Function()? needsAuth,
-    TResult Function()? needsToDownloadFile,
+    TResult Function()? needsToDownload,
+    TResult Function()? needsInternet,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
-    if (needsToDownloadFile != null) {
-      return needsToDownloadFile();
+    if (needsToDownload != null) {
+      return needsToDownload();
     }
     return orElse();
   }
@@ -342,10 +360,11 @@ class _$_NeedsToDownloadFile implements _NeedsToDownloadFile {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
-    required TResult Function(_NeedsToDownloadFile value) needsToDownloadFile,
+    required TResult Function(_NeedsToDownload value) needsToDownload,
+    required TResult Function(_NeedsInternet value) needsInternet,
     required TResult Function(_LoadHome value) loadHome,
   }) {
-    return needsToDownloadFile(this);
+    return needsToDownload(this);
   }
 
   @override
@@ -353,19 +372,117 @@ class _$_NeedsToDownloadFile implements _NeedsToDownloadFile {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
-    TResult Function(_NeedsToDownloadFile value)? needsToDownloadFile,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_NeedsInternet value)? needsInternet,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {
-    if (needsToDownloadFile != null) {
-      return needsToDownloadFile(this);
+    if (needsToDownload != null) {
+      return needsToDownload(this);
     }
     return orElse();
   }
 }
 
-abstract class _NeedsToDownloadFile implements AppStartupState {
-  const factory _NeedsToDownloadFile() = _$_NeedsToDownloadFile;
+abstract class _NeedsToDownload implements AppStartupState {
+  const factory _NeedsToDownload() = _$_NeedsToDownload;
+}
+
+/// @nodoc
+abstract class _$NeedsInternetCopyWith<$Res> {
+  factory _$NeedsInternetCopyWith(
+          _NeedsInternet value, $Res Function(_NeedsInternet) then) =
+      __$NeedsInternetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$NeedsInternetCopyWithImpl<$Res>
+    extends _$AppStartupStateCopyWithImpl<$Res>
+    implements _$NeedsInternetCopyWith<$Res> {
+  __$NeedsInternetCopyWithImpl(
+      _NeedsInternet _value, $Res Function(_NeedsInternet) _then)
+      : super(_value, (v) => _then(v as _NeedsInternet));
+
+  @override
+  _NeedsInternet get _value => super._value as _NeedsInternet;
+}
+
+/// @nodoc
+class _$_NeedsInternet implements _NeedsInternet {
+  const _$_NeedsInternet();
+
+  @override
+  String toString() {
+    return 'AppStartupState.needsInternet()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NeedsInternet);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initializing,
+    required TResult Function() needsAuth,
+    required TResult Function() needsToDownload,
+    required TResult Function() needsInternet,
+    required TResult Function() loadHome,
+  }) {
+    return needsInternet();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initializing,
+    TResult Function()? needsAuth,
+    TResult Function()? needsToDownload,
+    TResult Function()? needsInternet,
+    TResult Function()? loadHome,
+    required TResult orElse(),
+  }) {
+    if (needsInternet != null) {
+      return needsInternet();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initializing value) initializing,
+    required TResult Function(_NeedsAuth value) needsAuth,
+    required TResult Function(_NeedsToDownload value) needsToDownload,
+    required TResult Function(_NeedsInternet value) needsInternet,
+    required TResult Function(_LoadHome value) loadHome,
+  }) {
+    return needsInternet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initializing value)? initializing,
+    TResult Function(_NeedsAuth value)? needsAuth,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_NeedsInternet value)? needsInternet,
+    TResult Function(_LoadHome value)? loadHome,
+    required TResult orElse(),
+  }) {
+    if (needsInternet != null) {
+      return needsInternet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NeedsInternet implements AppStartupState {
+  const factory _NeedsInternet() = _$_NeedsInternet;
 }
 
 /// @nodoc
@@ -406,7 +523,8 @@ class _$_LoadHome implements _LoadHome {
   TResult when<TResult extends Object?>({
     required TResult Function() initializing,
     required TResult Function() needsAuth,
-    required TResult Function() needsToDownloadFile,
+    required TResult Function() needsToDownload,
+    required TResult Function() needsInternet,
     required TResult Function() loadHome,
   }) {
     return loadHome();
@@ -417,7 +535,8 @@ class _$_LoadHome implements _LoadHome {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializing,
     TResult Function()? needsAuth,
-    TResult Function()? needsToDownloadFile,
+    TResult Function()? needsToDownload,
+    TResult Function()? needsInternet,
     TResult Function()? loadHome,
     required TResult orElse(),
   }) {
@@ -432,7 +551,8 @@ class _$_LoadHome implements _LoadHome {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initializing value) initializing,
     required TResult Function(_NeedsAuth value) needsAuth,
-    required TResult Function(_NeedsToDownloadFile value) needsToDownloadFile,
+    required TResult Function(_NeedsToDownload value) needsToDownload,
+    required TResult Function(_NeedsInternet value) needsInternet,
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return loadHome(this);
@@ -443,7 +563,8 @@ class _$_LoadHome implements _LoadHome {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initializing value)? initializing,
     TResult Function(_NeedsAuth value)? needsAuth,
-    TResult Function(_NeedsToDownloadFile value)? needsToDownloadFile,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_NeedsInternet value)? needsInternet,
     TResult Function(_LoadHome value)? loadHome,
     required TResult orElse(),
   }) {

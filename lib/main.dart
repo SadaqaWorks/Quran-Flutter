@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:quran_reader/common/database/hive/hive_manager.dart';
+import 'package:quran_reader/common/resource/hive/hive_manager.dart';
 
 import 'app/app.dart';
 
@@ -21,6 +21,7 @@ void start() async {
   }
 
   WidgetsFlutterBinding.ensureInitialized();
+  //final sharedPreferences = await SharedPreferences.getInstance();
 
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
@@ -32,10 +33,10 @@ void start() async {
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
-    runApp(App());
-
     runApp(ProviderScope(
-      overrides: [],
+      overrides: [
+        //sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+      ],
       child: App(),
     ));
   });

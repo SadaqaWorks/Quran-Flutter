@@ -15,3 +15,8 @@ class Locale {
   static const String en = 'en';
   static const String bn = 'bn';
 }
+
+class SharedPrefConstants {
+  static const String resources = 'resources';
+  static const String resourcesNeedRefresh = 'resourcesNeedRefresh';
+}

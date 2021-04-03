@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'resources.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserAdapter extends TypeAdapter<_$_User> {
+class ResourcesAdapter extends TypeAdapter<_$_Resources> {
   @override
-  final int typeId = 0;
+  final int typeId = 4;
 
   @override
-  _$_User read(BinaryReader reader) {
+  _$_Resources read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_User(
-      id: fields[0] as String,
-      email: fields[1] as String,
+    return _$_Resources(
+      storedTime: fields[0] as DateTime,
+      list: (fields[1] as List).cast<Resource>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, _$_User obj) {
+  void write(BinaryWriter writer, _$_Resources obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.id)
+      ..write(obj.storedTime)
       ..writeByte(1)
-      ..write(obj.email);
+      ..write(obj.list);
   }
 
   @override
@@ -38,7 +38,7 @@ class UserAdapter extends TypeAdapter<_$_User> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserAdapter &&
+      other is ResourcesAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -47,14 +47,17 @@ class UserAdapter extends TypeAdapter<_$_User> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_User _$_$_UserFromJson(Map<String, dynamic> json) {
-  return _$_User(
-    id: json['id'] as String,
-    email: json['email'] as String,
+_$_Resources _$_$_ResourcesFromJson(Map<String, dynamic> json) {
+  return _$_Resources(
+    storedTime: DateTime.parse(json['storedTime'] as String),
+    list: (json['list'] as List<dynamic>)
+        .map((e) => Resource.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
-Map<String, dynamic> _$_$_UserToJson(_$_User instance) => <String, dynamic>{
-      'id': instance.id,
-      'email': instance.email,
+Map<String, dynamic> _$_$_ResourcesToJson(_$_Resources instance) =>
+    <String, dynamic>{
+      'storedTime': instance.storedTime.toIso8601String(),
+      'list': instance.list,
     };

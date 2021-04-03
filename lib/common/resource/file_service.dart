@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
-import 'package:quran_reader/common/database/model/database_file.dart';
+import 'package:quran_reader/common/resource/model/resource.dart';
 import 'package:quran_reader/common/result/database_avaiablity_result.dart';
 import 'package:quran_reader/common/result/repository_result.dart';
 import 'package:sqflite/sqflite.dart';
@@ -32,7 +32,7 @@ class FileService {
   }
 
   Future<Either<RepositoryResult, Database>> openDatabaseConnection(
-    QuranFile quranFile, {
+    Resource quranFile, {
     bool isReadOnly = true,
     bool deleteFirst = false,
   }) async {
@@ -41,7 +41,7 @@ class FileService {
     bool dbExists = await File(dbPath).exists();
 
     if (dbExists) {
-      if (quranFile.needRefresh) {
+      if (!quranFile.downloaded) {
         await deleteDatabase(dbPath);
         await deleteFile(dbPath);
 

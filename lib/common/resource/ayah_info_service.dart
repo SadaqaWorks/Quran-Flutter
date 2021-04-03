@@ -1,5 +1,5 @@
-import 'package:quran_reader/common/database/file_service.dart';
-import 'package:quran_reader/common/database/model/database_file.dart';
+import 'package:quran_reader/common/resource/file_service.dart';
+import 'package:quran_reader/common/resource/model/resource.dart';
 import 'package:quran_reader/common/result/database_avaiablity_result.dart';
 import 'package:quran_reader/common/result/repository_result.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
@@ -30,12 +30,12 @@ class AyahInfoRepository extends IFileService {
         await Future.delayed(Duration(microseconds: 50));
       }
 
-      final quranFile = QuranFile.quranFiles.firstWhere(
-          (element) => element.quranFileType == QuranFileType.ayahInfo);
+      final quranFile = Resource.quranFiles.firstWhere((element) =>
+          element.resourceType == ResourceType.ayahInfo.toString());
 
       final response = await _fileService.openDatabaseConnection(
-        QuranFile.quranFiles.firstWhere(
-            (element) => element.quranFileType == QuranFileType.ayahInfo),
+        Resource.quranFiles.firstWhere((element) =>
+            element.resourceType == ResourceType.ayahInfo.toString()),
         isReadOnly: false,
       );
 

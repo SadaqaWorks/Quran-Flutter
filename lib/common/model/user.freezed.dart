@@ -20,7 +20,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call({required String id, required String email}) {
+  _User call(
+      {@HiveField(0) required String id, @HiveField(1) required String email}) {
     return _User(
       id: id,
       email: email,
@@ -37,7 +38,9 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
+  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get email => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +52,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String id, String email});
+  $Res call({@HiveField(0) String id, @HiveField(1) String email});
 }
 
 /// @nodoc
@@ -83,7 +86,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String email});
+  $Res call({@HiveField(0) String id, @HiveField(1) String email});
 }
 
 /// @nodoc
@@ -114,17 +117,21 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 }
 
 @JsonSerializable()
+@HiveType(typeId: 0)
 
 /// @nodoc
 class _$_User implements _User {
-  const _$_User({required this.id, required this.email});
+  const _$_User(
+      {@HiveField(0) required this.id, @HiveField(1) required this.email});
 
   factory _$_User.fromJson(Map<String, dynamic> json) =>
       _$_$_UserFromJson(json);
 
   @override
+  @HiveField(0)
   final String id;
   @override
+  @HiveField(1)
   final String email;
 
   @override
@@ -160,13 +167,17 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({required String id, required String email}) = _$_User;
+  const factory _User(
+      {@HiveField(0) required String id,
+      @HiveField(1) required String email}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
+  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String get email => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

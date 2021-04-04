@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' as io;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +12,12 @@ import 'app/app.dart';
 void main() => start();
 
 void start() async {
-  Future<Directory> _getTemporaryDirectory() async {
+  Future<io.Directory> _getTemporaryDirectory() async {
     const MethodChannel _channel =
         MethodChannel('plugins.flutter.io/path_provider');
     final String path =
         (await _channel.invokeMethod<String>('getTemporaryDirectory'))!;
-    return Directory(path);
+    return io.Directory(path);
   }
 
   WidgetsFlutterBinding.ensureInitialized();

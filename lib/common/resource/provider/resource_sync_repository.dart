@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' as io;
 
 import 'package:hive/hive.dart';
 import 'package:path/path.dart' as path;
@@ -7,7 +7,6 @@ import 'package:quran_reader/common/http/api_provider.dart';
 import 'package:quran_reader/common/resource/hive/hive_manager.dart';
 import 'package:quran_reader/common/resource/model/resource.dart';
 import 'package:quran_reader/common/resource/model/resource_sync_state.dart';
-import 'package:sqflite/sqflite.dart';
 
 class ResourceSyncRepository {
   final APIProvider apiProvider;
@@ -24,7 +23,7 @@ class ResourceSyncRepository {
 
       case FileType.db:
         {
-          final response = await _downloadDB(resource);
+          final response = await _syncDB(resource);
           if (response) {
             _syncResourcesBox(resource);
             ResourceSyncState.synced(resource);
@@ -66,19 +65,15 @@ class ResourceSyncRepository {
     return false;
   }
 
-  Future<bool> _downloadDB(Resource resource) async {
-    Directory documentDirectory = await getApplicationDocumentsDirectory();
+  Future<bool> _syncDB(Resource resource) async {
+    io.Directory documentDirectory = await getApplicationDocumentsDirectory();
     String dbPath = path.join(
         documentDirectory.path + resource.resourceType.toString(),
         resource.name);
-    bool dbExists = await File(dbPath).exists();
+    bool dbExists = await io.File(dbPath).exists();
 
     if (dbExists) {
-      await deleteDatabase(dbPath);
-      var file = File(dbPath);
-      if (file.existsSync()) {
-        await file.delete();
-      }
+      await io.File(dbPath).delete();
     }
     return await apiProvider.downloadFile(resource.url, dbPath);
   }

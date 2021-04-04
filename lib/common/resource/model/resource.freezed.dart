@@ -31,7 +31,8 @@ class _$ResourceTearOff {
       @HiveField(7) required bool needRefresh,
       @HiveField(8) required bool downloaded,
       @HiveField(9) required bool bundled,
-      @HiveField(10) String? description}) {
+      @HiveField(10) bool? selected,
+      @HiveField(11) String? description}) {
     return _Resource(
       id: id,
       name: name,
@@ -43,6 +44,7 @@ class _$ResourceTearOff {
       needRefresh: needRefresh,
       downloaded: downloaded,
       bundled: bundled,
+      selected: selected,
       description: description,
     );
   }
@@ -78,6 +80,8 @@ mixin _$Resource {
   @HiveField(9)
   bool get bundled => throw _privateConstructorUsedError;
   @HiveField(10)
+  bool? get selected => throw _privateConstructorUsedError;
+  @HiveField(11)
   String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -101,7 +105,8 @@ abstract class $ResourceCopyWith<$Res> {
       @HiveField(7) bool needRefresh,
       @HiveField(8) bool downloaded,
       @HiveField(9) bool bundled,
-      @HiveField(10) String? description});
+      @HiveField(10) bool? selected,
+      @HiveField(11) String? description});
 }
 
 /// @nodoc
@@ -124,6 +129,7 @@ class _$ResourceCopyWithImpl<$Res> implements $ResourceCopyWith<$Res> {
     Object? needRefresh = freezed,
     Object? downloaded = freezed,
     Object? bundled = freezed,
+    Object? selected = freezed,
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
@@ -167,6 +173,10 @@ class _$ResourceCopyWithImpl<$Res> implements $ResourceCopyWith<$Res> {
           ? _value.bundled
           : bundled // ignore: cast_nullable_to_non_nullable
               as bool,
+      selected: selected == freezed
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -191,7 +201,8 @@ abstract class _$ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
       @HiveField(7) bool needRefresh,
       @HiveField(8) bool downloaded,
       @HiveField(9) bool bundled,
-      @HiveField(10) String? description});
+      @HiveField(10) bool? selected,
+      @HiveField(11) String? description});
 }
 
 /// @nodoc
@@ -215,6 +226,7 @@ class __$ResourceCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res>
     Object? needRefresh = freezed,
     Object? downloaded = freezed,
     Object? bundled = freezed,
+    Object? selected = freezed,
     Object? description = freezed,
   }) {
     return _then(_Resource(
@@ -258,6 +270,10 @@ class __$ResourceCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res>
           ? _value.bundled
           : bundled // ignore: cast_nullable_to_non_nullable
               as bool,
+      selected: selected == freezed
+          ? _value.selected
+          : selected // ignore: cast_nullable_to_non_nullable
+              as bool?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -282,7 +298,8 @@ class _$_Resource implements _Resource {
       @HiveField(7) required this.needRefresh,
       @HiveField(8) required this.downloaded,
       @HiveField(9) required this.bundled,
-      @HiveField(10) this.description});
+      @HiveField(10) this.selected,
+      @HiveField(11) this.description});
 
   factory _$_Resource.fromJson(Map<String, dynamic> json) =>
       _$_$_ResourceFromJson(json);
@@ -319,11 +336,14 @@ class _$_Resource implements _Resource {
   final bool bundled;
   @override
   @HiveField(10)
+  final bool? selected;
+  @override
+  @HiveField(11)
   final String? description;
 
   @override
   String toString() {
-    return 'Resource(id: $id, name: $name, url: $url, required: $required, resourceType: $resourceType, fileType: $fileType, version: $version, needRefresh: $needRefresh, downloaded: $downloaded, bundled: $bundled, description: $description)';
+    return 'Resource(id: $id, name: $name, url: $url, required: $required, resourceType: $resourceType, fileType: $fileType, version: $version, needRefresh: $needRefresh, downloaded: $downloaded, bundled: $bundled, selected: $selected, description: $description)';
   }
 
   @override
@@ -357,6 +377,9 @@ class _$_Resource implements _Resource {
             (identical(other.bundled, bundled) ||
                 const DeepCollectionEquality()
                     .equals(other.bundled, bundled)) &&
+            (identical(other.selected, selected) ||
+                const DeepCollectionEquality()
+                    .equals(other.selected, selected)) &&
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)));
@@ -375,6 +398,7 @@ class _$_Resource implements _Resource {
       const DeepCollectionEquality().hash(needRefresh) ^
       const DeepCollectionEquality().hash(downloaded) ^
       const DeepCollectionEquality().hash(bundled) ^
+      const DeepCollectionEquality().hash(selected) ^
       const DeepCollectionEquality().hash(description);
 
   @JsonKey(ignore: true)
@@ -400,7 +424,8 @@ abstract class _Resource implements Resource {
       @HiveField(7) required bool needRefresh,
       @HiveField(8) required bool downloaded,
       @HiveField(9) required bool bundled,
-      @HiveField(10) String? description}) = _$_Resource;
+      @HiveField(10) bool? selected,
+      @HiveField(11) String? description}) = _$_Resource;
 
   factory _Resource.fromJson(Map<String, dynamic> json) = _$_Resource.fromJson;
 
@@ -436,6 +461,9 @@ abstract class _Resource implements Resource {
   bool get bundled => throw _privateConstructorUsedError;
   @override
   @HiveField(10)
+  bool? get selected => throw _privateConstructorUsedError;
+  @override
+  @HiveField(11)
   String? get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

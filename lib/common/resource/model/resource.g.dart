@@ -125,14 +125,15 @@ class ResourceAdapter extends TypeAdapter<_$_Resource> {
       needRefresh: fields[7] as bool,
       downloaded: fields[8] as bool,
       bundled: fields[9] as bool,
-      description: fields[10] as String?,
+      selected: fields[10] as bool?,
+      description: fields[11] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_Resource obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -154,6 +155,8 @@ class ResourceAdapter extends TypeAdapter<_$_Resource> {
       ..writeByte(9)
       ..write(obj.bundled)
       ..writeByte(10)
+      ..write(obj.selected)
+      ..writeByte(11)
       ..write(obj.description);
   }
 
@@ -184,6 +187,7 @@ _$_Resource _$_$_ResourceFromJson(Map<String, dynamic> json) {
     needRefresh: json['needRefresh'] as bool,
     downloaded: json['downloaded'] as bool,
     bundled: json['bundled'] as bool,
+    selected: json['selected'] as bool?,
     description: json['description'] as String?,
   );
 }
@@ -200,6 +204,7 @@ Map<String, dynamic> _$_$_ResourceToJson(_$_Resource instance) =>
       'needRefresh': instance.needRefresh,
       'downloaded': instance.downloaded,
       'bundled': instance.bundled,
+      'selected': instance.selected,
       'description': instance.description,
     };
 

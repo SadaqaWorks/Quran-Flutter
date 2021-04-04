@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
+import 'dart:io' as io;
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
@@ -22,11 +22,11 @@ typedef void OnUploadProgressCallback(int sentBytes, int totalBytes);
 class FileService {
   static bool trustSelfSigned = true;
 
-  static HttpClient getHttpClient() {
-    HttpClient httpClient = new HttpClient()
+  static io.HttpClient getHttpClient() {
+    io.HttpClient httpClient = new io.HttpClient()
       ..connectionTimeout = const Duration(seconds: 10)
       ..badCertificateCallback =
-          ((X509Certificate cert, String host, int port) => trustSelfSigned);
+          ((io.X509Certificate cert, String host, int port) => trustSelfSigned);
 
     return httpClient;
   }
@@ -36,9 +36,9 @@ class FileService {
     bool isReadOnly = true,
     bool deleteFirst = false,
   }) async {
-    Directory documentDirectory = await getApplicationDocumentsDirectory();
+    io.Directory documentDirectory = await getApplicationDocumentsDirectory();
     String dbPath = path.join(documentDirectory.path, resource.name);
-    bool dbExists = await File(dbPath).exists();
+    bool dbExists = await io.File(dbPath).exists();
 
     if (dbExists) {
       if (!resource.downloaded) {
@@ -83,7 +83,7 @@ class FileService {
   }
 
   Future<bool> downloadFile(String url, String path) async {
-    var httpClient = new HttpClient();
+    var httpClient = new io.HttpClient();
     var request = await httpClient.getUrl(Uri.parse(url));
     var response = await request.close();
 
@@ -93,13 +93,13 @@ class FileService {
 
     var bytes = await consolidateHttpClientResponseBytes(response);
 
-    File file = new File(path);
+    io.File file = new io.File(path);
     await file.writeAsBytes(bytes);
     return true;
   }
 
   Future deleteFile(String path) async {
-    var file = File(path);
+    var file = io.File(path);
     if (file.existsSync()) {
       await file.delete();
     }
@@ -114,7 +114,7 @@ class FileService {
     final request = await httpClient.getUrl(Uri.parse(url));
 
     request.headers
-        .add(HttpHeaders.contentTypeHeader, "application/octet-stream");
+        .add(io.HttpHeaders.contentTypeHeader, "application/octet-stream");
 
     var httpResponse = await request.close();
 
@@ -126,9 +126,9 @@ class FileService {
     int byteCount = 0;
     int totalBytes = httpResponse.contentLength;
 
-    File file = new File(path);
+    io.File file = new io.File(path);
 
-    var raf = file.openSync(mode: FileMode.write);
+    var raf = file.openSync(mode: io.FileMode.write);
 
     httpResponse.listen(
       (data) {
@@ -156,7 +156,7 @@ class FileService {
     return completer.future;
   }
 
-  static Future<String> fileUpload(File file, String url,
+  static Future<String> fileUpload(io.File file, String url,
       {OnUploadProgressCallback? onUploadProgress}) async {
     final fileStream = file.openRead();
 
@@ -166,7 +166,8 @@ class FileService {
 
     final request = await httpClient.postUrl(Uri.parse(url));
 
-    request.headers.set(HttpHeaders.contentTypeHeader, ContentType.binary);
+    request.headers
+        .set(io.HttpHeaders.contentTypeHeader, io.ContentType.binary);
 
     request.headers.add("filename", path.basename(file.path));
 
@@ -206,7 +207,7 @@ class FileService {
     }
   }
 
-  static Future<String> fileUploadMultipart(File file, String url,
+  static Future<String> fileUploadMultipart(io.File file, String url,
       {OnUploadProgressCallback? onUploadProgress}) async {
     final httpClient = getHttpClient();
 
@@ -227,8 +228,8 @@ class FileService {
 
     request.contentLength = totalByteLength;
 
-    request.headers.set(HttpHeaders.contentTypeHeader,
-        requestMultipart.headers[HttpHeaders.contentTypeHeader]!);
+    request.headers.set(io.HttpHeaders.contentTypeHeader,
+        requestMultipart.headers[io.HttpHeaders.contentTypeHeader]!);
 
     Stream<List<int>> streamUpload = msStream.transform(
       new StreamTransformer.fromHandlers(
@@ -266,7 +267,7 @@ class FileService {
     }
   }
 
-  static Future<String> readResponseAsString(HttpClientResponse response) {
+  static Future<String> readResponseAsString(io.HttpClientResponse response) {
     var completer = new Completer<String>();
     var contents = new StringBuffer();
     response.transform(utf8.decoder).listen((String data) {

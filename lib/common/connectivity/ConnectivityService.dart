@@ -1,20 +1,20 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final connectivityProvider = Provider<ConnectivityService>((ref) {
-  return ConnectivityService();
+final connectivityProvider = Provider<ConnectivityServiceNotifier>((ref) {
+  return ConnectivityServiceNotifier();
 });
 
 final connectivityCheckProvider = Provider<ConnectivityCheck>((ref) {
   return ConnectivityCheck();
 });
 
-class ConnectivityService extends StateNotifier<ConnectivityStatus> {
+class ConnectivityServiceNotifier extends StateNotifier<ConnectivityStatus> {
   // // Create our public controller
   // StreamController<ConnectivityStatus> connectionStatusController =
   //     StreamController<ConnectivityStatus>();
 
-  ConnectivityService() : super(ConnectivityStatus.Offline) {
+  ConnectivityServiceNotifier() : super(ConnectivityStatus.Offline) {
     // Subscribe to the connectivity Chanaged Steam
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
       state = _getStatusFromResult(result);

@@ -11,7 +11,7 @@ import 'package:quran_reader/feature/home/ui/page/home_page.dart';
 class AppStartupPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final state = watch(appStartupProvider.state);
+    final state = watch(appStartupProvider);
     return state.maybeWhen(
         initializing: () => const Center(child: CircularProgressIndicator()),
         needsAuth: () => AuthWidget(),

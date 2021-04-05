@@ -55,7 +55,7 @@ dependencies:
   intl_utils: ^2.1.0
   json_annotation:
 
-  flutter_riverpod: ^0.13.1
+  flutter_riverpod: ^0.14.0
   state_notifier: ^0.7.0
   freezed_annotation:
 
@@ -63,14 +63,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.0
-  flutter_native_splash: 1.1.5+1
+  flutter_native_splash: 1.1.7+1
   lint: ^1.5.2
   pedantic: 1.11.0
   logger:
   json_serializable:
   hive_generator:
   build_runner:
-  freezed:
+  freezed: ^0.14.1+2
 
 
 # For information on the generic Dart part of this file, see the

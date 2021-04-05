@@ -8,16 +8,17 @@ import 'package:quran_reader/feature/app_start_up/repository/resources_sync_repo
 
 import '../model/app_startup_state.dart';
 
-final appStartupProvider = StateNotifierProvider<AppStartupViewModel>((ref) {
-  return AppStartupViewModel(ResourcesSyncRepository(ref.watch(apiProvider)),
+final appStartupProvider =
+    StateNotifierProvider<AppStartupNotifier, AppStartupState>((ref) {
+  return AppStartupNotifier(ResourcesSyncRepository(ref.watch(apiProvider)),
       ref.watch(connectivityCheckProvider));
 });
 
-class AppStartupViewModel extends StateNotifier<AppStartupState> {
+class AppStartupNotifier extends StateNotifier<AppStartupState> {
   final ResourcesSyncRepository resourceManager;
   final ConnectivityCheck connectivityCheck;
   late StreamSubscription _connectivityStreamSubscription;
-  AppStartupViewModel(this.resourceManager, this.connectivityCheck)
+  AppStartupNotifier(this.resourceManager, this.connectivityCheck)
       : super(const AppStartupState.initializing()) {
     _init();
     _connectivityStreamSubscription = Connectivity()

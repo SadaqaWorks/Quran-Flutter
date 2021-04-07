@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:quran_reader/common/http/api_provider.dart';
-import 'package:quran_reader/common/resource/hive/hive_manager.dart';
+import 'package:quran_reader/common/resource/manager/database_manager.dart';
 import 'package:quran_reader/common/resource/model/resource.dart';
 import 'package:quran_reader/common/resource/model/resource_sync_state.dart';
 
@@ -12,7 +12,7 @@ class ResourceSyncRepository {
   final APIProvider apiProvider;
   late Box _resourcesBox;
   ResourceSyncRepository(this.apiProvider) {
-    _resourcesBox = Hive.box(HiveBoxes.resources);
+    _resourcesBox = Hive.box(Databases.resources);
   }
 
   Future<ResourceSyncState> sync(Resource resource) async {

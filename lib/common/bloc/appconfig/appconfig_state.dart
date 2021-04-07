@@ -1,7 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
-
+/*
 @immutable
 abstract class AppConfigState extends Equatable {
   const AppConfigState();
@@ -24,3 +21,4 @@ class AppConfigStateInitial extends AppConfigState {
   @override
   List<Object> get props => [];
 }
+*/

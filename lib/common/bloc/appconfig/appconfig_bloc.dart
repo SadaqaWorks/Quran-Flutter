@@ -1,12 +1,4 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:quran_reader/common/constant/constants.dart' as constants;
-import 'package:shared_preferences/shared_preferences.dart';
-
-import './bloc.dart';
-
+/*
 class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
   AppConfigBloc() : super(AppConfigStateInitial()) {
     add(AppStarted());
@@ -132,3 +124,4 @@ class AppConfigBloc extends Bloc<AppConfigEvent, AppConfigState> {
     );
   }
 }
+*/

@@ -19,7 +19,6 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
 
     if (state is QuranPageStateInitial) {
       add(QuranPageEventLoadDatabase());
-      //add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
     }
   }
 

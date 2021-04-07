@@ -15,7 +15,6 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   @override
   void dispose() {
     super.dispose();
-    //BlocProvider.of<QuranPageBloc>(context).dispose();
   }
 
   @override

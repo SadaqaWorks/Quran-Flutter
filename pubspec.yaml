@@ -50,6 +50,10 @@ dependencies:
   hive: ^2.0.2
   hive_flutter: ^1.0.0
 
+  isar: ^0.2.0
+  isar_flutter_libs: 0.2.0
+  isar_connect: 0.2.0
+
   wakelock: ^0.5.0+2
   sqflite: ^2.0.0+3
   intl_utils: ^2.1.0
@@ -69,6 +73,7 @@ dev_dependencies:
   logger:
   json_serializable:
   hive_generator:
+  isar_generator: 0.2.0
   build_runner:
   freezed: ^0.14.1+2
 

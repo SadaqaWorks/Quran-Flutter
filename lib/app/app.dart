@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:quran_reader/common/bloc/appconfig/appconfig_bloc.dart';
 import 'package:quran_reader/common/resource/ayah_info_service.dart';
 import 'package:quran_reader/common/resource/database.dart';
 import 'package:quran_reader/common/routes/route_generator.dart';
@@ -41,26 +40,20 @@ class _MyAppState extends State<App> {
             lazy: true,
           ),
         ],
-        child: MultiBlocProvider(
-            providers: [
-              BlocProvider<AppConfigBloc>(
-                create: (BuildContext context) => AppConfigBloc(),
-              )
-            ],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              localizationsDelegates: [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-                DefaultCupertinoLocalizations.delegate,
-                S.delegate
-              ],
-              title: 'Quran',
-              theme: AppTheme().defaultTheme(),
-              onGenerateRoute: RouteGenerator.generateRoute,
-              home: AppStartupPage(),
-              //initialRoute: Routes.auth,
-            )));
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            DefaultCupertinoLocalizations.delegate,
+            S.delegate
+          ],
+          title: 'Quran',
+          theme: AppTheme().defaultTheme(),
+          onGenerateRoute: RouteGenerator.generateRoute,
+          home: AppStartupPage(),
+          //initialRoute: Routes.auth,
+        ));
   }
 }

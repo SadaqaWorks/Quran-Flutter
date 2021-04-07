@@ -1,9 +1,7 @@
-import 'package:equatable/equatable.dart';
-
 enum ThemeType { normal }
 
 enum LanguageType { bangla, english }
-
+/*
 abstract class AppConfigEvent extends Equatable {
   const AppConfigEvent();
 
@@ -30,3 +28,4 @@ class LanguageChanged extends AppConfigEvent {
   @override
   List<Object> get props => <LanguageType>[languageType];
 }
+*/

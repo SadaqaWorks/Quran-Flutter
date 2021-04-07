@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:quran_reader/common/http/api_provider.dart';
-import 'package:quran_reader/common/resource/hive/hive_manager.dart';
+import 'package:quran_reader/common/resource/manager/database_manager.dart';
 import 'package:quran_reader/common/resource/model/resource.dart';
 import 'package:quran_reader/feature/app_start_up/model/resources_sync_state.dart';
 
@@ -10,13 +10,11 @@ class ResourcesSyncRepository {
   ResourcesSyncRepository(this.apiProvider);
 
   Future<ResourcesSyncState> sync() async {
-    var box = Hive.box(HiveBoxes.resources);
-    List<Resource>? resources =
-        box.get(ResourcesConstants.resources.toString());
+    var box = Hive.box(Databases.resources);
+    final _list = box.get(ResourcesConstants.resources.toString());
 
-    print('ResourceManager ${resources?.length}');
     // Previous data isn't available so fetch list from API
-    if (resources == null) {
+    if (_list == null) {
       //CALL API if internet is available
       final response = await apiProvider
           .get('https://api.jsonbin.io/b/606836c69fc4de52061cd548');
@@ -30,6 +28,8 @@ class ResourcesSyncRepository {
       // Couldn't fetch from API
       return ResourcesSyncState.unAvailable();
     } else {
+      final resources = List<Resource>.from(_list);
+
       // need to fresh, update this via silent notification or something
       final resourcesNeedRefresh = box
           .get(ResourcesConstants.needRefresh.toString(), defaultValue: false);

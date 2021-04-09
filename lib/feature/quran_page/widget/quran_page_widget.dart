@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/geature/easy_gesture_detector.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/common/widget/responsive_image_widget.dart';
-import 'package:quran_reader/feature/home/model/home_page_notifier.dart';
+import 'package:quran_reader/feature/home/provider/index.dart';
 import 'package:quran_reader/feature/quran_page/provider/index.dart';
 
 class QuranPageWidget extends StatefulWidget {
@@ -36,13 +36,10 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         child: Consumer(
       builder: (context, watch, child) {
         final state = watch(quranPageProvider);
-        print("QURAN PAGE $state");
         return state.maybeWhen(loaded: (value) {
           return _widgetQuranPage(state);
         }, orElse: () {
-          return Container(
-            child: Text('Page last'),
-          );
+          return Container();
         });
       },
     ));

@@ -28,8 +28,6 @@ dependencies:
   path_provider: ^2.0.1
   app_settings: ^4.1.0
 
-
-
   #Internet
   dio: ^4.0.0
   http: ^0.13.1
@@ -38,14 +36,9 @@ dependencies:
   dartz: ^0.10.0-nullsafety.1
   archive: ^3.1.2
 
-  rxdart: ^0.26.0
-  bloc: ^7.0.0
-  flutter_bloc: ^7.0.0
-  hydrated_bloc: ^7.0.0
   equatable: ^2.0.0
 
   flutter_screenutil: ^4.0.4+1
-  quiver: ^3.0.0
 
   hive: ^2.0.2
   hive_flutter: ^1.0.0

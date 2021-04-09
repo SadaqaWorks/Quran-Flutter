@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
-import 'package:quran_reader/feature/home/model/home_page_notifier.dart';
+import 'package:quran_reader/feature/home/provider/index.dart';
 import 'package:quran_reader/feature/navigator/widget/navigator_widget.dart';
 import 'package:quran_reader/feature/quran_page/provider/index.dart';
 import 'package:quran_reader/feature/quran_page/widget/quran_page_widget.dart';
@@ -36,7 +36,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return SafeArea(child: Scaffold(body: Consumer(
       builder: (context, watch, child) {
         final state = watch(homePageProvider);
-        print("homepage ${state}");
         return state.maybeWhen(initial: () {
           return _widgetQuranPage();
         }, showInfo: () {
@@ -44,9 +43,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         }, showFullNavigator: () {
           return _widgetFullNavigator(context);
         }, orElse: () {
-          return Container(
-            child: Text('Page last'),
-          );
+          return Container();
         });
       },
     )));

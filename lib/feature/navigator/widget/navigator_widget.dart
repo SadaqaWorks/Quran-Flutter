@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quran_reader/common/resource/database.dart';
-import 'package:quran_reader/feature/home/bloc/blocs.dart';
 import 'package:quran_reader/feature/navigator/bloc/blocs.dart';
-import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/generated/l10n.dart';
 
 class NavigatorWidget extends StatefulWidget {
@@ -38,9 +36,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
         create: (context) {
           return NavigatorViewBloc(
               ayahInfoService:
-                  RepositoryProvider.of<AyahInfoRepository>(context),
-              quranPageBloc: RepositoryProvider.of<QuranPageBloc>(context),
-              homePageBloc: RepositoryProvider.of<HomePageBloc>(context));
+                  RepositoryProvider.of<AyahInfoRepository>(context));
         },
         child: Container(
           height: MediaQuery.of(context).size.height / 2,

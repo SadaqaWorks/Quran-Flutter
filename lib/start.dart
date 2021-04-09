@@ -29,7 +29,7 @@ void start() async {
   // final isarUser = await openIsar(name: Databases.user);
 
   //quranInfoProvider.
-  final info = QuranInfo(QuranDataSourceMadani());
+  final info = QuranInfoRepository(QuranDataSourceMadani());
   print(
       'QuranDataSourceMadani\n getListOfSurahWithStartingOnPage ${info.getListOfSurahWithStartingOnPage(2)}\n getSuraNumberFromPage ${info.getSuraNumberFromPage(2)}\n getFirstAyahOnPage: ${info.getFirstAyahOnPage(2)}\n getPageBounds: ${info.getPageBounds(2)}\n getVerseRangeForPage: ${info.getVerseRangeForPage(2)}  \n getPositionFromPage: ${info.getPositionFromPage(2)}\n getSuraNumberFromPage ${info.getSuraNumberFromPage(2)}\n');
   print('~~~~~~~~~~~~~~~~~~~');

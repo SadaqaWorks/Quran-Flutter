@@ -7,6 +7,7 @@ import 'package:quran_reader/feature/app_start_up/model/resources_sync_state.dar
 class ResourcesSyncRepository {
   //final SharedPreferences sharedPreferences;
   final APIProvider apiProvider;
+
   ResourcesSyncRepository(this.apiProvider);
 
   Future<ResourcesSyncState> sync() async {

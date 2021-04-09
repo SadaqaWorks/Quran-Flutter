@@ -7,6 +7,8 @@ part 'resources_sync_state.freezed.dart';
 class ResourcesSyncState with _$ResourcesSyncState {
   const factory ResourcesSyncState.available(List<Resource> resources) =
       _Available;
+
   const factory ResourcesSyncState.needsToDownload() = _NeedsToDownload;
+
   const factory ResourcesSyncState.unAvailable() = _UnAvailable;
 }

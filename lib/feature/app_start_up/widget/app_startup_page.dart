@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/widget/need_internet_widget.dart';
-import 'package:quran_reader/feature/app_journey/widget/app_journey_start_widget.dart';
 import 'package:quran_reader/feature/app_start_up/repository/app_startup_view_model.dart';
-import 'package:quran_reader/feature/auth/ui/auth_widget.dart';
 import 'package:quran_reader/feature/home/ui/page/home_page.dart';
 
 /// This is the "root" widget of the app, which sits just below MaterialApp.
@@ -14,8 +12,8 @@ class AppStartupPage extends ConsumerWidget {
     final state = watch(appStartupProvider);
     return state.maybeWhen(
         initializing: () => const Center(child: CircularProgressIndicator()),
-        needsAuth: () => AuthWidget(),
-        needsToDownload: () => AppJourneyStartWidget(),
+        needsAuth: () => HomePage(),
+        needsToDownload: () => HomePage(),
         loadHome: () => HomePage(),
         internetUnAvailable: () => NeedInternetWidget(),
         orElse: () => const Center(child: CircularProgressIndicator()));

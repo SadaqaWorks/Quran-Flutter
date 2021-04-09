@@ -20,10 +20,11 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "juzz" : MessageLookupByLibrary.simpleMessage("Juzz"),
-    "page" : MessageLookupByLibrary.simpleMessage("Page"),
-    "pages" : MessageLookupByLibrary.simpleMessage("Pages"),
-    "surah" : MessageLookupByLibrary.simpleMessage("Surah")
-  };
+
+  static _notInlinedMessages(_) => <String, Function>{
+        "juzz": MessageLookupByLibrary.simpleMessage("Juzz"),
+        "page": MessageLookupByLibrary.simpleMessage("Page"),
+        "pages": MessageLookupByLibrary.simpleMessage("Pages"),
+        "surah": MessageLookupByLibrary.simpleMessage("Surah")
+      };
 }

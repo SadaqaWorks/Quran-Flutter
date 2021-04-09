@@ -5,6 +5,7 @@ final apiProvider = Provider<APIProvider>((ref) => APIProvider());
 
 class APIProvider {
   late Dio _dio;
+
   APIProvider() {
     _dio = Dio();
     _dio.options.connectTimeout = 6000;

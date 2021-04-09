@@ -10,5 +10,6 @@ class User with _$User {
   const factory User(
       {@HiveField(0) required String id,
       @HiveField(1) required String email}) = _User;
+
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

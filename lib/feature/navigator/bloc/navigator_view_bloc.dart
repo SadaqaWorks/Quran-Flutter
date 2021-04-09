@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:quran_reader/common/resource/database.dart';
-import 'package:quran_reader/feature/home/bloc/blocs.dart';
-import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 
 import 'navigator_view_event.dart';
@@ -11,13 +9,8 @@ import 'navigator_view_state.dart';
 
 class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
   final AyahInfoRepository ayahInfoService;
-  final QuranPageBloc quranPageBloc;
-  final HomePageBloc homePageBloc;
 
-  NavigatorViewBloc(
-      {required this.ayahInfoService,
-      required this.quranPageBloc,
-      required this.homePageBloc})
+  NavigatorViewBloc({required this.ayahInfoService})
       : super(NavigatorViewStateInitial());
 
   @override
@@ -51,9 +44,8 @@ class NavigatorViewBloc extends Bloc<NavigatorViewEvent, NavigatorViewState> {
       }
 
       if (_quranPage != null) {
-        homePageBloc.add(HomePageEventHideNavigatorTap());
-        quranPageBloc
-            .add(QuranPageEventLoad(pageNumber: _quranPage.pageNumber));
+        //homePageBloc.add(HomePageEventHideNavigatorTap());
+
         yield NavigatorViewStateConfirmed(pageNumber: _quranPage.pageNumber);
       }
     }

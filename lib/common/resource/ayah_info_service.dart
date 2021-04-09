@@ -12,6 +12,7 @@ class AyahInfoRepository extends IFileService {
   AyahInfoRepository();
 
   AyahInfoRepository._create();
+
   static Future<AyahInfoRepository> create() async {
     var component = AyahInfoRepository._create();
 

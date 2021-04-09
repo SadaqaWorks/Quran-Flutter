@@ -11,6 +11,7 @@ import 'package:quran_reader/common/resource/model/resource_sync_state.dart';
 class ResourceSyncRepository {
   final APIProvider apiProvider;
   late Box _resourcesBox;
+
   ResourceSyncRepository(this.apiProvider) {
     _resourcesBox = Hive.box(Databases.resources);
   }

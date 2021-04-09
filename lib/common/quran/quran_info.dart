@@ -7,13 +7,14 @@ import 'package:quran_reader/common/quran/model/sura_verses.dart';
 import 'package:quran_reader/common/quran/model/verse.dart';
 import 'package:quran_reader/common/quran/model/verse_range.dart';
 
-final quranInfoProvider = Provider<QuranInfo>((ref) {
-  return QuranInfo(QuranDataSourceMadani());
+final quranInfoProvider = Provider<QuranInfoRepository>((ref) {
+  return QuranInfoRepository(QuranDataSourceMadani());
 });
 
-class QuranInfo {
+class QuranInfoRepository {
   QuranDataSource quranDataSource;
 
+  late int startPage;
   late int numberOfPages;
   late double numberOfPagesDual;
   late List<int> _suraPageStart;
@@ -26,7 +27,7 @@ class QuranInfo {
   late List<bool> _suraIsMakki;
   late List<List<int>> _quarters;
 
-  QuranInfo(this.quranDataSource) {
+  QuranInfoRepository(this.quranDataSource) {
     _suraPageStart = quranDataSource.getPageForSuraArray();
     _pageSuraStart = quranDataSource.getSuraForPageArray();
     _pageAyahStart = quranDataSource.getAyahForPageArray();
@@ -37,6 +38,7 @@ class QuranInfo {
     _suraIsMakki = quranDataSource.getIsMakkiBySuraArray();
     _quarters = quranDataSource.getQuartersArray();
     numberOfPages = quranDataSource.numberOfPages();
+    startPage = quranDataSource.startPage();
     numberOfPagesDual = numberOfPages / 2;
   }
 
@@ -309,14 +311,14 @@ class QuranInfo {
     }
   }
 
-/**
- * Gets the juz' that should be printed at the top of the page
- * This may be different than the actual juz' for the page (for example, juz' 7 starts at page
- * 121, but despite this, the title of the page is juz' 6).
- *
- * @param page the page
- * @return the display juz' display string for the page
- */
+  /**
+   * Gets the juz' that should be printed at the top of the page
+   * This may be different than the actual juz' for the page (for example, juz' 7 starts at page
+   * 121, but despite this, the title of the page is juz' 6).
+   *
+   * @param page the page
+   * @return the display juz' display string for the page
+   */
   int getJuzForDisplayFromPage(int page) {
     final actualJuz = getJuzFromPage(page);
     final overriddenJuz = _juzPageOverride[page];

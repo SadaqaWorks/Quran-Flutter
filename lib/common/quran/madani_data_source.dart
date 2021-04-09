@@ -2,6 +2,11 @@ import 'package:quran_reader/common/quran/model/quran_data_source.dart';
 
 class QuranDataSourceMadani extends QuranDataSource {
   @override
+  int startPage() {
+    return 1;
+  }
+
+  @override
   int numberOfPages() {
     return 604;
   }

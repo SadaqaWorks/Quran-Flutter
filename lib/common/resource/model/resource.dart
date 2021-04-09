@@ -20,6 +20,7 @@ class Resource with _$Resource {
       @HiveField(9) required bool bundled,
       @HiveField(10) bool? selected,
       @HiveField(11) String? description}) = _Resource;
+
   factory Resource.fromJson(Map<String, dynamic> json) =>
       _$ResourceFromJson(json);
 

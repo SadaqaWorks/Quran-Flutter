@@ -17,6 +17,7 @@ enum SortDirection {
 
 class SortExpression<T> {
   late SortDirection sortDirection;
+
   // int compareTo(T x, T y) {
   //   return x.compareTo(y);
   // }

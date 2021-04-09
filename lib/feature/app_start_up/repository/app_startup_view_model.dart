@@ -18,6 +18,7 @@ class AppStartupNotifier extends StateNotifier<AppStartupState> {
   final ResourcesSyncRepository resourceManager;
   final ConnectivityCheck connectivityCheck;
   late StreamSubscription _connectivityStreamSubscription;
+
   AppStartupNotifier(this.resourceManager, this.connectivityCheck)
       : super(const AppStartupState.initializing()) {
     _init();

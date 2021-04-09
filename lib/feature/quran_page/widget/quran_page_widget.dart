@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/geature/easy_gesture_detector.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
 import 'package:quran_reader/common/widget/responsive_image_widget.dart';
-import 'package:quran_reader/feature/home/bloc/blocs.dart';
-import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
+import 'package:quran_reader/feature/home/model/index.dart';
+import 'package:quran_reader/feature/quran_page/provider/index.dart';
 
 class QuranPageWidget extends StatefulWidget {
   @override
@@ -22,53 +22,36 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
     super.didChangeDependencies();
   }
 
-  _onPageViewChange(int page) {
-    BlocProvider.of<QuranPageBloc>(context)
-        .add(QuranPageEventLoad(pageNumber: page));
-  }
-
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<QuranPageBloc, QuranPageState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        state.maybeWhen(loaded: (value) {
-          return EasyGestureDetector(
-              onTap: () {
-                BlocProvider.of<HomePageBloc>(context)
-                    .add(HomePageEventViewTap());
-              },
-              // gestures: {
-              //   AllowMultipleGestureRecognizer: GestureRecognizerFactoryWithHandlers<
-              //       AllowMultipleGestureRecognizer>(
-              //     () => AllowMultipleGestureRecognizer(),
-              //     (AllowMultipleGestureRecognizer instance) {
-              //       instance.onTap = () => {
-              //             BlocProvider.of<HomePageBloc>(context)
-              //                 .add(HomePageViewTappedEvent())
-              //           };
-              //     },
-              //   )
-              // },
-              onSwipeLeft: () {
-                _onPageViewChange(value.pageNumber - 1);
-              },
-              onSwipeRight: () {
-                _onPageViewChange(value.pageNumber + 1);
-              },
-              //Parent Container
-              child: _widgetQuranPage(state));
+    return EasyGestureDetector(onTap: () {
+      final provider = context.read(homePageProvider);
+      provider.viewTap();
+    }, onSwipeLeft: () {
+      final provider = context.read(quranPageProvider);
+      provider.leftNavigation();
+    }, onSwipeRight: () {
+      final provider = context.read(quranPageProvider);
+      provider.rightNavigation();
+    },
+        //Parent Container
+        child: Consumer(
+      builder: (context, watch, child) {
+        final state = watch(quranPageProvider);
+        print("QURAN PAGE $state");
+        return state.maybeWhen(loaded: (value) {
+          return _widgetQuranPage(state);
         }, orElse: () {
-          return Container();
+          return Container(
+            child: Text('Page last'),
+          );
         });
-
-        return Container();
       },
-    );
+    ));
   }
 
   Widget _widgetQuranPage(QuranPageState state) {
-    state.maybeWhen(loaded: (value) {
+    return state.maybeWhen(loaded: (value) {
       if (Device.get().isWeb || Device.get().isComputer) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,7 +77,5 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
     }, orElse: () {
       return Container();
     });
-
-    return Container();
   }
 }

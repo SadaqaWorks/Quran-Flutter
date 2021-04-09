@@ -54,13 +54,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   //Action
   void _actionShowFullNavigator(BuildContext context) {
-    final provider = context.read(homePageProvider);
-    provider.showNavigator();
+    context.read(homePageProvider.notifier).showNavigator();
   }
 
   void _actionHideNavigator(BuildContext context) {
-    final provider = context.read(homePageProvider);
-    provider.hideNavigator();
+    context.read(homePageProvider.notifier).hideNavigator();
   }
 
   //Widget

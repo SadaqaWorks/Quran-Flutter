@@ -4,10 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/quran/quran_info.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/quran_page/provider/quran_page_state.dart';
+import 'package:state_notifier/state_notifier.dart';
 
-final quranPageProvider = StateNotifierProvider(
-  (ref) => QuranPageNotifier(ref.watch(quranInfoProvider)),
-);
+final quranPageProvider =
+    StateNotifierProvider<QuranPageNotifier, QuranPageState>((ref) {
+  return QuranPageNotifier(ref.watch(quranInfoProvider));
+});
 
 class QuranPageNotifier extends StateNotifier<QuranPageState> {
   final QuranInfoRepository quranInfoRepository;

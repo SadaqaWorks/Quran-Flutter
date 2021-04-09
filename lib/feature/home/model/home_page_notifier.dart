@@ -3,7 +3,7 @@ import 'package:state_notifier/state_notifier.dart';
 
 import 'home_page_state.dart';
 
-final homePageProvider = StateNotifierProvider(
+final homePageProvider = StateNotifierProvider<HomePageNotifier, HomePageState>(
   (ref) => HomePageNotifier(HomePageState.initial()),
 );
 

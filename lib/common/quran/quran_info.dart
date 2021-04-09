@@ -3,6 +3,7 @@ import 'package:quran_reader/common/constant/quran_constants.dart';
 import 'package:quran_reader/common/quran/madani_data_source.dart';
 import 'package:quran_reader/common/quran/model/quran_data_source.dart';
 import 'package:quran_reader/common/quran/model/sura_ayah.dart';
+import 'package:quran_reader/common/quran/model/sura_verses.dart';
 import 'package:quran_reader/common/quran/model/verse.dart';
 import 'package:quran_reader/common/quran/model/verse_range.dart';
 
@@ -15,26 +16,26 @@ class QuranInfo {
 
   late int numberOfPages;
   late double numberOfPagesDual;
-  late List<int> suraPageStart;
-  late List<int> pageSuraStart;
-  late List<int> pageAyahStart;
-  late List<int> juzPageStart;
-  late Map<int, int> juzPageOverride;
-  late List<int> pageRub3Start;
-  late List<int> suraNumAyahs;
-  late List<bool> suraIsMakki;
-  late List<List<int>> quarters;
+  late List<int> _suraPageStart;
+  late List<int> _pageSuraStart;
+  late List<int> _pageAyahStart;
+  late List<int> _juzPageStart;
+  late Map<int, int> _juzPageOverride;
+  late List<int> _pageRub3Start;
+  late List<int> _suraNumAyahs;
+  late List<bool> _suraIsMakki;
+  late List<List<int>> _quarters;
 
   QuranInfo(this.quranDataSource) {
-    suraPageStart = quranDataSource.getPageForSuraArray();
-    pageSuraStart = quranDataSource.getSuraForPageArray();
-    pageAyahStart = quranDataSource.getAyahForPageArray();
-    juzPageStart = quranDataSource.getPageForJuzArray();
-    juzPageOverride = quranDataSource.getJuzDisplayPageArrayOverride();
-    pageRub3Start = quranDataSource.getQuarterStartByPage();
-    suraNumAyahs = quranDataSource.getNumberOfAyahsForSuraArray();
-    suraIsMakki = quranDataSource.getIsMakkiBySuraArray();
-    quarters = quranDataSource.getQuartersArray();
+    _suraPageStart = quranDataSource.getPageForSuraArray();
+    _pageSuraStart = quranDataSource.getSuraForPageArray();
+    _pageAyahStart = quranDataSource.getAyahForPageArray();
+    _juzPageStart = quranDataSource.getPageForJuzArray();
+    _juzPageOverride = quranDataSource.getJuzDisplayPageArrayOverride();
+    _pageRub3Start = quranDataSource.getQuarterStartByPage();
+    _suraNumAyahs = quranDataSource.getNumberOfAyahsForSuraArray();
+    _suraIsMakki = quranDataSource.getIsMakkiBySuraArray();
+    _quarters = quranDataSource.getQuartersArray();
     numberOfPages = quranDataSource.numberOfPages();
     numberOfPagesDual = numberOfPages / 2;
   }
@@ -133,21 +134,21 @@ class QuranInfo {
   }
 
   int getStartingPageForJuz(int juz) {
-    return juzPageStart[juz - 1];
+    return _juzPageStart[juz - 1];
   }
 
   int getPageNumberForSura(int sura) {
-    return suraPageStart[sura - 1];
+    return _suraPageStart[sura - 1];
   }
 
   int getSuraNumberFromPage(int page) {
     var sura = -1;
     for (int i = 0; i < QuranConstants.NUMBER_OF_SURAS; i++) {
       //for (i in 0 until QuranConstants.NUMBER_OF_SURAS) {
-      if (suraPageStart[i] == page) {
+      if (_suraPageStart[i] == page) {
         sura = i + 1;
         break;
-      } else if (suraPageStart[i] > page) {
+      } else if (_suraPageStart[i] > page) {
         sura = i;
         break;
       }
@@ -156,13 +157,13 @@ class QuranInfo {
   }
 
   List<int> getListOfSurahWithStartingOnPage(int page) {
-    final startIndex = pageSuraStart[page - 1] - 1;
+    final startIndex = _pageSuraStart[page - 1] - 1;
     List<int> result = List.empty(growable: true);
     for (int i = startIndex; i < QuranConstants.NUMBER_OF_SURAS; i++) {
       //for (i in startIndex until NUMBER_OF_SURAS) {
-      if (suraPageStart[i] == page) {
+      if (_suraPageStart[i] == page) {
         result.add(i + 1);
-      } else if (suraPageStart[i] > page) break;
+      } else if (_suraPageStart[i] > page) break;
     }
     return result;
   }
@@ -177,7 +178,7 @@ class QuranInfo {
   }
 
   int getFirstAyahOnPage(int page) {
-    return pageAyahStart[page - 1];
+    return _pageAyahStart[page - 1];
   }
 
   List<int> getPageBounds(int inputPage) {
@@ -190,14 +191,14 @@ class QuranInfo {
     }
 
     final bounds = List.filled(4, 0);
-    bounds[0] = pageSuraStart[page - 1];
-    bounds[1] = pageAyahStart[page - 1];
+    bounds[0] = _pageSuraStart[page - 1];
+    bounds[1] = _pageAyahStart[page - 1];
     if (page == numberOfPages) {
       bounds[2] = QuranConstants.LAST_SURA;
       bounds[3] = 6;
     } else {
-      final nextPageSura = pageSuraStart[page];
-      final nextPageAyah = pageAyahStart[page];
+      final nextPageSura = _pageSuraStart[page];
+      final nextPageAyah = _pageAyahStart[page];
       if (nextPageSura == bounds[0]) {
         bounds[2] = bounds[0];
         bounds[3] = nextPageAyah - 1;
@@ -207,7 +208,7 @@ class QuranInfo {
           bounds[3] = nextPageAyah - 1;
         } else {
           bounds[2] = nextPageSura - 1;
-          bounds[3] = suraNumAyahs[bounds[2] - 1];
+          bounds[3] = _suraNumAyahs[bounds[2] - 1];
         }
       }
     }
@@ -215,15 +216,15 @@ class QuranInfo {
   }
 
   int getSuraOnPage(int page) {
-    return pageSuraStart[page - 1];
+    return _pageSuraStart[page - 1];
   }
 
   int getJuzFromPage(int page) {
-    for (var i = 0; i < juzPageStart.length; i++) {
+    for (var i = 0; i < _juzPageStart.length; i++) {
 //for (i in juzPageStart.indices) {
-      if (juzPageStart[i] > page) {
+      if (_juzPageStart[i] > page) {
         return i;
-      } else if (juzPageStart[i] == page) {
+      } else if (_juzPageStart[i] == page) {
         return i + 1;
       }
     }
@@ -234,7 +235,7 @@ class QuranInfo {
     if (page > numberOfPages || page < 1) {
       return -1;
     } else {
-      return pageRub3Start[page - 1];
+      return _pageRub3Start[page - 1];
     }
   }
 
@@ -253,14 +254,14 @@ class QuranInfo {
     }
 
 // what page does the sura start on?
-    var index = suraPageStart[sura - 1] - 1;
+    var index = _suraPageStart[sura - 1] - 1;
     while (index < numberOfPages) {
 // what's the first sura in that page?
-      final ss = pageSuraStart[index];
+      final ss = _pageSuraStart[index];
 
 // if we've passed the sura, return the previous page
 // or, if we're at the same sura and passed the ayah
-      if (ss > sura || ss == sura && pageAyahStart[index] > currentAyah) {
+      if (ss > sura || ss == sura && _pageAyahStart[index] > currentAyah) {
         break;
       }
 
@@ -273,7 +274,7 @@ class QuranInfo {
   int getAyahId(int sura, int ayah) {
     var ayahId = 0;
     for (var i = 0; i < sura - 1; i++) {
-      ayahId += suraNumAyahs[i];
+      ayahId += _suraNumAyahs[i];
     }
     ayahId += ayah;
     return ayahId;
@@ -283,7 +284,7 @@ class QuranInfo {
     if (sura < 1 || sura > QuranConstants.NUMBER_OF_SURAS) {
       return -1;
     } else {
-      return suraNumAyahs[sura - 1];
+      return _suraNumAyahs[sura - 1];
     }
   }
 
@@ -318,7 +319,7 @@ class QuranInfo {
  */
   int getJuzForDisplayFromPage(int page) {
     final actualJuz = getJuzFromPage(page);
-    final overriddenJuz = juzPageOverride[page];
+    final overriddenJuz = _juzPageOverride[page];
     if (overriddenJuz != null) {
       return overriddenJuz;
     }
@@ -328,14 +329,14 @@ class QuranInfo {
   SuraAyah getSuraAyahFromAyahId(int ayahId) {
     var sura = 0;
     var ayahIdentifier = ayahId;
-    while (ayahIdentifier > suraNumAyahs[sura]) {
-      ayahIdentifier -= suraNumAyahs[sura++];
+    while (ayahIdentifier > _suraNumAyahs[sura]) {
+      ayahIdentifier -= _suraNumAyahs[sura++];
     }
     return SuraAyah(sura + 1, ayahIdentifier);
   }
 
   List<int> getQuarterByIndex(int quarter) {
-    return quarters[quarter];
+    return _quarters[quarter];
   }
 
   int getJuzFromSuraAyah(int sura, int ayah, int juz) {
@@ -344,7 +345,7 @@ class QuranInfo {
     }
 
 // get the starting point of the next juz'
-    final lastQuarter = quarters[juz * 8];
+    final lastQuarter = _quarters[juz * 8];
 // if we're after that starting point, return juz + 1
     if (sura > lastQuarter[0] ||
         lastQuarter[0] == sura && ayah >= lastQuarter[1]) {
@@ -356,6 +357,6 @@ class QuranInfo {
   }
 
   bool isMakki(int sura) {
-    return suraIsMakki[sura - 1];
+    return _suraIsMakki[sura - 1];
   }
 }

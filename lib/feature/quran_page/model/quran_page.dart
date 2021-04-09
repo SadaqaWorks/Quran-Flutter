@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
+import 'package:quran_reader/common/quran/model/sura_verses.dart';
 
 import 'quran_page_info.dart';
 
@@ -12,13 +13,19 @@ class QuranPage extends Equatable {
   int pageNumber;
   final String? imageUrl;
   List<QuranPageInfo>? quranPageInfoList;
+  List<SuraVerses>? suraVerses;
 
   @required
-  QuranPage({required this.pageNumber, this.imageUrl, this.quranPageInfoList});
+  QuranPage(
+      {required this.pageNumber,
+      this.imageUrl,
+      this.quranPageInfoList,
+      this.suraVerses});
 
   //Equatable
   @override
-  List<Object?> get props => [pageNumber, imageUrl, quranPageInfoList];
+  List<Object?> get props =>
+      [pageNumber, imageUrl, quranPageInfoList, suraVerses];
 
   //json encoding decoding
   factory QuranPage.fromJson(Map<String, dynamic> json) =>

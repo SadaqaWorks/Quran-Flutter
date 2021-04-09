@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'verse.g.dart';
+
+@JsonSerializable()
 class Verse {
   int suraId;
   int ayahId;
@@ -8,16 +13,8 @@ class Verse {
   String toString() {
     return 'suraId: ${suraId} ayahId ${ayahId}';
   }
-}
 
-class SuraVerses {
-  int suraId;
-  List<Verse> verses;
+  factory Verse.fromJson(Map<String, dynamic> json) => _$VerseFromJson(json);
 
-  SuraVerses({required this.suraId, required this.verses});
-
-  @override
-  String toString() {
-    return 'suraId: ${suraId} verse ${verses}';
-  }
+  Map<String, dynamic> toJson() => _$VerseToJson(this);
 }

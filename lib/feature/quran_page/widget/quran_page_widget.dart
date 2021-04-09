@@ -32,7 +32,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
     return BlocConsumer<QuranPageBloc, QuranPageState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is QuranPageStateLoaded) {
+        state.maybeWhen(loaded: (value) {
           return EasyGestureDetector(
               onTap: () {
                 BlocProvider.of<HomePageBloc>(context)
@@ -51,42 +51,50 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
               //   )
               // },
               onSwipeLeft: () {
-                _onPageViewChange(state.firstQuranPage.pageNumber - 1);
+                _onPageViewChange(value.pageNumber - 1);
               },
               onSwipeRight: () {
-                _onPageViewChange(state.firstQuranPage.pageNumber + 1);
+                _onPageViewChange(value.pageNumber + 1);
               },
               //Parent Container
               child: _widgetQuranPage(state));
-        }
+        }, orElse: () {
+          return Container();
+        });
+
         return Container();
       },
     );
   }
 
-  Widget _widgetQuranPage(QuranPageStateLoaded state) {
-    if (Device.get().isWeb || Device.get().isComputer) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          if (state.secondQuranPage != null)
+  Widget _widgetQuranPage(QuranPageState state) {
+    state.maybeWhen(loaded: (value) {
+      if (Device.get().isWeb || Device.get().isComputer) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            // if (state.secondQuranPage != null)
+            //   Expanded(
+            //     flex: 1,
+            //     child: Container(
+            //         child:
+            //             ResponsiveImageWidget(quranPage: state.secondQuranPage!)),
+            //   )
+            // else
+            //   Container(),
             Expanded(
               flex: 1,
-              child: Container(
-                  child:
-                      ResponsiveImageWidget(quranPage: state.secondQuranPage!)),
-            )
-          else
-            Container(),
-          Expanded(
-            flex: 1,
-            child: Container(
-                child: ResponsiveImageWidget(quranPage: state.firstQuranPage)),
-          ),
-        ],
-      );
-    } else {
-      return ResponsiveImageWidget(quranPage: state.firstQuranPage);
-    }
+              child: Container(child: ResponsiveImageWidget(quranPage: value)),
+            ),
+          ],
+        );
+      } else {
+        return ResponsiveImageWidget(quranPage: value);
+      }
+    }, orElse: () {
+      return Container();
+    });
+
+    return Container();
   }
 }

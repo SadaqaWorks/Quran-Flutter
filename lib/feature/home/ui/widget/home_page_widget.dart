@@ -175,26 +175,27 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   Widget _initialNavigatorWidget() {
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: <
-        Widget>[
-      Container(
-          margin: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              color: Theme.of(context).accentColor),
-          child: Padding(
-              padding: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
-              child: Container(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                    _widgetShowNavigator(),
-                    _widgetAyahInfo(
-                        RepositoryProvider.of<HomePageBloc>(context).quranPage)
-                  ])))),
-      SizedBox(height: 10),
-      //_bottomSlider()
-    ]);
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+              margin: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  color: Theme.of(context).accentColor),
+              child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
+                  child: Container(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                        _widgetShowNavigator(),
+                        //_widgetAyahInfo(RepositoryProvider.of<HomePageBloc>(context).quranPage)
+                      ])))),
+          SizedBox(height: 10),
+          //_bottomSlider()
+        ]);
   }
 
   Widget _fullNavigatorWidget() {

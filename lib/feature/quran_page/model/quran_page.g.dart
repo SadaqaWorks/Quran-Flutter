@@ -13,6 +13,9 @@ QuranPage _$QuranPageFromJson(Map<String, dynamic> json) {
     quranPageInfoList: (json['quranPageInfoList'] as List<dynamic>?)
         ?.map((e) => QuranPageInfo.fromJson(e as Map<String, dynamic>))
         .toList(),
+    suraVerses: (json['suraVerses'] as List<dynamic>?)
+        ?.map((e) => SuraVerses.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -20,4 +23,5 @@ Map<String, dynamic> _$QuranPageToJson(QuranPage instance) => <String, dynamic>{
       'pageNumber': instance.pageNumber,
       'imageUrl': instance.imageUrl,
       'quranPageInfoList': instance.quranPageInfoList,
+      'suraVerses': instance.suraVerses,
     };

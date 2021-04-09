@@ -14,12 +14,17 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   final HomePageBloc homePageBloc;
 
   QuranPageBloc({required this.ayahInfoRepository, required this.homePageBloc})
-      : super(QuranPageStateInitial()) {
+      : super(QuranPageState.initial()) {
     hydrate();
 
-    if (state is QuranPageStateInitial) {
-      add(QuranPageEventLoadDatabase());
-    }
+    state.maybeWhen(
+        initial: (){
+          add(QuranPageEventLoadDatabase());
+        },
+        orElse: () {
+
+    });
+
   }
 
   void dispose() {
@@ -41,9 +46,16 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   Stream<QuranPageState> mapEventToState(QuranPageEvent event) async* {
     if (event is QuranPageEventLoadDatabase) {
       await ayahInfoRepository.initDatabase();
-      if (state is QuranPageStateInitial) {
-        add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
-      }
+
+      state.maybeWhen(
+          initial: (){
+            add(QuranPageEventLoad(pageNumber: startQuranPageNumber));
+          },
+          orElse: () {
+
+          });
+
+
     }
 
     if (event is QuranPageEventLoad) {
@@ -54,18 +66,17 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
   @override
   Map<String, Map<String, dynamic>>? toJson(QuranPageState state) {
     try {
-      if (state is QuranPageStateLoaded) {
-        Map<String, dynamic> data = {};
 
-        data['first_page'] = state.firstQuranPage.toJson();
+      state.maybeWhen(
+          loaded: (value){
+            Map<String, dynamic> data = {};
+            data['first_page'] = value.toJson();
+            return {'quran_pages': data};
+          },
+          orElse: () {
+            return null;
+          });
 
-        if (state.secondQuranPage != null) {
-          data['second_page'] = state.secondQuranPage!.toJson();
-        }
-        return {'quran_pages': data};
-      } else {
-        return null;
-      }
     } catch (exception) {
       return null;
     }
@@ -78,32 +89,35 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
         final quranPages = json['quran_pages'];
         final firstQuranPage = QuranPage.fromJson(
             Map<String, dynamic>.from(quranPages['first_page']));
-        homePageBloc.quranPage = firstQuranPage;
-
-        if (quranPages['second_page'] != null) {
-          final secondQuranPage = QuranPage.fromJson(
-              Map<String, dynamic>.from(quranPages['second_page']));
-
-          return QuranPageStateLoaded(
-              firstQuranPage: firstQuranPage, secondQuranPage: secondQuranPage);
-        } else {
-          return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
-        }
+        //homePageBloc.quranPage = firstQuranPage;
+        return QuranPageState.loaded(firstQuranPage);
+        // if (quranPages['second_page'] != null) {
+        //   final secondQuranPage = QuranPage.fromJson(
+        //       Map<String, dynamic>.from(quranPages['second_page']));
+        //
+        //   return QuranPageStateLoaded(
+        //       firstQuranPage: firstQuranPage, secondQuranPage: secondQuranPage);
+        // } else {
+        //   return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
+        // }
       } else {
         QuranPage firstQuranPage = QuranPage(
             pageNumber: startQuranPageNumber,
             imageUrl: 'assets/images/quran/${startQuranPageNumber}.png');
-        homePageBloc.quranPage = firstQuranPage;
+        //homePageBloc.quranPage = firstQuranPage;
+        return QuranPageState.loaded(firstQuranPage);
 
-        return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
+        //return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
       }
     } catch (exception) {
       QuranPage firstQuranPage = QuranPage(
           pageNumber: startQuranPageNumber,
           imageUrl: 'assets/images/quran/${startQuranPageNumber}.png');
-      homePageBloc.quranPage = firstQuranPage;
+      //homePageBloc.quranPage = firstQuranPage;
 
-      return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
+      return QuranPageState.loaded(firstQuranPage);
+
+      //return QuranPageStateLoaded(firstQuranPage: firstQuranPage);
     }
   }
 
@@ -113,9 +127,8 @@ class QuranPageBloc extends HydratedBloc<QuranPageEvent, QuranPageState> {
       final _firstQuranPage = await _fetchQuranPage(event.pageNumber);
       final _secondQuranPage = await _fetchQuranPage(event.pageNumber + 1);
 
-      homePageBloc.quranPage = _firstQuranPage;
-      yield QuranPageStateLoaded(
-          firstQuranPage: _firstQuranPage, secondQuranPage: _secondQuranPage);
+      //homePageBloc.quranPage = _firstQuranPage;
+      yield QuranPageState.loaded(_firstQuranPage);
     }
   }
 

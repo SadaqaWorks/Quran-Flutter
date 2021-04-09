@@ -1,15 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'home_page_event.dart';
 import 'home_page_state.dart';
 
 class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
-  QuranPage? quranPage;
-
   HomePageBloc() : super(HomePageStateInitial()) {}
 
   @override

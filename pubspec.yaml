@@ -26,30 +26,49 @@ dependencies:
   shared_preferences: ^2.0.5
   meta: ^1.3.0
   path_provider: ^2.0.1
+  app_settings: ^4.1.0
 
-  #core
+  #Internet
+  dio: ^4.0.0
   http: ^0.13.1
-  rxdart: ^0.26.0
-  bloc: ^7.0.0
-  flutter_bloc: ^7.0.0
-  hydrated_bloc: ^7.0.0
-  equatable: ^2.0.0
+  connectivity: ^3.0.3
+
   dartz: ^0.10.0-nullsafety.1
+  archive: ^3.1.2
+
+  equatable: ^2.0.0
+
+  flutter_screenutil: ^4.0.4+1
+
+  hive: ^2.0.2
+  hive_flutter: ^1.0.0
+
+  isar: ^0.2.0
+  isar_flutter_libs: 0.2.0
+  isar_connect: 0.2.0
 
   wakelock: ^0.5.0+2
   sqflite: ^2.0.0+3
   intl_utils: ^2.1.0
+  json_annotation:
+
+  flutter_riverpod: ^0.14.0
+  state_notifier: ^0.7.0
+  freezed_annotation:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.9.0
-  flutter_native_splash: 1.1.5+1
+  flutter_native_splash: 1.1.7+1
   lint: ^1.5.2
   pedantic: 1.11.0
   logger:
-  monarch: ^0.2.0
-  build_runner: ^1.10.3
+  json_serializable:
+  hive_generator:
+  isar_generator: 0.2.0
+  build_runner:
+  freezed: ^0.14.1+2
 
 
 # For information on the generic Dart part of this file, see the
@@ -63,9 +82,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - .env
     - assets/images/quran/
     - assets/images/app/
-    - assets/quran-data/db/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

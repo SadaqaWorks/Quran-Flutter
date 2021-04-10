@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quran_reader/common/database/ayah_info_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/util/flutter_device_type.dart';
-import 'package:quran_reader/feature/home/bloc/home_page_bloc.dart';
-import 'package:quran_reader/feature/home/bloc/home_page_event.dart';
-import 'package:quran_reader/feature/home/bloc/home_page_state.dart';
+import 'package:quran_reader/feature/home/provider/index.dart';
 import 'package:quran_reader/feature/navigator/widget/navigator_widget.dart';
-import 'package:quran_reader/feature/quran_page/bloc/blocs.dart';
-import 'package:quran_reader/feature/quran_page/model/models.dart';
+import 'package:quran_reader/feature/quran_page/provider/index.dart';
 import 'package:quran_reader/feature/quran_page/widget/quran_page_widget.dart';
 import 'package:quran_reader/generated/l10n.dart';
 import 'package:wakelock/wakelock.dart';
@@ -19,8 +15,6 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  int _sliderValue = 1;
-
   @override
   void dispose() {
     if (Device.get().isIos || Device.get().isAndroid) {
@@ -39,49 +33,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HomePageBloc, HomePageState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          return SafeArea(
-            child: Scaffold(body: BlocBuilder<HomePageBloc, HomePageState>(
-                builder: (context, state) {
-              if (state is HomePageStateInitial) {
-                return _widgetQuranPage();
-              } else if (state is HomePageStateShowInfo) {
-                return _widgetHalfNavigator();
-              } else if (state is HomePageStateShowFullNavigator) {
-                return _widgetFullNavigator();
-              }
-
-              return Container();
-            })),
-          );
+    return SafeArea(child: Scaffold(body: Consumer(
+      builder: (context, watch, child) {
+        final state = watch(homePageProvider);
+        return state.maybeWhen(initial: () {
+          return _widgetQuranPage();
+        }, showInfo: () {
+          return _widgetHalfNavigator(context);
+        }, showFullNavigator: () {
+          return _widgetFullNavigator(context);
+        }, orElse: () {
+          return Container();
         });
+      },
+    )));
   }
 
   //Action
-  void _actionShowFullNavigator() {
-    BlocProvider.of<HomePageBloc>(context)
-        .add(HomePageShowNavigatorTappedEvent());
+  void _actionShowFullNavigator(BuildContext context) {
+    context.read(homePageProvider.notifier).showNavigator();
   }
 
-  void _actionHideNavigator() {
-    BlocProvider.of<HomePageBloc>(context).add(HomePageEventHideNavigatorTap());
+  void _actionHideNavigator(BuildContext context) {
+    context.read(homePageProvider.notifier).hideNavigator();
   }
 
   //Widget
-  Widget _widgetShowNavigator() {
+  Widget _widgetShowNavigator(BuildContext context) {
     return SizedBox(
         height: 18.0,
         width: 18.0,
         child: IconButton(
           icon: Icon(Icons.arrow_drop_up, color: Colors.black87),
-          onPressed: () => {_actionShowFullNavigator()},
+          onPressed: () => {_actionShowFullNavigator(context)},
           padding: new EdgeInsets.all(0.0),
         ));
   }
 
-  Widget _widgetHideNavigator() {
+  Widget _widgetHideNavigator(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(12.0),
         child: SizedBox(
@@ -89,19 +78,29 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             width: 18.0,
             child: IconButton(
                 icon: Icon(Icons.arrow_drop_down, color: Colors.black87),
-                onPressed: () => {_actionHideNavigator()},
+                onPressed: () => {_actionHideNavigator(context)},
                 padding: new EdgeInsets.all(0.0))));
   }
 
-  Widget _widgetAyahInfo(QuranPage? _quranPage) {
-    return Text(
-      "${_quranPage?.quranPageInfoList?.first.suraNumber}. (${_quranPage?.quranPageInfoList?.first.nameArabic}) ${_quranPage?.quranPageInfoList?.first.name} \n${S.of(context).page}: ${_quranPage?.pageNumber}",
-      style: TextStyle(
-        fontSize: 18.0,
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
-      textAlign: TextAlign.center,
+  Widget _widgetAyahInfo() {
+    return Consumer(
+      builder: (context, watch, child) {
+        final state = watch(quranPageProvider);
+
+        return state.maybeWhen(loaded: (value) {
+          return Text(
+            "${S.of(context).page}: ${value.pageNumber}",
+            style: TextStyle(
+              fontSize: 18.0,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          );
+        }, orElse: () {
+          return Container();
+        });
+      },
     );
   }
 
@@ -126,78 +125,59 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   //       ));
   // }
   Widget _widgetQuranPage() {
-    return BlocProvider<QuranPageBloc>(
-      create: (context) {
-        return QuranPageBloc(
-            ayahInfoRepository:
-                RepositoryProvider.of<AyahInfoRepository>(context),
-            homePageBloc: BlocProvider.of<HomePageBloc>(context));
-      },
-      child: QuranPageWidget(),
-    );
+    return QuranPageWidget();
   }
 
-  Widget _widgetHalfNavigator() {
+  Widget _widgetHalfNavigator(BuildContext context) {
     return Stack(
       children: <Widget>[
         Container(color: Theme.of(context).accentColor.withOpacity(.3)),
-        BlocProvider<QuranPageBloc>(
-          create: (context) {
-            return QuranPageBloc(
-                ayahInfoRepository:
-                    RepositoryProvider.of<AyahInfoRepository>(context),
-                homePageBloc: BlocProvider.of<HomePageBloc>(context));
-          },
-          child: QuranPageWidget(),
-        ),
+        _widgetQuranPage(),
         Positioned(
-            bottom: 0, left: 0, right: 0, child: _initialNavigatorWidget())
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: _initialNavigatorWidget(context))
       ],
     );
   }
 
-  Widget _widgetFullNavigator() {
+  Widget _widgetFullNavigator(BuildContext context) {
     return Stack(
       children: <Widget>[
         Container(color: Theme.of(context).accentColor.withOpacity(.3)),
-        BlocProvider<QuranPageBloc>(
-          create: (context) {
-            return QuranPageBloc(
-                ayahInfoRepository:
-                    RepositoryProvider.of<AyahInfoRepository>(context),
-                homePageBloc: BlocProvider.of<HomePageBloc>(context));
-          },
-          child: QuranPageWidget(),
-        ),
-        Positioned(bottom: 0, left: 0, right: 0, child: _fullNavigatorWidget())
+        _widgetQuranPage(),
+        Positioned(
+            bottom: 0, left: 0, right: 0, child: _fullNavigatorWidget(context))
       ],
     );
   }
 
-  Widget _initialNavigatorWidget() {
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: <
-        Widget>[
-      Container(
-          margin: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              color: Theme.of(context).accentColor),
-          child: Padding(
-              padding: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
-              child: Container(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                    _widgetShowNavigator(),
-                    _widgetAyahInfo(
-                        RepositoryProvider.of<HomePageBloc>(context).quranPage)
-                  ])))),
-      SizedBox(height: 10),
-      //_bottomSlider()
-    ]);
+  Widget _initialNavigatorWidget(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+              margin: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  color: Theme.of(context).accentColor),
+              child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
+                  child: Container(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                        _widgetShowNavigator(context),
+                        _widgetAyahInfo()
+                      ])))),
+          SizedBox(height: 10),
+          //_bottomSlider()
+        ]);
   }
 
-  Widget _fullNavigatorWidget() {
+  Widget _fullNavigatorWidget(BuildContext context) {
     return Container(
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -213,7 +193,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     children: <Widget>[
                       NavigatorWidget(),
                       SizedBox(height: 8),
-                      _widgetHideNavigator(),
+                      _widgetHideNavigator(context),
                     ])),
           ]),
     );

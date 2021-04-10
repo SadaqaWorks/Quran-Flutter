@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' as io;
 import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -24,13 +24,13 @@ class Device {
   factory Device.get() {
     bool isTablet;
     bool isPhone;
-    bool isIos = Platform.isIOS;
-    bool isAndroid = Platform.isAndroid;
+    bool isIos = io.Platform.isIOS;
+    bool isAndroid = io.Platform.isAndroid;
     bool isWeb = kIsWeb;
-    bool isComputer = Platform.isWindows ||
-        Platform.isLinux ||
-        Platform.isMacOS ||
-        Platform.isFuchsia;
+    bool isComputer = io.Platform.isWindows ||
+        io.Platform.isLinux ||
+        io.Platform.isMacOS ||
+        io.Platform.isFuchsia;
 
     if (devicePixelRatio < 2 && (width >= 1000 || height >= 1000)) {
       isTablet = true;

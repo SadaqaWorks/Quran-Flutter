@@ -55,3 +55,17 @@ My proposal: Develop a Quran project with [Flutter](https://flutter.dev/), with 
 * [SOLID principals](https://medium.com/flutter-community/s-o-l-i-d-the-first-5-principles-of-object-oriented-design-with-dart-f31d62135b7e) must not be broken.
 * For project and coding structure, styles first go through this repo's codes first, your coding styles and structure has to be matched with this project's coding styles and structures.
 * Any kind of anti-patterns must not be implemented or design pattern must not be broken.
+
+## Database plan
+ We will use Hive, as it's a lot faster than SQLite, 
+ 
+ Page: For page we will make json by quering from ayah_info database and make array of quran page object where everything related to page will be stored, verse start, end, sura, verse mapping, glyphs
+ Sura List: We will make one json with arabic title and translation object {text,iso: (bn/en/gn)}, 
+ Translation: Every db will be different box
+ Word by word: Every db will be different box
+ Arabic: A box for arabic
+ Tajweed: A box for tajweed
+ Resource: A resource list with Sura, page, word by word, translation will be specified and provides if it's mandatory or not, version, downloaded or not, selected or not, obtained from local and updated from API as well and cache it on ResourceBox, 
+ Settings: A box to handle user choice, settings etc
+ User: Bookmark, preference
+ 

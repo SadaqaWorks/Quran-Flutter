@@ -1,4 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
 part of 'sura.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
 
 Sura _$SuraFromJson(Map<String, dynamic> json) {
   return Sura(
@@ -8,10 +14,8 @@ Sura _$SuraFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SuraToJson(Sura instance) {
-  return <String, dynamic>{
-    'sura_number': instance.suraNumber,
-    'name_arabic': instance.nameArabic,
-    'name': instance.name
-  };
-}
+Map<String, dynamic> _$SuraToJson(Sura instance) => <String, dynamic>{
+      'sura_number': instance.suraNumber,
+      'name_arabic': instance.nameArabic,
+      'name': instance.name,
+    };

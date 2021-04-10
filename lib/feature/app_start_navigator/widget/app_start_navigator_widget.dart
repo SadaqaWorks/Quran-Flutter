@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class AppJourneyStartWidget extends StatefulWidget {
+class AppStartNavigatorWidget extends StatefulWidget {
   @override
-  _AppJourneyStartWidgetState createState() => _AppJourneyStartWidgetState();
+  _AppStartNavigatorWidgetState createState() => _AppStartNavigatorWidgetState();
 }
 
-class _AppJourneyStartWidgetState extends State<AppJourneyStartWidget> {
+class _AppStartNavigatorWidgetState extends State<AppStartNavigatorWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

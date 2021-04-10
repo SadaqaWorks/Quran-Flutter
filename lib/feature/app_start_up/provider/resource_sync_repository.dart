@@ -4,9 +4,9 @@ import 'package:hive/hive.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:quran_reader/common/http/api_provider.dart';
-import 'package:quran_reader/common/resource/manager/database_manager.dart';
-import 'package:quran_reader/common/resource/model/resource.dart';
-import 'package:quran_reader/common/resource/model/resource_sync_state.dart';
+import 'package:quran_reader/common/model/resource/resource.dart';
+import 'package:quran_reader/common/model/resource/resource_sync_state.dart';
+import 'package:quran_reader/common/storage/repository/storage_manager.dart';
 
 class ResourceSyncRepository {
   final APIProvider apiProvider;

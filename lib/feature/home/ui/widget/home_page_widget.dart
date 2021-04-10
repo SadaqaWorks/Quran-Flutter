@@ -87,9 +87,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       builder: (context, watch, child) {
         final state = watch(quranPageProvider);
 
-        state.maybeWhen(loaded: (value) {
+        return state.maybeWhen(loaded: (value) {
           return Text(
-            "${value.quranPageInfoList?.first.suraNumber}. (${value.quranPageInfoList?.first.nameArabic}) ${value.quranPageInfoList?.first.name} \n${S.of(context).page}: ${value.pageNumber}",
+            "${S.of(context).page}: ${value.pageNumber}",
             style: TextStyle(
               fontSize: 18.0,
               color: Colors.black,
@@ -100,8 +100,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         }, orElse: () {
           return Container();
         });
-
-        return Container();
       },
     );
   }
@@ -128,15 +126,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   // }
   Widget _widgetQuranPage() {
     return QuranPageWidget();
-    // return BlocProvider<QuranPageBloc>(
-    //   create: (context) {
-    //     return QuranPageBloc(
-    //         ayahInfoRepository:
-    //             RepositoryProvider.of<AyahInfoRepository>(context),
-    //         homePageBloc: BlocProvider.of<HomePageBloc>(context));
-    //   },
-    //   child: QuranPageWidget(),
-    // );
   }
 
   Widget _widgetHalfNavigator(BuildContext context) {

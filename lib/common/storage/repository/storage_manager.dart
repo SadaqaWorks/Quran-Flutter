@@ -1,9 +1,9 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:quran_reader/common/model/resource/resource.dart';
 import 'package:quran_reader/common/model/user/user.dart';
-import 'package:quran_reader/common/resource/model/resource.dart';
 
-class DatabaseManager {
+class StorageManager {
   //current highest type ID 4
   static Future<void> init() async {
     await Hive.initFlutter('hive');

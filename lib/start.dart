@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quran_reader/common/resource/manager/database_manager.dart';
-import 'package:quran_reader/common/sharedpreference/provider.dart';
+import 'package:quran_reader/common/storage/provider/pref_provider.dart';
+import 'package:quran_reader/common/storage/repository/storage_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app/app.dart';
@@ -14,14 +14,13 @@ void start() async {
   // final isarResources = await openIsar(name: Databases.resources);
   // final isarUser = await openIsar(name: Databases.user);
 
-  await DatabaseManager.init();
+  await StorageManager.init();
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
     runApp(ProviderScope(
       overrides: [
-        sharedPreferencesServiceProvider
-            .overrideWithValue(SharedPreferencesService(sharedPreferences)),
+        prefServiceProvider.overrideWithValue(PrefService(sharedPreferences)),
         //isarResourceProvider.overrideWithValue(isarResources),
         //isarUserProvider.overrideWithValue(isarUser)
       ],

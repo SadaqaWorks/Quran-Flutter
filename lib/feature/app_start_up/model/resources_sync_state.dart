@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:quran_reader/common/resource/model/resource.dart';
+import 'package:quran_reader/common/model/resource/resource.dart';
 
 part 'resources_sync_state.freezed.dart';
 

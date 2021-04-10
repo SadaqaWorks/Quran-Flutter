@@ -12,20 +12,14 @@ part 'quran_page.g.dart';
 class QuranPage extends Equatable {
   int pageNumber;
   final String? imageUrl;
-  List<QuranPageInfo>? quranPageInfoList;
   List<SuraVerses>? suraVerses;
 
   @required
-  QuranPage(
-      {required this.pageNumber,
-      this.imageUrl,
-      this.quranPageInfoList,
-      this.suraVerses});
+  QuranPage({required this.pageNumber, this.imageUrl, this.suraVerses});
 
   //Equatable
   @override
-  List<Object?> get props =>
-      [pageNumber, imageUrl, quranPageInfoList, suraVerses];
+  List<Object?> get props => [pageNumber, imageUrl, suraVerses];
 
   //json encoding decoding
   factory QuranPage.fromJson(Map<String, dynamic> json) =>

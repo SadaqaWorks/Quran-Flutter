@@ -20,7 +20,8 @@ void start() async {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
     runApp(ProviderScope(
       overrides: [
-        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+        sharedPreferencesServiceProvider
+            .overrideWithValue(SharedPreferencesService(sharedPreferences)),
         //isarResourceProvider.overrideWithValue(isarResources),
         //isarUserProvider.overrideWithValue(isarUser)
       ],

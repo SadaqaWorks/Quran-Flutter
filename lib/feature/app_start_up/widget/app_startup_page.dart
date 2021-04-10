@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/widget/need_internet_widget.dart';
-import 'package:quran_reader/feature/app_start_up/repository/app_startup_view_model.dart';
+import 'package:quran_reader/feature/app_start_up/provider/app_startup_provider.dart';
 import 'package:quran_reader/feature/home/ui/page/home_page.dart';
 
 /// This is the "root" widget of the app, which sits just below MaterialApp.

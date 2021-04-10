@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quran_reader/common/storage/provider/pref_provider.dart';
 import 'package:quran_reader/common/quran/quran_info.dart';
+import 'package:quran_reader/common/storage/provider/pref_provider.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/quran_page/provider/quran_page_state.dart';
 import 'package:state_notifier/state_notifier.dart';

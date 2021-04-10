@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class AppStartNavigatorWidget extends StatefulWidget {
   @override
-  _AppStartNavigatorWidgetState createState() => _AppStartNavigatorWidgetState();
+  _AppStartNavigatorWidgetState createState() =>
+      _AppStartNavigatorWidgetState();
 }
 
 class _AppStartNavigatorWidgetState extends State<AppStartNavigatorWidget> {

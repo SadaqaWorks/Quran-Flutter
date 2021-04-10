@@ -23,22 +23,6 @@ class Resource with _$Resource {
 
   factory Resource.fromJson(Map<String, dynamic> json) =>
       _$ResourceFromJson(json);
-
-  static final quranFiles = [
-    Resource(
-        id: 0,
-        name: 'ayahinfo_1280.db',
-        required: true,
-        version: 1,
-        resourceType: ResourceType.ayahInfo,
-        fileType: FileType.db,
-        needRefresh: false,
-        downloaded: true,
-        bundled: false,
-        description: '',
-        url:
-            'https://raw.githubusercontent.com/SadaqaWorks/IslamicDatabase/master/Quran/db/ayahinfo_1280.db')
-  ];
 }
 
 const resourceTypeString = <ResourceType, String>{

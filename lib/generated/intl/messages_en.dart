@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "juzz" : MessageLookupByLibrary.simpleMessage("Juzz"),
     "page" : MessageLookupByLibrary.simpleMessage("Page"),
     "pages" : MessageLookupByLibrary.simpleMessage("Pages"),
-    "surah" : MessageLookupByLibrary.simpleMessage("Surah")
+    "surah" : MessageLookupByLibrary.simpleMessage("Surah"),
+    "surah_1" : MessageLookupByLibrary.simpleMessage("Al Fatiha")
   };
 }

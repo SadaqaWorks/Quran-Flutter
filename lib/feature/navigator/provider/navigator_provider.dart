@@ -82,18 +82,13 @@ class NavigatorViewNotifier extends StateNotifier<NavigatorViewState> {
   }
 
   suraSelected(int index) {
-    print('suraSelected 1 ${index} ${currentlySelectedPageNumber}');
     currentlySelectedPageNumber =
         quranInfoRepository.getPageNumberForSura(suraList[index].id);
-    print('suraSelected 2 ${index} ${currentlySelectedPageNumber}');
   }
 
   juzSelected(int index) {
-    print('juzSelected 1 ${index} ${currentlySelectedPageNumber}');
-
     currentlySelectedPageNumber =
         quranInfoRepository.getStartingPageForJuz(index + 1);
-    print('juzSelected 2 ${index} ${currentlySelectedPageNumber}');
   }
 
   pageSelected(int index) {
@@ -101,8 +96,6 @@ class NavigatorViewNotifier extends StateNotifier<NavigatorViewState> {
   }
 
   confirmSelected() {
-    print('confirmSelected 2 ${currentlySelectedPageNumber}');
-
     //if (currentlySelectedPageNumber != null) {
     read(quranPageProvider.notifier).loadPage(currentlySelectedPageNumber);
     read(homePageProvider.notifier).hideNavigator();

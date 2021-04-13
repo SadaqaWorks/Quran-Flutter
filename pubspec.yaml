@@ -39,6 +39,7 @@ dependencies:
   equatable: ^2.0.0
 
   flutter_screenutil: ^4.0.4+1
+  scroll_to_index: ^2.0.0
 
   hive: ^2.0.2
   hive_flutter: ^1.0.0

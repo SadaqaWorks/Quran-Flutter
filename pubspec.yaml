@@ -30,15 +30,13 @@ dependencies:
 
   #Internet
   dio: ^4.0.0
-  http: ^0.13.1
   connectivity: ^3.0.3
 
-  dartz: ^0.10.0-nullsafety.1
   archive: ^3.1.2
-
   equatable: ^2.0.0
 
-  flutter_screenutil: ^4.0.4+1
+  responsive_builder: ^0.4.1
+  #flutter_screenutil: ^5.0.0
   scroll_to_index: ^2.0.0
 
   hive: ^2.0.2

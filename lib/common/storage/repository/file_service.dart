@@ -2,14 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io' as io;
 
-import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:quran_reader/common/model/resource/resource.dart';
-import 'package:quran_reader/common/result/database_avaiablity_result.dart';
-import 'package:quran_reader/common/result/repository_result.dart';
+import 'package:quran_reader/common/storage/repository/file_service_state.dart';
 import 'package:sqflite/sqflite.dart';
 
 abstract class IFileService {
@@ -31,7 +29,7 @@ class FileService {
     return httpClient;
   }
 
-  Future<Either<RepositoryResult, Database>> openDatabaseConnection(
+  Future<FileServiceState> openDatabaseConnection(
     Resource resource, {
     bool isReadOnly = true,
     bool deleteFirst = false,
@@ -53,9 +51,9 @@ class FileService {
             Database database = isReadOnly
                 ? await openReadOnlyDatabase(dbPath)
                 : await openDatabase(dbPath);
-            return Right(database);
+            return FileServiceState.available(database);
           } else {
-            return Left(DatabaseNotAvailableResult(''));
+            return FileServiceState.notAvailable();
           }
         }
       }
@@ -63,7 +61,7 @@ class FileService {
       Database database = isReadOnly
           ? await openReadOnlyDatabase(dbPath)
           : await openDatabase(dbPath);
-      return Right(database);
+      return FileServiceState.available(database);
     } else {
       if (resource.required) {
         final fileResult = await fileDownload(resource.url, dbPath);
@@ -72,12 +70,12 @@ class FileService {
           Database database = isReadOnly
               ? await openReadOnlyDatabase(dbPath)
               : await openDatabase(dbPath);
-          return Right(database);
+          return FileServiceState.available(database);
         } else {
-          return Left(DatabaseNotAvailableResult(''));
+          return FileServiceState.notAvailable();
         }
       } else {
-        return Left(DatabaseNotAvailableResult(''));
+        return FileServiceState.notAvailable();
       }
     }
   }

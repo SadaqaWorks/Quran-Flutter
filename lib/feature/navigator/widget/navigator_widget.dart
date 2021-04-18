@@ -193,11 +193,13 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
             _selectedItem(context);
           },
           child: Container(
+            color:
+                selected ? Colors.black.withOpacity(0.1) : Colors.transparent,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(sura.title),
-                selected ? Text('selcted') : Text('un selcted')
+                selected ? Text('selected') : Text('un selected')
               ],
             ),
           )),
@@ -236,6 +238,8 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
               _selectedItem(context);
             },
             child: Container(
+              color:
+                  selected ? Colors.black.withOpacity(0.1) : Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -278,6 +282,8 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
               _selectedItem(context);
             },
             child: Container(
+              color:
+                  selected ? Colors.black.withOpacity(0.1) : Colors.transparent,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

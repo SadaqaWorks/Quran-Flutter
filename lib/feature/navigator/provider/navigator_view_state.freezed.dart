@@ -20,24 +20,24 @@ class _$NavigatorViewStateTearOff {
     return const _Initial();
   }
 
-  _LoadSuraList loadSuraList(List<Sura> list, int selected) {
+  _LoadSuraList loadSuraList(List<Sura> list, int selectedIndex) {
     return _LoadSuraList(
       list,
-      selected,
+      selectedIndex,
     );
   }
 
-  _LoadJuzList loadJuzList(List<int> list, int selected) {
+  _LoadJuzList loadJuzList(List<int> list, int selectedIndex) {
     return _LoadJuzList(
       list,
-      selected,
+      selectedIndex,
     );
   }
 
-  _LoadPageList loadPageList(List<int> list, int selected) {
+  _LoadPageList loadPageList(List<int> list, int selectedIndex) {
     return _LoadPageList(
       list,
-      selected,
+      selectedIndex,
     );
   }
 
@@ -54,18 +54,18 @@ mixin _$NavigatorViewState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Sura> list, int selected) loadSuraList,
-    required TResult Function(List<int> list, int selected) loadJuzList,
-    required TResult Function(List<int> list, int selected) loadPageList,
+    required TResult Function(List<Sura> list, int selectedIndex) loadSuraList,
+    required TResult Function(List<int> list, int selectedIndex) loadJuzList,
+    required TResult Function(List<int> list, int selectedIndex) loadPageList,
     required TResult Function() showFullNavigator,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Sura> list, int selected)? loadSuraList,
-    TResult Function(List<int> list, int selected)? loadJuzList,
-    TResult Function(List<int> list, int selected)? loadPageList,
+    TResult Function(List<Sura> list, int selectedIndex)? loadSuraList,
+    TResult Function(List<int> list, int selectedIndex)? loadJuzList,
+    TResult Function(List<int> list, int selectedIndex)? loadPageList,
     TResult Function()? showFullNavigator,
     required TResult orElse(),
   }) =>
@@ -146,9 +146,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Sura> list, int selected) loadSuraList,
-    required TResult Function(List<int> list, int selected) loadJuzList,
-    required TResult Function(List<int> list, int selected) loadPageList,
+    required TResult Function(List<Sura> list, int selectedIndex) loadSuraList,
+    required TResult Function(List<int> list, int selectedIndex) loadJuzList,
+    required TResult Function(List<int> list, int selectedIndex) loadPageList,
     required TResult Function() showFullNavigator,
   }) {
     return initial();
@@ -158,9 +158,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Sura> list, int selected)? loadSuraList,
-    TResult Function(List<int> list, int selected)? loadJuzList,
-    TResult Function(List<int> list, int selected)? loadPageList,
+    TResult Function(List<Sura> list, int selectedIndex)? loadSuraList,
+    TResult Function(List<int> list, int selectedIndex)? loadJuzList,
+    TResult Function(List<int> list, int selectedIndex)? loadPageList,
     TResult Function()? showFullNavigator,
     required TResult orElse(),
   }) {
@@ -208,7 +208,7 @@ abstract class _$LoadSuraListCopyWith<$Res> {
   factory _$LoadSuraListCopyWith(
           _LoadSuraList value, $Res Function(_LoadSuraList) then) =
       __$LoadSuraListCopyWithImpl<$Res>;
-  $Res call({List<Sura> list, int selected});
+  $Res call({List<Sura> list, int selectedIndex});
 }
 
 /// @nodoc
@@ -225,16 +225,16 @@ class __$LoadSuraListCopyWithImpl<$Res>
   @override
   $Res call({
     Object? list = freezed,
-    Object? selected = freezed,
+    Object? selectedIndex = freezed,
   }) {
     return _then(_LoadSuraList(
       list == freezed
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<Sura>,
-      selected == freezed
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
+      selectedIndex == freezed
+          ? _value.selectedIndex
+          : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -242,16 +242,16 @@ class __$LoadSuraListCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LoadSuraList implements _LoadSuraList {
-  const _$_LoadSuraList(this.list, this.selected);
+  const _$_LoadSuraList(this.list, this.selectedIndex);
 
   @override
   final List<Sura> list;
   @override
-  final int selected;
+  final int selectedIndex;
 
   @override
   String toString() {
-    return 'NavigatorViewState.loadSuraList(list: $list, selected: $selected)';
+    return 'NavigatorViewState.loadSuraList(list: $list, selectedIndex: $selectedIndex)';
   }
 
   @override
@@ -260,16 +260,16 @@ class _$_LoadSuraList implements _LoadSuraList {
         (other is _LoadSuraList &&
             (identical(other.list, list) ||
                 const DeepCollectionEquality().equals(other.list, list)) &&
-            (identical(other.selected, selected) ||
+            (identical(other.selectedIndex, selectedIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.selected, selected)));
+                    .equals(other.selectedIndex, selectedIndex)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(list) ^
-      const DeepCollectionEquality().hash(selected);
+      const DeepCollectionEquality().hash(selectedIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -280,26 +280,26 @@ class _$_LoadSuraList implements _LoadSuraList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Sura> list, int selected) loadSuraList,
-    required TResult Function(List<int> list, int selected) loadJuzList,
-    required TResult Function(List<int> list, int selected) loadPageList,
+    required TResult Function(List<Sura> list, int selectedIndex) loadSuraList,
+    required TResult Function(List<int> list, int selectedIndex) loadJuzList,
+    required TResult Function(List<int> list, int selectedIndex) loadPageList,
     required TResult Function() showFullNavigator,
   }) {
-    return loadSuraList(list, selected);
+    return loadSuraList(list, selectedIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Sura> list, int selected)? loadSuraList,
-    TResult Function(List<int> list, int selected)? loadJuzList,
-    TResult Function(List<int> list, int selected)? loadPageList,
+    TResult Function(List<Sura> list, int selectedIndex)? loadSuraList,
+    TResult Function(List<int> list, int selectedIndex)? loadJuzList,
+    TResult Function(List<int> list, int selectedIndex)? loadPageList,
     TResult Function()? showFullNavigator,
     required TResult orElse(),
   }) {
     if (loadSuraList != null) {
-      return loadSuraList(list, selected);
+      return loadSuraList(list, selectedIndex);
     }
     return orElse();
   }
@@ -334,10 +334,11 @@ class _$_LoadSuraList implements _LoadSuraList {
 }
 
 abstract class _LoadSuraList implements NavigatorViewState {
-  const factory _LoadSuraList(List<Sura> list, int selected) = _$_LoadSuraList;
+  const factory _LoadSuraList(List<Sura> list, int selectedIndex) =
+      _$_LoadSuraList;
 
   List<Sura> get list => throw _privateConstructorUsedError;
-  int get selected => throw _privateConstructorUsedError;
+  int get selectedIndex => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadSuraListCopyWith<_LoadSuraList> get copyWith =>
       throw _privateConstructorUsedError;
@@ -348,7 +349,7 @@ abstract class _$LoadJuzListCopyWith<$Res> {
   factory _$LoadJuzListCopyWith(
           _LoadJuzList value, $Res Function(_LoadJuzList) then) =
       __$LoadJuzListCopyWithImpl<$Res>;
-  $Res call({List<int> list, int selected});
+  $Res call({List<int> list, int selectedIndex});
 }
 
 /// @nodoc
@@ -365,16 +366,16 @@ class __$LoadJuzListCopyWithImpl<$Res>
   @override
   $Res call({
     Object? list = freezed,
-    Object? selected = freezed,
+    Object? selectedIndex = freezed,
   }) {
     return _then(_LoadJuzList(
       list == freezed
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      selected == freezed
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
+      selectedIndex == freezed
+          ? _value.selectedIndex
+          : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -382,16 +383,16 @@ class __$LoadJuzListCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LoadJuzList implements _LoadJuzList {
-  const _$_LoadJuzList(this.list, this.selected);
+  const _$_LoadJuzList(this.list, this.selectedIndex);
 
   @override
   final List<int> list;
   @override
-  final int selected;
+  final int selectedIndex;
 
   @override
   String toString() {
-    return 'NavigatorViewState.loadJuzList(list: $list, selected: $selected)';
+    return 'NavigatorViewState.loadJuzList(list: $list, selectedIndex: $selectedIndex)';
   }
 
   @override
@@ -400,16 +401,16 @@ class _$_LoadJuzList implements _LoadJuzList {
         (other is _LoadJuzList &&
             (identical(other.list, list) ||
                 const DeepCollectionEquality().equals(other.list, list)) &&
-            (identical(other.selected, selected) ||
+            (identical(other.selectedIndex, selectedIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.selected, selected)));
+                    .equals(other.selectedIndex, selectedIndex)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(list) ^
-      const DeepCollectionEquality().hash(selected);
+      const DeepCollectionEquality().hash(selectedIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -420,26 +421,26 @@ class _$_LoadJuzList implements _LoadJuzList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Sura> list, int selected) loadSuraList,
-    required TResult Function(List<int> list, int selected) loadJuzList,
-    required TResult Function(List<int> list, int selected) loadPageList,
+    required TResult Function(List<Sura> list, int selectedIndex) loadSuraList,
+    required TResult Function(List<int> list, int selectedIndex) loadJuzList,
+    required TResult Function(List<int> list, int selectedIndex) loadPageList,
     required TResult Function() showFullNavigator,
   }) {
-    return loadJuzList(list, selected);
+    return loadJuzList(list, selectedIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Sura> list, int selected)? loadSuraList,
-    TResult Function(List<int> list, int selected)? loadJuzList,
-    TResult Function(List<int> list, int selected)? loadPageList,
+    TResult Function(List<Sura> list, int selectedIndex)? loadSuraList,
+    TResult Function(List<int> list, int selectedIndex)? loadJuzList,
+    TResult Function(List<int> list, int selectedIndex)? loadPageList,
     TResult Function()? showFullNavigator,
     required TResult orElse(),
   }) {
     if (loadJuzList != null) {
-      return loadJuzList(list, selected);
+      return loadJuzList(list, selectedIndex);
     }
     return orElse();
   }
@@ -474,10 +475,11 @@ class _$_LoadJuzList implements _LoadJuzList {
 }
 
 abstract class _LoadJuzList implements NavigatorViewState {
-  const factory _LoadJuzList(List<int> list, int selected) = _$_LoadJuzList;
+  const factory _LoadJuzList(List<int> list, int selectedIndex) =
+      _$_LoadJuzList;
 
   List<int> get list => throw _privateConstructorUsedError;
-  int get selected => throw _privateConstructorUsedError;
+  int get selectedIndex => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadJuzListCopyWith<_LoadJuzList> get copyWith =>
       throw _privateConstructorUsedError;
@@ -488,7 +490,7 @@ abstract class _$LoadPageListCopyWith<$Res> {
   factory _$LoadPageListCopyWith(
           _LoadPageList value, $Res Function(_LoadPageList) then) =
       __$LoadPageListCopyWithImpl<$Res>;
-  $Res call({List<int> list, int selected});
+  $Res call({List<int> list, int selectedIndex});
 }
 
 /// @nodoc
@@ -505,16 +507,16 @@ class __$LoadPageListCopyWithImpl<$Res>
   @override
   $Res call({
     Object? list = freezed,
-    Object? selected = freezed,
+    Object? selectedIndex = freezed,
   }) {
     return _then(_LoadPageList(
       list == freezed
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      selected == freezed
-          ? _value.selected
-          : selected // ignore: cast_nullable_to_non_nullable
+      selectedIndex == freezed
+          ? _value.selectedIndex
+          : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -522,16 +524,16 @@ class __$LoadPageListCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_LoadPageList implements _LoadPageList {
-  const _$_LoadPageList(this.list, this.selected);
+  const _$_LoadPageList(this.list, this.selectedIndex);
 
   @override
   final List<int> list;
   @override
-  final int selected;
+  final int selectedIndex;
 
   @override
   String toString() {
-    return 'NavigatorViewState.loadPageList(list: $list, selected: $selected)';
+    return 'NavigatorViewState.loadPageList(list: $list, selectedIndex: $selectedIndex)';
   }
 
   @override
@@ -540,16 +542,16 @@ class _$_LoadPageList implements _LoadPageList {
         (other is _LoadPageList &&
             (identical(other.list, list) ||
                 const DeepCollectionEquality().equals(other.list, list)) &&
-            (identical(other.selected, selected) ||
+            (identical(other.selectedIndex, selectedIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.selected, selected)));
+                    .equals(other.selectedIndex, selectedIndex)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(list) ^
-      const DeepCollectionEquality().hash(selected);
+      const DeepCollectionEquality().hash(selectedIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -560,26 +562,26 @@ class _$_LoadPageList implements _LoadPageList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Sura> list, int selected) loadSuraList,
-    required TResult Function(List<int> list, int selected) loadJuzList,
-    required TResult Function(List<int> list, int selected) loadPageList,
+    required TResult Function(List<Sura> list, int selectedIndex) loadSuraList,
+    required TResult Function(List<int> list, int selectedIndex) loadJuzList,
+    required TResult Function(List<int> list, int selectedIndex) loadPageList,
     required TResult Function() showFullNavigator,
   }) {
-    return loadPageList(list, selected);
+    return loadPageList(list, selectedIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Sura> list, int selected)? loadSuraList,
-    TResult Function(List<int> list, int selected)? loadJuzList,
-    TResult Function(List<int> list, int selected)? loadPageList,
+    TResult Function(List<Sura> list, int selectedIndex)? loadSuraList,
+    TResult Function(List<int> list, int selectedIndex)? loadJuzList,
+    TResult Function(List<int> list, int selectedIndex)? loadPageList,
     TResult Function()? showFullNavigator,
     required TResult orElse(),
   }) {
     if (loadPageList != null) {
-      return loadPageList(list, selected);
+      return loadPageList(list, selectedIndex);
     }
     return orElse();
   }
@@ -614,10 +616,11 @@ class _$_LoadPageList implements _LoadPageList {
 }
 
 abstract class _LoadPageList implements NavigatorViewState {
-  const factory _LoadPageList(List<int> list, int selected) = _$_LoadPageList;
+  const factory _LoadPageList(List<int> list, int selectedIndex) =
+      _$_LoadPageList;
 
   List<int> get list => throw _privateConstructorUsedError;
-  int get selected => throw _privateConstructorUsedError;
+  int get selectedIndex => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadPageListCopyWith<_LoadPageList> get copyWith =>
       throw _privateConstructorUsedError;
@@ -663,9 +666,9 @@ class _$_ShowFullNavigator implements _ShowFullNavigator {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Sura> list, int selected) loadSuraList,
-    required TResult Function(List<int> list, int selected) loadJuzList,
-    required TResult Function(List<int> list, int selected) loadPageList,
+    required TResult Function(List<Sura> list, int selectedIndex) loadSuraList,
+    required TResult Function(List<int> list, int selectedIndex) loadJuzList,
+    required TResult Function(List<int> list, int selectedIndex) loadPageList,
     required TResult Function() showFullNavigator,
   }) {
     return showFullNavigator();
@@ -675,9 +678,9 @@ class _$_ShowFullNavigator implements _ShowFullNavigator {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Sura> list, int selected)? loadSuraList,
-    TResult Function(List<int> list, int selected)? loadJuzList,
-    TResult Function(List<int> list, int selected)? loadPageList,
+    TResult Function(List<Sura> list, int selectedIndex)? loadSuraList,
+    TResult Function(List<int> list, int selectedIndex)? loadJuzList,
+    TResult Function(List<int> list, int selectedIndex)? loadPageList,
     TResult Function()? showFullNavigator,
     required TResult orElse(),
   }) {

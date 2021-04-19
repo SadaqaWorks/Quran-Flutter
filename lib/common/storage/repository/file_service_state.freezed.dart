@@ -6,15 +6,15 @@ part of 'file_service_state.dart';
 // **************************************************************************
 // FreezedGenerator
 // **************************************************************************
-
+/*
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$FileStateTearOff {
-  const _$FileStateTearOff();
+class _$FileServiceStateTearOff {
+  const _$FileServiceStateTearOff();
 
   _Available available(Database database) {
     return _Available(
@@ -28,10 +28,10 @@ class _$FileStateTearOff {
 }
 
 /// @nodoc
-const $FileState = _$FileStateTearOff();
+const $FileServiceState = _$FileServiceStateTearOff();
 
 /// @nodoc
-mixin _$FileState {
+mixin _$FileServiceState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(Database database) available,
@@ -61,15 +61,16 @@ mixin _$FileState {
 }
 
 /// @nodoc
-abstract class $FileStateCopyWith<$Res> {
-  factory $FileStateCopyWith(
+abstract class $FileServiceStateCopyWith<$Res> {
+  factory $FileServiceStateCopyWith(
           FileServiceState value, $Res Function(FileServiceState) then) =
-      _$FileStateCopyWithImpl<$Res>;
+      _$FileServiceStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FileStateCopyWithImpl<$Res> implements $FileStateCopyWith<$Res> {
-  _$FileStateCopyWithImpl(this._value, this._then);
+class _$FileServiceStateCopyWithImpl<$Res>
+    implements $FileServiceStateCopyWith<$Res> {
+  _$FileServiceStateCopyWithImpl(this._value, this._then);
 
   final FileServiceState _value;
   // ignore: unused_field
@@ -85,7 +86,8 @@ abstract class _$AvailableCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$AvailableCopyWithImpl<$Res> extends _$FileStateCopyWithImpl<$Res>
+class __$AvailableCopyWithImpl<$Res>
+    extends _$FileServiceStateCopyWithImpl<$Res>
     implements _$AvailableCopyWith<$Res> {
   __$AvailableCopyWithImpl(_Available _value, $Res Function(_Available) _then)
       : super(_value, (v) => _then(v as _Available));
@@ -115,7 +117,7 @@ class _$_Available implements _Available {
 
   @override
   String toString() {
-    return 'FileState.available(database: $database)';
+    return 'FileServiceState.available(database: $database)';
   }
 
   @override
@@ -198,7 +200,8 @@ abstract class _$NotAvailableCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$NotAvailableCopyWithImpl<$Res> extends _$FileStateCopyWithImpl<$Res>
+class __$NotAvailableCopyWithImpl<$Res>
+    extends _$FileServiceStateCopyWithImpl<$Res>
     implements _$NotAvailableCopyWith<$Res> {
   __$NotAvailableCopyWithImpl(
       _NotAvailable _value, $Res Function(_NotAvailable) _then)
@@ -214,7 +217,7 @@ class _$_NotAvailable implements _NotAvailable {
 
   @override
   String toString() {
-    return 'FileState.notAvailable()';
+    return 'FileServiceState.notAvailable()';
   }
 
   @override
@@ -273,3 +276,4 @@ class _$_NotAvailable implements _NotAvailable {
 abstract class _NotAvailable implements FileServiceState {
   const factory _NotAvailable() = _$_NotAvailable;
 }
+*/

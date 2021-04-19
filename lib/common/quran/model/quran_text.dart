@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+part 'quran_text.g.dart';
+
 @JsonSerializable()
 class QuranText {
   int sura;

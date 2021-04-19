@@ -81,7 +81,9 @@ class QuranPageNotifier extends StateNotifier<QuranPageState> {
     if (page >= quranInfoRepository.startPage &&
         page <= quranInfoRepository.numberOfPages) {
       QuranPage quranPage = QuranPage(
-          pageNumber: page, imageUrl: 'assets/images/quran/$page.png');
+          pageNumber: page,
+          imageUrl:
+              'assets/images/1024/page${page.toString().padLeft(3, '0')}.png');
       quranPage.suraVerses = quranInfoRepository.suraVerseForPage(page);
       return quranPage;
     }

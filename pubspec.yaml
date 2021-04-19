@@ -42,12 +42,12 @@ dependencies:
   hive: ^2.0.2
   hive_flutter: ^1.0.0
 
-  isar: ^0.2.0
-  isar_flutter_libs: 0.2.0
-  isar_connect: 0.2.0
+  isar: ^0.4.0
+  isar_flutter_libs: 0.4.0
+  #isar_connect: 0.4.0
 
   wakelock: ^0.5.0+2
-  sqflite: ^2.0.0+3
+  #sqflite: ^2.0.0+3
   intl_utils: ^2.1.0
   json_annotation:
 
@@ -65,7 +65,7 @@ dev_dependencies:
   logger:
   json_serializable:
   hive_generator:
-  isar_generator: 0.2.0
+  isar_generator: 0.4.0
   build_runner:
   freezed: ^0.14.1+2
 
@@ -84,6 +84,7 @@ flutter:
     - .env
     - assets/images/quran/
     - assets/images/app/
+    - assets/images/1024/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

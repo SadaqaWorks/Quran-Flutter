@@ -33,20 +33,22 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: Consumer(
+    return Consumer(
       builder: (context, watch, child) {
         final state = watch(homePageProvider);
         return state.maybeWhen(initial: () {
-          return _widgetQuranPage();
-        }, showInfo: () {
-          return _widgetHalfNavigator(context);
-        }, showFullNavigator: () {
+          return _widgetInitial(context);
+        },
+            //     showInfo: () {
+            //   return _widgetHalfNavigator(context);
+            // },
+            showFullNavigator: () {
           return _widgetFullNavigator(context);
         }, orElse: () {
           return Container();
         });
       },
-    )));
+    );
   }
 
   //Action
@@ -128,16 +130,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return QuranPageWidget();
   }
 
-  Widget _widgetHalfNavigator(BuildContext context) {
+  Widget _widgetInitial(BuildContext context) {
     return Stack(
       children: <Widget>[
         Container(color: Theme.of(context).accentColor.withOpacity(.3)),
+        Positioned(top: 0, left: 0, right: 0, child: _widgetTop(context)),
         _widgetQuranPage(),
-        Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: _initialNavigatorWidget(context))
+        Positioned(bottom: 0, left: 0, right: 0, child: _widgetBottom(context))
       ],
     );
   }
@@ -146,38 +145,55 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return Stack(
       children: <Widget>[
         Container(color: Theme.of(context).accentColor.withOpacity(.3)),
+        Positioned(top: 0, left: 0, right: 0, child: _widgetTop(context)),
         _widgetQuranPage(),
         Positioned(
-            bottom: 0, left: 0, right: 0, child: _fullNavigatorWidget(context))
+            bottom: 0, left: 0, right: 0, child: _widgetNavigator(context))
       ],
     );
   }
 
-  Widget _initialNavigatorWidget(BuildContext context) {
+  Widget _widgetTop(BuildContext context) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-              margin: EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  color: Theme.of(context).accentColor),
+              width: double.infinity,
+              decoration: BoxDecoration(color: Theme.of(context).accentColor),
               child: Padding(
                   padding:
                       EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 4),
                   child: Container(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                        _widgetShowNavigator(context),
-                        _widgetAyahInfo()
-                      ])))),
-          SizedBox(height: 10),
+                          children: [_widgetAyahInfo()])))),
+          // SizedBox(height: 10),
           //_bottomSlider()
         ]);
   }
 
-  Widget _fullNavigatorWidget(BuildContext context) {
+  Widget _widgetBottom(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+              width: double.infinity,
+              decoration: BoxDecoration(color: Theme.of(context).accentColor),
+              child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 16),
+                  child: Container(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                        _widgetShowNavigator(context),
+                      ])))),
+          // SizedBox(height: 10),
+          //_bottomSlider()
+        ]);
+  }
+
+  Widget _widgetNavigator(BuildContext context) {
     return Container(
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

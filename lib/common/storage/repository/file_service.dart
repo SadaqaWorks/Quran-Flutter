@@ -1,15 +1,4 @@
-import 'dart:async';
-import 'dart:convert';
-import 'dart:io' as io;
-
-import 'package:flutter/foundation.dart';
-import 'package:http/http.dart';
-import 'package:path/path.dart' as path;
-import 'package:path_provider/path_provider.dart';
-import 'package:quran_reader/common/model/resource/resource.dart';
-import 'package:quran_reader/common/storage/repository/file_service_state.dart';
-import 'package:sqflite/sqflite.dart';
-
+/*
 abstract class IFileService {
   void dispose();
 }
@@ -274,3 +263,4 @@ class FileService {
     return completer.future;
   }
 }
+*/

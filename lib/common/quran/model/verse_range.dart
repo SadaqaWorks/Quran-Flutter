@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+part 'verse_range.g.dart';
+
 @JsonSerializable()
 class VerseRange {
   int startSura;

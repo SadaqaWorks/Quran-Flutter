@@ -6,7 +6,7 @@ part 'home_page_state.freezed.dart';
 class HomePageState with _$HomePageState {
   const factory HomePageState.initial() = _Initial;
 
-  const factory HomePageState.showInfo() = _ShowInfo;
+  //const factory HomePageState.showInfo() = _ShowInfo;
 
   const factory HomePageState.showFullNavigator() = _ShowFullNavigator;
 }

@@ -1,29 +1,28 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quran_reader/common/quran/model/sura_verses.dart';
 
-import 'quran_page_info.dart';
-
+part 'quran_page.freezed.dart';
 part 'quran_page.g.dart';
 
-@JsonSerializable()
-class QuranPage extends Equatable {
-  int pageNumber;
-  final String? imageUrl;
-  List<SuraVerses>? suraVerses;
+@freezed
+class QuranPage with _$QuranPage {
+  const QuranPage._();
+  const factory QuranPage(int pageNumber, ImageFile imageFile,
+      {List<SuraVerses>? suraVerses}) = _QuranPage;
 
-  @required
-  QuranPage({required this.pageNumber, this.imageUrl, this.suraVerses});
-
-  //Equatable
-  @override
-  List<Object?> get props => [pageNumber, imageUrl, suraVerses];
-
-  //json encoding decoding
   factory QuranPage.fromJson(Map<String, dynamic> json) =>
       _$QuranPageFromJson(json);
-
-  Map<String, dynamic> toJson() => _$QuranPageToJson(this);
 }
+
+@freezed
+class ImageFile with _$ImageFile {
+
+  const ImageFile._();
+  const factory ImageFile(String imageUrl, ImageLoadPolicy loadPolicy) =
+      _ImageFile;
+
+  factory ImageFile.fromJson(Map<String, dynamic> json) =>
+      _$ImageFileFromJson(json);
+}
+
+enum ImageLoadPolicy { cache, network }

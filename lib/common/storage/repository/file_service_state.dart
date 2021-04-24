@@ -1,4 +1,4 @@
-part 'file_service_state.freezed.dart';
+//part 'file_service_state.freezed.dart';
 
 // @freezed
 // class FileServiceState with _$FileServiceState {

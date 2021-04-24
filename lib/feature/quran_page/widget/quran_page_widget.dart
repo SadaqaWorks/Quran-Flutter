@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/geature/easy_gesture_detector.dart';
-import 'package:quran_reader/common/util/flutter_device_type.dart';
-import 'package:quran_reader/common/widget/responsive_image_widget.dart';
 import 'package:quran_reader/feature/home/provider/index.dart';
+import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/quran_page/provider/index.dart';
 
 class QuranPageWidget extends StatefulWidget {
@@ -36,7 +35,7 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
         child: Consumer(
       builder: (context, watch, child) {
         final state = watch(quranPageProvider);
-        return state.maybeWhen(loaded: (value) {
+        return state.maybeWhen(loaded: (url) {
           return _widgetQuranPage(state);
         }, orElse: () {
           return Container();
@@ -46,29 +45,16 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   }
 
   Widget _widgetQuranPage(QuranPageState state) {
-    return state.maybeWhen(loaded: (value) {
-      if (Device.get().isWeb || Device.get().isComputer) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            // if (state.secondQuranPage != null)
-            //   Expanded(
-            //     flex: 1,
-            //     child: Container(
-            //         child:
-            //             ResponsiveImageWidget(quranPage: state.secondQuranPage!)),
-            //   )
-            // else
-            //   Container(),
-            Expanded(
-              flex: 1,
-              child: Container(child: ResponsiveImageWidget(quranPage: value)),
-            ),
-          ],
-        );
-      } else {
-        return ResponsiveImageWidget(quranPage: value);
-      }
+    return state.maybeWhen(loaded: (page) {
+      return page.imageFile.loadPolicy == ImageLoadPolicy.cache
+          ? Container(
+              height: double.infinity,
+              child: Image(
+                image: AssetImage(page.imageFile.imageUrl),
+              ))
+          : Container(
+              height: double.infinity,
+              child: Image.network(page.imageFile.imageUrl));
     }, orElse: () {
       return Container();
     });

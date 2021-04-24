@@ -43,11 +43,11 @@ class ResponsiveImageWidget extends StatelessWidget {
 class PortraitImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final quranPage = InheritedOrientedImage.of(context).imageUrl;
+    final quranPage = InheritedOrientedImage.of(context).imageFile.imageUrl;
     return Container(
         height: double.infinity,
         child: Image(
-          image: AssetImage(quranPage!),
+          image: AssetImage(quranPage),
         ));
 
     if (Device.get().isPhone) {
@@ -92,7 +92,7 @@ class LandscapeImageWidget extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Image.asset(
-        quranPage.imageUrl!,
+        quranPage.imageFile.imageUrl,
         fit: BoxFit.fill,
         width: double.infinity,
       ),

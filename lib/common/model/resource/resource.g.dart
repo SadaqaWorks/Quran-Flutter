@@ -117,46 +117,49 @@ class ResourceAdapter extends TypeAdapter<_$_Resource> {
     return _$_Resource(
       id: fields[0] as int,
       name: fields[1] as String,
-      url: fields[2] as String,
-      required: fields[3] as bool,
-      resourceType: fields[4] as ResourceType,
-      fileType: fields[5] as FileType,
-      version: fields[6] as int,
-      needRefresh: fields[7] as bool,
-      downloaded: fields[8] as bool,
-      bundled: fields[9] as bool,
-      selected: fields[10] as bool?,
-      description: fields[11] as String?,
+      title: fields[2] as String,
+      url: fields[3] as String,
+      required: fields[4] as bool,
+      resourceType: fields[5] as ResourceType,
+      fileType: fields[6] as FileType,
+      version: fields[7] as int,
+      needRefresh: fields[8] as bool,
+      downloaded: fields[9] as bool,
+      bundled: fields[10] as bool,
+      selected: fields[11] as bool?,
+      description: fields[12] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$_Resource obj) {
     writer
-      ..writeByte(12)
+      ..writeByte(13)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.url)
+      ..write(obj.title)
       ..writeByte(3)
-      ..write(obj.required)
+      ..write(obj.url)
       ..writeByte(4)
-      ..write(obj.resourceType)
+      ..write(obj.required)
       ..writeByte(5)
-      ..write(obj.fileType)
+      ..write(obj.resourceType)
       ..writeByte(6)
-      ..write(obj.version)
+      ..write(obj.fileType)
       ..writeByte(7)
-      ..write(obj.needRefresh)
+      ..write(obj.version)
       ..writeByte(8)
-      ..write(obj.downloaded)
+      ..write(obj.needRefresh)
       ..writeByte(9)
-      ..write(obj.bundled)
+      ..write(obj.downloaded)
       ..writeByte(10)
-      ..write(obj.selected)
+      ..write(obj.bundled)
       ..writeByte(11)
+      ..write(obj.selected)
+      ..writeByte(12)
       ..write(obj.description);
   }
 
@@ -179,6 +182,7 @@ _$_Resource _$_$_ResourceFromJson(Map<String, dynamic> json) {
   return _$_Resource(
     id: json['id'] as int,
     name: json['name'] as String,
+    title: json['title'] as String,
     url: json['url'] as String,
     required: json['required'] as bool,
     resourceType: _$enumDecode(_$ResourceTypeEnumMap, json['resourceType']),
@@ -196,6 +200,7 @@ Map<String, dynamic> _$_$_ResourceToJson(_$_Resource instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'title': instance.title,
       'url': instance.url,
       'required': instance.required,
       'resourceType': _$ResourceTypeEnumMap[instance.resourceType],

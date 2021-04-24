@@ -1,43 +1,40 @@
-import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/quran/quran_info.dart';
 import 'package:quran_reader/common/storage/provider/pref_provider.dart';
-import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/quran_page/provider/quran_page_state.dart';
 import 'package:state_notifier/state_notifier.dart';
 
+import 'quran_page_repository.dart';
+
 final quranPageProvider =
     StateNotifierProvider<QuranPageNotifier, QuranPageState>((ref) {
-  final prefService = ref.watch(prefServiceProvider);
-  final lastReadPage = prefService.lastReadPage();
-  QuranPageState state = QuranPageState.initial();
-  if (lastReadPage != null) {
-    state = QuranPageState.loaded(lastReadPage);
-  }
-  return QuranPageNotifier(state, ref.watch(quranInfoProvider), prefService);
+  return QuranPageNotifier(ref.watch(quranInfoProvider),
+      ref.watch(prefServiceProvider), ref.watch(quranPageRepositoryProvider));
 });
 
 class QuranPageNotifier extends StateNotifier<QuranPageState> {
-  final QuranInfoRepository quranInfoRepository;
   final PrefService prefService;
+  final QuranInfoRepository quranInfoRepository;
+  final QuranPageRepository quranPageRepository;
+
   QuranPageNotifier(
-      QuranPageState quranPageState, this.quranInfoRepository, this.prefService)
-      : super(quranPageState) {
+      this.quranInfoRepository, this.prefService, this.quranPageRepository)
+      : super(QuranPageState.loading()) {
     _init();
   }
 
   @override
   void dispose() {
+    quranPageRepository.dispose();
     super.dispose();
   }
 
   _init() async {
     state.maybeWhen(
-        initial: () async {
+        loading: () async {
           final lastReadPage = prefService.lastReadPage();
           if (lastReadPage != null) {
-            state = QuranPageState.loaded(lastReadPage);
+            loadPage(lastReadPage);
           } else {
             loadPage(quranInfoRepository.startPage);
           }
@@ -48,17 +45,17 @@ class QuranPageNotifier extends StateNotifier<QuranPageState> {
   _saveToPref() {
     state.maybeWhen(
         loaded: (value) async {
-          prefService.setLastReadPage(value);
+          prefService.setLastReadPage(value.pageNumber);
         },
         orElse: () {});
   }
 
   loadPage(int pageNumber) async {
-    final page = await _fetchQuranPage(pageNumber);
-    if (page != null) {
-      state = QuranPageState.loaded(page);
-      _saveToPref();
-    }
+    state = QuranPageState.loading();
+    quranPageRepository.fetchQuranPage(pageNumber).listen((value) {
+      state = value;
+    });
+    _saveToPref();
   }
 
   rightNavigation() async {
@@ -75,18 +72,5 @@ class QuranPageNotifier extends StateNotifier<QuranPageState> {
           loadPage(value.pageNumber - 1);
         },
         orElse: () {});
-  }
-
-  Future<QuranPage?> _fetchQuranPage(int page) async {
-    if (page >= quranInfoRepository.startPage &&
-        page <= quranInfoRepository.numberOfPages) {
-      QuranPage quranPage = QuranPage(
-          pageNumber: page,
-          imageUrl:
-              'assets/images/1024/page${page.toString().padLeft(3, '0')}.png');
-      quranPage.suraVerses = quranInfoRepository.suraVerseForPage(page);
-      return quranPage;
-    }
-    return null;
   }
 }

@@ -10,16 +10,17 @@ class Resource with _$Resource {
   const factory Resource(
       {@HiveField(0) required int id,
       @HiveField(1) required String name,
-      @HiveField(2) required String url,
-      @HiveField(3) required bool required,
-      @HiveField(4) required ResourceType resourceType,
-      @HiveField(5) required FileType fileType,
-      @HiveField(6) required int version,
-      @HiveField(7) required bool needRefresh,
-      @HiveField(8) required bool downloaded,
-      @HiveField(9) required bool bundled,
-      @HiveField(10) bool? selected,
-      @HiveField(11) String? description}) = _Resource;
+      @HiveField(2) required String title,
+      @HiveField(3) required String url,
+      @HiveField(4) required bool required,
+      @HiveField(5) required ResourceType resourceType,
+      @HiveField(6) required FileType fileType,
+      @HiveField(7) required int version,
+      @HiveField(8) required bool needRefresh,
+      @HiveField(9) required bool downloaded,
+      @HiveField(10) required bool bundled,
+      @HiveField(11) bool? selected,
+      @HiveField(12) String? description}) = _Resource;
 
   factory Resource.fromJson(Map<String, dynamic> json) =>
       _$ResourceFromJson(json);

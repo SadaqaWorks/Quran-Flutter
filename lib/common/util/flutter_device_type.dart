@@ -24,13 +24,13 @@ class Device {
   factory Device.get() {
     bool isTablet;
     bool isPhone;
-    bool isIos = io.Platform.isIOS;
-    bool isAndroid = io.Platform.isAndroid;
+    bool isIos = !kIsWeb && io.Platform.isIOS;
+    bool isAndroid =!kIsWeb && io.Platform.isAndroid;
     bool isWeb = kIsWeb;
-    bool isComputer = io.Platform.isWindows ||
+    bool isComputer =!kIsWeb && (io.Platform.isWindows ||
         io.Platform.isLinux ||
         io.Platform.isMacOS ||
-        io.Platform.isFuchsia;
+        io.Platform.isFuchsia);
 
     if (devicePixelRatio < 2 && (width >= 1000 || height >= 1000)) {
       isTablet = true;

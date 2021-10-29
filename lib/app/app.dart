@@ -4,7 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:quran_reader/common/routes/route_generator.dart';
 import 'package:quran_reader/common/util/app_theme.dart';
 import 'package:quran_reader/feature/app_start_up/widget/app_startup_page.dart';
-import 'package:quran_reader/generated/l10n.dart';
+import 'package:quran_reader/l10n/l10n.dart';
 
 class App extends StatefulWidget {
   App({Key? key}) : super(key: key);
@@ -32,13 +32,11 @@ class _MyAppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate,
-        S.delegate
       ],
+      supportedLocales: AppLocalizations.supportedLocales,
       title: 'Quran',
       theme: AppTheme().defaultTheme(),
       onGenerateRoute: RouteGenerator.generateRoute,

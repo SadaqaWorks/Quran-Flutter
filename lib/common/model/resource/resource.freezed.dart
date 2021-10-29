@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'resource.dart';
 
@@ -51,7 +52,7 @@ class _$ResourceTearOff {
     );
   }
 
-  Resource fromJson(Map<String, Object> json) {
+  Resource fromJson(Map<String, Object?> json) {
     return Resource.fromJson(json);
   }
 }
@@ -298,10 +299,9 @@ class __$ResourceCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 1)
-
-/// @nodoc
 class _$_Resource implements _Resource {
   const _$_Resource(
       {@HiveField(0) required this.id,
@@ -319,7 +319,7 @@ class _$_Resource implements _Resource {
       @HiveField(12) this.description});
 
   factory _$_Resource.fromJson(Map<String, dynamic> json) =>
-      _$_$_ResourceFromJson(json);
+      _$$_ResourceFromJson(json);
 
   @override
   @HiveField(0)
@@ -369,60 +369,46 @@ class _$_Resource implements _Resource {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Resource &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Resource &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.required, required) ||
-                const DeepCollectionEquality()
-                    .equals(other.required, required)) &&
+                other.required == required) &&
             (identical(other.resourceType, resourceType) ||
-                const DeepCollectionEquality()
-                    .equals(other.resourceType, resourceType)) &&
+                other.resourceType == resourceType) &&
             (identical(other.fileType, fileType) ||
-                const DeepCollectionEquality()
-                    .equals(other.fileType, fileType)) &&
-            (identical(other.version, version) ||
-                const DeepCollectionEquality()
-                    .equals(other.version, version)) &&
+                other.fileType == fileType) &&
+            (identical(other.version, version) || other.version == version) &&
             (identical(other.needRefresh, needRefresh) ||
-                const DeepCollectionEquality()
-                    .equals(other.needRefresh, needRefresh)) &&
+                other.needRefresh == needRefresh) &&
             (identical(other.downloaded, downloaded) ||
-                const DeepCollectionEquality()
-                    .equals(other.downloaded, downloaded)) &&
-            (identical(other.bundled, bundled) ||
-                const DeepCollectionEquality()
-                    .equals(other.bundled, bundled)) &&
+                other.downloaded == downloaded) &&
+            (identical(other.bundled, bundled) || other.bundled == bundled) &&
             (identical(other.selected, selected) ||
-                const DeepCollectionEquality()
-                    .equals(other.selected, selected)) &&
+                other.selected == selected) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
+                other.description == description));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(required) ^
-      const DeepCollectionEquality().hash(resourceType) ^
-      const DeepCollectionEquality().hash(fileType) ^
-      const DeepCollectionEquality().hash(version) ^
-      const DeepCollectionEquality().hash(needRefresh) ^
-      const DeepCollectionEquality().hash(downloaded) ^
-      const DeepCollectionEquality().hash(bundled) ^
-      const DeepCollectionEquality().hash(selected) ^
-      const DeepCollectionEquality().hash(description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      title,
+      url,
+      required,
+      resourceType,
+      fileType,
+      version,
+      needRefresh,
+      downloaded,
+      bundled,
+      selected,
+      description);
 
   @JsonKey(ignore: true)
   @override
@@ -431,7 +417,7 @@ class _$_Resource implements _Resource {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ResourceToJson(this);
+    return _$$_ResourceToJson(this);
   }
 }
 
@@ -455,43 +441,43 @@ abstract class _Resource implements Resource {
 
   @override
   @HiveField(0)
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
   @HiveField(1)
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @HiveField(2)
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
   @HiveField(3)
-  String get url => throw _privateConstructorUsedError;
+  String get url;
   @override
   @HiveField(4)
-  bool get required => throw _privateConstructorUsedError;
+  bool get required;
   @override
   @HiveField(5)
-  ResourceType get resourceType => throw _privateConstructorUsedError;
+  ResourceType get resourceType;
   @override
   @HiveField(6)
-  FileType get fileType => throw _privateConstructorUsedError;
+  FileType get fileType;
   @override
   @HiveField(7)
-  int get version => throw _privateConstructorUsedError;
+  int get version;
   @override
   @HiveField(8)
-  bool get needRefresh => throw _privateConstructorUsedError;
+  bool get needRefresh;
   @override
   @HiveField(9)
-  bool get downloaded => throw _privateConstructorUsedError;
+  bool get downloaded;
   @override
   @HiveField(10)
-  bool get bundled => throw _privateConstructorUsedError;
+  bool get bundled;
   @override
   @HiveField(11)
-  bool? get selected => throw _privateConstructorUsedError;
+  bool? get selected;
   @override
   @HiveField(12)
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$ResourceCopyWith<_Resource> get copyWith =>

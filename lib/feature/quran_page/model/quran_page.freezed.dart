@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'quran_page.dart';
 
@@ -29,7 +30,7 @@ class _$QuranPageTearOff {
     );
   }
 
-  QuranPage fromJson(Map<String, Object> json) {
+  QuranPage fromJson(Map<String, Object?> json) {
     return QuranPage.fromJson(json);
   }
 }
@@ -142,15 +143,14 @@ class __$QuranPageCopyWithImpl<$Res> extends _$QuranPageCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_QuranPage extends _QuranPage {
   const _$_QuranPage(this.pageNumber, this.imageFile, {this.suraVerses})
       : super._();
 
   factory _$_QuranPage.fromJson(Map<String, dynamic> json) =>
-      _$_$_QuranPageFromJson(json);
+      _$$_QuranPageFromJson(json);
 
   @override
   final int pageNumber;
@@ -167,24 +167,19 @@ class _$_QuranPage extends _QuranPage {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _QuranPage &&
+        (other.runtimeType == runtimeType &&
+            other is _QuranPage &&
             (identical(other.pageNumber, pageNumber) ||
-                const DeepCollectionEquality()
-                    .equals(other.pageNumber, pageNumber)) &&
+                other.pageNumber == pageNumber) &&
             (identical(other.imageFile, imageFile) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageFile, imageFile)) &&
-            (identical(other.suraVerses, suraVerses) ||
-                const DeepCollectionEquality()
-                    .equals(other.suraVerses, suraVerses)));
+                other.imageFile == imageFile) &&
+            const DeepCollectionEquality()
+                .equals(other.suraVerses, suraVerses));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(pageNumber) ^
-      const DeepCollectionEquality().hash(imageFile) ^
-      const DeepCollectionEquality().hash(suraVerses);
+  int get hashCode => Object.hash(runtimeType, pageNumber, imageFile,
+      const DeepCollectionEquality().hash(suraVerses));
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +188,7 @@ class _$_QuranPage extends _QuranPage {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_QuranPageToJson(this);
+    return _$$_QuranPageToJson(this);
   }
 }
 
@@ -206,11 +201,11 @@ abstract class _QuranPage extends QuranPage {
       _$_QuranPage.fromJson;
 
   @override
-  int get pageNumber => throw _privateConstructorUsedError;
+  int get pageNumber;
   @override
-  ImageFile get imageFile => throw _privateConstructorUsedError;
+  ImageFile get imageFile;
   @override
-  List<SuraVerses>? get suraVerses => throw _privateConstructorUsedError;
+  List<SuraVerses>? get suraVerses;
   @override
   @JsonKey(ignore: true)
   _$QuranPageCopyWith<_QuranPage> get copyWith =>
@@ -232,7 +227,7 @@ class _$ImageFileTearOff {
     );
   }
 
-  ImageFile fromJson(Map<String, Object> json) {
+  ImageFile fromJson(Map<String, Object?> json) {
     return ImageFile.fromJson(json);
   }
 }
@@ -320,14 +315,13 @@ class __$ImageFileCopyWithImpl<$Res> extends _$ImageFileCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ImageFile extends _ImageFile {
   const _$_ImageFile(this.imageUrl, this.loadPolicy) : super._();
 
   factory _$_ImageFile.fromJson(Map<String, dynamic> json) =>
-      _$_$_ImageFileFromJson(json);
+      _$$_ImageFileFromJson(json);
 
   @override
   final String imageUrl;
@@ -342,20 +336,16 @@ class _$_ImageFile extends _ImageFile {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ImageFile &&
+        (other.runtimeType == runtimeType &&
+            other is _ImageFile &&
             (identical(other.imageUrl, imageUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)) &&
+                other.imageUrl == imageUrl) &&
             (identical(other.loadPolicy, loadPolicy) ||
-                const DeepCollectionEquality()
-                    .equals(other.loadPolicy, loadPolicy)));
+                other.loadPolicy == loadPolicy));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(imageUrl) ^
-      const DeepCollectionEquality().hash(loadPolicy);
+  int get hashCode => Object.hash(runtimeType, imageUrl, loadPolicy);
 
   @JsonKey(ignore: true)
   @override
@@ -364,7 +354,7 @@ class _$_ImageFile extends _ImageFile {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ImageFileToJson(this);
+    return _$$_ImageFileToJson(this);
   }
 }
 
@@ -377,9 +367,9 @@ abstract class _ImageFile extends ImageFile {
       _$_ImageFile.fromJson;
 
   @override
-  String get imageUrl => throw _privateConstructorUsedError;
+  String get imageUrl;
   @override
-  ImageLoadPolicy get loadPolicy => throw _privateConstructorUsedError;
+  ImageLoadPolicy get loadPolicy;
   @override
   @JsonKey(ignore: true)
   _$ImageFileCopyWith<_ImageFile> get copyWith =>

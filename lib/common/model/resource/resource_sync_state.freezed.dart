@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'resource_sync_state.dart';
 
@@ -57,6 +58,14 @@ mixin _$ResourceSyncState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Resource resource)? synced,
+    TResult Function(Resource resource)? syncing,
+    TResult Function(Resource resource)? internetUnAvailable,
+    TResult Function(Resource resource)? failed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Resource resource)? synced,
     TResult Function(Resource resource)? syncing,
@@ -71,6 +80,14 @@ mixin _$ResourceSyncState {
     required TResult Function(_Syncing value) syncing,
     required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_failed value) failed,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Synced value)? synced,
+    TResult Function(_Syncing value)? syncing,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_failed value)? failed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -162,6 +179,7 @@ class __$SyncedCopyWithImpl<$Res> extends _$ResourceSyncStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Synced implements _Synced {
   const _$_Synced(this.resource);
 
@@ -176,15 +194,14 @@ class _$_Synced implements _Synced {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Synced &&
+        (other.runtimeType == runtimeType &&
+            other is _Synced &&
             (identical(other.resource, resource) ||
-                const DeepCollectionEquality()
-                    .equals(other.resource, resource)));
+                other.resource == resource));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(resource);
+  int get hashCode => Object.hash(runtimeType, resource);
 
   @JsonKey(ignore: true)
   @override
@@ -200,6 +217,17 @@ class _$_Synced implements _Synced {
     required TResult Function(Resource resource) failed,
   }) {
     return synced(resource);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Resource resource)? synced,
+    TResult Function(Resource resource)? syncing,
+    TResult Function(Resource resource)? internetUnAvailable,
+    TResult Function(Resource resource)? failed,
+  }) {
+    return synced?.call(resource);
   }
 
   @override
@@ -230,6 +258,17 @@ class _$_Synced implements _Synced {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Synced value)? synced,
+    TResult Function(_Syncing value)? syncing,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_failed value)? failed,
+  }) {
+    return synced?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Synced value)? synced,
     TResult Function(_Syncing value)? syncing,
@@ -248,7 +287,7 @@ abstract class _Synced implements ResourceSyncState {
   const factory _Synced(Resource resource) = _$_Synced;
 
   @override
-  Resource get resource => throw _privateConstructorUsedError;
+  Resource get resource;
   @override
   @JsonKey(ignore: true)
   _$SyncedCopyWith<_Synced> get copyWith => throw _privateConstructorUsedError;
@@ -289,6 +328,7 @@ class __$SyncingCopyWithImpl<$Res> extends _$ResourceSyncStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Syncing implements _Syncing {
   const _$_Syncing(this.resource);
 
@@ -303,15 +343,14 @@ class _$_Syncing implements _Syncing {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Syncing &&
+        (other.runtimeType == runtimeType &&
+            other is _Syncing &&
             (identical(other.resource, resource) ||
-                const DeepCollectionEquality()
-                    .equals(other.resource, resource)));
+                other.resource == resource));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(resource);
+  int get hashCode => Object.hash(runtimeType, resource);
 
   @JsonKey(ignore: true)
   @override
@@ -327,6 +366,17 @@ class _$_Syncing implements _Syncing {
     required TResult Function(Resource resource) failed,
   }) {
     return syncing(resource);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Resource resource)? synced,
+    TResult Function(Resource resource)? syncing,
+    TResult Function(Resource resource)? internetUnAvailable,
+    TResult Function(Resource resource)? failed,
+  }) {
+    return syncing?.call(resource);
   }
 
   @override
@@ -357,6 +407,17 @@ class _$_Syncing implements _Syncing {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Synced value)? synced,
+    TResult Function(_Syncing value)? syncing,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_failed value)? failed,
+  }) {
+    return syncing?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Synced value)? synced,
     TResult Function(_Syncing value)? syncing,
@@ -375,7 +436,7 @@ abstract class _Syncing implements ResourceSyncState {
   const factory _Syncing(Resource resource) = _$_Syncing;
 
   @override
-  Resource get resource => throw _privateConstructorUsedError;
+  Resource get resource;
   @override
   @JsonKey(ignore: true)
   _$SyncingCopyWith<_Syncing> get copyWith =>
@@ -420,6 +481,7 @@ class __$InternetUnAvailableCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_InternetUnAvailable implements _InternetUnAvailable {
   const _$_InternetUnAvailable(this.resource);
 
@@ -434,15 +496,14 @@ class _$_InternetUnAvailable implements _InternetUnAvailable {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _InternetUnAvailable &&
+        (other.runtimeType == runtimeType &&
+            other is _InternetUnAvailable &&
             (identical(other.resource, resource) ||
-                const DeepCollectionEquality()
-                    .equals(other.resource, resource)));
+                other.resource == resource));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(resource);
+  int get hashCode => Object.hash(runtimeType, resource);
 
   @JsonKey(ignore: true)
   @override
@@ -459,6 +520,17 @@ class _$_InternetUnAvailable implements _InternetUnAvailable {
     required TResult Function(Resource resource) failed,
   }) {
     return internetUnAvailable(resource);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Resource resource)? synced,
+    TResult Function(Resource resource)? syncing,
+    TResult Function(Resource resource)? internetUnAvailable,
+    TResult Function(Resource resource)? failed,
+  }) {
+    return internetUnAvailable?.call(resource);
   }
 
   @override
@@ -489,6 +561,17 @@ class _$_InternetUnAvailable implements _InternetUnAvailable {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Synced value)? synced,
+    TResult Function(_Syncing value)? syncing,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_failed value)? failed,
+  }) {
+    return internetUnAvailable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Synced value)? synced,
     TResult Function(_Syncing value)? syncing,
@@ -508,7 +591,7 @@ abstract class _InternetUnAvailable implements ResourceSyncState {
       _$_InternetUnAvailable;
 
   @override
-  Resource get resource => throw _privateConstructorUsedError;
+  Resource get resource;
   @override
   @JsonKey(ignore: true)
   _$InternetUnAvailableCopyWith<_InternetUnAvailable> get copyWith =>
@@ -550,6 +633,7 @@ class __$failedCopyWithImpl<$Res> extends _$ResourceSyncStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_failed implements _failed {
   const _$_failed(this.resource);
 
@@ -564,15 +648,14 @@ class _$_failed implements _failed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _failed &&
+        (other.runtimeType == runtimeType &&
+            other is _failed &&
             (identical(other.resource, resource) ||
-                const DeepCollectionEquality()
-                    .equals(other.resource, resource)));
+                other.resource == resource));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(resource);
+  int get hashCode => Object.hash(runtimeType, resource);
 
   @JsonKey(ignore: true)
   @override
@@ -588,6 +671,17 @@ class _$_failed implements _failed {
     required TResult Function(Resource resource) failed,
   }) {
     return failed(resource);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Resource resource)? synced,
+    TResult Function(Resource resource)? syncing,
+    TResult Function(Resource resource)? internetUnAvailable,
+    TResult Function(Resource resource)? failed,
+  }) {
+    return failed?.call(resource);
   }
 
   @override
@@ -618,6 +712,17 @@ class _$_failed implements _failed {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Synced value)? synced,
+    TResult Function(_Syncing value)? syncing,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_failed value)? failed,
+  }) {
+    return failed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Synced value)? synced,
     TResult Function(_Syncing value)? syncing,
@@ -636,7 +741,7 @@ abstract class _failed implements ResourceSyncState {
   const factory _failed(Resource resource) = _$_failed;
 
   @override
-  Resource get resource => throw _privateConstructorUsedError;
+  Resource get resource;
   @override
   @JsonKey(ignore: true)
   _$failedCopyWith<_failed> get copyWith => throw _privateConstructorUsedError;

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quran_reader/common/connectivity/ConnectivityService.dart';
+import 'package:quran_reader/common/connectivity/connectivity_service.dart';
 import 'package:quran_reader/common/http/api_provider.dart';
 import 'package:quran_reader/feature/app_start_up/provider/resources_sync_repository.dart';
 

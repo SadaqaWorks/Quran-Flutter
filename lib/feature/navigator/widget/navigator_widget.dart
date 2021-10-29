@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quran_reader/common/quran/model/sura.dart';
 import 'package:quran_reader/feature/navigator/provider/navigator_provider.dart';
-import 'package:quran_reader/generated/l10n.dart';
+import 'package:quran_reader/l10n/l10n.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-class NavigatorWidget extends StatefulWidget {
+class NavigatorWidget extends ConsumerStatefulWidget {
   @override
   _NavigatorWidgetState createState() => _NavigatorWidgetState();
 }
 
-class _NavigatorWidgetState extends State<NavigatorWidget> {
+class _NavigatorWidgetState extends ConsumerState<NavigatorWidget> {
   NavigatorType _selectedNavigatorType = NavigatorType.sura;
   int _selectedNavigatorIndex = 0;
 
@@ -26,9 +26,9 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _indexTitles = <int, Widget>{
-      0: Text(S.of(context).surah),
-      1: Text(S.of(context).juzz),
-      2: Text(S.of(context).pages),
+      0: Text(context.l10n.surah),
+      1: Text(context.l10n.juzz),
+      2: Text(context.l10n.pages),
     };
 
     _scrollController = AutoScrollController(
@@ -50,27 +50,27 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
     super.initState();
   }
 
-  void _selectedItem(BuildContext context) {
+  void _selectedItem(BuildContext context, WidgetRef ref) {
     if (_selectedNavigatorType == NavigatorType.sura) {
-      context
+      ref
           .read(navigatorViewProvider.notifier)
           .suraSelected(_selectedSuraIndex ?? 0);
     }
     if (_selectedNavigatorType == NavigatorType.juz) {
-      context
+      ref
           .read(navigatorViewProvider.notifier)
           .juzSelected(_selectedJuzIndex ?? 0);
     }
     if (_selectedNavigatorType == NavigatorType.page) {
-      context
+      ref
           .read(navigatorViewProvider.notifier)
           .pageSelected(_selectedPageIndex ?? 0);
     }
   }
 
-  void _confirmed(BuildContext context) {
-    _selectedItem(context);
-    context.read(navigatorViewProvider.notifier).confirmSelected();
+  void _confirmed(BuildContext context, WidgetRef ref) {
+    _selectedItem(context, ref);
+    ref.read(navigatorViewProvider.notifier).confirmSelected();
   }
 
   void _goToElement(int index) async {
@@ -118,7 +118,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
                       _selectedNavigatorType = NavigatorType.page;
                     }
 
-                    context
+                    ref
                         .read(navigatorViewProvider.notifier)
                         .navigatorSelected(_selectedNavigatorType);
                   });
@@ -128,7 +128,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
           ),
           OutlinedButton(
             onPressed: () {
-              _confirmed(context);
+              _confirmed(context, ref);
             },
             child: Text('Confirm'),
           )
@@ -137,14 +137,14 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
 
   Widget _widgetList(BuildContext context) {
     return Consumer(
-      builder: (context, watch, child) {
-        final state = watch(navigatorViewProvider);
+      builder: (context, ref, child) {
+        final state = ref.watch(navigatorViewProvider);
         return state.maybeWhen(loadSuraList: (value, selected) {
-          return _widgetSuraList(context, value, selected);
+          return _widgetSuraList(context, ref, value, selected);
         }, loadJuzList: (value, selected) {
-          return _widgetJuzList(context, value, selected);
+          return _widgetJuzList(context, ref, value, selected);
         }, loadPageList: (value, selected) {
-          return _widgetPageList(context, value, selected);
+          return _widgetPageList(context, ref, value, selected);
         }, orElse: () {
           return Container();
         });
@@ -162,7 +162,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
       );
 //Sura
   Widget _widgetSuraList(
-      BuildContext context, List<Sura> list, int selectedIndex) {
+      BuildContext context, ref, List<Sura> list, int selectedIndex) {
     if (_selectedSuraIndex == null) {
       _selectedSuraIndex = selectedIndex;
       _goToElement(selectedIndex);
@@ -173,7 +173,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
         controller: _scrollController,
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
-          return _widgetSuraItem(context, list[index], index,
+          return _widgetSuraItem(context, ref, list[index], index,
               (index == (_selectedSuraIndex ?? selectedIndex)));
         },
         separatorBuilder: (context, index) {
@@ -181,8 +181,8 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
         });
   }
 
-  Widget _widgetSuraItem(
-      BuildContext context, Sura sura, int index, bool selected) {
+  Widget _widgetSuraItem(BuildContext context, WidgetRef ref, Sura sura,
+      int index, bool selected) {
     return _wrapScrollTag(
       index: index,
       child: InkWell(
@@ -190,7 +190,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
             setState(() {
               _selectedSuraIndex = index;
             });
-            _selectedItem(context);
+            _selectedItem(context, ref);
           },
           child: Container(
             color:
@@ -208,7 +208,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
 
   //Juz
   Widget _widgetJuzList(
-      BuildContext context, List<int> list, int selectedIndex) {
+      BuildContext context, WidgetRef ref, List<int> list, int selectedIndex) {
     if (_selectedJuzIndex == null) {
       _selectedJuzIndex = selectedIndex;
       _goToElement(selectedIndex);
@@ -219,15 +219,16 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
         controller: _scrollController,
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
-          return _widgetJuzItem(
-              context, index, (index == (_selectedJuzIndex ?? selectedIndex)));
+          return _widgetJuzItem(context, ref, index,
+              (index == (_selectedJuzIndex ?? selectedIndex)));
         },
         separatorBuilder: (context, index) {
           return Divider();
         });
   }
 
-  Widget _widgetJuzItem(BuildContext context, int index, bool selected) {
+  Widget _widgetJuzItem(
+      BuildContext context, WidgetRef ref, int index, bool selected) {
     return _wrapScrollTag(
         index: index,
         child: InkWell(
@@ -235,7 +236,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
               setState(() {
                 _selectedJuzIndex = index;
               });
-              _selectedItem(context);
+              _selectedItem(context, ref);
             },
             child: Container(
               color:
@@ -252,7 +253,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
 
   //Page
   Widget _widgetPageList(
-      BuildContext context, List<int> list, int selectedIndex) {
+      BuildContext context, WidgetRef ref, List<int> list, int selectedIndex) {
     if (_selectedPageIndex == null) {
       _selectedPageIndex = selectedIndex;
       _goToElement(selectedIndex);
@@ -263,15 +264,16 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
         controller: _scrollController,
         itemCount: list.length,
         itemBuilder: (BuildContext context, int index) {
-          return _widgetPageItem(
-              context, index, (index == (_selectedPageIndex ?? selectedIndex)));
+          return _widgetPageItem(context, ref, index,
+              (index == (_selectedPageIndex ?? selectedIndex)));
         },
         separatorBuilder: (context, index) {
           return Divider();
         });
   }
 
-  Widget _widgetPageItem(BuildContext context, int index, bool selected) {
+  Widget _widgetPageItem(
+      BuildContext context, WidgetRef ref, int index, bool selected) {
     return _wrapScrollTag(
         index: index,
         child: InkWell(
@@ -279,7 +281,7 @@ class _NavigatorWidgetState extends State<NavigatorWidget> {
               setState(() {
                 _selectedPageIndex = index;
               });
-              _selectedItem(context);
+              _selectedItem(context, ref);
             },
             child: Container(
               color:

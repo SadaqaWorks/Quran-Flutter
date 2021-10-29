@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:io' as io;
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
-import 'package:quran_reader/common/connectivity/ConnectivityService.dart';
+import 'package:quran_reader/common/connectivity/connectivity_service.dart';
 import 'package:quran_reader/common/http/api_provider.dart';
 import 'package:quran_reader/common/model/resource/resource.dart';
 import 'package:quran_reader/common/quran/quran_info.dart';

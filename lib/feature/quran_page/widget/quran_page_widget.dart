@@ -5,12 +5,12 @@ import 'package:quran_reader/feature/home/provider/index.dart';
 import 'package:quran_reader/feature/quran_page/model/models.dart';
 import 'package:quran_reader/feature/quran_page/provider/index.dart';
 
-class QuranPageWidget extends StatefulWidget {
+class QuranPageWidget extends ConsumerStatefulWidget {
   @override
   _QuranPageWidgetState createState() => _QuranPageWidgetState();
 }
 
-class _QuranPageWidgetState extends State<QuranPageWidget> {
+class _QuranPageWidgetState extends ConsumerState<QuranPageWidget> {
   @override
   void dispose() {
     super.dispose();
@@ -24,17 +24,17 @@ class _QuranPageWidgetState extends State<QuranPageWidget> {
   @override
   Widget build(BuildContext context) {
     return EasyGestureDetector(onTap: () {
-      context.read(homePageProvider.notifier).viewTap();
+      ref.read(homePageProvider.notifier).viewTap();
     }, onSwipeLeft: () {
-      context.read(quranPageProvider.notifier).leftNavigation();
+      ref.read(quranPageProvider.notifier).leftNavigation();
       ;
     }, onSwipeRight: () {
-      context.read(quranPageProvider.notifier).rightNavigation();
+      ref.read(quranPageProvider.notifier).rightNavigation();
     },
         //Parent Container
         child: Consumer(
-      builder: (context, watch, child) {
-        final state = watch(quranPageProvider);
+      builder: (context, ref, child) {
+        final state = ref.watch(quranPageProvider);
         return state.maybeWhen(loaded: (url) {
           return _widgetQuranPage(state);
         }, orElse: () {

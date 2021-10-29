@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quran_reader/common/model/resource/resource.dart';
-import 'package:quran_reader/common/model/user/user.dart';
 
 class StorageManager {
   //current highest type ID 4
@@ -15,8 +14,8 @@ class StorageManager {
   }
 
   static void _registerHiveAdapters() {
-    Hive.registerAdapter(UserAdapter());
-    Hive.registerAdapter(ResourceAdapter());
+    //Hive.registerAdapter(UserAdapter());
+    //Hive.registerAdapter(ResourceAdapter());
     Hive.registerAdapter(ResourceTypeAdapter());
     Hive.registerAdapter(FileTypeAdapter());
   }

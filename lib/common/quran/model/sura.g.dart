@@ -6,17 +6,15 @@ part of 'sura.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Sura _$SuraFromJson(Map<String, dynamic> json) {
-  return Sura(
-    json['id'] as int,
-    json['start'] as int,
-    json['verses'] as int,
-    json['order'] as int,
-    json['rukus'] as int,
-    json['title'] as String,
-    _$enumDecode(_$SuraTypeEnumMap, json['type']),
-  );
-}
+Sura _$SuraFromJson(Map<String, dynamic> json) => Sura(
+      json['id'] as int,
+      json['start'] as int,
+      json['verses'] as int,
+      json['order'] as int,
+      json['rukus'] as int,
+      json['title'] as String,
+      _$enumDecode(_$SuraTypeEnumMap, json['type']),
+    );
 
 Map<String, dynamic> _$SuraToJson(Sura instance) => <String, dynamic>{
       'id': instance.id,

@@ -6,7 +6,7 @@ import 'package:quran_reader/feature/home/provider/index.dart';
 import 'package:quran_reader/feature/navigator/widget/navigator_widget.dart';
 import 'package:quran_reader/feature/quran_page/provider/index.dart';
 import 'package:quran_reader/feature/quran_page/widget/quran_page_widget.dart';
-import 'package:quran_reader/generated/l10n.dart';
+import 'package:quran_reader/l10n/l10n.dart';
 import 'package:wakelock/wakelock.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -34,16 +34,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     return Consumer(
-      builder: (context, watch, child) {
-        final state = watch(homePageProvider);
+      builder: (context, ref, child) {
+        final state = ref.watch(homePageProvider);
         return state.maybeWhen(initial: () {
-          return _widgetInitial(context);
+          return _widgetInitial(context, ref);
         },
             //     showInfo: () {
             //   return _widgetHalfNavigator(context);
             // },
             showFullNavigator: () {
-          return _widgetFullNavigator(context);
+          return _widgetFullNavigator(context, ref);
         }, orElse: () {
           return Container();
         });
@@ -52,27 +52,27 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 
   //Action
-  void _actionShowFullNavigator(BuildContext context) {
-    context.read(homePageProvider.notifier).showNavigator();
+  void _actionShowFullNavigator(WidgetRef ref) {
+    ref.read(homePageProvider.notifier).showNavigator();
   }
 
-  void _actionHideNavigator(BuildContext context) {
-    context.read(homePageProvider.notifier).hideNavigator();
+  void _actionHideNavigator(WidgetRef ref) {
+    ref.read(homePageProvider.notifier).hideNavigator();
   }
 
   //Widget
-  Widget _widgetShowNavigator(BuildContext context) {
+  Widget _widgetShowNavigator(BuildContext context, WidgetRef ref) {
     return SizedBox(
         height: 18.0,
         width: 18.0,
         child: IconButton(
           icon: Icon(Icons.arrow_drop_up, color: Colors.black87),
-          onPressed: () => {_actionShowFullNavigator(context)},
+          onPressed: () => {_actionShowFullNavigator(ref)},
           padding: new EdgeInsets.all(0.0),
         ));
   }
 
-  Widget _widgetHideNavigator(BuildContext context) {
+  Widget _widgetHideNavigator(BuildContext context, WidgetRef ref) {
     return Padding(
         padding: const EdgeInsets.all(12.0),
         child: SizedBox(
@@ -80,18 +80,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             width: 18.0,
             child: IconButton(
                 icon: Icon(Icons.arrow_drop_down, color: Colors.black87),
-                onPressed: () => {_actionHideNavigator(context)},
+                onPressed: () => {_actionHideNavigator(ref)},
                 padding: new EdgeInsets.all(0.0))));
   }
 
-  Widget _widgetAyahInfo() {
+  Widget _widgetAyahInfo(WidgetRef ref) {
     return Consumer(
       builder: (context, watch, child) {
-        final state = watch(quranPageProvider);
+        final state = ref.watch(quranPageProvider);
 
         return state.maybeWhen(loaded: (value) {
           return Text(
-            "${S.of(context).page}: ${value.pageNumber}",
+            "${context.l10n.page}: ${value.pageNumber}",
             style: TextStyle(
               fontSize: 18.0,
               color: Colors.black,
@@ -130,30 +130,31 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     return QuranPageWidget();
   }
 
-  Widget _widgetInitial(BuildContext context) {
+  Widget _widgetInitial(BuildContext context, WidgetRef ref) {
     return Stack(
       children: <Widget>[
         Container(color: Theme.of(context).accentColor.withOpacity(.3)),
-        Positioned(top: 0, left: 0, right: 0, child: _widgetTop(context)),
-        _widgetQuranPage(),
-        Positioned(bottom: 0, left: 0, right: 0, child: _widgetBottom(context))
-      ],
-    );
-  }
-
-  Widget _widgetFullNavigator(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Container(color: Theme.of(context).accentColor.withOpacity(.3)),
-        Positioned(top: 0, left: 0, right: 0, child: _widgetTop(context)),
+        Positioned(top: 0, left: 0, right: 0, child: _widgetTop(context, ref)),
         _widgetQuranPage(),
         Positioned(
-            bottom: 0, left: 0, right: 0, child: _widgetNavigator(context))
+            bottom: 0, left: 0, right: 0, child: _widgetBottom(context, ref))
       ],
     );
   }
 
-  Widget _widgetTop(BuildContext context) {
+  Widget _widgetFullNavigator(BuildContext context, WidgetRef ref) {
+    return Stack(
+      children: <Widget>[
+        Container(color: Theme.of(context).accentColor.withOpacity(.3)),
+        Positioned(top: 0, left: 0, right: 0, child: _widgetTop(context, ref)),
+        _widgetQuranPage(),
+        Positioned(
+            bottom: 0, left: 0, right: 0, child: _widgetNavigator(context, ref))
+      ],
+    );
+  }
+
+  Widget _widgetTop(BuildContext context, WidgetRef ref) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -166,13 +167,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: Container(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [_widgetAyahInfo()])))),
+                          children: [_widgetAyahInfo(ref)])))),
           // SizedBox(height: 10),
           //_bottomSlider()
         ]);
   }
 
-  Widget _widgetBottom(BuildContext context) {
+  Widget _widgetBottom(BuildContext context, WidgetRef ref) {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -186,14 +187,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                        _widgetShowNavigator(context),
+                        _widgetShowNavigator(context, ref),
                       ])))),
           // SizedBox(height: 10),
           //_bottomSlider()
         ]);
   }
 
-  Widget _widgetNavigator(BuildContext context) {
+  Widget _widgetNavigator(BuildContext context, WidgetRef ref) {
     return Container(
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -209,7 +210,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     children: <Widget>[
                       NavigatorWidget(),
                       SizedBox(height: 8),
-                      _widgetHideNavigator(context),
+                      _widgetHideNavigator(context, ref),
                     ])),
           ]),
     );

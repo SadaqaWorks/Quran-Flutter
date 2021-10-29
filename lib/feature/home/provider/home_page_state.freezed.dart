@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'home_page_state.dart';
 
@@ -37,6 +38,12 @@ mixin _$HomePageState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? showFullNavigator,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? showFullNavigator,
@@ -47,6 +54,12 @@ mixin _$HomePageState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_ShowFullNavigator value) showFullNavigator,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ShowFullNavigator value)? showFullNavigator,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -92,6 +105,7 @@ class __$InitialCopyWithImpl<$Res> extends _$HomePageStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -102,7 +116,8 @@ class _$_Initial implements _Initial {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initial);
   }
 
   @override
@@ -115,6 +130,15 @@ class _$_Initial implements _Initial {
     required TResult Function() showFullNavigator,
   }) {
     return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? showFullNavigator,
+  }) {
+    return initial?.call();
   }
 
   @override
@@ -137,6 +161,15 @@ class _$_Initial implements _Initial {
     required TResult Function(_ShowFullNavigator value) showFullNavigator,
   }) {
     return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ShowFullNavigator value)? showFullNavigator,
+  }) {
+    return initial?.call(this);
   }
 
   @override
@@ -177,6 +210,7 @@ class __$ShowFullNavigatorCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_ShowFullNavigator implements _ShowFullNavigator {
   const _$_ShowFullNavigator();
 
@@ -187,7 +221,8 @@ class _$_ShowFullNavigator implements _ShowFullNavigator {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ShowFullNavigator);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _ShowFullNavigator);
   }
 
   @override
@@ -200,6 +235,15 @@ class _$_ShowFullNavigator implements _ShowFullNavigator {
     required TResult Function() showFullNavigator,
   }) {
     return showFullNavigator();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? showFullNavigator,
+  }) {
+    return showFullNavigator?.call();
   }
 
   @override
@@ -222,6 +266,15 @@ class _$_ShowFullNavigator implements _ShowFullNavigator {
     required TResult Function(_ShowFullNavigator value) showFullNavigator,
   }) {
     return showFullNavigator(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ShowFullNavigator value)? showFullNavigator,
+  }) {
+    return showFullNavigator?.call(this);
   }
 
   @override

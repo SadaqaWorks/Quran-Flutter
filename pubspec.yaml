@@ -22,52 +22,79 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
-  shared_preferences: ^2.0.5
-  meta: ^1.3.0
-  path_provider: ^2.0.1
-  app_settings: ^4.1.0
+  cupertino_icons: ^1.0.3
+  shared_preferences: ^2.0.8
+  meta: ^1.7.0
+  path_provider: ^2.0.6
+  app_settings: ^4.1.1
+  intl: ^0.17.0
 
   #Internet
-  dio: ^4.0.0
-  connectivity: ^3.0.3
+  dio: ^4.0.1
+  connectivity_plus: ^2.0.2
 
-  archive: ^3.1.2
-  equatable: ^2.0.0
+  archive: ^3.1.6
+  equatable: ^2.0.3
 
   responsive_builder: ^0.4.1
   #flutter_screenutil: ^5.0.0
-  scroll_to_index: ^2.0.0
+  scroll_to_index: ^2.1.0
+  flutter_dotenv: ^5.0.2
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
 
-  hive: ^2.0.2
-  hive_flutter: ^1.0.0
-
-  isar: ^0.4.0
-  isar_flutter_libs: 0.4.0
+  #isar: ^0.4.0
+  #isar_flutter_libs: 0.4.0
   #isar_connect: 0.4.0
 
-  wakelock: ^0.5.0+2
+  wakelock: ^0.5.6
   #sqflite: ^2.0.0+3
-  intl_utils: ^2.1.0
+  intl_utils: ^2.4.1
   json_annotation:
 
-  flutter_riverpod: ^0.14.0
-  state_notifier: ^0.7.0
+  flutter_riverpod: ^1.0.0-dev.7
+  state_notifier: ^0.7.1
   freezed_annotation:
 
+  auto_route: ^3.0.4
+
+
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_launcher_icons: ^0.9.0
-  flutter_native_splash: 1.1.7+1
-  lint: ^1.5.2
-  pedantic: 1.11.0
+#  flutter_test:
+#    sdk: flutter
   logger:
   json_serializable:
   hive_generator:
-  isar_generator: 0.4.0
+  #isar_generator: 0.4.0
   build_runner:
-  freezed: ^0.14.1+2
+  freezed: ^0.15.0+1
+  flutter_lints: ^1.0.4
+  auto_route_generator: 3.0.1
+  flutter_gen_runner:
+
+## Install derry from https://pub.dev/packages/derry and run derry build, derry watch, derry gen
+scripts: derry.yaml
+
+# https://pub.dev/packages/flutter_gen, after new assets run derry gen
+flutter_gen:
+  output: lib/gen/ # Optional (default: lib/gen/)
+
+  #  integrations:
+  #    flutter_svg: true
+  #    flare_flutter: true
+
+  assets:
+    enabled: true
+  fonts:
+    enabled: true
+  colors:
+    enabled: true
+    inputs:
+      - assets/color/colors.xml
+import_sorter:
+  comments: false # Optional, defaults to true
+  ignored_files: # Optional, defaults to []
+    - \/lib\/*
 
 
 # For information on the generic Dart part of this file, see the
@@ -80,6 +107,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
   assets:
     - .env
     - assets/images/quran/
@@ -112,21 +140,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 
-flutter_intl:
-  enabled: true # Required. Must be set to true to activate the plugin. Default: false
-  class_name: S # Optional. Sets the name for the generated localization class. Default: S
-  main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should comply with ISO-639-1 and ISO-3166-1 (e.g. "en", "en_GB"). Default: en
-
-
-flutter_native_splash:
-  color: "FCF4E5"
-  image: assets/images/app/icon.png
-  android_disable_fullscreen: true
-  fill: false
-#flutter pub run flutter_native_splash:create
-
-flutter_icons:
-  image_path: 'assets/images/app/icon.png'
-  android: true
-  ios: true
-#flutter pub run flutter_launcher_icons:main
+#flutter_intl:
+#  enabled: true # Required. Must be set to true to activate the plugin. Default: false
+#  class_name: S # Optional. Sets the name for the generated localization class. Default: S
+#  main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should comply with ISO-639-1 and ISO-3166-1 (e.g. "en", "en_GB"). Default: en

@@ -7,7 +7,7 @@ part 'quran_page_state.freezed.dart';
 class QuranPageState with _$QuranPageState {
   //const factory QuranPageState.initial() = _Initial;
   const factory QuranPageState.loading() = _Loading;
-  const factory QuranPageState.downloading() = _Loading;
+  const factory QuranPageState.downloading() = _DownLoading;
   const factory QuranPageState.internetUnAvailable() = _InternetUnAvailable;
   const factory QuranPageState.loaded(QuranPage quranPage) = _Loaded;
 }

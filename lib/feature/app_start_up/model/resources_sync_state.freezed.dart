@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'resources_sync_state.dart';
 
@@ -44,6 +45,13 @@ mixin _$ResourcesSyncState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(List<Resource> resources)? available,
+    TResult Function()? needsToDownload,
+    TResult Function()? unAvailable,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<Resource> resources)? available,
     TResult Function()? needsToDownload,
@@ -56,6 +64,13 @@ mixin _$ResourcesSyncState {
     required TResult Function(_Available value) available,
     required TResult Function(_NeedsToDownload value) needsToDownload,
     required TResult Function(_UnAvailable value) unAvailable,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Available value)? available,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_UnAvailable value)? unAvailable,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -117,6 +132,7 @@ class __$AvailableCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Available implements _Available {
   const _$_Available(this.resources);
 
@@ -131,15 +147,14 @@ class _$_Available implements _Available {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Available &&
-            (identical(other.resources, resources) ||
-                const DeepCollectionEquality()
-                    .equals(other.resources, resources)));
+        (other.runtimeType == runtimeType &&
+            other is _Available &&
+            const DeepCollectionEquality().equals(other.resources, resources));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(resources);
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(resources));
 
   @JsonKey(ignore: true)
   @override
@@ -154,6 +169,16 @@ class _$_Available implements _Available {
     required TResult Function() unAvailable,
   }) {
     return available(resources);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(List<Resource> resources)? available,
+    TResult Function()? needsToDownload,
+    TResult Function()? unAvailable,
+  }) {
+    return available?.call(resources);
   }
 
   @override
@@ -182,6 +207,16 @@ class _$_Available implements _Available {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Available value)? available,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_UnAvailable value)? unAvailable,
+  }) {
+    return available?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Available value)? available,
     TResult Function(_NeedsToDownload value)? needsToDownload,
@@ -198,7 +233,7 @@ class _$_Available implements _Available {
 abstract class _Available implements ResourcesSyncState {
   const factory _Available(List<Resource> resources) = _$_Available;
 
-  List<Resource> get resources => throw _privateConstructorUsedError;
+  List<Resource> get resources;
   @JsonKey(ignore: true)
   _$AvailableCopyWith<_Available> get copyWith =>
       throw _privateConstructorUsedError;
@@ -224,6 +259,7 @@ class __$NeedsToDownloadCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NeedsToDownload implements _NeedsToDownload {
   const _$_NeedsToDownload();
 
@@ -234,7 +270,8 @@ class _$_NeedsToDownload implements _NeedsToDownload {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NeedsToDownload);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NeedsToDownload);
   }
 
   @override
@@ -248,6 +285,16 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     required TResult Function() unAvailable,
   }) {
     return needsToDownload();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(List<Resource> resources)? available,
+    TResult Function()? needsToDownload,
+    TResult Function()? unAvailable,
+  }) {
+    return needsToDownload?.call();
   }
 
   @override
@@ -272,6 +319,16 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     required TResult Function(_UnAvailable value) unAvailable,
   }) {
     return needsToDownload(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Available value)? available,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_UnAvailable value)? unAvailable,
+  }) {
+    return needsToDownload?.call(this);
   }
 
   @override
@@ -313,6 +370,7 @@ class __$UnAvailableCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_UnAvailable implements _UnAvailable {
   const _$_UnAvailable();
 
@@ -323,7 +381,8 @@ class _$_UnAvailable implements _UnAvailable {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _UnAvailable);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _UnAvailable);
   }
 
   @override
@@ -337,6 +396,16 @@ class _$_UnAvailable implements _UnAvailable {
     required TResult Function() unAvailable,
   }) {
     return unAvailable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(List<Resource> resources)? available,
+    TResult Function()? needsToDownload,
+    TResult Function()? unAvailable,
+  }) {
+    return unAvailable?.call();
   }
 
   @override
@@ -361,6 +430,16 @@ class _$_UnAvailable implements _UnAvailable {
     required TResult Function(_UnAvailable value) unAvailable,
   }) {
     return unAvailable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Available value)? available,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_UnAvailable value)? unAvailable,
+  }) {
+    return unAvailable?.call(this);
   }
 
   @override

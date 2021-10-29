@@ -6,31 +6,27 @@ part of 'quran_page.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_QuranPage _$_$_QuranPageFromJson(Map<String, dynamic> json) {
-  return _$_QuranPage(
-    json['pageNumber'] as int,
-    ImageFile.fromJson(json['imageFile'] as Map<String, dynamic>),
-    suraVerses: (json['suraVerses'] as List<dynamic>?)
-        ?.map((e) => SuraVerses.fromJson(e as Map<String, dynamic>))
-        .toList(),
-  );
-}
+_$_QuranPage _$$_QuranPageFromJson(Map<String, dynamic> json) => _$_QuranPage(
+      json['pageNumber'] as int,
+      ImageFile.fromJson(json['imageFile'] as Map<String, dynamic>),
+      suraVerses: (json['suraVerses'] as List<dynamic>?)
+          ?.map((e) => SuraVerses.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
-Map<String, dynamic> _$_$_QuranPageToJson(_$_QuranPage instance) =>
+Map<String, dynamic> _$$_QuranPageToJson(_$_QuranPage instance) =>
     <String, dynamic>{
       'pageNumber': instance.pageNumber,
       'imageFile': instance.imageFile,
       'suraVerses': instance.suraVerses,
     };
 
-_$_ImageFile _$_$_ImageFileFromJson(Map<String, dynamic> json) {
-  return _$_ImageFile(
-    json['imageUrl'] as String,
-    _$enumDecode(_$ImageLoadPolicyEnumMap, json['loadPolicy']),
-  );
-}
+_$_ImageFile _$$_ImageFileFromJson(Map<String, dynamic> json) => _$_ImageFile(
+      json['imageUrl'] as String,
+      _$enumDecode(_$ImageLoadPolicyEnumMap, json['loadPolicy']),
+    );
 
-Map<String, dynamic> _$_$_ImageFileToJson(_$_ImageFile instance) =>
+Map<String, dynamic> _$$_ImageFileToJson(_$_ImageFile instance) =>
     <String, dynamic>{
       'imageUrl': instance.imageUrl,
       'loadPolicy': _$ImageLoadPolicyEnumMap[instance.loadPolicy],

@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'app_startup_state.dart';
 
@@ -52,6 +53,15 @@ mixin _$AppStartupState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializing,
+    TResult Function()? needsAuth,
+    TResult Function()? needsToDownload,
+    TResult Function()? internetUnAvailable,
+    TResult Function()? loadHome,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializing,
     TResult Function()? needsAuth,
@@ -68,6 +78,15 @@ mixin _$AppStartupState {
     required TResult Function(_NeedsToDownload value) needsToDownload,
     required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_LoadHome value) loadHome,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initializing value)? initializing,
+    TResult Function(_NeedsAuth value)? needsAuth,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_LoadHome value)? loadHome,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -119,6 +138,7 @@ class __$InitializingCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Initializing implements _Initializing {
   const _$_Initializing();
 
@@ -129,7 +149,8 @@ class _$_Initializing implements _Initializing {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initializing);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initializing);
   }
 
   @override
@@ -145,6 +166,18 @@ class _$_Initializing implements _Initializing {
     required TResult Function() loadHome,
   }) {
     return initializing();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializing,
+    TResult Function()? needsAuth,
+    TResult Function()? needsToDownload,
+    TResult Function()? internetUnAvailable,
+    TResult Function()? loadHome,
+  }) {
+    return initializing?.call();
   }
 
   @override
@@ -173,6 +206,18 @@ class _$_Initializing implements _Initializing {
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return initializing(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initializing value)? initializing,
+    TResult Function(_NeedsAuth value)? needsAuth,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_LoadHome value)? loadHome,
+  }) {
+    return initializing?.call(this);
   }
 
   @override
@@ -214,6 +259,7 @@ class __$NeedsAuthCopyWithImpl<$Res> extends _$AppStartupStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NeedsAuth implements _NeedsAuth {
   const _$_NeedsAuth();
 
@@ -224,7 +270,8 @@ class _$_NeedsAuth implements _NeedsAuth {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NeedsAuth);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NeedsAuth);
   }
 
   @override
@@ -240,6 +287,18 @@ class _$_NeedsAuth implements _NeedsAuth {
     required TResult Function() loadHome,
   }) {
     return needsAuth();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializing,
+    TResult Function()? needsAuth,
+    TResult Function()? needsToDownload,
+    TResult Function()? internetUnAvailable,
+    TResult Function()? loadHome,
+  }) {
+    return needsAuth?.call();
   }
 
   @override
@@ -268,6 +327,18 @@ class _$_NeedsAuth implements _NeedsAuth {
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return needsAuth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initializing value)? initializing,
+    TResult Function(_NeedsAuth value)? needsAuth,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_LoadHome value)? loadHome,
+  }) {
+    return needsAuth?.call(this);
   }
 
   @override
@@ -311,6 +382,7 @@ class __$NeedsToDownloadCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_NeedsToDownload implements _NeedsToDownload {
   const _$_NeedsToDownload();
 
@@ -321,7 +393,8 @@ class _$_NeedsToDownload implements _NeedsToDownload {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _NeedsToDownload);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _NeedsToDownload);
   }
 
   @override
@@ -337,6 +410,18 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     required TResult Function() loadHome,
   }) {
     return needsToDownload();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializing,
+    TResult Function()? needsAuth,
+    TResult Function()? needsToDownload,
+    TResult Function()? internetUnAvailable,
+    TResult Function()? loadHome,
+  }) {
+    return needsToDownload?.call();
   }
 
   @override
@@ -365,6 +450,18 @@ class _$_NeedsToDownload implements _NeedsToDownload {
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return needsToDownload(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initializing value)? initializing,
+    TResult Function(_NeedsAuth value)? needsAuth,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_LoadHome value)? loadHome,
+  }) {
+    return needsToDownload?.call(this);
   }
 
   @override
@@ -408,6 +505,7 @@ class __$InternetUnAvailableCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_InternetUnAvailable implements _InternetUnAvailable {
   const _$_InternetUnAvailable();
 
@@ -418,7 +516,8 @@ class _$_InternetUnAvailable implements _InternetUnAvailable {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _InternetUnAvailable);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _InternetUnAvailable);
   }
 
   @override
@@ -434,6 +533,18 @@ class _$_InternetUnAvailable implements _InternetUnAvailable {
     required TResult Function() loadHome,
   }) {
     return internetUnAvailable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializing,
+    TResult Function()? needsAuth,
+    TResult Function()? needsToDownload,
+    TResult Function()? internetUnAvailable,
+    TResult Function()? loadHome,
+  }) {
+    return internetUnAvailable?.call();
   }
 
   @override
@@ -462,6 +573,18 @@ class _$_InternetUnAvailable implements _InternetUnAvailable {
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return internetUnAvailable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initializing value)? initializing,
+    TResult Function(_NeedsAuth value)? needsAuth,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_LoadHome value)? loadHome,
+  }) {
+    return internetUnAvailable?.call(this);
   }
 
   @override
@@ -502,6 +625,7 @@ class __$LoadHomeCopyWithImpl<$Res> extends _$AppStartupStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_LoadHome implements _LoadHome {
   const _$_LoadHome();
 
@@ -512,7 +636,8 @@ class _$_LoadHome implements _LoadHome {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadHome);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _LoadHome);
   }
 
   @override
@@ -528,6 +653,18 @@ class _$_LoadHome implements _LoadHome {
     required TResult Function() loadHome,
   }) {
     return loadHome();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializing,
+    TResult Function()? needsAuth,
+    TResult Function()? needsToDownload,
+    TResult Function()? internetUnAvailable,
+    TResult Function()? loadHome,
+  }) {
+    return loadHome?.call();
   }
 
   @override
@@ -556,6 +693,18 @@ class _$_LoadHome implements _LoadHome {
     required TResult Function(_LoadHome value) loadHome,
   }) {
     return loadHome(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initializing value)? initializing,
+    TResult Function(_NeedsAuth value)? needsAuth,
+    TResult Function(_NeedsToDownload value)? needsToDownload,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_LoadHome value)? loadHome,
+  }) {
+    return loadHome?.call(this);
   }
 
   @override

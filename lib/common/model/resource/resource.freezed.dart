@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'resource.dart';
 
@@ -23,19 +24,21 @@ class _$ResourceTearOff {
   _Resource call(
       {@HiveField(0) required int id,
       @HiveField(1) required String name,
-      @HiveField(2) required String url,
-      @HiveField(3) required bool required,
-      @HiveField(4) required ResourceType resourceType,
-      @HiveField(5) required FileType fileType,
-      @HiveField(6) required int version,
-      @HiveField(7) required bool needRefresh,
-      @HiveField(8) required bool downloaded,
-      @HiveField(9) required bool bundled,
-      @HiveField(10) bool? selected,
-      @HiveField(11) String? description}) {
+      @HiveField(2) required String title,
+      @HiveField(3) required String url,
+      @HiveField(4) required bool required,
+      @HiveField(5) required ResourceType resourceType,
+      @HiveField(6) required FileType fileType,
+      @HiveField(7) required int version,
+      @HiveField(8) required bool needRefresh,
+      @HiveField(9) required bool downloaded,
+      @HiveField(10) required bool bundled,
+      @HiveField(11) bool? selected,
+      @HiveField(12) String? description}) {
     return _Resource(
       id: id,
       name: name,
+      title: title,
       url: url,
       required: required,
       resourceType: resourceType,
@@ -49,7 +52,7 @@ class _$ResourceTearOff {
     );
   }
 
-  Resource fromJson(Map<String, Object> json) {
+  Resource fromJson(Map<String, Object?> json) {
     return Resource.fromJson(json);
   }
 }
@@ -64,24 +67,26 @@ mixin _$Resource {
   @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @HiveField(2)
-  String get url => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @HiveField(3)
-  bool get required => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
   @HiveField(4)
-  ResourceType get resourceType => throw _privateConstructorUsedError;
+  bool get required => throw _privateConstructorUsedError;
   @HiveField(5)
-  FileType get fileType => throw _privateConstructorUsedError;
+  ResourceType get resourceType => throw _privateConstructorUsedError;
   @HiveField(6)
-  int get version => throw _privateConstructorUsedError;
+  FileType get fileType => throw _privateConstructorUsedError;
   @HiveField(7)
-  bool get needRefresh => throw _privateConstructorUsedError;
+  int get version => throw _privateConstructorUsedError;
   @HiveField(8)
-  bool get downloaded => throw _privateConstructorUsedError;
+  bool get needRefresh => throw _privateConstructorUsedError;
   @HiveField(9)
-  bool get bundled => throw _privateConstructorUsedError;
+  bool get downloaded => throw _privateConstructorUsedError;
   @HiveField(10)
-  bool? get selected => throw _privateConstructorUsedError;
+  bool get bundled => throw _privateConstructorUsedError;
   @HiveField(11)
+  bool? get selected => throw _privateConstructorUsedError;
+  @HiveField(12)
   String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -97,16 +102,17 @@ abstract class $ResourceCopyWith<$Res> {
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String name,
-      @HiveField(2) String url,
-      @HiveField(3) bool required,
-      @HiveField(4) ResourceType resourceType,
-      @HiveField(5) FileType fileType,
-      @HiveField(6) int version,
-      @HiveField(7) bool needRefresh,
-      @HiveField(8) bool downloaded,
-      @HiveField(9) bool bundled,
-      @HiveField(10) bool? selected,
-      @HiveField(11) String? description});
+      @HiveField(2) String title,
+      @HiveField(3) String url,
+      @HiveField(4) bool required,
+      @HiveField(5) ResourceType resourceType,
+      @HiveField(6) FileType fileType,
+      @HiveField(7) int version,
+      @HiveField(8) bool needRefresh,
+      @HiveField(9) bool downloaded,
+      @HiveField(10) bool bundled,
+      @HiveField(11) bool? selected,
+      @HiveField(12) String? description});
 }
 
 /// @nodoc
@@ -121,6 +127,7 @@ class _$ResourceCopyWithImpl<$Res> implements $ResourceCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? title = freezed,
     Object? url = freezed,
     Object? required = freezed,
     Object? resourceType = freezed,
@@ -140,6 +147,10 @@ class _$ResourceCopyWithImpl<$Res> implements $ResourceCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       url: url == freezed
           ? _value.url
@@ -193,16 +204,17 @@ abstract class _$ResourceCopyWith<$Res> implements $ResourceCopyWith<$Res> {
   $Res call(
       {@HiveField(0) int id,
       @HiveField(1) String name,
-      @HiveField(2) String url,
-      @HiveField(3) bool required,
-      @HiveField(4) ResourceType resourceType,
-      @HiveField(5) FileType fileType,
-      @HiveField(6) int version,
-      @HiveField(7) bool needRefresh,
-      @HiveField(8) bool downloaded,
-      @HiveField(9) bool bundled,
-      @HiveField(10) bool? selected,
-      @HiveField(11) String? description});
+      @HiveField(2) String title,
+      @HiveField(3) String url,
+      @HiveField(4) bool required,
+      @HiveField(5) ResourceType resourceType,
+      @HiveField(6) FileType fileType,
+      @HiveField(7) int version,
+      @HiveField(8) bool needRefresh,
+      @HiveField(9) bool downloaded,
+      @HiveField(10) bool bundled,
+      @HiveField(11) bool? selected,
+      @HiveField(12) String? description});
 }
 
 /// @nodoc
@@ -218,6 +230,7 @@ class __$ResourceCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? title = freezed,
     Object? url = freezed,
     Object? required = freezed,
     Object? resourceType = freezed,
@@ -237,6 +250,10 @@ class __$ResourceCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       url: url == freezed
           ? _value.url
@@ -282,27 +299,27 @@ class __$ResourceCopyWithImpl<$Res> extends _$ResourceCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 @JsonSerializable()
 @HiveType(typeId: 1)
-
-/// @nodoc
 class _$_Resource implements _Resource {
   const _$_Resource(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.name,
-      @HiveField(2) required this.url,
-      @HiveField(3) required this.required,
-      @HiveField(4) required this.resourceType,
-      @HiveField(5) required this.fileType,
-      @HiveField(6) required this.version,
-      @HiveField(7) required this.needRefresh,
-      @HiveField(8) required this.downloaded,
-      @HiveField(9) required this.bundled,
-      @HiveField(10) this.selected,
-      @HiveField(11) this.description});
+      @HiveField(2) required this.title,
+      @HiveField(3) required this.url,
+      @HiveField(4) required this.required,
+      @HiveField(5) required this.resourceType,
+      @HiveField(6) required this.fileType,
+      @HiveField(7) required this.version,
+      @HiveField(8) required this.needRefresh,
+      @HiveField(9) required this.downloaded,
+      @HiveField(10) required this.bundled,
+      @HiveField(11) this.selected,
+      @HiveField(12) this.description});
 
   factory _$_Resource.fromJson(Map<String, dynamic> json) =>
-      _$_$_ResourceFromJson(json);
+      _$$_ResourceFromJson(json);
 
   @override
   @HiveField(0)
@@ -312,94 +329,86 @@ class _$_Resource implements _Resource {
   final String name;
   @override
   @HiveField(2)
-  final String url;
+  final String title;
   @override
   @HiveField(3)
-  final bool required;
+  final String url;
   @override
   @HiveField(4)
-  final ResourceType resourceType;
+  final bool required;
   @override
   @HiveField(5)
-  final FileType fileType;
+  final ResourceType resourceType;
   @override
   @HiveField(6)
-  final int version;
+  final FileType fileType;
   @override
   @HiveField(7)
-  final bool needRefresh;
+  final int version;
   @override
   @HiveField(8)
-  final bool downloaded;
+  final bool needRefresh;
   @override
   @HiveField(9)
-  final bool bundled;
+  final bool downloaded;
   @override
   @HiveField(10)
-  final bool? selected;
+  final bool bundled;
   @override
   @HiveField(11)
+  final bool? selected;
+  @override
+  @HiveField(12)
   final String? description;
 
   @override
   String toString() {
-    return 'Resource(id: $id, name: $name, url: $url, required: $required, resourceType: $resourceType, fileType: $fileType, version: $version, needRefresh: $needRefresh, downloaded: $downloaded, bundled: $bundled, selected: $selected, description: $description)';
+    return 'Resource(id: $id, name: $name, title: $title, url: $url, required: $required, resourceType: $resourceType, fileType: $fileType, version: $version, needRefresh: $needRefresh, downloaded: $downloaded, bundled: $bundled, selected: $selected, description: $description)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Resource &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)) &&
+        (other.runtimeType == runtimeType &&
+            other is _Resource &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.required, required) ||
-                const DeepCollectionEquality()
-                    .equals(other.required, required)) &&
+                other.required == required) &&
             (identical(other.resourceType, resourceType) ||
-                const DeepCollectionEquality()
-                    .equals(other.resourceType, resourceType)) &&
+                other.resourceType == resourceType) &&
             (identical(other.fileType, fileType) ||
-                const DeepCollectionEquality()
-                    .equals(other.fileType, fileType)) &&
-            (identical(other.version, version) ||
-                const DeepCollectionEquality()
-                    .equals(other.version, version)) &&
+                other.fileType == fileType) &&
+            (identical(other.version, version) || other.version == version) &&
             (identical(other.needRefresh, needRefresh) ||
-                const DeepCollectionEquality()
-                    .equals(other.needRefresh, needRefresh)) &&
+                other.needRefresh == needRefresh) &&
             (identical(other.downloaded, downloaded) ||
-                const DeepCollectionEquality()
-                    .equals(other.downloaded, downloaded)) &&
-            (identical(other.bundled, bundled) ||
-                const DeepCollectionEquality()
-                    .equals(other.bundled, bundled)) &&
+                other.downloaded == downloaded) &&
+            (identical(other.bundled, bundled) || other.bundled == bundled) &&
             (identical(other.selected, selected) ||
-                const DeepCollectionEquality()
-                    .equals(other.selected, selected)) &&
+                other.selected == selected) &&
             (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
+                other.description == description));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(url) ^
-      const DeepCollectionEquality().hash(required) ^
-      const DeepCollectionEquality().hash(resourceType) ^
-      const DeepCollectionEquality().hash(fileType) ^
-      const DeepCollectionEquality().hash(version) ^
-      const DeepCollectionEquality().hash(needRefresh) ^
-      const DeepCollectionEquality().hash(downloaded) ^
-      const DeepCollectionEquality().hash(bundled) ^
-      const DeepCollectionEquality().hash(selected) ^
-      const DeepCollectionEquality().hash(description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      title,
+      url,
+      required,
+      resourceType,
+      fileType,
+      version,
+      needRefresh,
+      downloaded,
+      bundled,
+      selected,
+      description);
 
   @JsonKey(ignore: true)
   @override
@@ -408,7 +417,7 @@ class _$_Resource implements _Resource {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_ResourceToJson(this);
+    return _$$_ResourceToJson(this);
   }
 }
 
@@ -416,55 +425,59 @@ abstract class _Resource implements Resource {
   const factory _Resource(
       {@HiveField(0) required int id,
       @HiveField(1) required String name,
-      @HiveField(2) required String url,
-      @HiveField(3) required bool required,
-      @HiveField(4) required ResourceType resourceType,
-      @HiveField(5) required FileType fileType,
-      @HiveField(6) required int version,
-      @HiveField(7) required bool needRefresh,
-      @HiveField(8) required bool downloaded,
-      @HiveField(9) required bool bundled,
-      @HiveField(10) bool? selected,
-      @HiveField(11) String? description}) = _$_Resource;
+      @HiveField(2) required String title,
+      @HiveField(3) required String url,
+      @HiveField(4) required bool required,
+      @HiveField(5) required ResourceType resourceType,
+      @HiveField(6) required FileType fileType,
+      @HiveField(7) required int version,
+      @HiveField(8) required bool needRefresh,
+      @HiveField(9) required bool downloaded,
+      @HiveField(10) required bool bundled,
+      @HiveField(11) bool? selected,
+      @HiveField(12) String? description}) = _$_Resource;
 
   factory _Resource.fromJson(Map<String, dynamic> json) = _$_Resource.fromJson;
 
   @override
   @HiveField(0)
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
   @HiveField(1)
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @HiveField(2)
-  String get url => throw _privateConstructorUsedError;
+  String get title;
   @override
   @HiveField(3)
-  bool get required => throw _privateConstructorUsedError;
+  String get url;
   @override
   @HiveField(4)
-  ResourceType get resourceType => throw _privateConstructorUsedError;
+  bool get required;
   @override
   @HiveField(5)
-  FileType get fileType => throw _privateConstructorUsedError;
+  ResourceType get resourceType;
   @override
   @HiveField(6)
-  int get version => throw _privateConstructorUsedError;
+  FileType get fileType;
   @override
   @HiveField(7)
-  bool get needRefresh => throw _privateConstructorUsedError;
+  int get version;
   @override
   @HiveField(8)
-  bool get downloaded => throw _privateConstructorUsedError;
+  bool get needRefresh;
   @override
   @HiveField(9)
-  bool get bundled => throw _privateConstructorUsedError;
+  bool get downloaded;
   @override
   @HiveField(10)
-  bool? get selected => throw _privateConstructorUsedError;
+  bool get bundled;
   @override
   @HiveField(11)
-  String? get description => throw _privateConstructorUsedError;
+  bool? get selected;
+  @override
+  @HiveField(12)
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$ResourceCopyWith<_Resource> get copyWith =>

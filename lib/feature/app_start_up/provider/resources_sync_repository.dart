@@ -18,7 +18,7 @@ class ResourcesSyncRepository {
     if (_list == null) {
       //CALL API if internet is available
       final response = await apiProvider
-          .get('https://api.jsonbin.io/b/606836c69fc4de52061cd548');
+          .get('https://api.jsonbin.io/b/606836c69fc4de52061cd548/1');
       if (response != null) {
         List<Resource> resources = List<Resource>.from(
             response['data'].map((x) => Resource.fromJson(x)));

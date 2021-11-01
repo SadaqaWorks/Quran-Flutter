@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'sura.g.dart';
+
 @JsonSerializable()
 class Sura {
   int id;

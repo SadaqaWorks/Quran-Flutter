@@ -19,25 +19,27 @@ class HomePageNotifier extends StateNotifier<HomePageState> {
     _timer?.cancel();
   }
 
-  _setTimer() {
-    _timer = Timer.periodic(Duration(seconds: 4), (timer) {
-      state.maybeWhen(
-          showInfo: () {
-            _timer?.cancel();
-            state = HomePageState.initial();
-          },
-          orElse: () {});
-    });
-  }
+  // _setTimer() {
+  //   _timer = Timer.periodic(Duration(seconds: 4), (timer) {
+  //     state.maybeWhen(
+  //         showInfo: () {
+  //           _timer?.cancel();
+  //           state = HomePageState.initial();
+  //         },
+  //         orElse: () {});
+  //   });
+  // }
 
   void viewTap() {
     state.maybeWhen(initial: () {
-      state = HomePageState.showInfo();
-      _setTimer();
-    }, showInfo: () {
-      _timer?.cancel();
-      state = HomePageState.initial();
-    }, showFullNavigator: () {
+      //state = HomePageState.showInfo();
+      //_setTimer();
+    },
+        //     showInfo: () {
+        //   _timer?.cancel();
+        //   state = HomePageState.initial();
+        // },
+        showFullNavigator: () {
       _timer?.cancel();
       state = HomePageState.initial();
     }, orElse: () {

@@ -104,98 +104,31 @@ class FileTypeAdapter extends TypeAdapter<FileType> {
           typeId == other.typeId;
 }
 
-class ResourceAdapter extends TypeAdapter<_$_Resource> {
-  @override
-  final int typeId = 1;
-
-  @override
-  _$_Resource read(BinaryReader reader) {
-    final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return _$_Resource(
-      id: fields[0] as int,
-      name: fields[1] as String,
-      url: fields[2] as String,
-      required: fields[3] as bool,
-      resourceType: fields[4] as ResourceType,
-      fileType: fields[5] as FileType,
-      version: fields[6] as int,
-      needRefresh: fields[7] as bool,
-      downloaded: fields[8] as bool,
-      bundled: fields[9] as bool,
-      selected: fields[10] as bool?,
-      description: fields[11] as String?,
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, _$_Resource obj) {
-    writer
-      ..writeByte(12)
-      ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
-      ..write(obj.name)
-      ..writeByte(2)
-      ..write(obj.url)
-      ..writeByte(3)
-      ..write(obj.required)
-      ..writeByte(4)
-      ..write(obj.resourceType)
-      ..writeByte(5)
-      ..write(obj.fileType)
-      ..writeByte(6)
-      ..write(obj.version)
-      ..writeByte(7)
-      ..write(obj.needRefresh)
-      ..writeByte(8)
-      ..write(obj.downloaded)
-      ..writeByte(9)
-      ..write(obj.bundled)
-      ..writeByte(10)
-      ..write(obj.selected)
-      ..writeByte(11)
-      ..write(obj.description);
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is ResourceAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
-
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Resource _$_$_ResourceFromJson(Map<String, dynamic> json) {
-  return _$_Resource(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    url: json['url'] as String,
-    required: json['required'] as bool,
-    resourceType: _$enumDecode(_$ResourceTypeEnumMap, json['resourceType']),
-    fileType: _$enumDecode(_$FileTypeEnumMap, json['fileType']),
-    version: json['version'] as int,
-    needRefresh: json['needRefresh'] as bool,
-    downloaded: json['downloaded'] as bool,
-    bundled: json['bundled'] as bool,
-    selected: json['selected'] as bool?,
-    description: json['description'] as String?,
-  );
-}
+_$_Resource _$$_ResourceFromJson(Map<String, dynamic> json) => _$_Resource(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      title: json['title'] as String,
+      url: json['url'] as String,
+      required: json['required'] as bool,
+      resourceType: _$enumDecode(_$ResourceTypeEnumMap, json['resourceType']),
+      fileType: _$enumDecode(_$FileTypeEnumMap, json['fileType']),
+      version: json['version'] as int,
+      needRefresh: json['needRefresh'] as bool,
+      downloaded: json['downloaded'] as bool,
+      bundled: json['bundled'] as bool,
+      selected: json['selected'] as bool?,
+      description: json['description'] as String?,
+    );
 
-Map<String, dynamic> _$_$_ResourceToJson(_$_Resource instance) =>
+Map<String, dynamic> _$$_ResourceToJson(_$_Resource instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'title': instance.title,
       'url': instance.url,
       'required': instance.required,
       'resourceType': _$ResourceTypeEnumMap[instance.resourceType],

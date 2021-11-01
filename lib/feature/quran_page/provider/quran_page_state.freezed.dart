@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'quran_page_state.dart';
 
@@ -16,13 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$QuranPageStateTearOff {
   const _$QuranPageStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  _Loading loading() {
+    return const _Loading();
   }
 
-  _Loaded loaded(QuranPage page) {
+  _DownLoading downloading() {
+    return const _DownLoading();
+  }
+
+  _InternetUnAvailable internetUnAvailable() {
+    return const _InternetUnAvailable();
+  }
+
+  _Loaded loaded(QuranPage quranPage) {
     return _Loaded(
-      page,
+      quranPage,
     );
   }
 }
@@ -34,26 +43,50 @@ const $QuranPageState = _$QuranPageStateTearOff();
 mixin _$QuranPageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(QuranPage page) loaded,
+    required TResult Function() loading,
+    required TResult Function() downloading,
+    required TResult Function() internetUnAvailable,
+    required TResult Function(QuranPage quranPage) loaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(QuranPage page)? loaded,
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DownLoading value) downloading,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_Loaded value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_Loaded value)? loaded,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) =>
@@ -78,33 +111,35 @@ class _$QuranPageStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$QuranPageStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$LoadingCopyWithImpl<$Res> extends _$QuranPageStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _Loading get _value => super._value as _Loading;
 }
 
 /// @nodoc
-class _$_Initial implements _Initial {
-  const _$_Initial();
+
+class _$_Loading implements _Loading {
+  const _$_Loading();
 
   @override
   String toString() {
-    return 'QuranPageState.initial()';
+    return 'QuranPageState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
@@ -113,21 +148,36 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(QuranPage page) loaded,
+    required TResult Function() loading,
+    required TResult Function() downloading,
+    required TResult Function() internetUnAvailable,
+    required TResult Function(QuranPage quranPage) loaded,
   }) {
-    return initial();
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
+  }) {
+    return loading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(QuranPage page)? loaded,
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (loading != null) {
+      return loading();
     }
     return orElse();
   }
@@ -135,35 +185,286 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DownLoading value) downloading,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_Loaded value) loaded,
   }) {
-    return initial(this);
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return loading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (loading != null) {
+      return loading(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial implements QuranPageState {
-  const factory _Initial() = _$_Initial;
+abstract class _Loading implements QuranPageState {
+  const factory _Loading() = _$_Loading;
+}
+
+/// @nodoc
+abstract class _$DownLoadingCopyWith<$Res> {
+  factory _$DownLoadingCopyWith(
+          _DownLoading value, $Res Function(_DownLoading) then) =
+      __$DownLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$DownLoadingCopyWithImpl<$Res>
+    extends _$QuranPageStateCopyWithImpl<$Res>
+    implements _$DownLoadingCopyWith<$Res> {
+  __$DownLoadingCopyWithImpl(
+      _DownLoading _value, $Res Function(_DownLoading) _then)
+      : super(_value, (v) => _then(v as _DownLoading));
+
+  @override
+  _DownLoading get _value => super._value as _DownLoading;
+}
+
+/// @nodoc
+
+class _$_DownLoading implements _DownLoading {
+  const _$_DownLoading();
+
+  @override
+  String toString() {
+    return 'QuranPageState.downloading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _DownLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() downloading,
+    required TResult Function() internetUnAvailable,
+    required TResult Function(QuranPage quranPage) loaded,
+  }) {
+    return downloading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
+  }) {
+    return downloading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
+    required TResult orElse(),
+  }) {
+    if (downloading != null) {
+      return downloading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DownLoading value) downloading,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return downloading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return downloading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (downloading != null) {
+      return downloading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DownLoading implements QuranPageState {
+  const factory _DownLoading() = _$_DownLoading;
+}
+
+/// @nodoc
+abstract class _$InternetUnAvailableCopyWith<$Res> {
+  factory _$InternetUnAvailableCopyWith(_InternetUnAvailable value,
+          $Res Function(_InternetUnAvailable) then) =
+      __$InternetUnAvailableCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$InternetUnAvailableCopyWithImpl<$Res>
+    extends _$QuranPageStateCopyWithImpl<$Res>
+    implements _$InternetUnAvailableCopyWith<$Res> {
+  __$InternetUnAvailableCopyWithImpl(
+      _InternetUnAvailable _value, $Res Function(_InternetUnAvailable) _then)
+      : super(_value, (v) => _then(v as _InternetUnAvailable));
+
+  @override
+  _InternetUnAvailable get _value => super._value as _InternetUnAvailable;
+}
+
+/// @nodoc
+
+class _$_InternetUnAvailable implements _InternetUnAvailable {
+  const _$_InternetUnAvailable();
+
+  @override
+  String toString() {
+    return 'QuranPageState.internetUnAvailable()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _InternetUnAvailable);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() downloading,
+    required TResult Function() internetUnAvailable,
+    required TResult Function(QuranPage quranPage) loaded,
+  }) {
+    return internetUnAvailable();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
+  }) {
+    return internetUnAvailable?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
+    required TResult orElse(),
+  }) {
+    if (internetUnAvailable != null) {
+      return internetUnAvailable();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DownLoading value) downloading,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
+    required TResult Function(_Loaded value) loaded,
+  }) {
+    return internetUnAvailable(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return internetUnAvailable?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_Loaded value)? loaded,
+    required TResult orElse(),
+  }) {
+    if (internetUnAvailable != null) {
+      return internetUnAvailable(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InternetUnAvailable implements QuranPageState {
+  const factory _InternetUnAvailable() = _$_InternetUnAvailable;
 }
 
 /// @nodoc
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({QuranPage page});
+  $Res call({QuranPage quranPage});
+
+  $QuranPageCopyWith<$Res> get quranPage;
 }
 
 /// @nodoc
@@ -177,40 +478,48 @@ class __$LoadedCopyWithImpl<$Res> extends _$QuranPageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? page = freezed,
+    Object? quranPage = freezed,
   }) {
     return _then(_Loaded(
-      page == freezed
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      quranPage == freezed
+          ? _value.quranPage
+          : quranPage // ignore: cast_nullable_to_non_nullable
               as QuranPage,
     ));
+  }
+
+  @override
+  $QuranPageCopyWith<$Res> get quranPage {
+    return $QuranPageCopyWith<$Res>(_value.quranPage, (value) {
+      return _then(_value.copyWith(quranPage: value));
+    });
   }
 }
 
 /// @nodoc
+
 class _$_Loaded implements _Loaded {
-  const _$_Loaded(this.page);
+  const _$_Loaded(this.quranPage);
 
   @override
-  final QuranPage page;
+  final QuranPage quranPage;
 
   @override
   String toString() {
-    return 'QuranPageState.loaded(page: $page)';
+    return 'QuranPageState.loaded(quranPage: $quranPage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Loaded &&
-            (identical(other.page, page) ||
-                const DeepCollectionEquality().equals(other.page, page)));
+        (other.runtimeType == runtimeType &&
+            other is _Loaded &&
+            (identical(other.quranPage, quranPage) ||
+                other.quranPage == quranPage));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(page);
+  int get hashCode => Object.hash(runtimeType, quranPage);
 
   @JsonKey(ignore: true)
   @override
@@ -220,21 +529,36 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(QuranPage page) loaded,
+    required TResult Function() loading,
+    required TResult Function() downloading,
+    required TResult Function() internetUnAvailable,
+    required TResult Function(QuranPage quranPage) loaded,
   }) {
-    return loaded(page);
+    return loaded(quranPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
+  }) {
+    return loaded?.call(quranPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(QuranPage page)? loaded,
+    TResult Function()? loading,
+    TResult Function()? downloading,
+    TResult Function()? internetUnAvailable,
+    TResult Function(QuranPage quranPage)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(page);
+      return loaded(quranPage);
     }
     return orElse();
   }
@@ -242,7 +566,9 @@ class _$_Loaded implements _Loaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_DownLoading value) downloading,
+    required TResult Function(_InternetUnAvailable value) internetUnAvailable,
     required TResult Function(_Loaded value) loaded,
   }) {
     return loaded(this);
@@ -250,8 +576,21 @@ class _$_Loaded implements _Loaded {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
+    TResult Function(_Loaded value)? loaded,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_DownLoading value)? downloading,
+    TResult Function(_InternetUnAvailable value)? internetUnAvailable,
     TResult Function(_Loaded value)? loaded,
     required TResult orElse(),
   }) {
@@ -263,9 +602,9 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements QuranPageState {
-  const factory _Loaded(QuranPage page) = _$_Loaded;
+  const factory _Loaded(QuranPage quranPage) = _$_Loaded;
 
-  QuranPage get page => throw _privateConstructorUsedError;
+  QuranPage get quranPage;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quran_reader/feature/quran_page/model/quran_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final prefServiceProvider =
@@ -11,16 +8,27 @@ class PrefService {
   PrefService(this.sharedPreferences);
   final SharedPreferences sharedPreferences;
 
-  Future<void> setLastReadPage(QuranPage page) async {
-    await sharedPreferences.setString(
-        'lastReadPage', json.encode(page.toJson()));
+  Future<void> setLastReadPage(int page) async {
+    await sharedPreferences.setInt('lastReadPage', page);
   }
 
-  QuranPage? lastReadPage() {
-    final value = sharedPreferences.getString('lastReadPage');
-    if (value != null) {
-      final result = json.decode(value);
-      return QuranPage.fromJson(result);
-    }
+  int? lastReadPage() {
+    final value = sharedPreferences.getInt('lastReadPage');
+    return value;
   }
+  //
+  // Future<void> setMushafType(MushafType type) async {
+  //   await sharedPreferences.setString(
+  //       'mushafType', json.encode(type.toString()));
+  // }
+  //
+  // MushafType mushafType() {
+  //   final value = sharedPreferences.getString('mushafType');
+  //   if (value != null) {
+  //     final result = mushafTypeFromString(json.decode(value));
+  //     return (result != null) ? result : MushafType.madani;
+  //   } else {
+  //     return MushafType.madani;
+  //   }
+  // }
 }

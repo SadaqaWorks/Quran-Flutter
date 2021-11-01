@@ -37,27 +37,19 @@ dependencies:
   equatable: ^2.0.3
 
   responsive_builder: ^0.4.1
-  #flutter_screenutil: ^5.0.0
   scroll_to_index: ^2.1.0
   flutter_dotenv: ^5.0.2
   hive: ^2.0.4
   hive_flutter: ^1.1.0
 
-  #isar: ^0.4.0
-  #isar_flutter_libs: 0.4.0
-  #isar_connect: 0.4.0
-
   wakelock: ^0.5.6
-  #sqflite: ^2.0.0+3
   intl_utils: ^2.4.1
   json_annotation:
 
-  flutter_riverpod: ^1.0.0-dev.7
+  flutter_riverpod: ^1.0.0-dev.11
   state_notifier: ^0.7.1
   freezed_annotation:
-
   auto_route: ^3.0.4
-
 
 dev_dependencies:
 #  flutter_test:
@@ -65,7 +57,6 @@ dev_dependencies:
   logger:
   json_serializable:
   hive_generator:
-  #isar_generator: 0.4.0
   build_runner:
   freezed: ^0.15.0+1
   flutter_lints: ^1.0.4
@@ -139,8 +130,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-
-#flutter_intl:
-#  enabled: true # Required. Must be set to true to activate the plugin. Default: false
-#  class_name: S # Optional. Sets the name for the generated localization class. Default: S
-#  main_locale: en # Optional. Sets the main locale used for generating localization files. Provided value should comply with ISO-639-1 and ISO-3166-1 (e.g. "en", "en_GB"). Default: en

@@ -11,9 +11,6 @@ void start() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final sharedPreferences = await SharedPreferences.getInstance();
-  // final isarResources = await openIsar(name: Databases.resources);
-  // final isarUser = await openIsar(name: Databases.user);
-
   await StorageManager.init();
 
   SystemChrome.setPreferredOrientations(
@@ -21,8 +18,6 @@ void start() async {
     runApp(ProviderScope(
       overrides: [
         prefServiceProvider.overrideWithValue(PrefService(sharedPreferences)),
-        //isarResourceProvider.overrideWithValue(isarResources),
-        //isarUserProvider.overrideWithValue(isarUser)
       ],
       child: App(),
     ));

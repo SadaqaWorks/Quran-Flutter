@@ -52,9 +52,19 @@ class AppStartupNotifier extends StateNotifier<AppStartupState> {
           }
         },
         needsToDownload: () {
-          state = AppStartupState.needsToDownload();
+          if (connectivityStatus != ConnectivityStatus.Online) {
+            state = AppStartupState.internetUnAvailable();
+          }else{
+            state = AppStartupState.needsToDownload();
+          }
         },
-        orElse: () => {state = AppStartupState.needsToDownload()});
+        orElse: () {
+          if (connectivityStatus != ConnectivityStatus.Online) {
+            state = AppStartupState.internetUnAvailable();
+          }else{
+            state = AppStartupState.needsToDownload();
+          }
+        });
   }
 
   void reInit() {

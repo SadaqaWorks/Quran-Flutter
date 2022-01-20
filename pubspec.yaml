@@ -23,33 +23,33 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.3
-  shared_preferences: ^2.0.8
+  shared_preferences: ^2.0.12
   meta: ^1.7.0
-  path_provider: ^2.0.6
+  path_provider: ^2.0.8
   app_settings: ^4.1.1
   intl: ^0.17.0
 
   #Internet
-  dio: ^4.0.1
-  connectivity_plus: ^2.0.2
+  dio: ^4.0.4
+  connectivity_plus: ^2.2.0
 
-  archive: ^3.1.6
+  archive: ^3.1.9
   equatable: ^2.0.3
 
   responsive_builder: ^0.4.1
-  scroll_to_index: ^2.1.0
+  scroll_to_index: ^2.1.1
   flutter_dotenv: ^5.0.2
-  hive: ^2.0.4
+  hive: ^2.0.5
   hive_flutter: ^1.1.0
 
-  wakelock: ^0.5.6
-  intl_utils: ^2.4.1
+  wakelock: ^0.6.1
+  intl_utils: ^2.6.1
   json_annotation:
 
-  flutter_riverpod: ^1.0.0-dev.11
-  state_notifier: ^0.7.1
+  flutter_riverpod: ^1.0.3
+  state_notifier: ^0.7.2+1
   freezed_annotation:
-  auto_route: ^3.0.4
+  auto_route: ^3.2.1
 
 dev_dependencies:
 #  flutter_test:
@@ -58,9 +58,9 @@ dev_dependencies:
   json_serializable:
   hive_generator:
   build_runner:
-  freezed: ^0.15.0+1
+  freezed: ^1.1.1
   flutter_lints: ^1.0.4
-  auto_route_generator: 3.0.1
+  auto_route_generator: 3.2.1
   flutter_gen_runner:
 
 ## Install derry from https://pub.dev/packages/derry and run derry build, derry watch, derry gen

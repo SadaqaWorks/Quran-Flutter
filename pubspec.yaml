@@ -30,7 +30,7 @@ dependencies:
   intl: ^0.17.0
 
   #Internet
-  dio: ^4.0.4
+  dio: ">=4.0.4 <6.0.0"
   connectivity_plus: ^2.2.0
 
   archive: ^3.1.9
